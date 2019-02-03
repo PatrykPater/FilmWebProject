@@ -1,0 +1,51 @@
+﻿@model FilmWebProject.ViewModels.CreateFilmFormViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Films"))
+{
+    <div class="form-group">
+        @Html.LabelFor(f => f.Title)
+        @Html.TextBoxFor(f => f.Title, new { @class = "form-control", @placeholder = "Enter the title" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Duration)
+        @Html.TextBoxFor(f => f.Duration, new { @class = "form-control", @placeholder = "Enter duration" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.ShortDescription)
+        @Html.TextBoxFor(f => f.ShortDescription, new { @class = "form-control", @placeholder = "Provide short description" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Director)
+        @Html.TextBoxFor(f => f.Director, new { @class = "form-control", @placeholder = "Enter the director" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Scriptwriter)
+        @Html.TextBoxFor(f => f.Scriptwriter, new { @class = "form-control", @placeholder = "Enter the screenwriter" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Genre)
+        @Html.TextBoxFor(f => f.Genre, new { @class = "form-control", @placeholder = "Genre" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Production)
+        @Html.TextBoxFor(f => f.Production, new { @class = "form-control", @placeholder = "Production" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.ReleaseDate)
+        @Html.TextBoxFor(f => f.ReleaseDate, new { @class = "form-control", @placeholder = "Enter the release date" })
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

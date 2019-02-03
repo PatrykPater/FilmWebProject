@@ -14,7 +14,6 @@ namespace FilmWebProject.Models
         public DateTime Release { get; set; }
         public double Budget { get; set; }
         public double Score { get; set; }
-
         public Genre Genre { get; set; }
         public List<Cast> Cast { get; set; }
         public Composer Music { get; set; }
