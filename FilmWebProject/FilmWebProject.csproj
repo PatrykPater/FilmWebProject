@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201902031327481_PopulateGenres.Designer.cs">
       <DependentUpon>201902031327481_PopulateGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902031422151_AddThrillerGenre.cs" />
+    <Compile Include="Migrations\201902031422151_AddThrillerGenre.Designer.cs">
+      <DependentUpon>201902031422151_AddThrillerGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Creators.cs" />
@@ -307,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902031327481_PopulateGenres.resx">
       <DependentUpon>201902031327481_PopulateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902031422151_AddThrillerGenre.resx">
+      <DependentUpon>201902031422151_AddThrillerGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
