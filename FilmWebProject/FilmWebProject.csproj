@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201902031219379_RemoveGenreIdAndComposerIdFields.Designer.cs">
       <DependentUpon>201902031219379_RemoveGenreIdAndComposerIdFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902031327481_PopulateGenres.cs" />
+    <Compile Include="Migrations\201902031327481_PopulateGenres.Designer.cs">
+      <DependentUpon>201902031327481_PopulateGenres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Creators.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902031219379_RemoveGenreIdAndComposerIdFields.resx">
       <DependentUpon>201902031219379_RemoveGenreIdAndComposerIdFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902031327481_PopulateGenres.resx">
+      <DependentUpon>201902031327481_PopulateGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
