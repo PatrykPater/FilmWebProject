@@ -1,5 +1,6 @@
 ﻿using FilmWebProject.Models;
 using System;
+using System.Collections.Generic;
 
 namespace FilmWebProject.ViewModels
 {
@@ -13,5 +14,6 @@ namespace FilmWebProject.ViewModels
         public Genre Genre { get; set; }
         public string Director { get; set; }
         public string Scriptwriter { get; set; }
+        public IEnumerable<Genre> Genres { get; set; }
     }
 }
