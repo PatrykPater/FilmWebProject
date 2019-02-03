@@ -1,11 +1,11 @@
-﻿using System.Data.Entity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace FilmWebProject.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Cast> Actors { get; set; }
         public DbSet<Composer> Composers { get; set; }
         public DbSet<Director> Directors { get; set; }
         public DbSet<Film> Films { get; set; }
@@ -14,7 +14,6 @@ namespace FilmWebProject.Models
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Reward> Rewards { get; set; }
         public DbSet<Scriptwriter> Scriptwriters { get; set; }
-        public DbSet<Studio> Studios { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
 
         public ApplicationDbContext()

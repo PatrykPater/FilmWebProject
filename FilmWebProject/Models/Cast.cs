@@ -1,6 +1,6 @@
 ﻿namespace FilmWebProject.Models
 {
-    public class Actor : Staff
+    public class Cast : Staff
     {
         public int Id { get; set; }
 

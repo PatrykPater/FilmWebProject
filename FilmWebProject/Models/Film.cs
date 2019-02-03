@@ -16,13 +16,13 @@ namespace FilmWebProject.Models
         public double Score { get; set; }
 
         public Genre Genre { get; set; }
-        public List<Actor> Cast { get; set; }
+        public List<Cast> Cast { get; set; }
         public Composer Music { get; set; }
         public Director Director { get; set; }
         public Photographer Photography { get; set; }
         public Scriptwriter Scriptwriter { get; set; }
         public List<Reward> Rewards { get; set; }
         public List<Review> Reviews { get; set; }
-        public Studio Studio { get; set; }
+        public string Studio { get; set; }
     }
 }
