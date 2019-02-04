@@ -179,6 +179,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Core\ViewModels\CreateStaffFormViewModel.cs" />
+    <Compile Include="Core\ViewModels\RoleForCreateStaffFrom.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -16,22 +16,27 @@
 
     <div class="form-group">
         @Html.LabelFor(f => f.LastName)
-        @Html.TextBoxFor(f => f.LastName, new { @class = "form-control", @placeholder = "Enter first name" })
+        @Html.TextBoxFor(f => f.LastName, new { @class = "form-control", @placeholder = "Enter last name" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.DateOfBirth)
-        @Html.TextBoxFor(f => f.DateOfBirth, new { @class = "form-control", @placeholder = "Enter first name" })
+        @Html.TextBoxFor(f => f.DateOfBirth, new { @class = "form-control", @placeholder = "Enter date of birth" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.PlaceOfBirth)
-        @Html.TextBoxFor(f => f.PlaceOfBirth, new { @class = "form-control", @placeholder = "Enter first name" })
+        @Html.TextBoxFor(f => f.PlaceOfBirth, new { @class = "form-control", @placeholder = "Enter place of birth" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.Height)
-        @Html.TextBoxFor(f => f.Height, new { @class = "form-control", @placeholder = "Enter first name" })
+        @Html.TextBoxFor(f => f.Height, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Role)
+        @Html.DropDownListFor(f => f.Role, new SelectList(Model.Role, "RoleType", "RoleType"), "", new { @class = "form-control" })
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
