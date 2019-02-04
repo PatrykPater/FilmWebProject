@@ -1,4 +1,4 @@
-﻿@model FilmWebProject.ViewModels.CreateFilmFormViewModel
+﻿@model FilmWebProject.Core.ViewModels.CreateFilmFormViewModel
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -40,7 +40,7 @@
 
     <div class="form-group">
         @Html.LabelFor(f => f.ReleaseDate)
-        @Html.TextBoxFor(f => f.ReleaseDate, new { @class = "form-control" })
+        @Html.TextBoxFor(f => f.ReleaseDate, new { @class = "form-control", @placeholder = "eg 6 May 2001" })
         @Html.ValidationMessageFor(f => f.ReleaseDate)
     </div>
 

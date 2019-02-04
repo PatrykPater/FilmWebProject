@@ -1,15 +1,16 @@
-namespace FilmWebProject.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
+using FilmWebProject.Core.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FilmWebProject.Models.ApplicationDbContext>
+namespace FilmWebProject.Persistance.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(FilmWebProject.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

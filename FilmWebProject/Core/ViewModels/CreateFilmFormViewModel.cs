@@ -1,9 +1,9 @@
-﻿using FilmWebProject.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using FilmWebProject.Core.Models;
 
-namespace FilmWebProject.ViewModels
+namespace FilmWebProject.Core.ViewModels
 {
     public class CreateFilmFormViewModel
     {

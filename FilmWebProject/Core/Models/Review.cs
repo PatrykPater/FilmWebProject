@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FilmWebProject.Models
+namespace FilmWebProject.Core.Models
 {
     public class Review
     {

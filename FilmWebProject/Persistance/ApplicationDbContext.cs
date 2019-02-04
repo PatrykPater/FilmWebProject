@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using FilmWebProject.Core.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace FilmWebProject.Models
+namespace FilmWebProject.Persistance
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

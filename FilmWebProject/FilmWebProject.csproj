@@ -180,40 +180,44 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902041143514_resettingUpDB.cs" />
-    <Compile Include="Migrations\201902041143514_resettingUpDB.Designer.cs">
+    <Compile Include="Persistance\Migrations\201902041143514_resettingUpDB.cs" />
+    <Compile Include="Persistance\Migrations\201902041143514_resettingUpDB.Designer.cs">
       <DependentUpon>201902041143514_resettingUpDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902041145343_PopulateGenres.cs" />
-    <Compile Include="Migrations\201902041145343_PopulateGenres.Designer.cs">
+    <Compile Include="Persistance\Migrations\201902041145343_PopulateGenres.cs" />
+    <Compile Include="Persistance\Migrations\201902041145343_PopulateGenres.Designer.cs">
       <DependentUpon>201902041145343_PopulateGenres.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902041155193_ChangeDatetimeType.cs" />
-    <Compile Include="Migrations\201902041155193_ChangeDatetimeType.Designer.cs">
+    <Compile Include="Persistance\Migrations\201902041155193_ChangeDatetimeType.cs" />
+    <Compile Include="Persistance\Migrations\201902041155193_ChangeDatetimeType.Designer.cs">
       <DependentUpon>201902041155193_ChangeDatetimeType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902041205108_nullableDatetimeAcorssDB.cs" />
-    <Compile Include="Migrations\201902041205108_nullableDatetimeAcorssDB.Designer.cs">
+    <Compile Include="Persistance\Migrations\201902041205108_nullableDatetimeAcorssDB.cs" />
+    <Compile Include="Persistance\Migrations\201902041205108_nullableDatetimeAcorssDB.Designer.cs">
       <DependentUpon>201902041205108_nullableDatetimeAcorssDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\Creators.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
-    <Compile Include="Models\Cast.cs" />
-    <Compile Include="Models\Composer.cs" />
-    <Compile Include="Models\Director.cs" />
-    <Compile Include="Models\Photographer.cs" />
-    <Compile Include="Models\Scriptwriter.cs" />
-    <Compile Include="Models\Staff.cs" />
-    <Compile Include="Models\Film.cs" />
-    <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="ViewModels\CreateFilmFormViewModel.cs" />
-    <Compile Include="ViewModels\ManageViewModels.cs" />
-    <Compile Include="Models\Review.cs" />
-    <Compile Include="Models\Reward.cs" />
-    <Compile Include="Models\Trailer.cs" />
+    <Compile Include="Persistance\Migrations\201902041230159_changeReleaseDateType.cs" />
+    <Compile Include="Persistance\Migrations\201902041230159_changeReleaseDateType.Designer.cs">
+      <DependentUpon>201902041230159_changeReleaseDateType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistance\Migrations\Configuration.cs" />
+    <Compile Include="Persistance\ApplicationDbContext.cs" />
+    <Compile Include="Core\Models\Creators.cs" />
+    <Compile Include="Core\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Core\Models\Cast.cs" />
+    <Compile Include="Core\Models\Composer.cs" />
+    <Compile Include="Core\Models\Director.cs" />
+    <Compile Include="Core\Models\Photographer.cs" />
+    <Compile Include="Core\Models\Scriptwriter.cs" />
+    <Compile Include="Core\Models\Staff.cs" />
+    <Compile Include="Core\Models\Film.cs" />
+    <Compile Include="Core\Models\Genre.cs" />
+    <Compile Include="Core\Models\ApplicationUser.cs" />
+    <Compile Include="Core\ViewModels\CreateFilmFormViewModel.cs" />
+    <Compile Include="Core\ViewModels\ManageViewModels.cs" />
+    <Compile Include="Core\Models\Review.cs" />
+    <Compile Include="Core\Models\Reward.cs" />
+    <Compile Include="Core\Models\Trailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -277,6 +281,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Core\Dtos\" />
+    <Folder Include="Core\Repositories\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Persistance\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -292,17 +300,20 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902041143514_resettingUpDB.resx">
+    <EmbeddedResource Include="Persistance\Migrations\201902041143514_resettingUpDB.resx">
       <DependentUpon>201902041143514_resettingUpDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041145343_PopulateGenres.resx">
+    <EmbeddedResource Include="Persistance\Migrations\201902041145343_PopulateGenres.resx">
       <DependentUpon>201902041145343_PopulateGenres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041155193_ChangeDatetimeType.resx">
+    <EmbeddedResource Include="Persistance\Migrations\201902041155193_ChangeDatetimeType.resx">
       <DependentUpon>201902041155193_ChangeDatetimeType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041205108_nullableDatetimeAcorssDB.resx">
+    <EmbeddedResource Include="Persistance\Migrations\201902041205108_nullableDatetimeAcorssDB.resx">
       <DependentUpon>201902041205108_nullableDatetimeAcorssDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistance\Migrations\201902041230159_changeReleaseDateType.resx">
+      <DependentUpon>201902041230159_changeReleaseDateType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

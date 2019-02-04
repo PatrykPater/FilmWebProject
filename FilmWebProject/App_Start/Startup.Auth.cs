@@ -1,11 +1,12 @@
 ﻿using System;
+using FilmWebProject.Core.Models;
+using FilmWebProject.Persistance;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using FilmWebProject.Models;
 
 namespace FilmWebProject
 {

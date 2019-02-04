@@ -1,8 +1,7 @@
-namespace FilmWebProject.Migrations
+using System.Data.Entity.Migrations;
+
+namespace FilmWebProject.Persistance.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class resettingUpDB : DbMigration
     {
         public override void Up()

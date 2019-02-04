@@ -3,11 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using FilmWebProject.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using FilmWebProject.Models;
-using FilmWebProject.ViewModels;
 
 namespace FilmWebProject.Controllers
 {

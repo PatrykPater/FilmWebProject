@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FilmWebProject.ViewModels
+namespace FilmWebProject.Core.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

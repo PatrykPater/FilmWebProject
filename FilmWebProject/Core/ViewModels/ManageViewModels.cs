@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace FilmWebProject.ViewModels
+namespace FilmWebProject.Core.ViewModels
 {
     public class IndexViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace FilmWebProject.Models
+﻿namespace FilmWebProject.Core.Models
 {
     public class Reward
     {

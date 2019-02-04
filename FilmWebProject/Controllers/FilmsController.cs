@@ -1,7 +1,8 @@
-﻿using FilmWebProject.Models;
-using FilmWebProject.ViewModels;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
+using FilmWebProject.Core.Models;
+using FilmWebProject.Core.ViewModels;
+using FilmWebProject.Persistance;
 
 namespace FilmWebProject.Controllers
 {

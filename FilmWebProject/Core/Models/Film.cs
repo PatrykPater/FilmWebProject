@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FilmWebProject.Models
+namespace FilmWebProject.Core.Models
 {
     public class Film
     {
