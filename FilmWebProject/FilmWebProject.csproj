@@ -204,6 +204,22 @@
     <Compile Include="Migrations\201902031422151_AddThrillerGenre.Designer.cs">
       <DependentUpon>201902031422151_AddThrillerGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902040751497_BoxOffice.cs" />
+    <Compile Include="Migrations\201902040751497_BoxOffice.Designer.cs">
+      <DependentUpon>201902040751497_BoxOffice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902040937471_AddForeignKeyGenreIdOForFilm.cs" />
+    <Compile Include="Migrations\201902040937471_AddForeignKeyGenreIdOForFilm.Designer.cs">
+      <DependentUpon>201902040937471_AddForeignKeyGenreIdOForFilm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902040956240_ChangeColumnToDateType2.cs" />
+    <Compile Include="Migrations\201902040956240_ChangeColumnToDateType2.Designer.cs">
+      <DependentUpon>201902040956240_ChangeColumnToDateType2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902041010426_revert-previous-changes.cs" />
+    <Compile Include="Migrations\201902041010426_revert-previous-changes.Designer.cs">
+      <DependentUpon>201902041010426_revert-previous-changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Creators.cs" />
@@ -224,6 +240,7 @@
     <Compile Include="Models\Trailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ReleaseDateValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -317,6 +334,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902031422151_AddThrillerGenre.resx">
       <DependentUpon>201902031422151_AddThrillerGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902040751497_BoxOffice.resx">
+      <DependentUpon>201902040751497_BoxOffice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902040937471_AddForeignKeyGenreIdOForFilm.resx">
+      <DependentUpon>201902040937471_AddForeignKeyGenreIdOForFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902040956240_ChangeColumnToDateType2.resx">
+      <DependentUpon>201902040956240_ChangeColumnToDateType2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902041010426_revert-previous-changes.resx">
+      <DependentUpon>201902041010426_revert-previous-changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

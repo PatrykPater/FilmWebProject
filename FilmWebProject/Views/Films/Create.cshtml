@@ -15,12 +15,7 @@
 
     <div class="form-group">
         @Html.LabelFor(f => f.Duration)
-        @Html.TextBoxFor(f => f.Duration, new { @class = "form-control", @placeholder = "Enter duration" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(f => f.ShortDescription)
-        @Html.TextBoxFor(f => f.ShortDescription, new { @class = "form-control", @placeholder = "Provide short description" })
+        @Html.TextBoxFor(f => f.Duration, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
@@ -35,7 +30,7 @@
 
     <div class="form-group">
         @Html.LabelFor(f => f.Genre)
-        @Html.DropDownListFor(f => f.Genre, new SelectList(Model.Genres, "Id", "Name"), "" , new { @class = "form-control" })
+        @Html.DropDownListFor(f => f.Genre, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
     </div>
 
     <div class="form-group">
@@ -46,6 +41,12 @@
     <div class="form-group">
         @Html.LabelFor(f => f.ReleaseDate)
         @Html.TextBoxFor(f => f.ReleaseDate, new { @class = "form-control", @placeholder = "Enter the release date" })
+        @Html.ValidationMessageFor(f => f.ReleaseDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.BoxOffice)
+        @Html.TextBoxFor(f => f.BoxOffice, new { @class = "form-control", @placeholder = "Box-office" })
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 }
