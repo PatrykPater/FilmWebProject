@@ -1,6 +1,5 @@
 ﻿using FilmWebProject.Models;
 using FilmWebProject.ViewModels;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -32,6 +31,8 @@ namespace FilmWebProject.Controllers
         [Authorize]
         public ActionResult Create(CreateFilmFormViewModel viewModel)
         {
+            var genre = _context.Genres.Single(g => g.Id == viewModel.Genre);
+
             var lastAndFirstNameScriptwriter = viewModel.Scriptwriter.Split();
 
             var newScriptwriter = new Scriptwriter()
@@ -54,9 +55,9 @@ namespace FilmWebProject.Controllers
                 Duration = viewModel.Duration,
                 Director = newDirector,
                 Scriptwriter = newScriptwriter,
-                Genre = viewModel.Genre,
+                Genre = genre,
                 Production = viewModel.Production,
-                Release = DateTime.Parse(viewModel.ReleaseDate),
+                Release = viewModel.ReleaseDate,
                 BoxOffice = viewModel.BoxOffice
             };
 

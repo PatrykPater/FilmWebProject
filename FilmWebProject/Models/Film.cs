@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmWebProject.Models
 {
@@ -18,7 +17,7 @@ namespace FilmWebProject.Models
         public double Budget { get; set; }
         public double Score { get; set; }
         public string Studio { get; set; }
-        public double BoxOffice { get; set; }       
+        public double BoxOffice { get; set; }
 
         [Required]
         public int GenreId { get; set; }

@@ -7,14 +7,12 @@ namespace FilmWebProject.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public DateTime DateOfPublication { get; set; }
+        public DateTime? DateOfPublication { get; set; }
         public string Content { get; set; }
         public double Score { get; set; }
         public List<string> Comment { get; set; }
 
         public ApplicationUser Author { get; set; }
-        public int AuthorId { get; set; }
         public Film ReviewedFilm { get; set; }
-        public int FilmId { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangeColumnToDateType2 : IMigrationMetadata
+    public sealed partial class nullableDatetimeAcorssDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeColumnToDateType2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(nullableDatetimeAcorssDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902040956240_ChangeColumnToDateType2"; }
+            get { return "201902041205108_nullableDatetimeAcorssDB"; }
         }
         
         string IMigrationMetadata.Source

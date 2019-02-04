@@ -11,12 +11,10 @@ namespace FilmWebProject.ViewModels
         public TimeSpan Duration { get; set; }
         public string Production { get; set; }
 
-        [Required]
         [Display(Name = "Release Date")]
-        [ReleaseDateValidation]
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
-        public Genre Genre { get; set; }
+        public int Genre { get; set; }
         public string Director { get; set; }
         public string Scriptwriter { get; set; }
         public double BoxOffice { get; set; }

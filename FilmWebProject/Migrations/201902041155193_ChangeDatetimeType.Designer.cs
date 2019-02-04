@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddThrillerGenre : IMigrationMetadata
+    public sealed partial class ChangeDatetimeType : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddThrillerGenre));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeDatetimeType));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902031422151_AddThrillerGenre"; }
+            get { return "201902041155193_ChangeDatetimeType"; }
         }
         
         string IMigrationMetadata.Source

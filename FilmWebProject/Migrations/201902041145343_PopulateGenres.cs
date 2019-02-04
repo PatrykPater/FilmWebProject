@@ -1,7 +1,8 @@
 namespace FilmWebProject.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
-
+    
     public partial class PopulateGenres : DbMigration
     {
         public override void Up()
@@ -19,8 +20,9 @@ namespace FilmWebProject.Migrations
             Sql("INSERT INTO Genres (Name) VALUES ('Adventure')");
             Sql("INSERT INTO Genres (Name) VALUES ('Romance')");
             Sql("INSERT INTO Genres (Name) VALUES ('Sci-fi')");
+            Sql("INSERT INTO Genres (Name) VALUES ('Thriller')");
         }
-
+        
         public override void Down()
         {
             Sql("DELETE FROM Genres WHERE Name IN ('Action', 'Animated', 'Documentary', 'Drama', 'Family', 'Fantasy', 'Horror', 'Comedy', 'Crime', 'Silent' , 'Adventure', 'Romance', 'Sci-fi')");

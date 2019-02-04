@@ -180,45 +180,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902030900215_InitialMigration.cs" />
-    <Compile Include="Migrations\201902030900215_InitialMigration.Designer.cs">
-      <DependentUpon>201902030900215_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201902041143514_resettingUpDB.cs" />
+    <Compile Include="Migrations\201902041143514_resettingUpDB.Designer.cs">
+      <DependentUpon>201902041143514_resettingUpDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902031103189_DomainModelInitial.cs" />
-    <Compile Include="Migrations\201902031103189_DomainModelInitial.Designer.cs">
-      <DependentUpon>201902031103189_DomainModelInitial.cs</DependentUpon>
+    <Compile Include="Migrations\201902041145343_PopulateGenres.cs" />
+    <Compile Include="Migrations\201902041145343_PopulateGenres.Designer.cs">
+      <DependentUpon>201902041145343_PopulateGenres.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902031216564_RemoveStudioAndFillMissingFields.cs" />
-    <Compile Include="Migrations\201902031216564_RemoveStudioAndFillMissingFields.Designer.cs">
-      <DependentUpon>201902031216564_RemoveStudioAndFillMissingFields.cs</DependentUpon>
+    <Compile Include="Migrations\201902041155193_ChangeDatetimeType.cs" />
+    <Compile Include="Migrations\201902041155193_ChangeDatetimeType.Designer.cs">
+      <DependentUpon>201902041155193_ChangeDatetimeType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902031219379_RemoveGenreIdAndComposerIdFields.cs" />
-    <Compile Include="Migrations\201902031219379_RemoveGenreIdAndComposerIdFields.Designer.cs">
-      <DependentUpon>201902031219379_RemoveGenreIdAndComposerIdFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902031327481_PopulateGenres.cs" />
-    <Compile Include="Migrations\201902031327481_PopulateGenres.Designer.cs">
-      <DependentUpon>201902031327481_PopulateGenres.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902031422151_AddThrillerGenre.cs" />
-    <Compile Include="Migrations\201902031422151_AddThrillerGenre.Designer.cs">
-      <DependentUpon>201902031422151_AddThrillerGenre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902040751497_BoxOffice.cs" />
-    <Compile Include="Migrations\201902040751497_BoxOffice.Designer.cs">
-      <DependentUpon>201902040751497_BoxOffice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902040937471_AddForeignKeyGenreIdOForFilm.cs" />
-    <Compile Include="Migrations\201902040937471_AddForeignKeyGenreIdOForFilm.Designer.cs">
-      <DependentUpon>201902040937471_AddForeignKeyGenreIdOForFilm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902040956240_ChangeColumnToDateType2.cs" />
-    <Compile Include="Migrations\201902040956240_ChangeColumnToDateType2.Designer.cs">
-      <DependentUpon>201902040956240_ChangeColumnToDateType2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902041010426_revert-previous-changes.cs" />
-    <Compile Include="Migrations\201902041010426_revert-previous-changes.Designer.cs">
-      <DependentUpon>201902041010426_revert-previous-changes.cs</DependentUpon>
+    <Compile Include="Migrations\201902041205108_nullableDatetimeAcorssDB.cs" />
+    <Compile Include="Migrations\201902041205108_nullableDatetimeAcorssDB.Designer.cs">
+      <DependentUpon>201902041205108_nullableDatetimeAcorssDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -240,7 +216,6 @@
     <Compile Include="Models\Trailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\ReleaseDateValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -317,35 +292,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902030900215_InitialMigration.resx">
-      <DependentUpon>201902030900215_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902041143514_resettingUpDB.resx">
+      <DependentUpon>201902041143514_resettingUpDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902031103189_DomainModelInitial.resx">
-      <DependentUpon>201902031103189_DomainModelInitial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902041145343_PopulateGenres.resx">
+      <DependentUpon>201902041145343_PopulateGenres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902031216564_RemoveStudioAndFillMissingFields.resx">
-      <DependentUpon>201902031216564_RemoveStudioAndFillMissingFields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902041155193_ChangeDatetimeType.resx">
+      <DependentUpon>201902041155193_ChangeDatetimeType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902031219379_RemoveGenreIdAndComposerIdFields.resx">
-      <DependentUpon>201902031219379_RemoveGenreIdAndComposerIdFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902031327481_PopulateGenres.resx">
-      <DependentUpon>201902031327481_PopulateGenres.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902031422151_AddThrillerGenre.resx">
-      <DependentUpon>201902031422151_AddThrillerGenre.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902040751497_BoxOffice.resx">
-      <DependentUpon>201902040751497_BoxOffice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902040937471_AddForeignKeyGenreIdOForFilm.resx">
-      <DependentUpon>201902040937471_AddForeignKeyGenreIdOForFilm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902040956240_ChangeColumnToDateType2.resx">
-      <DependentUpon>201902040956240_ChangeColumnToDateType2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041010426_revert-previous-changes.resx">
-      <DependentUpon>201902041010426_revert-previous-changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902041205108_nullableDatetimeAcorssDB.resx">
+      <DependentUpon>201902041205108_nullableDatetimeAcorssDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PopulateGenres : IMigrationMetadata
+    public sealed partial class resettingUpDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateGenres));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(resettingUpDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902031327481_PopulateGenres"; }
+            get { return "201902041143514_resettingUpDB"; }
         }
         
         string IMigrationMetadata.Source
