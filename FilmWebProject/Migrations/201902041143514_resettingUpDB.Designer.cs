@@ -4,16 +4,16 @@ using System.CodeDom.Compiler;
 using System.Data.Entity.Migrations.Infrastructure;
 using System.Resources;
 
-namespace FilmWebProject.Persistance.Migrations
+namespace FilmWebProject.Migrations
 {
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class nullableDatetimeAcorssDB : IMigrationMetadata
+    public sealed partial class resettingUpDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nullableDatetimeAcorssDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(resettingUpDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902041205108_nullableDatetimeAcorssDB"; }
+            get { return "201902041143514_resettingUpDB"; }
         }
         
         string IMigrationMetadata.Source

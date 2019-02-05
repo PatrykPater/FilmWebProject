@@ -1,6 +1,6 @@
 ﻿namespace FilmWebProject.Core.Models
 {
-    public class Creators : Staff
+    public class Creators : Person
     {
     }
 }

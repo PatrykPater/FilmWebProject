@@ -4,18 +4,19 @@ using System.Web.Mvc;
 
 namespace FilmWebProject.Controllers
 {
-    public class StaffController : Controller
+    public class DirectorsController : Controller
     {
         private ApplicationDbContext _context;
 
-        public StaffController()
+        public DirectorsController()
         {
             _context = new ApplicationDbContext();
         }
 
+        [Authorize]
         public ActionResult Create()
         {
-            var viewModel = new CreateStaffFormViewModel();
+            var viewModel = new CreatePersonFormViewModel();
 
             return View(viewModel);
         }

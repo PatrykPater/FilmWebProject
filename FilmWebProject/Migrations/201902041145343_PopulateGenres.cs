@@ -1,6 +1,6 @@
 using System.Data.Entity.Migrations;
 
-namespace FilmWebProject.Persistance.Migrations
+namespace FilmWebProject.Migrations
 {
     public partial class PopulateGenres : DbMigration
     {

@@ -1,6 +1,6 @@
 ﻿namespace FilmWebProject.Core.Models
 {
-    public class Director : Staff
+    public class Director : Person
     {
         public int Id { get; set; }
     }

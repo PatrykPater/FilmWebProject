@@ -1,7 +1,7 @@
 using System.Data.Entity.Migrations;
-using FilmWebProject.Core.Models;
+using FilmWebProject.Persistance;
 
-namespace FilmWebProject.Persistance.Migrations
+namespace FilmWebProject.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
