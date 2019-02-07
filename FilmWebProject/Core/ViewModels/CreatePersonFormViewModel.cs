@@ -18,11 +18,5 @@ namespace FilmWebProject.Core.ViewModels
         public string PlaceOfBirth { get; set; }
 
         public int Height { get; set; }
-
-        public static void Role()
-        {
-
-        }
-
     }
 }

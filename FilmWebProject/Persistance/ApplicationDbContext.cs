@@ -11,7 +11,7 @@ namespace FilmWebProject.Persistance
         public DbSet<Director> Directors { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Photographer> Photographers { get; set; }
+        public DbSet<Cinematographer> Photographers { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Reward> Rewards { get; set; }
         public DbSet<Scriptwriter> Scriptwriters { get; set; }

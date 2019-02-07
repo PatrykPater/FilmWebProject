@@ -1,6 +1,6 @@
 ﻿namespace FilmWebProject.Core.Models
 {
-    public class Photographer : Person
+    public class Cinematographer : Person
     {
         public int Id { get; set; }
     }

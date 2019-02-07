@@ -26,7 +26,7 @@ namespace FilmWebProject.Core.Models
         public List<Actor> Cast { get; set; }
         public Composer Music { get; set; }
         public Director Director { get; set; }
-        public Photographer Photography { get; set; }
+        public Cinematographer Cinematography { get; set; }
         public Scriptwriter Scriptwriter { get; set; }
         public List<Reward> Rewards { get; set; }
         public List<Review> Reviews { get; set; }

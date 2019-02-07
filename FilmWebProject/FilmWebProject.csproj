@@ -179,7 +179,7 @@
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PhotographersController.cs" />
+    <Compile Include="Controllers\CinematographersController.cs" />
     <Compile Include="Controllers\ScriptwritersController.cs" />
     <Compile Include="Core\ViewModels\CreatePersonFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,7 +216,7 @@
     <Compile Include="Core\Models\Actor.cs" />
     <Compile Include="Core\Models\Composer.cs" />
     <Compile Include="Core\Models\Director.cs" />
-    <Compile Include="Core\Models\Photographer.cs" />
+    <Compile Include="Core\Models\Cinematographer.cs" />
     <Compile Include="Core\Models\Scriptwriter.cs" />
     <Compile Include="Core\Models\Person.cs" />
     <Compile Include="Core\Models\Film.cs" />
@@ -295,9 +295,9 @@
     <Folder Include="Core\Dtos\" />
     <Folder Include="Core\Repositories\" />
     <Folder Include="Persistance\Repositories\" />
+    <Folder Include="Views\Cinematographer\" />
     <Folder Include="Views\Composer\" />
     <Folder Include="Views\Director\" />
-    <Folder Include="Views\Photographer\" />
     <Folder Include="Views\Scriptwriter\" />
   </ItemGroup>
   <ItemGroup>

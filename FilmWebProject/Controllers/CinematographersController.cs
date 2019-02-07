@@ -4,11 +4,11 @@ using System.Web.Mvc;
 
 namespace FilmWebProject.Controllers
 {
-    public class PhotographersController : Controller
+    public class CinematographersController : Controller
     {
         private ApplicationDbContext _context;
 
-        public PhotographersController()
+        public CinematographersController()
         {
             _context = new ApplicationDbContext();
         }
