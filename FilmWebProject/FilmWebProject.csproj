@@ -183,7 +183,9 @@
     <Compile Include="Controllers\PersonsController.cs" />
     <Compile Include="Controllers\ScriptwritersController.cs" />
     <Compile Include="Controllers\StarsController.cs" />
+    <Compile Include="Core\ViewModels\CinematographersListViewModel.cs" />
     <Compile Include="Core\ViewModels\CreatePersonFormViewModel.cs" />
+    <Compile Include="Core\ViewModels\DirectorsListViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +220,14 @@
     <Compile Include="Migrations\201902071033520_RenameStars.cs" />
     <Compile Include="Migrations\201902071033520_RenameStars.Designer.cs">
       <DependentUpon>201902071033520_RenameStars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902071138302_dbcontextrename.cs" />
+    <Compile Include="Migrations\201902071138302_dbcontextrename.Designer.cs">
+      <DependentUpon>201902071138302_dbcontextrename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902071457388_SeedingDirectorsTable.cs" />
+    <Compile Include="Migrations\201902071457388_SeedingDirectorsTable.Designer.cs">
+      <DependentUpon>201902071457388_SeedingDirectorsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -300,6 +310,8 @@
     <Content Include="Views\Shared\CreatePersonView.cshtml" />
     <Content Include="Views\Persons\Create.cshtml" />
     <Content Include="Views\Persons\PeopleList.cshtml" />
+    <Content Include="Views\Cinematographers\List.cshtml" />
+    <Content Include="Views\Directors\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,10 +319,6 @@
     <Folder Include="Core\Dtos\" />
     <Folder Include="Core\Repositories\" />
     <Folder Include="Persistence\Repositories\" />
-    <Folder Include="Views\Cinematographer\" />
-    <Folder Include="Views\Composer\" />
-    <Folder Include="Views\Director\" />
-    <Folder Include="Views\Scriptwriter\" />
     <Folder Include="Views\Stars\" />
   </ItemGroup>
   <ItemGroup>
@@ -350,6 +358,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071033520_RenameStars.resx">
       <DependentUpon>201902071033520_RenameStars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071138302_dbcontextrename.resx">
+      <DependentUpon>201902071138302_dbcontextrename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071457388_SeedingDirectorsTable.resx">
+      <DependentUpon>201902071457388_SeedingDirectorsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

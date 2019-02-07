@@ -1,6 +1,7 @@
 ﻿using FilmWebProject.Core.Models;
 using FilmWebProject.Core.ViewModels;
 using FilmWebProject.Persistence;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace FilmWebProject.Controllers
@@ -43,6 +44,14 @@ namespace FilmWebProject.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult List()
+        {
+            var cinematographerList = _context.Cinematographers.ToList();
+            var viewModel = new CinematographersListViewModel() { CinematographerList = cinematographerList };
+
+            return View(viewModel);
         }
     }
 }

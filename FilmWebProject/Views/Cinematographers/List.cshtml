@@ -1,0 +1,16 @@
+﻿@using System.Configuration
+@model FilmWebProject.Core.ViewModels.CinematographersListViewModel
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List</h2>
+<ul>
+    @foreach (var element in Model.CinematographerList)
+    {
+        <li>
+            @element.FirstName
+        </li>
+    }
+</ul>
