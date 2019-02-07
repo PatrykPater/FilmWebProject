@@ -1,5 +1,5 @@
+using FilmWebProject.Persistence;
 using System.Data.Entity.Migrations;
-using FilmWebProject.Persistance;
 
 namespace FilmWebProject.Migrations
 {

@@ -7,7 +7,7 @@ namespace FilmWebProject.Controllers
 {
     public class ComposersController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public ComposersController()
         {
