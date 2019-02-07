@@ -220,7 +220,7 @@
       <DependentUpon>201902071033520_RenameStars.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Persistance\ApplicationDbContext.cs" />
+    <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\Creators.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\Models\Star.cs" />
@@ -299,13 +299,14 @@
     <Content Include="Views\Films\Create.cshtml" />
     <Content Include="Views\Shared\CreatePersonView.cshtml" />
     <Content Include="Views\Persons\Create.cshtml" />
+    <Content Include="Views\Persons\PeopleList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Api\" />
     <Folder Include="Core\Dtos\" />
     <Folder Include="Core\Repositories\" />
-    <Folder Include="Persistance\Repositories\" />
+    <Folder Include="Persistence\Repositories\" />
     <Folder Include="Views\Cinematographer\" />
     <Folder Include="Views\Composer\" />
     <Folder Include="Views\Director\" />

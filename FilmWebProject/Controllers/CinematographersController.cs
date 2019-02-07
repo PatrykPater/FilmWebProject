@@ -1,5 +1,6 @@
-﻿using FilmWebProject.Core.ViewModels;
-using FilmWebProject.Persistance;
+﻿using FilmWebProject.Core.Models;
+using FilmWebProject.Core.ViewModels;
+using FilmWebProject.Persistence;
 using System.Web.Mvc;
 
 namespace FilmWebProject.Controllers
@@ -17,10 +18,31 @@ namespace FilmWebProject.Controllers
         public ActionResult Create()
         {
             ViewBag.ControllerName = "Photographers";
+            ViewBag.RoleType = "Cinematographer";
 
             var viewModel = new CreatePersonFormViewModel();
 
             return View("CreatePersonView", viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Create(CreatePersonFormViewModel viewModel)
+        {
+
+            var newCinematographer = new Cinematographer()
+            {
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
+                DateOfBirth = viewModel.DateOfBirth,
+                PlaceOfBirth = viewModel.PlaceOfBirth,
+                Height = viewModel.Height
+            };
+
+            _context.Cinematographers.Add(newCinematographer);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

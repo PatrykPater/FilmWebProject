@@ -1,17 +1,17 @@
-﻿using System.Data.Entity;
-using FilmWebProject.Core.Models;
+﻿using FilmWebProject.Core.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
-namespace FilmWebProject.Persistance
+namespace FilmWebProject.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Star> Actors { get; set; }
+        public DbSet<Star> Stars { get; set; }
         public DbSet<Composer> Composers { get; set; }
         public DbSet<Director> Directors { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Cinematographer> Photographers { get; set; }
+        public DbSet<Cinematographer> Cinematographers { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Reward> Rewards { get; set; }
         public DbSet<Scriptwriter> Scriptwriters { get; set; }

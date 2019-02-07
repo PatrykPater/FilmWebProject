@@ -1,7 +1,7 @@
-﻿using FilmWebProject.Core.ViewModels;
-using FilmWebProject.Persistance;
+﻿using FilmWebProject.Core.Models;
+using FilmWebProject.Core.ViewModels;
+using FilmWebProject.Persistence;
 using System.Web.Mvc;
-using FilmWebProject.Core.Models;
 
 namespace FilmWebProject.Controllers
 {
@@ -18,6 +18,7 @@ namespace FilmWebProject.Controllers
         public ActionResult Create()
         {
             ViewBag.ControllerName = "Directors";
+            ViewBag.RoleType = "Director";
 
             var viewModel = new CreatePersonFormViewModel();
 

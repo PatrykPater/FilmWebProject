@@ -8,5 +8,10 @@ namespace FilmWebProject.Controllers
         {
             return View();
         }
+
+        public ActionResult PeopleList()
+        {
+            return View();
+        }
     }
 }

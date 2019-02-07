@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create new person's profile</h2>
+<h2>Create a new @ViewBag.RoleType</h2>
 
 @using (Html.BeginForm("Create", (string)ViewBag.ControllerName))
 {

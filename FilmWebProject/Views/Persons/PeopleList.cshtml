@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "PeopleList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Who do you want to look up?</h2>
+
+<ul>
+    <li>@Html.ActionLink("Composers", "", "Composers")</li>
+    <li>@Html.ActionLink("Directors", "", "Directors")</li>
+    <li>@Html.ActionLink("Cinematographers", "", "Cinematographers")</li>
+    <li>@Html.ActionLink("Scriptwriters", "", "Scriptwriters")</li>
+    <li>@Html.ActionLink("Stars", "", "Stars")</li>
+</ul>
