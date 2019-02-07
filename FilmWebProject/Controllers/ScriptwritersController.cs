@@ -16,9 +16,11 @@ namespace FilmWebProject.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.ControllerName = "Scriptwriters";
+
             var viewModel = new CreatePersonFormViewModel();
 
-            return View(viewModel);
+            return View("CreatePersonView", viewModel);
         }
     }
 }

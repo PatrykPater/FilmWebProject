@@ -1,0 +1,23 @@
+﻿@model FilmWebProject.Core.ViewModels.CreatePersonFormViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New Person Profile</h2>
+
+@using (Html.BeginForm("Create", (string)ViewBag.ControllerName))
+{
+    <div class="form-group">
+        @Html.LabelFor(f => f.FirstName)
+        @Html.TextBoxFor(f => f.FirstName, new { @class = "form-control", @placeholder = "Enter the firstname" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.LastName)
+        @Html.TextBoxFor(f => f.LastName, new { @class = "form-control", @placeholder = "Enter the lastname" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
