@@ -180,7 +180,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\CinematographersController.cs" />
+    <Compile Include="Controllers\PersonsController.cs" />
     <Compile Include="Controllers\ScriptwritersController.cs" />
+    <Compile Include="Controllers\StarsController.cs" />
     <Compile Include="Core\ViewModels\CreatePersonFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,11 +211,19 @@
     <Compile Include="Migrations\201902050957156_SeveralRenamesAndActorTableUpdate.Designer.cs">
       <DependentUpon>201902050957156_SeveralRenamesAndActorTableUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902071024599_RenameCinematographers.cs" />
+    <Compile Include="Migrations\201902071024599_RenameCinematographers.Designer.cs">
+      <DependentUpon>201902071024599_RenameCinematographers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902071033520_RenameStars.cs" />
+    <Compile Include="Migrations\201902071033520_RenameStars.Designer.cs">
+      <DependentUpon>201902071033520_RenameStars.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistance\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\Creators.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
-    <Compile Include="Core\Models\Actor.cs" />
+    <Compile Include="Core\Models\Star.cs" />
     <Compile Include="Core\Models\Composer.cs" />
     <Compile Include="Core\Models\Director.cs" />
     <Compile Include="Core\Models\Cinematographer.cs" />
@@ -288,6 +298,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Films\Create.cshtml" />
     <Content Include="Views\Shared\CreatePersonView.cshtml" />
+    <Content Include="Views\Persons\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +310,7 @@
     <Folder Include="Views\Composer\" />
     <Folder Include="Views\Director\" />
     <Folder Include="Views\Scriptwriter\" />
+    <Folder Include="Views\Stars\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -331,6 +343,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902050957156_SeveralRenamesAndActorTableUpdate.resx">
       <DependentUpon>201902050957156_SeveralRenamesAndActorTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071024599_RenameCinematographers.resx">
+      <DependentUpon>201902071024599_RenameCinematographers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902071033520_RenameStars.resx">
+      <DependentUpon>201902071033520_RenameStars.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

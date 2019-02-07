@@ -6,7 +6,7 @@ namespace FilmWebProject.Persistance
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Star> Actors { get; set; }
         public DbSet<Composer> Composers { get; set; }
         public DbSet<Director> Directors { get; set; }
         public DbSet<Film> Films { get; set; }

@@ -23,7 +23,7 @@ namespace FilmWebProject.Core.Models
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
 
-        public List<Actor> Cast { get; set; }
+        public List<Star> Cast { get; set; }
         public Composer Music { get; set; }
         public Director Director { get; set; }
         public Cinematographer Cinematography { get; set; }
