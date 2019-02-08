@@ -124,7 +124,231 @@ namespace FilmWebProject.Migrations
                 }
             };
 
-            cinematographers.ForEach(c => context.Directors.AddOrUpdate(p => p.LastName, c));
+            cinematographers.ForEach(c => context.Directors.AddOrUpdate(p => p.Id, c));
+            context.SaveChanges();
+
+            var films = new List<Film>()
+            {
+                new Film()
+                {
+                    Id = 1,
+                    Title = "The Green Mile",
+                    Duration = new TimeSpan(0,3,8,0),
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae vestibulum erat. Phasellus interdum maximus molestie. Proin fringilla risus quis hendrerit consequat. Pellentesque tristique sodales mattis.",
+                    LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae vestibulum erat. Phasellus interdum maximus molestie. Proin fringilla risus quis hendrerit consequat. Pellentesque tristique sodales mattis. Ut commodo quis diam ac rutrum. Nullam rutrum justo sit amet mauris laoreet, auctor mollis ex commodo. Suspendisse ac felis dui. Nam posuere nibh eleifend gravida bibendum. Curabitur lobortis sem sed efficitur aliquam. Maecenas fermentum libero a leo dictum, non imperdiet nibh suscipit.",
+                    Production = "USA",
+                    Release = DateTime.Parse("1999-03-24"),
+                    Budget = 60000000,
+                    Score = 8.6,
+                    Studio = "Castle Rock Entertainment ",
+                    BoxOffice = 286801374,
+                },
+                new Film()
+                {
+                    Id = 2,
+                    Title = "The Shawshank Redemption",
+                    Duration = new TimeSpan(0,2,22,0),
+                    ShortDescription = "Nam convallis elit posuere, convallis erat vitae, porttitor tortor. Mauris ultrices pharetra ultricies.",
+                    LongDescription = "Nam convallis elit posuere, convallis erat vitae, porttitor tortor. Mauris ultrices pharetra ultricies. Ut volutpat volutpat urna vitae sollicitudin. Vestibulum ornare leo orci, sit amet interdum sem dapibus id. Etiam ac justo mauris. Vestibulum vel venenatis elit. Maecenas a tellus et tortor imperdiet ornare. Sed elementum justo eget sem euismod, ut suscipit neque consectetur. Etiam ut viverra ex. Etiam accumsan molestie bibendum.",
+                    Production = "USA",
+                    Release = DateTime.Parse("1995-09-10"),
+                    Budget = 25000000,
+                    Score = 8.8,
+                    Studio = "Castle Rock Entertainment",
+                    BoxOffice = 59841469,
+                },
+                new Film()
+                {
+                    Id = 3,
+                    Title = "Forrest Gump",
+                    Duration = new TimeSpan(0,2,22,0),
+                    ShortDescription = "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+                    LongDescription = "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras et vestibulum augue, at pharetra tortor. Suspendisse facilisis ipsum metus, vitae consequat turpis tempor vitae. Curabitur in imperdiet nisi, at aliquam eros. Maecenas et orci mauris.",
+                    Production = "USA",
+                    Release = DateTime.Parse("1994-06-23"),
+                    Budget = 55000000,
+                    Score = 8.5,
+                    Studio = "Paramount Pictures",
+                    BoxOffice = 677387716,
+                },
+                new Film()
+                {
+                    Id = 4,
+                    Title = "Requiem for a Dream",
+                    Duration = new TimeSpan(0,1,42,0),
+                    ShortDescription = " Etiam posuere metus arcu, elementum bibendum sapien venenatis eget. Nulla massa nibh, efficitur id ex ut, tempus eleifend lorem.",
+                    LongDescription = "Etiam posuere metus arcu, elementum bibendum sapien venenatis eget. Nulla massa nibh, efficitur id ex ut, tempus eleifend lorem. Nam dapibus lacinia nunc vel pulvinar. Pellentesque egestas, dui id vestibulum sollicitudin, sapien libero sollicitudin lorem, ut suscipit enim felis tristique velit. Nullam id nulla quam. Morbi fringilla, nisi sit amet tempus pulvinar, nibh nulla iaculis erat, at pharetra dolor risus vitae ante. Vivamus sagittis nunc at felis faucibus sollicitudin. Quisque aliquet pulvinar lacus ac elementum.",
+                    Production = "USA",
+                    Release = DateTime.Parse("2001-03-01"),
+                    Budget = 4500000,
+                    Score = 0,
+                    Studio = "",
+                    BoxOffice = 7390108,
+                },
+                new Film()
+                {
+                    Id = 5,
+                    Title = "Léon",
+                    Duration = new TimeSpan(0,1,50,0),
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at finibus mauris. Morbi sollicitudin risus a dui blandit, eget suscipit lacus faucibus. Praesent imperdiet neque ut pellentesque fringilla.",
+                    LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at finibus mauris. Morbi sollicitudin risus a dui blandit, eget suscipit lacus faucibus. Praesent imperdiet neque ut pellentesque fringilla. Aenean nulla orci, commodo at nibh eget, dignissim varius ex. Nunc sollicitudin ipsum eget ligula pulvinar porta. Nunc efficitur lectus imperdiet velit consequat accumsan. Curabitur a ligula molestie, eleifend quam eu, luctus risus.",
+                    Production = "France",
+                    Release = DateTime.Parse("1994-09-14"),
+                    Budget = 0,
+                    Score = 8.1,
+                    Studio = "Gaumont",
+                    BoxOffice = 19501238,
+                },
+                new Film()
+                {
+                    Id = 6,
+                    Title = "The Matrix",
+                    Duration = new TimeSpan(0,2,16,0),
+                    ShortDescription = "Quisque pulvinar elit quis mauris sollicitudin, ac porta mi convallis. Donec sit amet cursus metus, at iaculis lorem. Vestibulum sem nibh, interdum sit amet pellentesque vitae, pulvinar vel eros.",
+                    LongDescription = "Quisque pulvinar elit quis mauris sollicitudin, ac porta mi convallis. Donec sit amet cursus metus, at iaculis lorem. Vestibulum sem nibh, interdum sit amet pellentesque vitae, pulvinar vel eros. Proin fermentum ex id urna tincidunt, ut commodo erat vestibulum. Nam sed orci nulla. Proin faucibus augue congue lorem scelerisque, vitae iaculis enim sagittis. Proin diam orci, convallis vel lobortis sit amet, finibus pharetra lorem. Nam volutpat, ligula sed aliquam blandit, lectus ex dignissim neque, ut pretium est turpis ut tellus. Donec eget orci eleifend, facilisis neque id, pharetra felis.",
+                    Production = "Australia, USA",
+                    Release = DateTime.Parse("1999-03-24"),
+                    Budget = 63000000,
+                    Score = 7.5,
+                    Studio = "Warner Bros.",
+                    BoxOffice = 463517383,
+                },
+                new Film()
+                {
+                    Id = 7,
+                    Title = "The Silence of the Lambs",
+                    Duration = new TimeSpan(0,1,58,0),
+                    ShortDescription = "Vestibulum posuere eget purus non malesuada. Sed interdum dolor sit amet faucibus rutrum. Praesent nisi arcu, euismod et vehicula a, porta eget neque.",
+                    LongDescription = "Cras laoreet urna ac libero dictum vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras ut semper augue, ac dictum diam. Suspendisse mattis felis ut tincidunt congue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean volutpat aliquam mauris ut dignissim. Fusce cursus, magna ac laoreet tempus, felis odio consequat dui, eget congue felis elit vitae ipsum. Phasellus iaculis orci in quam semper, at tempor augue vulputate.",
+                    Production = "USA",
+                    Release = DateTime.Parse("1991-01-30"),
+                    Budget = 19000000,
+                    Score = 8.2,
+                    Studio = "Orion Pictures Corporation",
+                    BoxOffice = 272742922,
+                },
+                new Film()
+                {
+                    Id = 8,
+                    Title = "Avatar",
+                    Duration = new TimeSpan(0,2,42,0),
+                    ShortDescription = "Quisque auctor semper sem ut tempor. Morbi quis tellus fringilla, lobortis mauris ut, pharetra lacus. Phasellus dictum ex vitae leo vulputate, vel vehicula sapien ornare. In dictum quam vitae lacus congue convallis.",
+                    LongDescription = "Quisque auctor semper sem ut tempor. Morbi quis tellus fringilla, lobortis mauris ut, pharetra lacus. Phasellus dictum ex vitae leo vulputate, vel vehicula sapien ornare. In dictum quam vitae lacus congue convallis. Nulla vulputate, augue in placerat pulvinar, nisl nunc scelerisque orci, non dignissim sem felis rhoncus turpis. Morbi suscipit lorem tellus, vel feugiat eros eleifend eu. Etiam ullamcorper nisi elit, ac tempor purus dictum ac. Curabitur gravida quam tempus dolor sollicitudin, sed consectetur diam porta.",
+                    Production = "The United Kingdom, USA",
+                    Release = DateTime.Parse("2009-12-10"),
+                    Budget = 237000000,
+                    Score = 7.4,
+                    Studio = "Dune Entertainment",
+                    BoxOffice = 2782275172,
+                },
+                new Film()
+                {
+                    Id = 9,
+                    Title = "Titanic",
+                    Duration = new TimeSpan(0,3,14,0),
+                    ShortDescription = "Quisque viverra tempus sapien, ac scelerisque metus vehicula at. Curabitur tristique tristique turpis at suscipit.",
+                    LongDescription = "Aenean cursus augue quis leo luctus porta. Sed dignissim lacus vitae tempor pulvinar. Nam ut accumsan enim, vel molestie nisl. Cras eget ipsum egestas, elementum sem eu, blandit tortor. Integer accumsan ex et felis aliquet, id tristique sapien euismod. Proin nec risus nec ex congue euismod id id orci. In hac habitasse platea dictumst.",
+                    Production = "USA",
+                    Release = DateTime.Parse("1997-11-01"),
+                    Budget = 200000000,
+                    Score = 7.3,
+                    Studio = "Paramount Pictures",
+                    BoxOffice = 2187463944,
+                },
+                new Film()
+                {
+                    Id = 10,
+                    Title = "Gladiator",
+                    Duration = new TimeSpan(0,2,35,0),
+                    ShortDescription = "Nam ut dolor ultrices, porta lacus sit amet, euismod neque. Donec maximus rhoncus elit, dapibus molestie neque ullamcorper ac. Suspendisse maximus dui nec eros porta tincidunt.",
+                    LongDescription = "Nam ut dolor ultrices, porta lacus sit amet, euismod neque. Donec maximus rhoncus elit, dapibus molestie neque ullamcorper ac. Suspendisse maximus dui nec eros porta tincidunt. Integer in ullamcorper risus, a eleifend mauris. Curabitur rutrum mi eget eros rhoncus, a mattis diam condimentum. Sed blandit a orci vitae molestie. Maecenas ut efficitur eros, efficitur elementum arcu. Praesent turpis lectus.",
+                    Production = "The United Kingdom, USA",
+                    Release = DateTime.Parse("2000-03-01"),
+                    Budget = 103000000,
+                    Score = 8.1,
+                    Studio = "DreamWorks SKG",
+                    BoxOffice = 457640427,
+                },
+            };
+
+            films.ForEach(c => context.Films.AddOrUpdate(p => p.Id, c));
+            context.SaveChanges();
+
+            var genres = new List<Genre>()
+            {
+                new Genre()
+                {
+                    Id = 1,
+                    Name = "Action"
+                },
+                new Genre()
+                {
+                    Id = 2,
+                    Name = "Animated"
+                },
+                new Genre()
+                {
+                    Id = 3,
+                    Name = "Documentary"
+                },
+                new Genre()
+                {
+                    Name = "Drama"
+                },
+                new Genre()
+                {
+                    Id = 4,
+                    Name = "Family"
+                },
+                new Genre()
+                {
+                    Id = 5,
+                    Name = "Fantasy"
+                },
+                new Genre()
+                {
+                    Id = 6,
+                    Name = "Horror"
+                },
+                new Genre()
+                {
+                    Id = 7,
+                    Name = "Comedy"
+                },
+                new Genre()
+                {
+                    Id = 8,
+                    Name = "Crime"
+                },
+                new Genre()
+                {
+                    Id = 9,
+                    Name = "Silent"
+                },
+                new Genre()
+                {
+                    Id = 10,
+                    Name = "Adventure"
+                },
+                new Genre()
+                {
+                    Id = 11,
+                    Name = "Romance"
+                },
+                new Genre()
+                {
+                    Id = 12,
+                    Name = "Sci-fi"
+                },
+                new Genre()
+                {
+                    Id = 13,
+                    Name = "Thriller"
+                },
+
+            };
+
+            genres.ForEach(c => context.Genres.AddOrUpdate(p => p.Id, c));
             context.SaveChanges();
 
         }

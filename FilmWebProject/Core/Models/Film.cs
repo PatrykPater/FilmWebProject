@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmWebProject.Core.Models
 {
     public class Film
     {
+        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }
@@ -19,8 +21,8 @@ namespace FilmWebProject.Core.Models
         public string Studio { get; set; }
         public double BoxOffice { get; set; }
 
-        [Required]
-        public int GenreId { get; set; }
+        [ForeignKey("Genre")]
+        public int? GenreId { get; set; }
         public Genre Genre { get; set; }
 
         public List<Star> Cast { get; set; }

@@ -189,45 +189,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902041143514_resettingUpDB.cs" />
-    <Compile Include="Migrations\201902041143514_resettingUpDB.Designer.cs">
-      <DependentUpon>201902041143514_resettingUpDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902041145343_PopulateGenres.cs" />
-    <Compile Include="Migrations\201902041145343_PopulateGenres.Designer.cs">
-      <DependentUpon>201902041145343_PopulateGenres.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902041155193_ChangeDatetimeType.cs" />
-    <Compile Include="Migrations\201902041155193_ChangeDatetimeType.Designer.cs">
-      <DependentUpon>201902041155193_ChangeDatetimeType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902041205108_nullableDatetimeAcorssDB.cs" />
-    <Compile Include="Migrations\201902041205108_nullableDatetimeAcorssDB.Designer.cs">
-      <DependentUpon>201902041205108_nullableDatetimeAcorssDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902041230159_changeReleaseDateType.cs" />
-    <Compile Include="Migrations\201902041230159_changeReleaseDateType.Designer.cs">
-      <DependentUpon>201902041230159_changeReleaseDateType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902050957156_SeveralRenamesAndActorTableUpdate.cs" />
-    <Compile Include="Migrations\201902050957156_SeveralRenamesAndActorTableUpdate.Designer.cs">
-      <DependentUpon>201902050957156_SeveralRenamesAndActorTableUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902071024599_RenameCinematographers.cs" />
-    <Compile Include="Migrations\201902071024599_RenameCinematographers.Designer.cs">
-      <DependentUpon>201902071024599_RenameCinematographers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902071033520_RenameStars.cs" />
-    <Compile Include="Migrations\201902071033520_RenameStars.Designer.cs">
-      <DependentUpon>201902071033520_RenameStars.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902071138302_dbcontextrename.cs" />
-    <Compile Include="Migrations\201902071138302_dbcontextrename.Designer.cs">
-      <DependentUpon>201902071138302_dbcontextrename.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902071457388_SeedingDirectorsTable.cs" />
-    <Compile Include="Migrations\201902071457388_SeedingDirectorsTable.Designer.cs">
-      <DependentUpon>201902071457388_SeedingDirectorsTable.cs</DependentUpon>
+    <Compile Include="Migrations\201902080819193_DBTest.cs" />
+    <Compile Include="Migrations\201902080819193_DBTest.Designer.cs">
+      <DependentUpon>201902080819193_DBTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -335,35 +299,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902041143514_resettingUpDB.resx">
-      <DependentUpon>201902041143514_resettingUpDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041145343_PopulateGenres.resx">
-      <DependentUpon>201902041145343_PopulateGenres.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041155193_ChangeDatetimeType.resx">
-      <DependentUpon>201902041155193_ChangeDatetimeType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041205108_nullableDatetimeAcorssDB.resx">
-      <DependentUpon>201902041205108_nullableDatetimeAcorssDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902041230159_changeReleaseDateType.resx">
-      <DependentUpon>201902041230159_changeReleaseDateType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902050957156_SeveralRenamesAndActorTableUpdate.resx">
-      <DependentUpon>201902050957156_SeveralRenamesAndActorTableUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071024599_RenameCinematographers.resx">
-      <DependentUpon>201902071024599_RenameCinematographers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071033520_RenameStars.resx">
-      <DependentUpon>201902071033520_RenameStars.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071138302_dbcontextrename.resx">
-      <DependentUpon>201902071138302_dbcontextrename.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071457388_SeedingDirectorsTable.resx">
-      <DependentUpon>201902071457388_SeedingDirectorsTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902080819193_DBTest.resx">
+      <DependentUpon>201902080819193_DBTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

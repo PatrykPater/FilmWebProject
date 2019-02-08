@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class dbcontextrename : IMigrationMetadata
+    public sealed partial class DBTest : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(dbcontextrename));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DBTest));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902071138302_dbcontextrename"; }
+            get { return "201902080819193_DBTest"; }
         }
         
         string IMigrationMetadata.Source
