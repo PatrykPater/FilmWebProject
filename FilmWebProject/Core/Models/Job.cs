@@ -1,7 +1,8 @@
 ﻿namespace FilmWebProject.Core.Models
 {
-    public class Composer : Person
+    public class Job
     {
         public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace FilmWebProject.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201902080819193_DBTest"; }
+            get { return "201902080902338_DBTest"; }
         }
         
         string IMigrationMetadata.Source

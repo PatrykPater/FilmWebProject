@@ -20,9 +20,127 @@ namespace FilmWebProject.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            var cinematographers = new List<Director>
+            var genres = new List<Genre>()
             {
-                new Director
+                new Genre()
+                {
+                    Id = 1,
+                    Name = "Action"
+                },
+                new Genre()
+                {
+                    Id = 2,
+                    Name = "Animated"
+                },
+                new Genre()
+                {
+                    Id = 3,
+                    Name = "Documentary"
+                },
+                new Genre()
+                {
+                    Name = "Drama"
+                },
+                new Genre()
+                {
+                    Id = 4,
+                    Name = "Family"
+                },
+                new Genre()
+                {
+                    Id = 5,
+                    Name = "Fantasy"
+                },
+                new Genre()
+                {
+                    Id = 6,
+                    Name = "Horror"
+                },
+                new Genre()
+                {
+                    Id = 7,
+                    Name = "Comedy"
+                },
+                new Genre()
+                {
+                    Id = 8,
+                    Name = "Crime"
+                },
+                new Genre()
+                {
+                    Id = 9,
+                    Name = "Silent"
+                },
+                new Genre()
+                {
+                    Id = 10,
+                    Name = "Adventure"
+                },
+                new Genre()
+                {
+                    Id = 11,
+                    Name = "Romance"
+                },
+                new Genre()
+                {
+                    Id = 12,
+                    Name = "Sci-fi"
+                },
+                new Genre()
+                {
+                    Id = 13,
+                    Name = "Thriller"
+                },
+
+            };
+
+            genres.ForEach(c => context.Genres.AddOrUpdate(p => p.Id, c));
+            context.SaveChanges();
+
+            var jobs = new List<Job>()
+            {
+                new Job()
+                {
+                    Id = 1,
+                    Name = "Star"
+                },
+                new Job()
+                {
+                    Id = 2,
+                    Name = "Director"
+                },
+                new Job()
+                {
+                    Id = 3,
+                    Name = "Editor"
+                },
+                new Job()
+                {
+                    Id = 4,
+                    Name = "Producer"
+                },
+                new Job()
+                {
+                    Id = 5,
+                    Name = "Scriptwriter"
+                },
+                new Job()
+                {
+                    Id = 6,
+                    Name = "Cinematographer"
+                },new Job()
+                {
+                    Id = 7,
+                    Name = "Production Designer"
+                },
+            };
+
+            jobs.ForEach(c => context.Jobs.AddOrUpdate(p => p.Id, c));
+            context.SaveChanges();
+
+            var persons = new List<Person>()
+            {
+                new Person()
                 {
                     Id = 1,
                     FirstName = "Martin",
@@ -30,9 +148,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "New York City",
                     Height = 163,
                     Biography = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut vestibulum lacus. Phasellus hendrerit a felis ac dapibus. Maecenas a nisi porttitor, consectetur massa non, porttitor elit. Etiam id tellus in magna tristique condimentum. Nam quis feugiat sem. Duis hendrerit cursus mi vel ullamcorper. Nam aliquam viverra ipsum, sit amet placerat leo ullamcorper et. Quisque iaculis venenatis tristique.",
-                    DateOfBirth = DateTime.Parse("1942-11-17")
+                    DateOfBirth = DateTime.Parse("1942-11-17"),
+                    JobId = new List<int>() {2, 5, 4, 1, }
                 },
-                new Director
+                new Person()
                 {
                     Id = 2,
                     FirstName = "David",
@@ -40,9 +159,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "Denver, Colorado, USA",
                     Height = 184,
                     Biography = "Donec vitae tellus nisi. Integer vitae justo aliquam, viverra eros id, tincidunt justo. Pellentesque gravida, turpis vitae faucibus feugiat, lorem ligula convallis arcu, sed sollicitudin neque risus non nibh. Aliquam ullamcorper maximus nisl in aliquet. In quam ante, ornare non rutrum a, mattis a dui. Maecenas finibus bibendum urna. Integer venenatis tempus varius.",
-                    DateOfBirth = DateTime.Parse("1962-08-28")
+                    DateOfBirth = DateTime.Parse("1962-08-28"),
+                    JobId = new List<int>() {2}
                 },
-                new Director
+                new Person()
                 {
                     Id = 3,
                     FirstName = "Ridley",
@@ -50,9 +170,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = " South Shields, Tyne and Wear, England, UK",
                     Height = 174,
                     Biography = "Nulla ex nibh, elementum nec felis at, ultrices interdum nulla. Donec fringilla molestie quam nec rhoncus. Vivamus a hendrerit diam. Quisque et tincidunt erat. Donec at consequat nisi. Nulla facilisi. Nam sed lobortis lectus. Proin id libero blandit dui semper ultrices. Nam tempor leo sapien, a tincidunt leo bibendum eu. Pellentesque sed metus ut tortor tincidunt sodales et eu mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut eros justo, dignissim in nibh vel, aliquet tincidunt sapien. Duis ante dolor, blandit ac mauris iaculis, pharetra tincidunt sem. Integer vel auctor augue, a pretium velit. Integer condimentum aliquam libero quis imperdiet. Sed nec placerat metus.",
-                    DateOfBirth = DateTime.Parse("1937-11-30")
+                    DateOfBirth = DateTime.Parse("1937-11-30"),
+                    JobId = new List<int>() {2, 5}
                 },
-                new Director
+                new Person()
                 {
                     Id = 4,
                     FirstName = "Quentin",
@@ -60,9 +181,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "Knoxville, Tennessee, USA",
                     Height = 185,
                     Biography = "Suspendisse pharetra lobortis mi, ut sodales nibh ultricies in. Sed tincidunt molestie rutrum. Sed id odio lectus. Phasellus malesuada volutpat hendrerit. Sed viverra massa eget est interdum laoreet. Fusce tincidunt odio id nulla tempus sagittis. Donec non leo vel dolor accumsan euismod. Morbi magna ex, tincidunt at magna vitae, rhoncus accumsan tortor. Donec aliquet, quam a suscipit sollicitudin, lectus dolor mattis enim, eget varius magna ante vitae sem. Aliquam erat volutpat. Suspendisse pellentesque lacus vitae fermentum ornare. Proin laoreet ipsum eu viverra ornare. Morbi maximus id risus suscipit dignissim.",
-                    DateOfBirth = DateTime.Parse("1963-03-27")
+                    DateOfBirth = DateTime.Parse("1963-03-27"),
+                    JobId = new List<int>() {2, 5, 1}
                 },
-                new Director
+                new Person()
                 {
                     Id = 5,
                     FirstName = "Peter",
@@ -70,9 +192,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "Pukerua Bay, North Island, New Zealand",
                     Height = 169,
                     Biography = "Praesent gravida ullamcorper posuere. Nulla nec felis tortor. Integer iaculis ultrices urna in imperdiet. Sed accumsan sodales ligula aliquet fermentum. Sed a felis sem. Sed vel leo fermentum, consectetur augue nec, viverra nisi. Nam in purus ante.",
-                    DateOfBirth = DateTime.Parse("1961-10-31")
+                    DateOfBirth = DateTime.Parse("1961-10-31"),
+                    JobId = new List<int>() {2, 5, 3}
                 },
-                new Director
+                new Person()
                 {
                     Id = 6,
                     FirstName = "Jon",
@@ -80,9 +203,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "Queens, New York City, New York, USA",
                     Height = 185,
                     Biography = "Nunc eros tellus, scelerisque et molestie eu, consequat sed eros. Mauris finibus quam eros, quis aliquet magna dictum nec. Morbi id magna faucibus, ultricies metus at, porttitor mauris. Nunc condimentum in ex nec aliquet. Vivamus vitae neque at velit gravida laoreet. Etiam a massa et est porta vehicula vel id mi. Nam ultricies sapien et gravida laoreet.",
-                    DateOfBirth = DateTime.Parse("1942-11-17")
+                    DateOfBirth = DateTime.Parse("1942-11-17"),
+                    JobId = new List<int>() {2}
                 },
-                new Director
+                new Person()
                 {
                     Id = 7,
                     FirstName = "Christopher",
@@ -90,9 +214,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "London, England, UK",
                     Height = 180,
                     Biography = "Proin vitae est arcu. Nullam odio nulla, egestas ac turpis id, euismod tempor elit. Aenean metus felis, vehicula a dolor eu, tempor condimentum leo. Aliquam vitae nunc quam. Ut porta rutrum augue id posuere. Mauris dictum, est vel tincidunt gravida, nisi tortor cursus purus, nec feugiat velit nisi id velit. Nulla sed commodo eros. Fusce gravida nisi sed mollis ornare. Integer in ex nisl. Cras quis purus dignissim nibh commodo cursus et elementum massa. Ut eget porta enim. Quisque a sem sem. Ut vel est neque. Nam eros urna, malesuada eget purus ac, pulvinar iaculis magna. Nulla vel efficitur metus. Cras ornare pretium metus, eget laoreet ex sodales et.",
-                    DateOfBirth = DateTime.Parse("1970-07-30")
+                    DateOfBirth = DateTime.Parse("1970-07-30"),
+                    JobId = new List<int>() {2, 4, 5}
                 },
-                new Director
+                new Person()
                 {
                     Id = 8,
                     FirstName = "Zack",
@@ -100,9 +225,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "New York City",
                     Height = 163,
                     Biography = "Nunc vestibulum libero pretium massa luctus aliquet. Cras dignissim ullamcorper nulla, id efficitur turpis ullamcorper in. Aliquam vehicula arcu vel sollicitudin eleifend. Maecenas rutrum pretium lacus nec cursus. Phasellus eu dignissim ex. Fusce erat est, efficitur sed vehicula a, blandit id metus. Sed ac mauris aliquet, posuere ex ac, venenatis lacus. Praesent eget nunc consequat, volutpat metus non, malesuada lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec in ante a ex eleifend rhoncus. Nulla purus nisi, tempus at consectetur feugiat, feugiat pellentesque odio. Nulla consequat, neque sed congue vulputate, orci ipsum egestas erat, a dignissim lacus ex nec magna.",
-                    DateOfBirth = DateTime.Parse("1942-11-17")
+                    DateOfBirth = DateTime.Parse("1942-11-17"),
+                    JobId = new List<int>() {2, 4, 5}
                 },
-                new Director
+                new Person()
                 {
                     Id = 9,
                     FirstName = "Steven",
@@ -110,9 +236,10 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = " Cincinnati, Ohio, USA",
                     Height = 171,
                     Biography = "In maximus velit leo, sit amet iaculis ligula interdum nec. Nulla quam nibh, hendrerit vitae augue sit amet, scelerisque vestibulum magna. Sed consectetur venenatis odio vel consequat. Etiam egestas nulla et hendrerit suscipit. Phasellus cursus pulvinar mi, non fermentum tellus finibus sed. Mauris accumsan dui massa, mollis elementum ligula tristique nec. Donec nisl lacus, efficitur eu turpis non, tincidunt faucibus nisl. Pellentesque sit amet odio finibus, vestibulum felis eget, fermentum enim. Curabitur fermentum lectus semper, blandit turpis nec, ultrices diam. Curabitur sollicitudin commodo ante, vel lobortis massa convallis quis.",
-                    DateOfBirth = DateTime.Parse("1946-12-18")
+                    DateOfBirth = DateTime.Parse("1946-12-18"),
+                    JobId = new List<int>() {2, 5}
                 },
-                new Director
+                new Person()
                 {
                     Id = 10,
                     FirstName = "Anthony",
@@ -120,11 +247,122 @@ namespace FilmWebProject.Migrations
                     PlaceOfBirth = "Cleveland, Ohio, USA",
                     Height = 165,
                     Biography = "Nunc eros tellus, scelerisque et molestie eu, consequat sed eros. Mauris finibus quam eros, quis aliquet magna dictum nec. Morbi id magna faucibus, ultricies metus at, porttitor mauris. Nunc condimentum in ex nec aliquet. Vivamus vitae neque at velit gravida laoreet. Etiam a massa et est porta vehicula vel id mi. Nam ultricies sapien et gravida laoreet.",
-                    DateOfBirth = DateTime.Parse("1942-02-03")
-                }
+                    DateOfBirth = DateTime.Parse("1942-02-03"),
+                    JobId = new List<int>() {2}
+                },
+                new Person()
+                {
+                    Id = 11,
+                    FirstName = "Johnny",
+                    LastName = "Depp",
+                    PlaceOfBirth = "Owensboro, Kentucky, USA",
+                    Height = 178,
+                    Biography = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at finibus mauris. Morbi sollicitudin risus a dui blandit, eget suscipit lacus faucibus.",
+                    DateOfBirth = DateTime.Parse("1963-06-02"),
+                    JobId = new List<int>() {1}
+                },
+                new Person()
+                {
+                    Id = 12,
+                    FirstName = "Leonardo",
+                    LastName = "DiCaprio",
+                    PlaceOfBirth = "Los Angeles, California, USA",
+                    Height = 183,
+                    Biography = "Quisque pulvinar elit quis mauris sollicitudin, ac porta mi convallis. Donec sit amet cursus metus, at iaculis lorem. Vestibulum sem nibh, interdum sit amet pellentesque vitae, pulvinar vel eros.",
+                    DateOfBirth = DateTime.Parse("1974-11-11"),
+                    JobId = new List<int>() {1, 4}
+                },
+                new Person()
+                {
+                    Id = 13,
+                    FirstName = "Brad",
+                    LastName = "Pitt",
+                    PlaceOfBirth = "Shawnee, Oklahoma, USA",
+                    Height = 180,
+                    Biography = "Proin fermentum ex id urna tincidunt, ut commodo erat vestibulum. Nam sed orci nulla. Proin faucibus augue congue lorem scelerisque, vitae iaculis enim sagittis.",
+                    DateOfBirth = DateTime.Parse("1963-12-18"),
+                    JobId = new List<int>() {1, 4}
+                },
+                new Person()
+                {
+                    Id = 14,
+                    FirstName = "Robert",
+                    LastName = "De Niro",
+                    PlaceOfBirth = "New York City, USA",
+                    Height = 177,
+                    Biography = "Proin diam orci, convallis vel lobortis sit amet, finibus pharetra lorem. Nam volutpat, ligula sed aliquam blandit, lectus ex dignissim neque, ut pretium est turpis ut tellus. Donec eget orci eleifend, facilisis neque id, pharetra felis.",
+                    DateOfBirth = DateTime.Parse("1943-08-17"),
+                    JobId = new List<int>() {1, 4}
+                },
+                new Person()
+                {
+                    Id = 15,
+                    FirstName = "Samuel ",
+                    LastName = "Jackson",
+                    PlaceOfBirth = "Washington, D.C., USA",
+                    Height = 189,
+                    Biography = "Vestibulum posuere eget purus non malesuada. Sed interdum dolor sit amet faucibus rutrum. Praesent nisi arcu, euismod et vehicula a, porta eget neque.",
+                    DateOfBirth = DateTime.Parse("1948-12-21"),
+                    JobId = new List<int>() {1}
+                },
+                new Person()
+                {
+                    Id = 16,
+                    FirstName = "Thomas",
+                    LastName = "Hanks",
+                    PlaceOfBirth = "Concord, California, US",
+                    Height = 183,
+                    Biography = "Cras laoreet urna ac libero dictum vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras ut semper augue, ac dictum diam. Suspendisse mattis felis ut tincidunt congue.",
+                    DateOfBirth = DateTime.Parse("1956-07-09"),
+                    JobId = new List<int>() {1, 4, 2}
+                },
+                new Person()
+                {
+                    Id = 17,
+                    FirstName = "Robert",
+                    LastName = "Downey",
+                    PlaceOfBirth = "New York City, USA",
+                    Height = 175,
+                    Biography = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean volutpat aliquam mauris ut dignissim. Fusce cursus, magna ac laoreet tempus, felis odio consequat dui, eget congue felis elit vitae ipsum. Phasellus iaculis orci in quam semper, at tempor augue vulputate. ",
+                    DateOfBirth = DateTime.Parse("1965-04-04"),
+                    JobId = new List<int>() {1}
+                },
+                new Person()
+                {
+                    Id = 18,
+                    FirstName = "Edward",
+                    LastName = "Hardy",
+                    PlaceOfBirth = "London, England",
+                    Height = 175,
+                    Biography = "Curabitur gravida quam tempus dolor sollicitudin, sed consectetur diam porta",
+                    DateOfBirth = DateTime.Parse("1977-09-15"),
+                    JobId = new List<int>() {1}
+                },
+                new Person()
+                {
+                    Id = 19,
+                    FirstName = "Mary",
+                    LastName = "Streep",
+                    PlaceOfBirth = "Summit, New Jersey, USA",
+                    Height = 168,
+                    Biography = "Aenean cursus augue quis leo luctus porta. Sed dignissim lacus vitae tempor pulvinar. Nam ut accumsan enim, vel molestie nisl. Cras eget ipsum egestas, elementum sem eu, blandit tortor.",
+                    DateOfBirth = DateTime.Parse("1949-06-22"),
+                    JobId = new List<int>() {1}
+                },
+                new Person()
+                {
+                    Id = 20,
+                    FirstName = "Scarlett",
+                    LastName = "Johansson",
+                    PlaceOfBirth = "New York City, USA",
+                    Height = 160,
+                    Biography = "Integer accumsan ex et felis aliquet, id tristique sapien euismod. Proin nec risus nec ex congue euismod id id orci. In hac habitasse platea dictumst",
+                    DateOfBirth = DateTime.Parse("1984-11-22"),
+                    JobId = new List<int>() {1}
+                },
             };
 
-            cinematographers.ForEach(c => context.Directors.AddOrUpdate(p => p.Id, c));
+            persons.ForEach(c => context.Persons.AddOrUpdate(p => p.Id, c));
             context.SaveChanges();
 
             var films = new List<Film>()
@@ -274,82 +512,9 @@ namespace FilmWebProject.Migrations
             films.ForEach(c => context.Films.AddOrUpdate(p => p.Id, c));
             context.SaveChanges();
 
-            var genres = new List<Genre>()
-            {
-                new Genre()
-                {
-                    Id = 1,
-                    Name = "Action"
-                },
-                new Genre()
-                {
-                    Id = 2,
-                    Name = "Animated"
-                },
-                new Genre()
-                {
-                    Id = 3,
-                    Name = "Documentary"
-                },
-                new Genre()
-                {
-                    Name = "Drama"
-                },
-                new Genre()
-                {
-                    Id = 4,
-                    Name = "Family"
-                },
-                new Genre()
-                {
-                    Id = 5,
-                    Name = "Fantasy"
-                },
-                new Genre()
-                {
-                    Id = 6,
-                    Name = "Horror"
-                },
-                new Genre()
-                {
-                    Id = 7,
-                    Name = "Comedy"
-                },
-                new Genre()
-                {
-                    Id = 8,
-                    Name = "Crime"
-                },
-                new Genre()
-                {
-                    Id = 9,
-                    Name = "Silent"
-                },
-                new Genre()
-                {
-                    Id = 10,
-                    Name = "Adventure"
-                },
-                new Genre()
-                {
-                    Id = 11,
-                    Name = "Romance"
-                },
-                new Genre()
-                {
-                    Id = 12,
-                    Name = "Sci-fi"
-                },
-                new Genre()
-                {
-                    Id = 13,
-                    Name = "Thriller"
-                },
 
-            };
 
-            genres.ForEach(c => context.Genres.AddOrUpdate(p => p.Id, c));
-            context.SaveChanges();
+
 
         }
     }

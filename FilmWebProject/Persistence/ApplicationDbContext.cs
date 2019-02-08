@@ -6,16 +6,13 @@ namespace FilmWebProject.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Star> Stars { get; set; }
-        public DbSet<Composer> Composers { get; set; }
-        public DbSet<Director> Directors { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Cinematographer> Cinematographers { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Reward> Rewards { get; set; }
-        public DbSet<Scriptwriter> Scriptwriters { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Job> Jobs { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
