@@ -9,6 +9,7 @@ namespace FilmWebProject.Core.Models
     {
         [Key]
         public int Id { get; set; }
+
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }
         public string ShortDescription { get; set; }
@@ -22,8 +23,16 @@ namespace FilmWebProject.Core.Models
         public double BoxOffice { get; set; }
 
         [ForeignKey("Genre")]
-        public int? GenreId { get; set; }
+        public List<int?> GenreId { get; set; }
         public List<Genre> Genre { get; set; }
+
+        [ForeignKey("Cast")]
+        public List<int?> CastId { get; set; }
+        public List<Person> Cast { get; set; }
+
+        [ForeignKey("Crew")]
+        public List<int?> CrewId { get; set; }
+        public List<Person> Crew { get; set; }
 
     }
 }

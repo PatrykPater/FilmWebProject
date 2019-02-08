@@ -39,56 +39,57 @@ namespace FilmWebProject.Migrations
                 },
                 new Genre()
                 {
+                    Id = 4,
                     Name = "Drama"
                 },
                 new Genre()
                 {
-                    Id = 4,
+                    Id = 5,
                     Name = "Family"
                 },
                 new Genre()
                 {
-                    Id = 5,
+                    Id = 6,
                     Name = "Fantasy"
                 },
                 new Genre()
                 {
-                    Id = 6,
+                    Id = 7,
                     Name = "Horror"
                 },
                 new Genre()
                 {
-                    Id = 7,
+                    Id = 8,
                     Name = "Comedy"
                 },
                 new Genre()
                 {
-                    Id = 8,
+                    Id = 9,
                     Name = "Crime"
                 },
                 new Genre()
                 {
-                    Id = 9,
+                    Id = 10,
                     Name = "Silent"
                 },
                 new Genre()
                 {
-                    Id = 10,
+                    Id = 11,
                     Name = "Adventure"
                 },
                 new Genre()
                 {
-                    Id = 11,
+                    Id = 12,
                     Name = "Romance"
                 },
                 new Genre()
                 {
-                    Id = 12,
+                    Id = 13,
                     Name = "Sci-fi"
                 },
                 new Genre()
                 {
-                    Id = 13,
+                    Id = 14,
                     Name = "Thriller"
                 },
 
@@ -380,6 +381,9 @@ namespace FilmWebProject.Migrations
                     Score = 8.6,
                     Studio = "Castle Rock Entertainment ",
                     BoxOffice = 286801374,
+                    GenreId = new List<int?>() {4,6,9},
+                    CastId = new List<int?>(){13, 15},
+                    CrewId = new List<int?>() {1,2,3}
                 },
                 new Film()
                 {
@@ -394,6 +398,9 @@ namespace FilmWebProject.Migrations
                     Score = 8.8,
                     Studio = "Castle Rock Entertainment",
                     BoxOffice = 59841469,
+                    GenreId = new List<int?>() {4},
+                    CastId = new List<int?>(){18, 20},
+                    CrewId = new List<int?>() {4,5,6}
                 },
                 new Film()
                 {
@@ -408,6 +415,9 @@ namespace FilmWebProject.Migrations
                     Score = 8.5,
                     Studio = "Paramount Pictures",
                     BoxOffice = 677387716,
+                    GenreId = new List<int?>() {4, 12},
+                    CastId = new List<int?>(){11, 12, 13},
+                    CrewId = new List<int?>() {1,5,9}
                 },
                 new Film()
                 {
@@ -419,14 +429,17 @@ namespace FilmWebProject.Migrations
                     Production = "USA",
                     Release = DateTime.Parse("2001-03-01"),
                     Budget = 4500000,
-                    Score = 0,
+                    Score = 7.8,
                     Studio = "",
                     BoxOffice = 7390108,
+                    GenreId = new List<int?>() {4},
+                    CastId = new List<int?>(){15, 16, 20},
+                    CrewId = new List<int?>() {1,4,6,8}
                 },
                 new Film()
                 {
                     Id = 5,
-                    Title = "Léon",
+                    Title = "Léon: The Professional",
                     Duration = new TimeSpan(0,1,50,0),
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at finibus mauris. Morbi sollicitudin risus a dui blandit, eget suscipit lacus faucibus. Praesent imperdiet neque ut pellentesque fringilla.",
                     LongDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at finibus mauris. Morbi sollicitudin risus a dui blandit, eget suscipit lacus faucibus. Praesent imperdiet neque ut pellentesque fringilla. Aenean nulla orci, commodo at nibh eget, dignissim varius ex. Nunc sollicitudin ipsum eget ligula pulvinar porta. Nunc efficitur lectus imperdiet velit consequat accumsan. Curabitur a ligula molestie, eleifend quam eu, luctus risus.",
@@ -436,6 +449,9 @@ namespace FilmWebProject.Migrations
                     Score = 8.1,
                     Studio = "Gaumont",
                     BoxOffice = 19501238,
+                    GenreId = new List<int?>() {4, 9, 14},
+                    CastId = new List<int?>(){10,14, 17, 18},
+                    CrewId = new List<int?>() {1,4,11,12}
                 },
                 new Film()
                 {
@@ -450,6 +466,9 @@ namespace FilmWebProject.Migrations
                     Score = 7.5,
                     Studio = "Warner Bros.",
                     BoxOffice = 463517383,
+                    GenreId = new List<int?>() {1, 13},
+                    CastId = new List<int?>(){2, 9, 11, 13,19},
+                    CrewId = new List<int?>() {3,7,14,17}
                 },
                 new Film()
                 {
@@ -464,6 +483,9 @@ namespace FilmWebProject.Migrations
                     Score = 8.2,
                     Studio = "Orion Pictures Corporation",
                     BoxOffice = 272742922,
+                    GenreId = new List<int?>() {4, 9, 14},
+                    CastId = new List<int?>(){1,2,3,4,12,14},
+                    CrewId = new List<int?>() {4,7,9,10}
                 },
                 new Film()
                 {
@@ -478,6 +500,9 @@ namespace FilmWebProject.Migrations
                     Score = 7.4,
                     Studio = "Dune Entertainment",
                     BoxOffice = 2782275172,
+                    GenreId = new List<int?>() {1, 6, 11},
+                    CastId = new List<int?>(){11,12,13,14},
+                    CrewId = new List<int?>() {8,9,10,11}
                 },
                 new Film()
                 {
@@ -492,6 +517,9 @@ namespace FilmWebProject.Migrations
                     Score = 7.3,
                     Studio = "Paramount Pictures",
                     BoxOffice = 2187463944,
+                    GenreId = new List<int?>() {4, 12},
+                    CastId = new List<int?>(){14,15,16,17},
+                    CrewId = new List<int?>() {1,4,6,8}
                 },
                 new Film()
                 {
@@ -506,16 +534,14 @@ namespace FilmWebProject.Migrations
                     Score = 8.1,
                     Studio = "DreamWorks SKG",
                     BoxOffice = 457640427,
+                    GenreId = new List<int?>() {1, 4, 11},
+                    CastId = new List<int?>(){2,19},
+                    CrewId = new List<int?>() {2,4,6,10}
                 },
             };
 
             films.ForEach(c => context.Films.AddOrUpdate(p => p.Id, c));
             context.SaveChanges();
-
-
-
-
-
         }
     }
 }

@@ -182,9 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902080902338_DBTest.cs" />
-    <Compile Include="Migrations\201902080902338_DBTest.Designer.cs">
-      <DependentUpon>201902080902338_DBTest.cs</DependentUpon>
+    <Compile Include="Migrations\201902081022229_DBV2.cs" />
+    <Compile Include="Migrations\201902081022229_DBV2.Designer.cs">
+      <DependentUpon>201902081022229_DBV2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -285,8 +285,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902080902338_DBTest.resx">
-      <DependentUpon>201902080902338_DBTest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902081022229_DBV2.resx">
+      <DependentUpon>201902081022229_DBV2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

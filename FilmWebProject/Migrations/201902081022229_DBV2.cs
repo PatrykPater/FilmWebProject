@@ -3,7 +3,7 @@ namespace FilmWebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBTest : DbMigration
+    public partial class DBV2 : DbMigration
     {
         public override void Up()
         {
@@ -22,33 +22,8 @@ namespace FilmWebProject.Migrations
                         Score = c.Double(nullable: false),
                         Studio = c.String(),
                         BoxOffice = c.Double(nullable: false),
-                        GenreId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Genres",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Film_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Films", t => t.Film_Id)
-                .Index(t => t.Film_Id);
-            
-            CreateTable(
-                "dbo.Jobs",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Person_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.People", t => t.Person_Id)
-                .Index(t => t.Person_Id);
             
             CreateTable(
                 "dbo.People",
@@ -63,8 +38,38 @@ namespace FilmWebProject.Migrations
                         ProfilePhoto = c.Binary(),
                         Biography = c.String(),
                         Score = c.Double(nullable: false),
+                        Film_Id = c.Int(),
+                        Film_Id1 = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Films", t => t.Film_Id)
+                .ForeignKey("dbo.Films", t => t.Film_Id1)
+                .Index(t => t.Film_Id)
+                .Index(t => t.Film_Id1);
+            
+            CreateTable(
+                "dbo.Jobs",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Person_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.People", t => t.Person_Id)
+                .Index(t => t.Person_Id);
+            
+            CreateTable(
+                "dbo.Genres",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Film_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Films", t => t.Film_Id)
+                .Index(t => t.Film_Id);
             
             CreateTable(
                 "dbo.Reviews",
@@ -182,8 +187,10 @@ namespace FilmWebProject.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Jobs", "Person_Id", "dbo.People");
             DropForeignKey("dbo.Genres", "Film_Id", "dbo.Films");
+            DropForeignKey("dbo.People", "Film_Id1", "dbo.Films");
+            DropForeignKey("dbo.People", "Film_Id", "dbo.Films");
+            DropForeignKey("dbo.Jobs", "Person_Id", "dbo.People");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -192,8 +199,10 @@ namespace FilmWebProject.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Reviews", new[] { "ReviewedFilm_Id" });
             DropIndex("dbo.Reviews", new[] { "Author_Id" });
-            DropIndex("dbo.Jobs", new[] { "Person_Id" });
             DropIndex("dbo.Genres", new[] { "Film_Id" });
+            DropIndex("dbo.Jobs", new[] { "Person_Id" });
+            DropIndex("dbo.People", new[] { "Film_Id1" });
+            DropIndex("dbo.People", new[] { "Film_Id" });
             DropTable("dbo.Trailers");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Rewards");
@@ -202,9 +211,9 @@ namespace FilmWebProject.Migrations
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Reviews");
-            DropTable("dbo.People");
-            DropTable("dbo.Jobs");
             DropTable("dbo.Genres");
+            DropTable("dbo.Jobs");
+            DropTable("dbo.People");
             DropTable("dbo.Films");
         }
     }
