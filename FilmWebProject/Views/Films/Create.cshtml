@@ -19,21 +19,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(f => f.Director)
-        @Html.TextBoxFor(f => f.Director, new { @class = "form-control", @placeholder = "Enter the director" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(f => f.Scriptwriter)
-        @Html.TextBoxFor(f => f.Scriptwriter, new { @class = "form-control", @placeholder = "Enter the screenwriter" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(f => f.Genre)
-        @Html.DropDownListFor(f => f.Genre, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(f => f.Production)
         @Html.TextBoxFor(f => f.Production, new { @class = "form-control", @placeholder = "Production" })
     </div>
@@ -46,7 +31,14 @@
 
     <div class="form-group">
         @Html.LabelFor(f => f.BoxOffice)
-        @Html.TextBoxFor(f => f.BoxOffice, new { @class = "form-control", @placeholder = "Box-office" })
+        @Html.TextBoxFor(f => f.BoxOffice, new {@class = "form-control", placeholder = "Box-office"})
     </div>
+
+    foreach (var element in Model.Genres)
+    {
+        @Html.Label(element.Name, new {@class = "checkbox-inline"})
+        @Html.CheckBoxFor(g => g.IsGenre, new { @id = element.Id})
+    }
+
     <button type="submit" class="btn btn-primary">Submit</button>
 }
