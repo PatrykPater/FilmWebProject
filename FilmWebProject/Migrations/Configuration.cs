@@ -96,7 +96,7 @@ namespace FilmWebProject.Migrations
 
             };
 
-            genres.ForEach(c => context.Genres.AddOrUpdate(p => p.Id, c));
+            genres.ForEach(c => context.Genres.AddOrUpdate(c));
             context.SaveChanges();
 
             var jobs = new List<Job>
@@ -138,7 +138,7 @@ namespace FilmWebProject.Migrations
                 }
             };
 
-            jobs.ForEach(c => context.Jobs.AddOrUpdate(p => p.Id, c));
+            jobs.ForEach(c => context.Jobs.AddOrUpdate(c));
             context.SaveChanges();
 
             var persons = new List<Person>
@@ -466,7 +466,7 @@ namespace FilmWebProject.Migrations
                 }
             };
 
-            persons.ForEach(c => context.Persons.AddOrUpdate(p => p.Id, c));
+            persons.ForEach(c => context.Persons.AddOrUpdate(c));
             context.SaveChanges();
 
             var films = new List<Film>
@@ -678,7 +678,7 @@ namespace FilmWebProject.Migrations
                 }
             };
 
-            films.ForEach(c => context.Films.AddOrUpdate(p => p.Id, c));
+            films.ForEach(c => context.Films.AddOrUpdate(c));
             context.SaveChanges();
 
             var reviews = new List<Review>
@@ -722,10 +722,18 @@ namespace FilmWebProject.Migrations
                     DateOfPublication = DateTime.Parse("2010-08-05"),
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
                     Film = films.ElementAt(4)
+                },
+                new Review
+                {
+                    Id = 6,
+                    Title = "Title of review 5",
+                    DateOfPublication = DateTime.Parse("2010-08-05"),
+                    Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
+                    Film = films.ElementAt(9)
                 }
             };
 
-            reviews.ForEach(c => context.Reviews.AddOrUpdate(p => p.Id, c));
+            reviews.ForEach(c => context.Reviews.AddOrUpdate(c));
             context.SaveChanges();
         }
     }
