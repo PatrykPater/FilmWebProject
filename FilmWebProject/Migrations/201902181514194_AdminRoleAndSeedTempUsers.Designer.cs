@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DBv5 : IMigrationMetadata
+    public sealed partial class AdminRoleAndSeedTempUsers : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DBv5));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AdminRoleAndSeedTempUsers));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902181226398_DBv5"; }
+            get { return "201902181514194_AdminRoleAndSeedTempUsers"; }
         }
         
         string IMigrationMetadata.Source

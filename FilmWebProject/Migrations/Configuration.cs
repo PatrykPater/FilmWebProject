@@ -1,5 +1,7 @@
 using FilmWebProject.Core.Models;
 using FilmWebProject.Persistence;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -16,10 +18,73 @@ namespace FilmWebProject.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            const string name = "admin@filmweb.com";
+            const string password = "Admin123_4";
+            const string roleName = "Admin";
+
+            var user = userManager.FindByName(name);
+
+            if (user == null)
+            {
+                user = new ApplicationUser { UserName = name, Email = "admin@filmweb.com" };
+                userManager.Create(user, password);
+            }
+
+            var role = roleManager.FindByName(roleName);
+
+            if (role == null)
+            {
+                role = new IdentityRole(roleName);
+                roleManager.Create(role);
+            }
+
+            var rolesForUser = userManager.GetRoles(user.Id);
+
+            if (!rolesForUser.Contains(role.Name))
+                userManager.AddToRole(user.Id, role.Name);
+
+            var users = new List<ApplicationUser>
+            {
+                new ApplicationUser
+                {
+                    Id = "1",
+                    UserName = "user1",
+                    Email = "user1@gmail.com"
+                },
+                new ApplicationUser
+                {
+                    Id = "2",
+                    UserName = "user2",
+                    Email = "user2@gmail.com"
+                },
+                new ApplicationUser
+                {
+                    Id = "3",
+                    UserName = "user3",
+                    Email = "user3@gmail.com"
+                },
+                new ApplicationUser
+                {
+                    Id = "4",
+                    UserName = "user4",
+                    Email = "user4@gmail.com"
+                },
+                new ApplicationUser
+                {
+                    Id = "5",
+                    UserName = "user5",
+                    Email = "user5@gmail.com"
+                },
+            };
+
+            foreach (var applicationUser in users)
+            {
+                if (context.Users.Find(applicationUser.Id) == null)
+                    users.ForEach(u => userManager.Create(u));
+            }
 
             var genres = new List<Genre>
             {
@@ -689,7 +754,8 @@ namespace FilmWebProject.Migrations
                     Title = "Title of review 1",
                     DateOfPublication = DateTime.Parse("2010-12-01"),
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
-                    Film = films.ElementAt(0)
+                    Film = films.ElementAt(0),
+                    Author = users.ElementAt(0)
                 },
                 new Review
                 {
@@ -697,7 +763,8 @@ namespace FilmWebProject.Migrations
                     Title = "Title of review 2",
                     DateOfPublication = DateTime.Parse("2010-11-02"),
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
-                    Film = films.ElementAt(1)
+                    Film = films.ElementAt(1),
+                    Author = users.ElementAt(1)
                 },
                 new Review
                 {
@@ -705,7 +772,8 @@ namespace FilmWebProject.Migrations
                     Title = "Title of review 3",
                     DateOfPublication = DateTime.Parse("2010-10-03"),
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
-                    Film = films.ElementAt(2)
+                    Film = films.ElementAt(2),
+                    Author = users.ElementAt(2)
                 },
                 new Review
                 {
@@ -713,7 +781,8 @@ namespace FilmWebProject.Migrations
                     Title = "Title of review 4",
                     DateOfPublication = DateTime.Parse("2010-09-04"),
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
-                    Film = films.ElementAt(3)
+                    Film = films.ElementAt(3),
+                    Author = users.ElementAt(3)
                 },
                 new Review
                 {
@@ -721,7 +790,8 @@ namespace FilmWebProject.Migrations
                     Title = "Title of review 5",
                     DateOfPublication = DateTime.Parse("2010-08-05"),
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
-                    Film = films.ElementAt(4)
+                    Film = films.ElementAt(4),
+                    Author = users.ElementAt(4)
                 },
                 new Review
                 {
@@ -729,7 +799,8 @@ namespace FilmWebProject.Migrations
                     Title = "Title of review 5",
                     DateOfPublication = DateTime.Parse("2010-08-05"),
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
-                    Film = films.ElementAt(9)
+                    Film = films.ElementAt(9),
+                    Author = users.ElementAt(0)
                 }
             };
 

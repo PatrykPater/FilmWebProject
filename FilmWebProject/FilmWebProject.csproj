@@ -182,9 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902181226398_DBv5.cs" />
-    <Compile Include="Migrations\201902181226398_DBv5.Designer.cs">
-      <DependentUpon>201902181226398_DBv5.cs</DependentUpon>
+    <Compile Include="Migrations\201902181514194_AdminRoleAndSeedTempUsers.cs" />
+    <Compile Include="Migrations\201902181514194_AdminRoleAndSeedTempUsers.Designer.cs">
+      <DependentUpon>201902181514194_AdminRoleAndSeedTempUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -283,8 +283,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902181226398_DBv5.resx">
-      <DependentUpon>201902181226398_DBv5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902181514194_AdminRoleAndSeedTempUsers.resx">
+      <DependentUpon>201902181514194_AdminRoleAndSeedTempUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

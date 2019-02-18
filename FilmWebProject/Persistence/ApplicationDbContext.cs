@@ -53,7 +53,7 @@ namespace FilmWebProject.Persistence
                 .WithMany(f => f.Reviews);
 
             modelBuilder.Entity<Review>()
-                .HasOptional(r => r.Author) //temporary optional for data seeding
+                .HasRequired(r => r.Author)
                 .WithMany(au => au.Reviews);
 
         }

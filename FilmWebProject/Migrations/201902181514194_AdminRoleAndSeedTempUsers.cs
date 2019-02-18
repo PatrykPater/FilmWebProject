@@ -3,7 +3,7 @@ namespace FilmWebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBv5 : DbMigration
+    public partial class AdminRoleAndSeedTempUsers : DbMigration
     {
         public override void Up()
         {
@@ -42,11 +42,11 @@ namespace FilmWebProject.Migrations
                         Title = c.String(),
                         DateOfPublication = c.DateTime(nullable: false),
                         Content = c.String(),
-                        Author_Id = c.String(maxLength: 128),
+                        Author_Id = c.String(nullable: false, maxLength: 128),
                         Film_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Author_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.Author_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Films", t => t.Film_Id, cascadeDelete: true)
                 .Index(t => t.Author_Id)
                 .Index(t => t.Film_Id);
