@@ -8,7 +8,7 @@ namespace FilmWebProject.Persistence
     {
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        //public DbSet<Review> Reviews { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         //public DbSet<Reward> Rewards { get; set; }
         //public DbSet<Trailer> Trailers { get; set; }
         public DbSet<Person> Persons { get; set; }
@@ -47,6 +47,15 @@ namespace FilmWebProject.Persistence
                     pj.MapRightKey("JobRefId");
                     pj.ToTable("PersonJob");
                 });
+
+            modelBuilder.Entity<Review>()
+                .HasRequired(r => r.Film)
+                .WithMany(f => f.Reviews);
+
+            modelBuilder.Entity<Review>()
+                .HasOptional(r => r.Author) //temporary optional for data seeding
+                .WithMany(au => au.Reviews);
+
         }
     }
 }

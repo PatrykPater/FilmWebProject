@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201902180928587_DBv4.Designer.cs">
       <DependentUpon>201902180928587_DBv4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902181150476_AddReviews.cs" />
+    <Compile Include="Migrations\201902181150476_AddReviews.Designer.cs">
+      <DependentUpon>201902181150476_AddReviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
@@ -285,6 +289,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902180928587_DBv4.resx">
       <DependentUpon>201902180928587_DBv4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902181150476_AddReviews.resx">
+      <DependentUpon>201902181150476_AddReviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

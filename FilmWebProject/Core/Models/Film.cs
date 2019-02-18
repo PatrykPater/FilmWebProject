@@ -17,10 +17,6 @@ namespace FilmWebProject.Core.Models
         public string Studio { get; set; }
         public double BoxOffice { get; set; }
         public ICollection<Genre> Genres { get; set; }
-        //public int CastId { get; set; }
-        //public Person Cast { get; set; }
-        //public int CrewId { get; set; }
-        //public Person Crew { get; set; }
-
+        public ICollection<Review> Reviews { get; set; }
     }
 }
