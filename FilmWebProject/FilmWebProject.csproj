@@ -177,6 +177,7 @@
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\Models\AwardsResult.cs" />
     <Compile Include="Core\Models\Job.cs" />
     <Compile Include="Core\ViewModels\CreatePersonFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,7 +197,7 @@
     <Compile Include="Core\ViewModels\CreateFilmFormViewModel.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Core\Models\Review.cs" />
-    <Compile Include="Core\Models\Reward.cs" />
+    <Compile Include="Core\Models\Award.cs" />
     <Compile Include="Core\Models\Trailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

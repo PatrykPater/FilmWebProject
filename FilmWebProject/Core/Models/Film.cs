@@ -18,5 +18,6 @@ namespace FilmWebProject.Core.Models
         public double BoxOffice { get; set; }
         public ICollection<Genre> Genres { get; set; }
         public ICollection<Review> Reviews { get; set; }
+        public ICollection<Award> Rewards { get; set; }
     }
 }

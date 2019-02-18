@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using AwardsResult = FilmWebProject.Core.Models.AwardsResult;
 
 namespace FilmWebProject.Migrations
 {
@@ -85,6 +86,8 @@ namespace FilmWebProject.Migrations
                 if (context.Users.Find(applicationUser.Id) == null)
                     users.ForEach(u => userManager.Create(u));
             }
+
+
 
             var genres = new List<Genre>
             {
@@ -806,6 +809,87 @@ namespace FilmWebProject.Migrations
 
             reviews.ForEach(c => context.Reviews.AddOrUpdate(c));
             context.SaveChanges();
+
+            var awards = new List<Award>
+            {
+                new Award
+                {
+                    Id = 1,
+                    Name = "Oscar",
+                    Category = "Best film",
+                    Year = 2018,
+                    Film = new List<Film>
+                    {
+                        films.ElementAt(0),
+                        films.ElementAt(1),
+                        films.ElementAt(2)
+                    }
+                },
+                new Award
+                {
+                    Id = 2,
+                    Name = "Oscar",
+                    Category = "Best Director",
+                    Year = 2018,
+                    Film = new List<Film>
+                    {
+                        films.ElementAt(3),
+                        films.ElementAt(4),
+                        films.ElementAt(5)
+                    }
+                },
+                new Award
+                {
+                    Id = 3,
+                    Name = "Oscar",
+                    Category = "Best Picture",
+                    Year = 2018,
+                    Film = new List<Film>
+                    {
+                        films.ElementAt(6),
+                        films.ElementAt(7),
+                        films.ElementAt(8)
+                    }
+
+                },
+                new Award
+                {
+                    Id = 4,
+                    Name = "Oscar",
+                    Category = "Best Cinematography",
+                    Year = 2018,
+                    Film = new List<Film>
+                    {
+                        films.ElementAt(0),
+                        films.ElementAt(6),
+                        films.ElementAt(9)
+                    }
+
+                },
+                new Award
+                {
+                    Id = 5,
+                    Name = "Oscar",
+                    Category = "Best Sound",
+                    Year = 2018,
+                    Film = new List<Film>
+                    {
+                        films.ElementAt(1),
+                        films.ElementAt(4),
+                        films.ElementAt(8)
+                    }
+                },
+            };
+
+            awards.ForEach(r => context.Awards.AddOrUpdate(r));
+            context.SaveChanges();
+
+            //figure out how to make film-award-nominations-wins relationships/models
+
+            var awardResults = new List<AwardsResult>
+            {
+
+            };
         }
     }
 }
