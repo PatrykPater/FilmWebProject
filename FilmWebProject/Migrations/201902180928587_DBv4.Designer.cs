@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DBV2 : IMigrationMetadata
+    public sealed partial class DBv4 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DBV2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DBv4));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902081022229_DBV2"; }
+            get { return "201902180928587_DBv4"; }
         }
         
         string IMigrationMetadata.Source

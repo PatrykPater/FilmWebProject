@@ -11,7 +11,6 @@ namespace FilmWebProject.Core.ViewModels
         public TimeSpan Duration { get; set; }
         public string Production { get; set; }
         public double Budget { get; set; }
-        public double Score { get; set; }
         public string Studio { get; set; }
         public double BoxOffice { get; set; }
 
@@ -24,11 +23,8 @@ namespace FilmWebProject.Core.ViewModels
 
         //public IEnumerable<int> CastId { get; set; }
         //public IEnumerable<Person> Cast { get; set; }
-
         //public List<int> CrewId { get; set; }
         //public IEnumerable<Person> Crew { get; set; }
-
-
     }
 
 }

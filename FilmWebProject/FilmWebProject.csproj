@@ -182,9 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902081022229_DBV2.cs" />
-    <Compile Include="Migrations\201902081022229_DBV2.Designer.cs">
-      <DependentUpon>201902081022229_DBV2.cs</DependentUpon>
+    <Compile Include="Migrations\201902180928587_DBv4.cs" />
+    <Compile Include="Migrations\201902180928587_DBv4.Designer.cs">
+      <DependentUpon>201902180928587_DBv4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -258,11 +258,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Films\Create.cshtml" />
-    <Content Include="Views\Shared\CreatePersonView.cshtml" />
     <Content Include="Views\Persons\Create.cshtml" />
     <Content Include="Views\Persons\PeopleList.cshtml" />
-    <Content Include="Views\Cinematographers\List.cshtml" />
-    <Content Include="Views\Directors\List.cshtml" />
+    <Content Include="Views\Films\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,8 +283,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902081022229_DBV2.resx">
-      <DependentUpon>201902081022229_DBV2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902180928587_DBv4.resx">
+      <DependentUpon>201902180928587_DBv4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

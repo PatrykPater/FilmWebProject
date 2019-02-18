@@ -3,7 +3,7 @@ namespace FilmWebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBV2 : DbMigration
+    public partial class DBv4 : DbMigration
     {
         public override void Up()
         {
@@ -26,6 +26,24 @@ namespace FilmWebProject.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Genres",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Jobs",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.People",
                 c => new
                     {
@@ -38,56 +56,31 @@ namespace FilmWebProject.Migrations
                         ProfilePhoto = c.Binary(),
                         Biography = c.String(),
                         Score = c.Double(nullable: false),
-                        Film_Id = c.Int(),
-                        Film_Id1 = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Films", t => t.Film_Id)
-                .ForeignKey("dbo.Films", t => t.Film_Id1)
-                .Index(t => t.Film_Id)
-                .Index(t => t.Film_Id1);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Jobs",
+                "dbo.AspNetRoles",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Person_Id = c.Int(),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.People", t => t.Person_Id)
-                .Index(t => t.Person_Id);
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "dbo.Genres",
+                "dbo.AspNetUserRoles",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Film_Id = c.Int(),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Films", t => t.Film_Id)
-                .Index(t => t.Film_Id);
-            
-            CreateTable(
-                "dbo.Reviews",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        DateOfPublication = c.DateTime(),
-                        Content = c.String(),
-                        Score = c.Double(nullable: false),
-                        Author_Id = c.String(maxLength: 128),
-                        ReviewedFilm_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Author_Id)
-                .ForeignKey("dbo.Films", t => t.ReviewedFilm_Id)
-                .Index(t => t.Author_Id)
-                .Index(t => t.ReviewedFilm_Id);
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -135,85 +128,63 @@ namespace FilmWebProject.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AspNetUserRoles",
+                "dbo.FilmGenre",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
+                        FilmRefId = c.Int(nullable: false),
+                        GenreRefId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .PrimaryKey(t => new { t.FilmRefId, t.GenreRefId })
+                .ForeignKey("dbo.Films", t => t.FilmRefId, cascadeDelete: true)
+                .ForeignKey("dbo.Genres", t => t.GenreRefId, cascadeDelete: true)
+                .Index(t => t.FilmRefId)
+                .Index(t => t.GenreRefId);
             
             CreateTable(
-                "dbo.Rewards",
+                "dbo.PersonJob",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Category = c.String(),
-                        Year = c.Int(nullable: false),
+                        PersonRefId = c.Int(nullable: false),
+                        JobRefId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.Trailers",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        LinkToTrailer = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => new { t.PersonRefId, t.JobRefId })
+                .ForeignKey("dbo.People", t => t.PersonRefId, cascadeDelete: true)
+                .ForeignKey("dbo.Jobs", t => t.JobRefId, cascadeDelete: true)
+                .Index(t => t.PersonRefId)
+                .Index(t => t.JobRefId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Reviews", "ReviewedFilm_Id", "dbo.Films");
-            DropForeignKey("dbo.Reviews", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Genres", "Film_Id", "dbo.Films");
-            DropForeignKey("dbo.People", "Film_Id1", "dbo.Films");
-            DropForeignKey("dbo.People", "Film_Id", "dbo.Films");
-            DropForeignKey("dbo.Jobs", "Person_Id", "dbo.People");
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.PersonJob", "JobRefId", "dbo.Jobs");
+            DropForeignKey("dbo.PersonJob", "PersonRefId", "dbo.People");
+            DropForeignKey("dbo.FilmGenre", "GenreRefId", "dbo.Genres");
+            DropForeignKey("dbo.FilmGenre", "FilmRefId", "dbo.Films");
+            DropIndex("dbo.PersonJob", new[] { "JobRefId" });
+            DropIndex("dbo.PersonJob", new[] { "PersonRefId" });
+            DropIndex("dbo.FilmGenre", new[] { "GenreRefId" });
+            DropIndex("dbo.FilmGenre", new[] { "FilmRefId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Reviews", new[] { "ReviewedFilm_Id" });
-            DropIndex("dbo.Reviews", new[] { "Author_Id" });
-            DropIndex("dbo.Genres", new[] { "Film_Id" });
-            DropIndex("dbo.Jobs", new[] { "Person_Id" });
-            DropIndex("dbo.People", new[] { "Film_Id1" });
-            DropIndex("dbo.People", new[] { "Film_Id" });
-            DropTable("dbo.Trailers");
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Rewards");
-            DropTable("dbo.AspNetUserRoles");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropTable("dbo.PersonJob");
+            DropTable("dbo.FilmGenre");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Reviews");
-            DropTable("dbo.Genres");
-            DropTable("dbo.Jobs");
+            DropTable("dbo.AspNetUserRoles");
+            DropTable("dbo.AspNetRoles");
             DropTable("dbo.People");
+            DropTable("dbo.Jobs");
+            DropTable("dbo.Genres");
             DropTable("dbo.Films");
         }
     }

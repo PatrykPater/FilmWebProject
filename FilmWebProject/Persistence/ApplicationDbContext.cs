@@ -8,9 +8,9 @@ namespace FilmWebProject.Persistence
     {
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<Reward> Rewards { get; set; }
-        public DbSet<Trailer> Trailers { get; set; }
+        //public DbSet<Review> Reviews { get; set; }
+        //public DbSet<Reward> Rewards { get; set; }
+        //public DbSet<Trailer> Trailers { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Job> Jobs { get; set; }
 
@@ -22,6 +22,31 @@ namespace FilmWebProject.Persistence
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Film>()
+                .HasMany(f => f.Genres)
+                .WithMany(g => g.Films)
+                .Map(fg =>
+                {
+                    fg.MapLeftKey("FilmRefId");
+                    fg.MapRightKey("GenreRefId");
+                    fg.ToTable("FilmGenre");
+                });
+
+            modelBuilder.Entity<Person>()
+                .HasMany(p => p.Jobs)
+                .WithMany(j => j.Persons)
+                .Map(pj =>
+                {
+                    pj.MapLeftKey("PersonRefId");
+                    pj.MapRightKey("JobRefId");
+                    pj.ToTable("PersonJob");
+                });
         }
     }
 }

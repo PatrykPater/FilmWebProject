@@ -40,7 +40,9 @@ namespace FilmWebProject.Controllers
                 Duration = viewModel.Duration,
                 Release = viewModel.ReleaseDate,
                 BoxOffice = viewModel.BoxOffice,
-                Genre = genre
+                //Genre = genre,
+                Budget = viewModel.Budget,
+                Studio = viewModel.Studio
             };
 
             _context.Films.Add(newFilm);
@@ -48,5 +50,14 @@ namespace FilmWebProject.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        //public ActionResult List()
+        //{
+        //    var films = _context.Films
+        //        .Include(f => f.Genre)
+        //        .ToList();
+
+        //    return View(films);
+        //}
     }
 }

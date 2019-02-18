@@ -1,0 +1,25 @@
+﻿@model IEnumerable<FilmWebProject.Core.Models.Film>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List</h2>
+
+<ul>
+    @foreach (var film in Model)
+    {
+        <li>
+            <div>
+                @film.Title
+            </div>
+            @*<div>
+                @foreach (var genre in film.Genre)
+                {
+                    genre.Name.ToString();
+                }
+            </div>*@
+        </li>
+    }
+</ul>
+

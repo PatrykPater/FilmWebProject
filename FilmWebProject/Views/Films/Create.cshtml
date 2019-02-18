@@ -26,18 +26,27 @@
     <div class="form-group">
         @Html.LabelFor(f => f.ReleaseDate)
         @Html.TextBoxFor(f => f.ReleaseDate, new { @class = "form-control", @placeholder = "eg 6 May 2001" })
-        @Html.ValidationMessageFor(f => f.ReleaseDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Budget)
+        @Html.TextBoxFor(f => f.Budget, new { @class = "form-control", @placeholder = "Enter the budget" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Studio)
+        @Html.TextBoxFor(f => f.Studio, new { @class = "form-control", @placeholder = "Enter the budget" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.BoxOffice)
-        @Html.TextBoxFor(f => f.BoxOffice, new {@class = "form-control", placeholder = "Box-office"})
+        @Html.TextBoxFor(f => f.BoxOffice, new { @class = "form-control", placeholder = "Box-office" })
     </div>
 
     foreach (var element in Model.Genres)
     {
-        @Html.Label(element.Name, new {@class = "checkbox-inline"})
-        @Html.CheckBoxFor(g => g.IsGenre, new { @id = element.Id})
+        @Html.Label(element.Name, new { @class = "checkbox-inline" })
+        @Html.CheckBoxFor(g => g.IsGenre, new { @id = element.Id })
     }
 
     <button type="submit" class="btn btn-primary">Submit</button>
