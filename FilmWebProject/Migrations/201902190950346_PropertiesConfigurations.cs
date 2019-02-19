@@ -3,7 +3,7 @@ namespace FilmWebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddTrailersAndrelatedRelationships : DbMigration
+    public partial class PropertiesConfigurations : DbMigration
     {
         public override void Up()
         {
@@ -12,8 +12,8 @@ namespace FilmWebProject.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Category = c.String(),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        Category = c.String(nullable: false, maxLength: 100),
                         Year = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -23,7 +23,7 @@ namespace FilmWebProject.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
+                        Title = c.String(nullable: false, maxLength: 50),
                         Duration = c.Time(nullable: false, precision: 7),
                         ShortDescription = c.String(),
                         LongDescription = c.String(),
@@ -41,7 +41,7 @@ namespace FilmWebProject.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -50,7 +50,7 @@ namespace FilmWebProject.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
+                        Title = c.String(nullable: false, maxLength: 75),
                         DateOfPublication = c.DateTime(nullable: false),
                         Content = c.String(),
                         Author_Id = c.String(nullable: false, maxLength: 128),
@@ -125,7 +125,7 @@ namespace FilmWebProject.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        TrailerLink = c.String(),
+                        TrailerLink = c.String(nullable: false, maxLength: 300),
                         Film_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -137,7 +137,7 @@ namespace FilmWebProject.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -146,14 +146,14 @@ namespace FilmWebProject.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        DateOfBirth = c.DateTime(),
+                        FirstName = c.String(nullable: false, maxLength: 50),
+                        LastName = c.String(nullable: false, maxLength: 50),
+                        DateOfBirth = c.DateTime(nullable: false),
                         PlaceOfBirth = c.String(),
                         Height = c.Int(nullable: false),
                         ProfilePhoto = c.Binary(),
                         Biography = c.String(),
-                        Score = c.Double(nullable: false),
+                        Score = c.Double(),
                     })
                 .PrimaryKey(t => t.Id);
             

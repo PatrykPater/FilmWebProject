@@ -183,9 +183,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902190848041_AddTrailersAndrelatedRelationships.cs" />
-    <Compile Include="Migrations\201902190848041_AddTrailersAndrelatedRelationships.Designer.cs">
-      <DependentUpon>201902190848041_AddTrailersAndrelatedRelationships.cs</DependentUpon>
+    <Compile Include="Migrations\201902190950346_PropertiesConfigurations.cs" />
+    <Compile Include="Migrations\201902190950346_PropertiesConfigurations.Designer.cs">
+      <DependentUpon>201902190950346_PropertiesConfigurations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -284,8 +284,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902190848041_AddTrailersAndrelatedRelationships.resx">
-      <DependentUpon>201902190848041_AddTrailersAndrelatedRelationships.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902190950346_PropertiesConfigurations.resx">
+      <DependentUpon>201902190950346_PropertiesConfigurations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

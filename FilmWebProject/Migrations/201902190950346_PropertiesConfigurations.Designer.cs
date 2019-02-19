@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddTrailersAndrelatedRelationships : IMigrationMetadata
+    public sealed partial class PropertiesConfigurations : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTrailersAndrelatedRelationships));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PropertiesConfigurations));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902190848041_AddTrailersAndrelatedRelationships"; }
+            get { return "201902190950346_PropertiesConfigurations"; }
         }
         
         string IMigrationMetadata.Source
