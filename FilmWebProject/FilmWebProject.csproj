@@ -199,6 +199,14 @@
     <Compile Include="Core\Models\Review.cs" />
     <Compile Include="Core\Models\Award.cs" />
     <Compile Include="Core\Models\Trailer.cs" />
+    <Compile Include="Persistence\EntityConfigurations\AwardConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\FilmConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\GenreConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\JobConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\PersonConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\ReviewConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\NominationConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\TrailerConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
