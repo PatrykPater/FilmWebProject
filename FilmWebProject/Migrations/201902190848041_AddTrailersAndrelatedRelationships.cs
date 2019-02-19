@@ -3,10 +3,21 @@ namespace FilmWebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AdminRoleAndSeedTempUsers : DbMigration
+    public partial class AddTrailersAndrelatedRelationships : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Awards",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Category = c.String(),
+                        Year = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Films",
                 c => new
@@ -110,6 +121,18 @@ namespace FilmWebProject.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Trailers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        TrailerLink = c.String(),
+                        Film_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Films", t => t.Film_Id, cascadeDelete: true)
+                .Index(t => t.Film_Id);
+            
+            CreateTable(
                 "dbo.Jobs",
                 c => new
                     {
@@ -133,6 +156,20 @@ namespace FilmWebProject.Migrations
                         Score = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Nominations",
+                c => new
+                    {
+                        AwardId = c.Int(nullable: false),
+                        FilmId = c.Int(nullable: false),
+                        HasWon = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.AwardId, t.FilmId })
+                .ForeignKey("dbo.Awards", t => t.AwardId, cascadeDelete: true)
+                .ForeignKey("dbo.Films", t => t.FilmId, cascadeDelete: true)
+                .Index(t => t.AwardId)
+                .Index(t => t.FilmId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -175,8 +212,11 @@ namespace FilmWebProject.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Nominations", "FilmId", "dbo.Films");
+            DropForeignKey("dbo.Nominations", "AwardId", "dbo.Awards");
             DropForeignKey("dbo.PersonJob", "JobRefId", "dbo.Jobs");
             DropForeignKey("dbo.PersonJob", "PersonRefId", "dbo.People");
+            DropForeignKey("dbo.Trailers", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.Reviews", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.Reviews", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
@@ -189,6 +229,9 @@ namespace FilmWebProject.Migrations
             DropIndex("dbo.FilmGenre", new[] { "GenreRefId" });
             DropIndex("dbo.FilmGenre", new[] { "FilmRefId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Nominations", new[] { "FilmId" });
+            DropIndex("dbo.Nominations", new[] { "AwardId" });
+            DropIndex("dbo.Trailers", new[] { "Film_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -199,8 +242,10 @@ namespace FilmWebProject.Migrations
             DropTable("dbo.PersonJob");
             DropTable("dbo.FilmGenre");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Nominations");
             DropTable("dbo.People");
             DropTable("dbo.Jobs");
+            DropTable("dbo.Trailers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -208,6 +253,7 @@ namespace FilmWebProject.Migrations
             DropTable("dbo.Reviews");
             DropTable("dbo.Genres");
             DropTable("dbo.Films");
+            DropTable("dbo.Awards");
         }
     }
 }

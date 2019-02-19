@@ -12,8 +12,8 @@ namespace FilmWebProject.Persistence
         public DbSet<Award> Awards { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Job> Jobs { get; set; }
-        public DbSet<AwardsResult> AwardsResults { get; set; }
-        //public DbSet<Trailer> Trailers { get; set; }
+        public DbSet<Nomination> Nominations { get; set; }
+        public DbSet<Trailer> Trailers { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -57,9 +57,12 @@ namespace FilmWebProject.Persistence
                 .HasRequired(r => r.Author)
                 .WithMany(au => au.Reviews);
 
-            modelBuilder.Entity<Award>()
-                .HasMany(a => a.Film)
-                .WithMany(f => f.Rewards);
+            modelBuilder.Entity<Nomination>()
+                .HasKey(ar => new { ar.AwardId, ar.FilmId });
+
+            modelBuilder.Entity<Trailer>()
+                .HasRequired(t => t.Film)
+                .WithMany(f => f.Trailers);
         }
     }
 }

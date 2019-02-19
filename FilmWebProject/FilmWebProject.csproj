@@ -177,15 +177,15 @@
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Core\Models\AwardsResult.cs" />
+    <Compile Include="Core\Models\Nomination.cs" />
     <Compile Include="Core\Models\Job.cs" />
     <Compile Include="Core\ViewModels\CreatePersonFormViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902181514194_AdminRoleAndSeedTempUsers.cs" />
-    <Compile Include="Migrations\201902181514194_AdminRoleAndSeedTempUsers.Designer.cs">
-      <DependentUpon>201902181514194_AdminRoleAndSeedTempUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201902190848041_AddTrailersAndrelatedRelationships.cs" />
+    <Compile Include="Migrations\201902190848041_AddTrailersAndrelatedRelationships.Designer.cs">
+      <DependentUpon>201902190848041_AddTrailersAndrelatedRelationships.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -284,8 +284,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902181514194_AdminRoleAndSeedTempUsers.resx">
-      <DependentUpon>201902181514194_AdminRoleAndSeedTempUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902190848041_AddTrailersAndrelatedRelationships.resx">
+      <DependentUpon>201902190848041_AddTrailersAndrelatedRelationships.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

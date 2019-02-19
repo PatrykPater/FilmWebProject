@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using AwardsResult = FilmWebProject.Core.Models.AwardsResult;
 
 namespace FilmWebProject.Migrations
 {
@@ -817,39 +816,21 @@ namespace FilmWebProject.Migrations
                     Id = 1,
                     Name = "Oscar",
                     Category = "Best film",
-                    Year = 2018,
-                    Film = new List<Film>
-                    {
-                        films.ElementAt(0),
-                        films.ElementAt(1),
-                        films.ElementAt(2)
-                    }
+                    Year = 2018
                 },
                 new Award
                 {
                     Id = 2,
                     Name = "Oscar",
                     Category = "Best Director",
-                    Year = 2018,
-                    Film = new List<Film>
-                    {
-                        films.ElementAt(3),
-                        films.ElementAt(4),
-                        films.ElementAt(5)
-                    }
+                    Year = 2018
                 },
                 new Award
                 {
                     Id = 3,
                     Name = "Oscar",
                     Category = "Best Picture",
-                    Year = 2018,
-                    Film = new List<Film>
-                    {
-                        films.ElementAt(6),
-                        films.ElementAt(7),
-                        films.ElementAt(8)
-                    }
+                    Year = 2018
 
                 },
                 new Award
@@ -857,13 +838,7 @@ namespace FilmWebProject.Migrations
                     Id = 4,
                     Name = "Oscar",
                     Category = "Best Cinematography",
-                    Year = 2018,
-                    Film = new List<Film>
-                    {
-                        films.ElementAt(0),
-                        films.ElementAt(6),
-                        films.ElementAt(9)
-                    }
+                    Year = 2018
 
                 },
                 new Award
@@ -871,25 +846,62 @@ namespace FilmWebProject.Migrations
                     Id = 5,
                     Name = "Oscar",
                     Category = "Best Sound",
-                    Year = 2018,
-                    Film = new List<Film>
-                    {
-                        films.ElementAt(1),
-                        films.ElementAt(4),
-                        films.ElementAt(8)
-                    }
-                },
+                    Year = 2018
+                }
             };
 
             awards.ForEach(r => context.Awards.AddOrUpdate(r));
             context.SaveChanges();
 
-            //figure out how to make film-award-nominations-wins relationships/models
-
-            var awardResults = new List<AwardsResult>
+            var nominations = new List<Nomination>
             {
-
+                new Nomination
+                {
+                    AwardId = 5,
+                    FilmId = 2,
+                    HasWon = true
+                }
             };
+
+            nominations.ForEach(n => context.Nominations.AddOrUpdate(n));
+            context.SaveChanges();
+
+            var trailers = new List<Trailer>
+            {
+                new Trailer
+                {
+                    Id = 1,
+                    TrailerLink = "https://www.youtube.com/watch?v=m8e-FF8MsqU",
+                    Film = films.ElementAt(5)
+                },
+                new Trailer
+                {
+                    Id = 2,
+                    TrailerLink = "https://www.youtube.com/watch?v=-iRajLSA8TA",
+                    Film = films.ElementAt(8)
+                },
+                new Trailer
+                {
+                    Id = 3,
+                    TrailerLink = "https://www.youtube.com/watch?v=Ki4haFrqSrw",
+                    Film = films.ElementAt(0)
+                },
+                new Trailer
+                {
+                    Id = 4,
+                    TrailerLink = "https://www.youtube.com/watch?v=W6Mm8Sbe__o",
+                    Film = films.ElementAt(6)
+                },
+                new Trailer
+                {
+                    Id = 5,
+                    TrailerLink = "https://www.youtube.com/watch?v=do9zep1n8cU",
+                    Film = films.ElementAt(9)
+                },
+            };
+
+            trailers.ForEach(t => context.Trailers.AddOrUpdate(t));
+            context.SaveChanges();
         }
     }
 }

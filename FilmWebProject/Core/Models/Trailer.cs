@@ -3,6 +3,7 @@
     public class Trailer
     {
         public int Id { get; set; }
-        public string LinkToTrailer { get; set; }
+        public string TrailerLink { get; set; }
+        public Film Film { get; set; }
     }
 }
