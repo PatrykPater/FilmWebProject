@@ -16,6 +16,7 @@ namespace FilmWebProject.Core.Models
         public double Score { get; set; }
         public string Studio { get; set; }
         public double BoxOffice { get; set; }
+
         public ICollection<Genre> Genres { get; set; }
         public ICollection<Review> Reviews { get; set; }
         public ICollection<Trailer> Trailers { get; set; }

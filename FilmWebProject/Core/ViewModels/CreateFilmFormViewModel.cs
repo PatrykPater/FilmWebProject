@@ -1,5 +1,4 @@
-﻿using FilmWebProject.Core.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -17,14 +16,7 @@ namespace FilmWebProject.Core.ViewModels
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
 
-        public IEnumerable<Genre> Genres { get; set; }
-        public int GenreId { get; set; }
-        public bool IsGenre { get; set; }
-
-        //public IEnumerable<int> CastId { get; set; }
-        //public IEnumerable<Person> Cast { get; set; }
-        //public List<int> CrewId { get; set; }
-        //public IEnumerable<Person> Crew { get; set; }
+        public List<GenreViewModel> Genre { get; set; }
     }
 
 }

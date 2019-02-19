@@ -1,6 +1,8 @@
 ﻿using FilmWebProject.Core.Models;
 using FilmWebProject.Core.ViewModels;
 using FilmWebProject.Persistence;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -20,9 +22,20 @@ namespace FilmWebProject.Controllers
         {
             var genres = _context.Genres.ToList();
 
+            var genreViewModel = new List<GenreViewModel>();
+
+            genres.ForEach(g =>
+            {
+                genreViewModel.Add(new GenreViewModel
+                {
+                    GenreId = g.Id,
+                    Name = g.Name
+                });
+            });
+
             var viewmodel = new CreateFilmFormViewModel
             {
-                Genres = genres
+                Genre = genreViewModel
             };
 
             return View(viewmodel);
@@ -32,7 +45,27 @@ namespace FilmWebProject.Controllers
         [Authorize]
         public ActionResult Create(CreateFilmFormViewModel viewModel)
         {
-            var genre = _context.Genres.Where(c => c.Id == viewModel.GenreId).ToList();
+            var genresFromViewModel = new List<Genre>();
+
+            foreach (var genreViewModel in viewModel.Genre)
+            {
+                if (genreViewModel.IsChecked)
+                {
+                    genresFromViewModel.Add(new Genre
+                    {
+                        Id = genreViewModel.GenreId,
+                        Name = genreViewModel.Name
+                    });
+                }
+            }
+
+            var genres = new List<Genre>();
+
+            foreach (var genre in genresFromViewModel)
+            {
+                genres = _context.Genres.Where(g => g.Id == genre.Id).ToList();
+            }
+
 
             var newFilm = new Film()
             {
@@ -40,7 +73,7 @@ namespace FilmWebProject.Controllers
                 Duration = viewModel.Duration,
                 Release = viewModel.ReleaseDate,
                 BoxOffice = viewModel.BoxOffice,
-                //Genre = genre,
+                Genres = genres,
                 Budget = viewModel.Budget,
                 Studio = viewModel.Studio
             };
@@ -51,13 +84,13 @@ namespace FilmWebProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //public ActionResult List()
-        //{
-        //    var films = _context.Films
-        //        .Include(f => f.Genre)
-        //        .ToList();
+        public ActionResult List()
+        {
+            var films = _context.Films
+                .Include(f => f.Genres)
+                .ToList();
 
-        //    return View(films);
-        //}
+            return View(films);
+        }
     }
 }

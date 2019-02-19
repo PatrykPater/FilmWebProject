@@ -10,7 +10,5 @@ namespace FilmWebProject.Core.Models
         public string Content { get; set; }
         public ApplicationUser Author { get; set; }
         public Film Film { get; set; }
-
-        //public List<string> Comment { get; set; }
     }
 }
