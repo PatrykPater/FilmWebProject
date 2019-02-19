@@ -4,22 +4,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List</h2>
+<h3>List of films</h3>
 
-<ul>
+<table class="table">
+
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Duration</th>
+        <th>Release</th>
+        <th>Score</th>
+        <th>Studio</th>
+        <th>Budget</th>
+        <th>Production</th>
+        <th>BoxOffice</th>
+        <th>Short Description</th>
+
+    </tr>
+
     @foreach (var film in Model)
     {
-        <li>
-            <div>
-                @film.Title
-            </div>
-            @*<div>
-                @foreach (var genre in film.Genre)
+        <tr>
+            <td>@film.Title</td>
+            <td>
+                @foreach (var genre in film.Genres)
                 {
-                    genre.Name.ToString();
+                    <div>
+                        @genre.Name;
+                    </div>
                 }
-            </div>*@
-        </li>
+            </td>
+            <td>@film.Duration</td>
+            <td>@film.Release</td>
+            <td>@film.Score</td>
+            <td>@film.Studio</td>
+            <td>@film.Budget</td>
+            <td>@film.Production</td>
+            <td>@film.BoxOffice</td>
+            <td>@film.ShortDescription</td>
+        </tr>
     }
-</ul>
+</table>
+
+
+
 

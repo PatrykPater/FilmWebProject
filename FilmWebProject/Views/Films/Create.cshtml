@@ -51,13 +51,5 @@
         @Html.HiddenFor(x => x.Genre[i].GenreId)
     }
 
-    @*foreach (var element in Model.Genre)
-    {
-        @Html.Label(element.Name, new { @class = "checkbox-inline" })
-        @Html.CheckBoxFor(g => g.Genre)
-        @Html.HiddenFor(x => x.GenreId)
-        @Html.HiddenFor(x => x.Genre)
-    }*@
-
     <button type="submit" class="btn btn-primary">Submit</button>
 }
