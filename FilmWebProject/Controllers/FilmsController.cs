@@ -90,7 +90,24 @@ namespace FilmWebProject.Controllers
                 .Include(f => f.Genres)
                 .ToList();
 
-            return View(films);
+            var filmsViewModel = new List<FilmListViewModel>();
+
+            films.ForEach(f => filmsViewModel.Add(
+                new FilmListViewModel
+                {
+                    Title = f.Title,
+                    Duration = f.Duration,
+                    ShortDescription = f.ShortDescription,
+                    Production = f.Production,
+                    Release = FilmListViewModel.GetDateOfRelease(f.Release),
+                    Budget = FilmListViewModel.GetMoneyValues(f.Budget),
+                    Score = f.Score,
+                    Studio = f.Studio,
+                    BoxOffice = FilmListViewModel.GetMoneyValues(f.BoxOffice),
+                    Genres = f.Genres
+                }));
+
+            return View(filmsViewModel);
         }
     }
 }

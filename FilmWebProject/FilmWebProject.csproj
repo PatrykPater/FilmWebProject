@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201902190950346_PropertiesConfigurations.Designer.cs">
       <DependentUpon>201902190950346_PropertiesConfigurations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs" />
+    <Compile Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.Designer.cs">
+      <DependentUpon>201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
@@ -296,6 +300,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902190950346_PropertiesConfigurations.resx">
       <DependentUpon>201902190950346_PropertiesConfigurations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.resx">
+      <DependentUpon>201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

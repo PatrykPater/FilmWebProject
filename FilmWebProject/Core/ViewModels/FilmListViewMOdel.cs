@@ -10,12 +10,22 @@ namespace FilmWebProject.Core.ViewModels
         public TimeSpan Duration { get; set; }
         public string ShortDescription { get; set; }
         public string Production { get; set; }
-        public DateTime Release { get; set; }
-        public double Budget { get; set; }
+        public string Release { get; set; }
+        public string Budget { get; set; }
         public double Score { get; set; }
         public string Studio { get; set; }
-        public double BoxOffice { get; set; }
+        public string BoxOffice { get; set; }
         public ICollection<Genre> Genres { get; set; }
+
+        public static string GetDateOfRelease(DateTime date)
+        {
+            return date.ToString("yyyy MMMM dd"); ;
+        }
+
+        public static string GetMoneyValues(decimal value)
+        {
+            return value.ToString("C");
+        }
 
     }
 }

@@ -9,9 +9,9 @@ namespace FilmWebProject.Core.ViewModels
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }
         public string Production { get; set; }
-        public double Budget { get; set; }
+        public decimal Budget { get; set; }
         public string Studio { get; set; }
-        public double BoxOffice { get; set; }
+        public decimal BoxOffice { get; set; }
 
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
