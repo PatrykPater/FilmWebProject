@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm("Create", "Films"))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(f => f.Title)
         @Html.TextBoxFor(f => f.Title, new { @class = "form-control", @placeholder = "Enter the title" })

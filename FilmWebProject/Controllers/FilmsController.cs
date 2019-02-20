@@ -43,6 +43,7 @@ namespace FilmWebProject.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreateFilmFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
