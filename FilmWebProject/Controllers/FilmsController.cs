@@ -117,7 +117,7 @@ namespace FilmWebProject.Controllers
                     Duration = f.Duration,
                     ShortDescription = f.ShortDescription,
                     Production = f.Production,
-                    Release = f.Release.ToString("yyyy MMMM dd"),
+                    Release = f.Release.ToString("dd MMMM yyyy"),
                     Budget = f.Budget.ToString("C"),
                     Score = f.Score,
                     Studio = f.Studio,
