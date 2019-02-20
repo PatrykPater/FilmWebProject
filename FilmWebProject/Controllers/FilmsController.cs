@@ -127,5 +127,13 @@ namespace FilmWebProject.Controllers
 
             return View(filmsViewModel);
         }
+
+
+        public ActionResult Details()
+        {
+
+
+            return View();
+        }
     }
 }

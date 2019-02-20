@@ -7,6 +7,7 @@ namespace FilmWebProject.Core.ViewModels
     public class CreateFilmFormViewModel
     {
         [Required]
+        [MaxLength(50)]
         public string Title { get; set; }
 
         [Required]
