@@ -11,36 +11,41 @@
     <div class="form-group">
         @Html.LabelFor(f => f.Title)
         @Html.TextBoxFor(f => f.Title, new { @class = "form-control", @placeholder = "Enter the title" })
+        @Html.ValidationMessageFor(f => f.Title)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.Duration)
-        @Html.TextBoxFor(f => f.Duration, new { @class = "form-control" })
+        @Html.TextBoxFor(f => f.Duration, new { @class = "form-control", @placeholder = "e.g. 02:30:00" })
+        @Html.ValidationMessageFor(f => f.Duration)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.Production)
-        @Html.TextBoxFor(f => f.Production, new { @class = "form-control", @placeholder = "Production" })
+        @Html.TextBoxFor(f => f.Production, new { @class = "form-control", @placeholder = "Enter place of production" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.ReleaseDate)
-        @Html.TextBoxFor(f => f.ReleaseDate, new { @class = "form-control", @placeholder = "eg 6 May 2001" })
+        @Html.TextBoxFor(f => f.ReleaseDate, new { @class = "form-control", @placeholder = "e.g. 6 May 2001" })
+        @Html.ValidationMessageFor(f => f.ReleaseDate)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.Budget)
-        @Html.TextBoxFor(f => f.Budget, new { @class = "form-control", @placeholder = "Enter the budget" })
+        @Html.TextBoxFor(f => f.Budget, new { @class = "form-control", @placeholder = "Enter films budget" })
+        @Html.ValidationMessageFor(f => f.Budget)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.Studio)
-        @Html.TextBoxFor(f => f.Studio, new { @class = "form-control", @placeholder = "Enter the budget" })
+        @Html.TextBoxFor(f => f.Studio, new { @class = "form-control", @placeholder = "Enter studio name" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(f => f.BoxOffice)
-        @Html.TextBoxFor(f => f.BoxOffice, new { @class = "form-control", placeholder = "Box-office" })
+        @Html.TextBoxFor(f => f.BoxOffice, new { @class = "form-control", placeholder = "Enter films box-office" })
+        @Html.ValidationMessageFor(f => f.BoxOffice)
     </div>
 
     for (var i = 0; i < Model.Genre.Count(); i++)

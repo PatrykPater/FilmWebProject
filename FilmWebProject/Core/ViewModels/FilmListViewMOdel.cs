@@ -16,16 +16,5 @@ namespace FilmWebProject.Core.ViewModels
         public string Studio { get; set; }
         public string BoxOffice { get; set; }
         public ICollection<Genre> Genres { get; set; }
-
-        public static string GetDateOfRelease(DateTime date)
-        {
-            return date.ToString("yyyy MMMM dd"); ;
-        }
-
-        public static string GetMoneyValues(decimal value)
-        {
-            return value.ToString("C");
-        }
-
     }
 }

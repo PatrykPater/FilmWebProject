@@ -1,6 +1,7 @@
 ﻿using FilmWebProject.Core.Models;
 using FilmWebProject.Core.ViewModels;
 using FilmWebProject.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace FilmWebProject.Controllers
         public ActionResult Create()
         {
             var genres = _context.Genres.ToList();
-
             var genreViewModel = new List<GenreViewModel>();
 
             genres.ForEach(g =>
@@ -45,6 +45,24 @@ namespace FilmWebProject.Controllers
         [Authorize]
         public ActionResult Create(CreateFilmFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                var genresInvalidModel = _context.Genres.ToList();
+                var genreViewModel = new List<GenreViewModel>();
+
+                genresInvalidModel.ForEach(g =>
+                {
+                    genreViewModel.Add(new GenreViewModel
+                    {
+                        GenreId = g.Id,
+                        Name = g.Name
+                    });
+                });
+
+                viewModel.Genre = genreViewModel;
+                return View("Create", viewModel);
+            }
+
             var genresFromViewModel = new List<Genre>();
 
             foreach (var genreViewModel in viewModel.Genre)
@@ -70,11 +88,11 @@ namespace FilmWebProject.Controllers
             var newFilm = new Film()
             {
                 Title = viewModel.Title,
-                Duration = viewModel.Duration,
-                Release = viewModel.ReleaseDate,
-                BoxOffice = viewModel.BoxOffice,
+                Duration = TimeSpan.Parse(viewModel.Duration),
+                Release = DateTime.Parse(viewModel.ReleaseDate),
+                BoxOffice = decimal.Parse(viewModel.BoxOffice),
                 Genres = genres,
-                Budget = viewModel.Budget,
+                Budget = decimal.Parse(viewModel.Budget),
                 Studio = viewModel.Studio
             };
 
@@ -99,11 +117,11 @@ namespace FilmWebProject.Controllers
                     Duration = f.Duration,
                     ShortDescription = f.ShortDescription,
                     Production = f.Production,
-                    Release = FilmListViewModel.GetDateOfRelease(f.Release),
-                    Budget = FilmListViewModel.GetMoneyValues(f.Budget),
+                    Release = f.Release.ToString("yyyy MMMM dd"),
+                    Budget = f.Budget.ToString("C"),
                     Score = f.Score,
                     Studio = f.Studio,
-                    BoxOffice = FilmListViewModel.GetMoneyValues(f.BoxOffice),
+                    BoxOffice = f.BoxOffice.ToString("C"),
                     Genres = f.Genres
                 }));
 
