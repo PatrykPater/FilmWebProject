@@ -38,7 +38,7 @@ namespace FilmWebProject.Controllers
                 Genre = genreViewModel
             };
 
-            return View(viewmodel);
+            return View("FilmForm", viewmodel);
         }
 
         [HttpPost]
@@ -61,7 +61,7 @@ namespace FilmWebProject.Controllers
                 });
 
                 viewModel.Genre = genreViewModel;
-                return View("Create", viewModel);
+                return View("FilmForm", viewModel);
             }
 
             var genresFromViewModel = new List<Genre>();
@@ -189,7 +189,7 @@ namespace FilmWebProject.Controllers
                 Studio = film.Studio
             };
 
-            return View("Create", filmCreateFormViewModel);
+            return View("FilmForm", filmCreateFormViewModel);
         }
     }
 }

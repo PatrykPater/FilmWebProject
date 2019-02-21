@@ -6,6 +6,8 @@ namespace FilmWebProject.Core.ViewModels
 {
     public class FilmFormViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Title { get; set; }
@@ -28,6 +30,8 @@ namespace FilmWebProject.Core.ViewModels
         public string Studio { get; set; }
 
         public List<GenreViewModel> Genre { get; set; }
+
+        public string Action => (Id != 0) ? "Update" : "Create";
     }
 
 }

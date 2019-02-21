@@ -6,9 +6,10 @@
 
 <h2>Create a Film</h2>
 
-@using (Html.BeginForm("Create", "Films"))
+@using (Html.BeginForm(Model.Action, "Films"))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(f => f.Id)
     <div class="form-group">
         @Html.LabelFor(f => f.Title)
         @Html.TextBoxFor(f => f.Title, new { @class = "form-control", @placeholder = "Enter the title" })

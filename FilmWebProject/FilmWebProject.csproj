@@ -272,7 +272,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Films\Create.cshtml" />
+    <Content Include="Views\Films\FilmForm.cshtml" />
     <Content Include="Views\Persons\Create.cshtml" />
     <Content Include="Views\Persons\PeopleList.cshtml" />
     <Content Include="Views\Films\List.cshtml" />
