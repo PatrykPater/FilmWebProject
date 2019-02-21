@@ -1,0 +1,41 @@
+﻿@model FilmWebProject.Core.Models.Film
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<div>@Model.Release</div>
+<div>@Model.Duration</div>
+<div>@Model.ShortDescription</div>
+<div class="row">
+    <div class="col-md-2">Director:</div>
+    <div class="col-md-2">Placeholder director</div>
+</div>
+<div class="row">
+    <div class="col-md-2">Director of photography:</div>
+    <div class="col-md-2">Placeholder director of photography</div>
+</div>
+<div class="row">
+    <div class="col-md-2">Genres:</div>
+    <div class="col-md-2">
+        @foreach (var genre in Model.Genres)
+        {
+            <div>
+                @genre.Name
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">Production:</div>
+    <div class="col-md-2">@Model.Production</div>
+</div>
+<div class="row">
+    <div class="col-md-2">Release Date:</div>
+    <div class="col-md-2">@Model.Release</div>
+</div>
+<div class="row">
+    <div class="col-md-2">Box-office:</div>
+    <div class="col-md-2">@Model.BoxOffice</div>
+</div>

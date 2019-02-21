@@ -276,6 +276,7 @@
     <Content Include="Views\Persons\Create.cshtml" />
     <Content Include="Views\Persons\PeopleList.cshtml" />
     <Content Include="Views\Films\List.cshtml" />
+    <Content Include="Views\Films\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

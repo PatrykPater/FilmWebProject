@@ -114,6 +114,7 @@ namespace FilmWebProject.Controllers
             films.ForEach(f => filmsViewModel.Add(
                 new FilmListViewModel
                 {
+                    Id = f.Id,
                     Title = f.Title,
                     Duration = f.Duration,
                     ShortDescription = f.ShortDescription,
@@ -130,11 +131,16 @@ namespace FilmWebProject.Controllers
         }
 
 
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
+            var film = _context.Films
+                .Include(f => f.Genres)
+                .Single(f => f.Id == id);
 
+            if (film == null)
+                return HttpNotFound();
 
-            return View();
+            return View(film);
         }
     }
 }

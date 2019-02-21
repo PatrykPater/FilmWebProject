@@ -12,7 +12,7 @@ namespace FilmWebProject.Core.ViewModels
         public string LastName { get; set; }
 
         [Display(Name = "Date Of Birth")]
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Place Of Birth")]
         public string PlaceOfBirth { get; set; }

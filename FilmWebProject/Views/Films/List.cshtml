@@ -25,12 +25,14 @@
     @foreach (var film in Model)
     {
         <tr>
-            <td>@film.Title</td>
+            <td>
+                <a href="@Url.Action("Details", "Films", new { id = film.Id})">@film.Title</a>
+            </td>
             <td>
                 @foreach (var genre in film.Genres)
                 {
                     <div>
-                        @genre.Name;
+                        @genre.Name
                     </div>
                 }
             </td>
