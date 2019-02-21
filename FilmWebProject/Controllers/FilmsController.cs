@@ -191,5 +191,59 @@ namespace FilmWebProject.Controllers
 
             return View("FilmForm", filmCreateFormViewModel);
         }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(FilmFormViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                var genresInvalidModel = _context.Genres.ToList();
+                var genreViewModel = new List<GenreViewModel>();
+
+                genresInvalidModel.ForEach(g =>
+                {
+                    genreViewModel.Add(new GenreViewModel
+                    {
+                        GenreId = g.Id,
+                        Name = g.Name
+                    });
+                });
+
+                viewModel.Genre = genreViewModel;
+                return View("FilmForm", viewModel);
+            }
+
+            var filmFromDb = _context.Films
+                .Single(f => f.Id == viewModel.Id);
+
+            if (filmFromDb == null)
+                return HttpNotFound();
+
+            var genre = new List<Genre>();
+
+            foreach (var genreViewModel in viewModel.Genre)
+            {
+                genre.Add(new Genre
+                {
+                    Name = genreViewModel.Name,
+                    Id = genreViewModel.GenreId
+                });
+            }
+
+            filmFromDb.BoxOffice = Convert.ToDecimal(viewModel.BoxOffice);
+            filmFromDb.Budget = Convert.ToDecimal(viewModel.Budget);
+            filmFromDb.Duration = TimeSpan.Parse(viewModel.Duration);
+            filmFromDb.Genres = genre;
+            filmFromDb.Production = viewModel.Production;
+            filmFromDb.Release = Convert.ToDateTime(viewModel.ReleaseDate);
+            filmFromDb.Studio = viewModel.Studio;
+            filmFromDb.Title = viewModel.Title;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Details");
+        }
     }
 }
