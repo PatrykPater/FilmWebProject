@@ -33,7 +33,7 @@ namespace FilmWebProject.Controllers
                 });
             });
 
-            var viewmodel = new CreateFilmFormViewModel
+            var viewmodel = new FilmFormViewModel
             {
                 Genre = genreViewModel
             };
@@ -44,7 +44,7 @@ namespace FilmWebProject.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateFilmFormViewModel viewModel)
+        public ActionResult Create(FilmFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -141,6 +141,55 @@ namespace FilmWebProject.Controllers
                 return HttpNotFound();
 
             return View(film);
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            var film = _context.Films
+                .Include(f => f.Genres)
+                .Single(f => f.Id == id);
+
+            var genresDb = _context.Genres.ToList();
+
+            if (film == null)
+                return HttpNotFound();
+
+            var genres = new List<GenreViewModel>();
+
+            foreach (var genre in genresDb)
+            {
+                genres.Add(new GenreViewModel
+                {
+                    Name = genre.Name,
+                    GenreId = genre.Id,
+                });
+            }
+
+            foreach (var genre in genres)
+            {
+                foreach (var genreDb in film.Genres)
+                {
+                    if (genreDb.Id == genre.GenreId)
+                    {
+                        genre.IsChecked = true;
+                    }
+                }
+            }
+
+            var filmCreateFormViewModel = new FilmFormViewModel
+            {
+                Title = film.Title,
+                BoxOffice = film.BoxOffice.ToString("C"),
+                Budget = film.Budget.ToString("C"),
+                Duration = film.Duration.ToString(),
+                Genre = genres,
+                Production = film.Production,
+                ReleaseDate = film.Release.ToString("dd MMMM yyyy"),
+                Studio = film.Studio
+            };
+
+            return View("Create", filmCreateFormViewModel);
         }
     }
 }

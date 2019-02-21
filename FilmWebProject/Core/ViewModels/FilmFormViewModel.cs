@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FilmWebProject.Core.ViewModels
 {
-    public class CreateFilmFormViewModel
+    public class FilmFormViewModel
     {
         [Required]
         [MaxLength(50)]

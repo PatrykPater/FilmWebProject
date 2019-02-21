@@ -1,4 +1,4 @@
-﻿@model FilmWebProject.Core.ViewModels.CreateFilmFormViewModel
+﻿@model FilmWebProject.Core.ViewModels.FilmFormViewModel
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -51,10 +51,12 @@
 
     for (var i = 0; i < Model.Genre.Count(); i++)
     {
-        @Html.CheckBoxFor(x => x.Genre[i].IsChecked)
-        @Model.Genre[i].Name
-        @Html.HiddenFor(x => x.Genre[i].Name)
-        @Html.HiddenFor(x => x.Genre[i].GenreId)
+        <span>
+            @Html.CheckBoxFor(x => x.Genre[i].IsChecked)
+            @Model.Genre[i].Name
+            @Html.HiddenFor(x => x.Genre[i].Name)
+            @Html.HiddenFor(x => x.Genre[i].GenreId)
+        </span>      
     }
 
     <button type="submit" class="btn btn-primary">Submit</button>

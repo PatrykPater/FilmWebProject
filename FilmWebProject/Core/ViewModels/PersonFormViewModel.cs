@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FilmWebProject.Core.ViewModels
 {
-    public class CreatePersonFormViewModel
+    public class PersonFormViewModel
     {
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
