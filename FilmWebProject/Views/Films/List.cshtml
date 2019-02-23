@@ -44,10 +44,35 @@
             <td>@film.Production</td>
             <td>@film.BoxOffice</td>
             <td>@film.ShortDescription</td>
+            <td>
+                <a href="#" class="js-film-delete" data-film-id ="@film.Id">Delete</a>
+            </td>
         </tr>
     }
 </table>
 
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-film-delete").click(function(e) {
+                var link = $(e.target);
 
-
-
+                if (confirm("Are you sure? Delete action is permanent.")) {
+                    $.ajax({
+                            url: "Api/Films/" + link.attr("data-film-id"),
+                            method: "DELETE"
+                        })
+                        .done(function() {
+                            link.parents("tr").fadeOut(function() {
+                                $(this).remove();
+                            });
+                        })
+                        .fail(function() {
+                            alert("Something went wrong!")
+                        });
+                }
+            });
+        })
+    </script>
+}
