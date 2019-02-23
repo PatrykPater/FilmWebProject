@@ -68,26 +68,20 @@ namespace FilmWebProject.Controllers
             var genresFromViewModel = new List<Genre>();
 
             foreach (var genreViewModel in viewModel.Genre)
-            {
                 if (genreViewModel.IsChecked)
-                {
                     genresFromViewModel.Add(new Genre
                     {
                         Id = genreViewModel.GenreId,
                         Name = genreViewModel.Name
                     });
-                }
-            }
 
             var genres = new List<Genre>();
 
             foreach (var genre in genresFromViewModel)
-            {
                 genres = _context.Genres.Where(g => g.Id == genre.Id).ToList();
-            }
 
 
-            var newFilm = new Film()
+            var newFilm = new Film
             {
                 Title = viewModel.Title,
                 Duration = TimeSpan.Parse(viewModel.Duration),
@@ -159,24 +153,16 @@ namespace FilmWebProject.Controllers
             var genres = new List<GenreViewModel>();
 
             foreach (var genre in genresDb)
-            {
                 genres.Add(new GenreViewModel
                 {
                     Name = genre.Name,
-                    GenreId = genre.Id,
+                    GenreId = genre.Id
                 });
-            }
 
             foreach (var genre in genres)
-            {
                 foreach (var genreDb in film.Genres)
-                {
                     if (genreDb.Id == genre.GenreId)
-                    {
                         genre.IsChecked = true;
-                    }
-                }
-            }
 
             var filmCreateFormViewModel = new FilmFormViewModel
             {
@@ -242,7 +228,7 @@ namespace FilmWebProject.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Details");
+            return RedirectToAction("Details", new { id = filmFromDb.Id });
         }
     }
 }
