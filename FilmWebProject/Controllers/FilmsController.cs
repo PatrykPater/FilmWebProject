@@ -4,6 +4,7 @@ using FilmWebProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -216,26 +217,24 @@ namespace FilmWebProject.Controllers
             }
 
             var filmFromDb = _context.Films
+                .Include(g => g.Genres)
                 .Single(f => f.Id == viewModel.Id);
 
             if (filmFromDb == null)
                 return HttpNotFound();
 
-            var genre = new List<Genre>();
+            var genres = new List<Genre>();
+
+            filmFromDb.Genres.Clear();
 
             foreach (var genreViewModel in viewModel.Genre)
-            {
-                genre.Add(new Genre
-                {
-                    Name = genreViewModel.Name,
-                    Id = genreViewModel.GenreId
-                });
-            }
+                if (genreViewModel.IsChecked)
+                    genres.Add(_context.Genres.Single(g => g.Id == genreViewModel.GenreId));
 
-            filmFromDb.BoxOffice = Convert.ToDecimal(viewModel.BoxOffice);
-            filmFromDb.Budget = Convert.ToDecimal(viewModel.Budget);
+            filmFromDb.BoxOffice = decimal.Parse(viewModel.BoxOffice, NumberStyles.Currency);
+            filmFromDb.Budget = decimal.Parse(viewModel.Budget, NumberStyles.Currency);
             filmFromDb.Duration = TimeSpan.Parse(viewModel.Duration);
-            filmFromDb.Genres = genre;
+            filmFromDb.Genres = genres;
             filmFromDb.Production = viewModel.Production;
             filmFromDb.Release = Convert.ToDateTime(viewModel.ReleaseDate);
             filmFromDb.Studio = viewModel.Studio;
