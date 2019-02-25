@@ -24,7 +24,6 @@ namespace FilmWebProject.Controllers
         public ActionResult Create()
         {
             var genres = _context.Genres.ToList();
-
             var viewmodel = new FilmFormViewModel { Genre = GenreViewModel.GetGenresForViewModel(genres) };
 
             return View("FilmForm", viewmodel);
@@ -38,26 +37,17 @@ namespace FilmWebProject.Controllers
             if (!ModelState.IsValid)
             {
                 var genresFromDb = _context.Genres.ToList();
+
                 viewModel.Genre = GenreViewModel.GetGenresForViewModel(genresFromDb);
 
                 return View("FilmForm", viewModel);
             }
 
-            var genresFromViewModel = new List<Genre>();
-
-            foreach (var genreViewModel in viewModel.Genre)
-                if (genreViewModel.IsChecked)
-                    genresFromViewModel.Add(new Genre
-                    {
-                        Id = genreViewModel.GenreId,
-                        Name = genreViewModel.Name
-                    });
+            var selectedGenresFromViewModel = Genre.GetSelectedGenres(viewModel.Genre);
 
             var genres = new List<Genre>();
-
-            foreach (var genre in genresFromViewModel)
+            foreach (var genre in selectedGenresFromViewModel)
                 genres = _context.Genres.Where(g => g.Id == genre.Id).ToList();
-
 
             var newFilm = new Film
             {
@@ -126,19 +116,11 @@ namespace FilmWebProject.Controllers
                 .Include(f => f.Genres)
                 .Single(f => f.Id == id);
 
-            var genresDb = _context.Genres.ToList();
-
             if (film == null)
                 return HttpNotFound();
 
-            var genres = new List<GenreViewModel>();
-
-            foreach (var genre in genresDb)
-                genres.Add(new GenreViewModel
-                {
-                    Name = genre.Name,
-                    GenreId = genre.Id
-                });
+            var genresDb = _context.Genres.ToList();
+            var genres = GenreViewModel.GetGenresForViewModel(genresDb);
 
             foreach (var genre in genres)
                 foreach (var genreDb in film.Genres)
@@ -167,19 +149,9 @@ namespace FilmWebProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var genresInvalidModel = _context.Genres.ToList();
-                var genreViewModel = new List<GenreViewModel>();
+                var genresFromDb = _context.Genres.ToList();
+                viewModel.Genre = GenreViewModel.GetGenresForViewModel(genresFromDb);
 
-                genresInvalidModel.ForEach(g =>
-                {
-                    genreViewModel.Add(new GenreViewModel
-                    {
-                        GenreId = g.Id,
-                        Name = g.Name
-                    });
-                });
-
-                viewModel.Genre = genreViewModel;
                 return View("FilmForm", viewModel);
             }
 
@@ -190,9 +162,9 @@ namespace FilmWebProject.Controllers
             if (filmFromDb == null)
                 return HttpNotFound();
 
-            var genres = new List<Genre>();
-
             filmFromDb.Genres.Clear();
+
+            var genres = new List<Genre>();
 
             foreach (var genreViewModel in viewModel.Genre)
                 if (genreViewModel.IsChecked)
