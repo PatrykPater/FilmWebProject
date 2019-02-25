@@ -238,6 +238,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -261,6 +262,10 @@
     <Compile Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs" />
     <Compile Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.Designer.cs">
       <DependentUpon>201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251641211_DateOfPublicationForReviewNullable.cs" />
+    <Compile Include="Migrations\201902251641211_DateOfPublicationForReviewNullable.Designer.cs">
+      <DependentUpon>201902251641211_DateOfPublicationForReviewNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -374,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.resx">
       <DependentUpon>201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251641211_DateOfPublicationForReviewNullable.resx">
+      <DependentUpon>201902251641211_DateOfPublicationForReviewNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

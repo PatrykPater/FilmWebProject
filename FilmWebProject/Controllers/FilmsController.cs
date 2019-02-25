@@ -43,24 +43,26 @@ namespace FilmWebProject.Controllers
                 return View("FilmForm", viewModel);
             }
 
-            var selectedGenresFromViewModel = Genre.GetSelectedGenres(viewModel.Genre);
+            //var selectedGenresFromViewModel = Genre.GetSelectedGenres(viewModel.Genre);
 
-            var genres = new List<Genre>();
-            foreach (var genre in selectedGenresFromViewModel)
-                genres = _context.Genres.Where(g => g.Id == genre.Id).ToList();
+            //var genres = new List<Genre>();
+            //foreach (var genre in selectedGenresFromViewModel)
+            //    genres = _context.Genres.Where(g => g.Id == genre.Id).ToList();
 
-            var newFilm = new Film
-            {
-                Title = viewModel.Title,
-                Duration = TimeSpan.Parse(viewModel.Duration),
-                Release = DateTime.Parse(viewModel.ReleaseDate),
-                BoxOffice = decimal.Parse(viewModel.BoxOffice),
-                Genres = genres,
-                Budget = decimal.Parse(viewModel.Budget),
-                Studio = viewModel.Studio
-            };
+            var newFilm2 = AutoMapper.Mapper.Map<Film>(viewModel);
 
-            _context.Films.Add(newFilm);
+            //var newFilm = new Film
+            //{
+            //    Title = viewModel.Title,
+            //    Duration = TimeSpan.Parse(viewModel.Duration),
+            //    Release = DateTime.Parse(viewModel.ReleaseDate),
+            //    BoxOffice = decimal.Parse(viewModel.BoxOffice),
+            //    Genres = genres,
+            //    Budget = decimal.Parse(viewModel.Budget),
+            //    Studio = viewModel.Studio
+            //};
+
+            _context.Films.Add(newFilm2);
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
