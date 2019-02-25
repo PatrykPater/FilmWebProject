@@ -24,21 +24,8 @@ namespace FilmWebProject.Controllers
         public ActionResult Create()
         {
             var genres = _context.Genres.ToList();
-            var genreViewModel = new List<GenreViewModel>();
 
-            genres.ForEach(g =>
-            {
-                genreViewModel.Add(new GenreViewModel
-                {
-                    GenreId = g.Id,
-                    Name = g.Name
-                });
-            });
-
-            var viewmodel = new FilmFormViewModel
-            {
-                Genre = genreViewModel
-            };
+            var viewmodel = new FilmFormViewModel { Genre = GenreViewModel.GetGenresForViewModel(genres) };
 
             return View("FilmForm", viewmodel);
         }
@@ -50,19 +37,9 @@ namespace FilmWebProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var genresInvalidModel = _context.Genres.ToList();
-                var genreViewModel = new List<GenreViewModel>();
+                var genresFromDb = _context.Genres.ToList();
+                viewModel.Genre = GenreViewModel.GetGenresForViewModel(genresFromDb);
 
-                genresInvalidModel.ForEach(g =>
-                {
-                    genreViewModel.Add(new GenreViewModel
-                    {
-                        GenreId = g.Id,
-                        Name = g.Name
-                    });
-                });
-
-                viewModel.Genre = genreViewModel;
                 return View("FilmForm", viewModel);
             }
 
