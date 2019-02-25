@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace FilmWebProject.Controllers
@@ -141,6 +142,9 @@ namespace FilmWebProject.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
+            if (id <= 0)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             var film = _context.Films
                 .Include(f => f.Genres)
                 .Single(f => f.Id == id);

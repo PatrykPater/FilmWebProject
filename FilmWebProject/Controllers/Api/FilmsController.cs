@@ -17,7 +17,13 @@ namespace FilmWebProject.Controllers.Api
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
+            if (id <= 0)
+                return BadRequest("Not a valid film id");
+
             var film = _context.Films.Single(f => f.Id == id);
+
+            if (film == null)
+                return NotFound();
 
             _context.Films.Remove(film);
             _context.SaveChanges();

@@ -9,16 +9,36 @@
 <table class="table">
 
     <tr>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Duration</th>
-        <th>Release</th>
-        <th>Score</th>
-        <th>Studio</th>
-        <th>Budget</th>
-        <th>Production</th>
-        <th>BoxOffice</th>
-        <th>Short Description</th>
+        <th>
+            Title
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Release
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            Studio
+        </th>
+        <th>
+            Budget
+        </th>
+        <th>
+            Production
+        </th>
+        <th>
+            BoxOffice
+        </th>
+        <th>
+            Short Description
+        </th>
 
     </tr>
 
@@ -36,16 +56,34 @@
                     </div>
                 }
             </td>
-            <td>@film.Duration</td>
-            <td>@film.Release</td>
-            <td>@film.Score</td>
-            <td>@film.Studio</td>
-            <td>@film.Budget</td>
-            <td>@film.Production</td>
-            <td>@film.BoxOffice</td>
-            <td>@film.ShortDescription</td>
             <td>
-                <a href="#" class="js-film-delete" data-film-id ="@film.Id">Delete</a>
+                @film.Duration
+            </td>
+            <td>
+                @film.Release
+            </td>
+            <td>
+                @film.Score
+            </td>
+            <td>
+                @film.Studio
+            </td>
+            <td>
+                @film.Budget
+            </td>
+            <td>
+                @film.Production
+            </td>
+            <td>
+                @film.BoxOffice
+            </td>
+            <td>
+                @film.ShortDescription
+            </td>
+            <td>
+                <a href="#" class="js-film-delete" data-film-id="@film.Id">
+                    Delete
+                </a>
             </td>
         </tr>
     }
@@ -60,7 +98,7 @@
 
                 if (confirm("Are you sure? Delete action is permanent.")) {
                     $.ajax({
-                            url: "Api/Films/" + link.attr("data-film-id"),
+                            url: "/api/films/"+ link.attr("data-film-id"),
                             method: "DELETE"
                         })
                         .done(function() {
