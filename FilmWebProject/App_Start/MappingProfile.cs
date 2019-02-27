@@ -9,6 +9,7 @@ namespace FilmWebProject
         public MappingProfile()
         {
             CreateMap<GenreViewModel, Genre>();
+            CreateMap<Genre, GenreViewModel>();
             CreateMap<FilmFormViewModel, Film>();
             CreateMap<Film, FilmFormViewModel>();
         }
