@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FilmWebProject.Core.ViewModels
@@ -12,17 +13,17 @@ namespace FilmWebProject.Core.ViewModels
         public string Title { get; set; }
 
         [Required]
-        public string Duration { get; set; }
+        public TimeSpan Duration { get; set; }
 
         [Required]
         [Display(Name = "Release Date")]
-        public string ReleaseDate { get; set; }
+        public DateTime Release { get; set; }
 
         [Required]
-        public string BoxOffice { get; set; }
+        public decimal BoxOffice { get; set; }
 
         [Required]
-        public string Budget { get; set; }
+        public decimal Budget { get; set; }
 
         public string Production { get; set; }
         public string Studio { get; set; }

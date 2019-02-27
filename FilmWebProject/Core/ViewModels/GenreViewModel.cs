@@ -5,7 +5,7 @@ namespace FilmWebProject.Core.ViewModels
 {
     public class GenreViewModel
     {
-        public int GenreId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public bool IsChecked { get; set; }
 
@@ -17,7 +17,7 @@ namespace FilmWebProject.Core.ViewModels
             {
                 genreViewModel.Add(new GenreViewModel
                 {
-                    GenreId = g.Id,
+                    Id = g.Id,
                     Name = g.Name
                 });
             });

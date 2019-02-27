@@ -10,6 +10,7 @@ namespace FilmWebProject
         {
             CreateMap<GenreViewModel, Genre>();
             CreateMap<FilmFormViewModel, Film>();
+            CreateMap<Film, FilmFormViewModel>();
         }
     }
 }

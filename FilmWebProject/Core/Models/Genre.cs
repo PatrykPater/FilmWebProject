@@ -17,7 +17,7 @@ namespace FilmWebProject.Core.Models
                 if (genreViewModel.IsChecked)
                     selectedGenresFromViewModel.Add(new Genre
                     {
-                        Id = genreViewModel.GenreId,
+                        Id = genreViewModel.Id,
                         Name = genreViewModel.Name
                     });
 

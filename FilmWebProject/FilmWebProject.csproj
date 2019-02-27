@@ -250,7 +250,6 @@
     <Compile Include="Core\Models\Nomination.cs" />
     <Compile Include="Core\Models\Job.cs" />
     <Compile Include="Core\ViewModels\PersonFormViewModel.cs" />
-    <Compile Include="Core\ViewModels\FilmListViewModel.cs" />
     <Compile Include="Core\ViewModels\GenreViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
