@@ -28,7 +28,7 @@ namespace FilmWebProject.Core.ViewModels
         public string Production { get; set; }
         public string Studio { get; set; }
 
-        public List<GenreViewModel> Genre { get; set; }
+        public List<GenreViewModel> Genres { get; set; }
 
         public string Action => (Id != 0) ? "Update" : "Create";
     }

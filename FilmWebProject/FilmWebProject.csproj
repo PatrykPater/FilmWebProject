@@ -356,6 +356,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Core\Dtos\" />
+    <Folder Include="Core\ViewModels\Helpers\" />
     <Folder Include="Persistence\Repositories\" />
   </ItemGroup>
   <ItemGroup>

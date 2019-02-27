@@ -50,13 +50,13 @@
         @Html.ValidationMessageFor(f => f.BoxOffice)
     </div>
 
-    for (var i = 0; i < Model.Genre.Count(); i++)
+    for (var i = 0; i < Model.Genres.Count(); i++)
     {
         <span>
-            @Html.CheckBoxFor(x => x.Genre[i].IsChecked)
-            @Model.Genre[i].Name
-            @Html.HiddenFor(x => x.Genre[i].Name)
-            @Html.HiddenFor(x => x.Genre[i].Id)
+            @Html.CheckBoxFor(x => x.Genres[i].IsChecked)
+            @Model.Genres[i].Name
+            @Html.HiddenFor(x => x.Genres[i].Name)
+            @Html.HiddenFor(x => x.Genres[i].Id)
         </span>      
     }
 
