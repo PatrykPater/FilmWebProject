@@ -249,6 +249,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Core\Models\Nomination.cs" />
     <Compile Include="Core\Models\Job.cs" />
+    <Compile Include="Core\Repositories\FilmRepository.cs" />
+    <Compile Include="Core\Repositories\GenreRepository.cs" />
     <Compile Include="Core\ViewModels\PersonFormViewModel.cs" />
     <Compile Include="Core\ViewModels\GenreViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -354,7 +356,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Core\Dtos\" />
-    <Folder Include="Core\Repositories\" />
     <Folder Include="Persistence\Repositories\" />
   </ItemGroup>
   <ItemGroup>

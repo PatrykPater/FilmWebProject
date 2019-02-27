@@ -23,7 +23,7 @@ namespace FilmWebProject.Controllers
         public ActionResult Create()
         {
             var genres = _context.Genres.ToList();
-            var viewmodel = new FilmFormViewModel {Genre = GenreViewModel.GetGenresForViewModel(genres)};
+            var viewmodel = new FilmFormViewModel { Genre = GenreViewModel.GetGenresForViewModel(genres) };
 
             return View("FilmForm", viewmodel);
         }
@@ -48,11 +48,11 @@ namespace FilmWebProject.Controllers
             foreach (var genre in selectedGenresFromViewModel)
                 genres.Add(_context.Genres.Single(g => g.Id == genre.Id));
 
-            var newFilm2 = Mapper.Map<Film>(viewModel);
+            var newFilm = Mapper.Map<Film>(viewModel);
 
-            newFilm2.Genres = genres;
+            newFilm.Genres = genres;
 
-            _context.Films.Add(newFilm2);
+            _context.Films.Add(newFilm);
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
@@ -93,13 +93,13 @@ namespace FilmWebProject.Controllers
             if (film == null)
                 return HttpNotFound();
 
-            var genresDb = _context.Genres.ToList();
-            var genres = GenreViewModel.GetGenresForViewModel(genresDb);
+            var genresFromDb = _context.Genres.ToList();
+            var genres = GenreViewModel.GetGenresForViewModel(genresFromDb);
 
             foreach (var genre in genres)
-            foreach (var genreDb in film.Genres)
-                if (genreDb.Id == genre.Id)
-                    genre.IsChecked = true;
+                foreach (var genreDb in film.Genres)
+                    if (genreDb.Id == genre.Id)
+                        genre.IsChecked = true;
 
             var filmCreateFormViewModel = Mapper.Map<FilmFormViewModel>(film);
             filmCreateFormViewModel.Genre = genres;
@@ -137,7 +137,7 @@ namespace FilmWebProject.Controllers
             filmFromDb.Update(genres, viewModel);
             _context.SaveChanges();
 
-            return RedirectToAction("Details", new {id = filmFromDb.Id});
+            return RedirectToAction("Details", new { id = filmFromDb.Id });
         }
     }
 }
