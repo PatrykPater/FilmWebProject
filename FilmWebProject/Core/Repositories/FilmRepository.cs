@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FilmWebProject.Core.Repositories
 {
-    public class FilmRepository
+    public class FilmRepository : IFilmRepository
     {
         private readonly ApplicationDbContext _context;
 
@@ -27,6 +27,16 @@ namespace FilmWebProject.Core.Repositories
             return _context.Films
                 .Include(f => f.Genres)
                 .Single(f => f.Id == id);
+        }
+
+        public void Add(Film newFilm)
+        {
+            _context.Films.Add(newFilm);
+        }
+
+        public void Remove(Film film)
+        {
+            _context.Films.Remove(film);
         }
     }
 }

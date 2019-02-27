@@ -1,5 +1,4 @@
 ﻿using FilmWebProject.Persistence;
-using System.Linq;
 using System.Web.Http;
 
 namespace FilmWebProject.Controllers.Api
@@ -8,10 +7,12 @@ namespace FilmWebProject.Controllers.Api
     public class FilmsController : ApiController
     {
         private readonly ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
         public FilmsController()
         {
             _context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(_context);
         }
 
         [HttpDelete]
@@ -20,13 +21,13 @@ namespace FilmWebProject.Controllers.Api
             if (id <= 0)
                 return BadRequest("Not a valid film id");
 
-            var film = _context.Films.Single(f => f.Id == id);
+            var film = _unitOfWork.Films.GetOneFilm(id);
 
             if (film == null)
                 return NotFound();
 
-            _context.Films.Remove(film);
-            _context.SaveChanges();
+            _unitOfWork.Films.Remove(film);
+            _unitOfWork.Complete();
 
             return Ok();
         }

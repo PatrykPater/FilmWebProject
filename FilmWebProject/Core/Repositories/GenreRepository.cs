@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FilmWebProject.Core.Repositories
 {
-    public class GenreRepository
+    public class GenreRepository : IGenreRepository
     {
         private readonly ApplicationDbContext _context;
 

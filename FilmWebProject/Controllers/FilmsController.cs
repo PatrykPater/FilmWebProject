@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FilmWebProject.Core.Models;
-using FilmWebProject.Core.Repositories;
 using FilmWebProject.Core.ViewModels;
 using FilmWebProject.Persistence;
 using System.Collections.Generic;
@@ -11,22 +10,17 @@ namespace FilmWebProject.Controllers
 {
     public class FilmsController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        private readonly GenreRepository _genreRepository;
-        private readonly FilmRepository _filmRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-
-        public FilmsController()
+        public FilmsController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
-            _genreRepository = new GenreRepository(_context);
-            _filmRepository = new FilmRepository(_context);
+            _unitOfWork = unitOfWork;
         }
 
         [Authorize]
         public ActionResult Create()
         {
-            var genresFromDb = _genreRepository.GetAllGenres();
+            var genresFromDb = _unitOfWork.Genres.GetAllGenres();
             var genresViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(genresFromDb);
             var viewmodel = new FilmFormViewModel { Genres = genresViewModel };
 
@@ -40,7 +34,7 @@ namespace FilmWebProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var genresFromDb = _genreRepository.GetAllGenres();
+                var genresFromDb = _unitOfWork.Genres.GetAllGenres();
                 var genresViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(genresFromDb);
 
                 viewModel.Genres = genresViewModel;
@@ -49,24 +43,24 @@ namespace FilmWebProject.Controllers
             }
 
             var newFilm = Mapper.Map<Film>(viewModel);
-            newFilm.Genres = _genreRepository.GetSelectedGenres(viewModel);
+            newFilm.Genres = _unitOfWork.Genres.GetSelectedGenres(viewModel);
 
-            _context.Films.Add(newFilm);
-            _context.SaveChanges();
+            _unitOfWork.Films.Add(newFilm);
+            _unitOfWork.Complete();
 
             return RedirectToAction("Index", "Home");
         }
 
         public ActionResult List()
         {
-            var films = _filmRepository.GetAllFilms();
+            var films = _unitOfWork.Films.GetAllFilms();
             return View(films);
         }
 
 
         public ActionResult Details(int id)
         {
-            var film = _filmRepository.GetOneFilm(id);
+            var film = _unitOfWork.Films.GetOneFilm(id);
 
             if (film == null)
                 return HttpNotFound();
@@ -80,24 +74,24 @@ namespace FilmWebProject.Controllers
             if (id <= 0)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var film = _filmRepository.GetOneFilm(id);
+            var film = _unitOfWork.Films.GetOneFilm(id);
 
             if (film == null)
                 return HttpNotFound();
 
-            // further refactoring required
+            //further refactoring required
 
-            var genresFromDb = _genreRepository.GetAllGenres();
+            var allGenresFromDb = _unitOfWork.Genres.GetAllGenres();
 
-            var genresEditViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(genresFromDb);
+            var genresViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(allGenresFromDb);
 
-            foreach (var genreEditViewModel in genresEditViewModel)
-                foreach (var genreDetailsViewModel in film.Genres)
-                    if (genreDetailsViewModel.Id == genreEditViewModel.Id)
-                        genreEditViewModel.IsChecked = true;
+            foreach (var genreForViewModel in genresViewModel)
+                foreach (var currentFilmGenre in film.Genres)
+                    if (currentFilmGenre.Id == genreForViewModel.Id)
+                        genreForViewModel.IsChecked = true;
 
             var filmFormViewModel = Mapper.Map<FilmFormViewModel>(film);
-            filmFormViewModel.Genres = genresEditViewModel;
+            filmFormViewModel.Genres = genresViewModel;
 
             // further refactoring required
 
@@ -111,7 +105,7 @@ namespace FilmWebProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var genresFromDb = _genreRepository.GetAllGenres();
+                var genresFromDb = _unitOfWork.Genres.GetAllGenres();
                 var genresViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(genresFromDb);
 
                 viewModel.Genres = genresViewModel;
@@ -119,17 +113,17 @@ namespace FilmWebProject.Controllers
                 return View("FilmForm", viewModel);
             }
 
-            var filmFromDb = _filmRepository.GetOneFilm(viewModel.Id);
+            var filmFromDb = _unitOfWork.Films.GetOneFilm(viewModel.Id);
 
             if (filmFromDb == null)
                 return HttpNotFound();
 
             filmFromDb.Genres.Clear();
 
-            var genres = _genreRepository.GetSelectedGenres(viewModel);
+            var genres = _unitOfWork.Genres.GetSelectedGenres(viewModel);
 
             filmFromDb.Update(genres, viewModel);
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return RedirectToAction("Details", new { id = filmFromDb.Id });
         }
