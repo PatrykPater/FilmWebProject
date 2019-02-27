@@ -1,4 +1,7 @@
-﻿using FilmWebProject.Persistence;
+﻿using FilmWebProject.Core.Models;
+using FilmWebProject.Persistence;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FilmWebProject.Core.Repositories
 {
@@ -9,6 +12,11 @@ namespace FilmWebProject.Core.Repositories
         public GenreRepository(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public List<Genre> GetAllGenres()
+        {
+            return _context.Genres.ToList();
         }
     }
 }

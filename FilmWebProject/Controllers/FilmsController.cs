@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using FilmWebProject.Core.Models;
+using FilmWebProject.Core.Repositories;
 using FilmWebProject.Core.ViewModels;
 using FilmWebProject.Persistence;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -13,16 +13,21 @@ namespace FilmWebProject.Controllers
     public class FilmsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly GenreRepository _genreRepository;
+        private readonly FilmRepository _filmRepository;
+
 
         public FilmsController()
         {
             _context = new ApplicationDbContext();
+            _genreRepository = new GenreRepository(_context);
+            _filmRepository = new FilmRepository(_context);
         }
 
         [Authorize]
         public ActionResult Create()
         {
-            var genres = _context.Genres.ToList();
+            var genres = _genreRepository.GetAllGenres();
             var viewmodel = new FilmFormViewModel { Genre = GenreViewModel.GetGenresForViewModel(genres) };
 
             return View("FilmForm", viewmodel);
@@ -35,7 +40,7 @@ namespace FilmWebProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var genresFromDb = _context.Genres.ToList();
+                var genresFromDb = _genreRepository.GetAllGenres();
 
                 viewModel.Genre = GenreViewModel.GetGenresForViewModel(genresFromDb);
 
@@ -60,19 +65,14 @@ namespace FilmWebProject.Controllers
 
         public ActionResult List()
         {
-            var films = _context.Films
-                .Include(f => f.Genres)
-                .ToList();
-
+            var films = _filmRepository.GetAllFilms();
             return View(films);
         }
 
 
         public ActionResult Details(int id)
         {
-            var film = _context.Films
-                .Include(f => f.Genres)
-                .Single(f => f.Id == id);
+            var film = _filmRepository.GetOneFilm(id);
 
             if (film == null)
                 return HttpNotFound();
@@ -86,14 +86,12 @@ namespace FilmWebProject.Controllers
             if (id <= 0)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var film = _context.Films
-                .Include(f => f.Genres)
-                .Single(f => f.Id == id);
+            var film = _filmRepository.GetOneFilm(id);
 
             if (film == null)
                 return HttpNotFound();
 
-            var genresFromDb = _context.Genres.ToList();
+            var genresFromDb = _genreRepository.GetAllGenres();
             var genres = GenreViewModel.GetGenresForViewModel(genresFromDb);
 
             foreach (var genre in genres)
@@ -114,15 +112,13 @@ namespace FilmWebProject.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var genresFromDb = _context.Genres.ToList();
+                var genresFromDb = _genreRepository.GetAllGenres();
                 viewModel.Genre = GenreViewModel.GetGenresForViewModel(genresFromDb);
 
                 return View("FilmForm", viewModel);
             }
 
-            var filmFromDb = _context.Films
-                .Include(g => g.Genres)
-                .Single(f => f.Id == viewModel.Id);
+            var filmFromDb = _filmRepository.GetOneFilm(viewModel.Id);
 
             if (filmFromDb == null)
                 return HttpNotFound();
