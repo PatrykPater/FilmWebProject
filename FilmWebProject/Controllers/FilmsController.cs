@@ -3,6 +3,7 @@ using FilmWebProject.Core;
 using FilmWebProject.Core.Models;
 using FilmWebProject.Core.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
@@ -51,12 +52,20 @@ namespace FilmWebProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult List()
+        public ActionResult List(string query = null)
         {
             var films = _unitOfWork.Films.GetAllFilms();
-            var filmViewModel2 = new FilmListViewModel { ListOfFilms = films };
 
-            return View(filmViewModel2);
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                films = films
+                    .Where(g =>
+                        g.Title.Contains(query)).ToList();
+            }
+
+            var filmViewModel = new FilmListViewModel { ListOfFilms = films };
+
+            return View(filmViewModel);
         }
 
 
@@ -128,6 +137,12 @@ namespace FilmWebProject.Controllers
             _unitOfWork.Complete();
 
             return RedirectToAction("Details", new { id = filmFromDb.Id });
+        }
+
+        [HttpPost]
+        public ActionResult Search(FilmListViewModel viewModel)
+        {
+            return RedirectToAction("List", "Films", new { query = viewModel.Search });
         }
     }
 }
