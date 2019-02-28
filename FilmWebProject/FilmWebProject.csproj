@@ -275,9 +275,12 @@
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\Dtos\RatingDto.cs" />
     <Compile Include="Core\Models\Nomination.cs" />
     <Compile Include="Core\Models\Job.cs" />
+    <Compile Include="Core\Models\Score.cs" />
     <Compile Include="Core\ViewModels\FilmListViewModel.cs" />
+    <Compile Include="Persistence\EntityConfigurations\ScoreConfiguration.cs" />
     <Compile Include="Persistence\Repositories\FilmRepository.cs" />
     <Compile Include="Persistence\Repositories\GenreRepository.cs" />
     <Compile Include="Core\Repositories\IFilmRepository.cs" />
@@ -388,7 +391,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Core\Dtos\" />
     <Folder Include="Core\ViewModels\Helpers\" />
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,7 @@ namespace FilmWebProject.Persistence
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Nomination> Nominations { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
+        public DbSet<Score> Scores { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", false)
