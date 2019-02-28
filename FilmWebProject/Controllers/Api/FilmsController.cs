@@ -1,4 +1,4 @@
-﻿using FilmWebProject.Core;
+﻿using FilmWebProject.Persistence;
 using System.Web.Http;
 
 namespace FilmWebProject.Controllers.Api
@@ -6,11 +6,15 @@ namespace FilmWebProject.Controllers.Api
     [Authorize]
     public class FilmsController : ApiController
     {
-        private readonly IUnitOfWork _unitOfWork;
+        //Implementing IUnit of Work and dependency injection breaks the api, find out why and fix it.
 
-        public FilmsController(IUnitOfWork unitOfWork)
+        private readonly ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
+
+        public FilmsController()
         {
-            _unitOfWork = unitOfWork;
+            _context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(_context);
         }
 
         [HttpDelete]

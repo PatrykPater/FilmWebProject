@@ -49,7 +49,7 @@ namespace FilmWebProject.Controllers
             _unitOfWork.Films.Add(newFilm);
             _unitOfWork.Complete();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "Films", new { id = newFilm.Id });
         }
 
         public ActionResult List(string query = null)
