@@ -1,10 +1,10 @@
-﻿using FilmWebProject.Core.Models;
-using FilmWebProject.Core.ViewModels;
-using FilmWebProject.Persistence;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using FilmWebProject.Core.Models;
+using FilmWebProject.Core.Repositories;
+using FilmWebProject.Core.ViewModels;
 
-namespace FilmWebProject.Core.Repositories
+namespace FilmWebProject.Persistence.Repositories
 {
     public class GenreRepository : IGenreRepository
     {

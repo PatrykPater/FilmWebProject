@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using FilmWebProject.Core;
 using FilmWebProject.Core.Models;
 using FilmWebProject.Core.ViewModels;
-using FilmWebProject.Persistence;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
@@ -54,7 +54,9 @@ namespace FilmWebProject.Controllers
         public ActionResult List()
         {
             var films = _unitOfWork.Films.GetAllFilms();
-            return View(films);
+            var filmViewModel2 = new FilmListViewModel { ListOfFilms = films };
+
+            return View(filmViewModel2);
         }
 
 

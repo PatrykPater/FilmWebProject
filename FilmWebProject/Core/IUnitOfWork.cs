@@ -1,6 +1,6 @@
 ﻿using FilmWebProject.Core.Repositories;
 
-namespace FilmWebProject.Persistence
+namespace FilmWebProject.Core
 {
     public interface IUnitOfWork
     {

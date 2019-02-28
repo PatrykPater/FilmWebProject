@@ -1,4 +1,6 @@
-﻿using FilmWebProject.Core.Repositories;
+﻿using FilmWebProject.Core;
+using FilmWebProject.Core.Repositories;
+using FilmWebProject.Persistence.Repositories;
 
 namespace FilmWebProject.Persistence
 {

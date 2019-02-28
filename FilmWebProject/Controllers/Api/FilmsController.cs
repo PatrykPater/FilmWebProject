@@ -1,4 +1,4 @@
-﻿using FilmWebProject.Persistence;
+﻿using FilmWebProject.Core;
 using System.Web.Http;
 
 namespace FilmWebProject.Controllers.Api
@@ -6,13 +6,11 @@ namespace FilmWebProject.Controllers.Api
     [Authorize]
     public class FilmsController : ApiController
     {
-        private readonly ApplicationDbContext _context;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public FilmsController()
+        public FilmsController(IUnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(_context);
+            _unitOfWork = unitOfWork;
         }
 
         [HttpDelete]

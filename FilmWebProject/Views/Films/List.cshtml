@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FilmWebProject.Core.Models.Film>
+﻿@model FilmWebProject.Core.ViewModels.FilmListViewModel
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,11 +6,23 @@
 
 <h3>List of films</h3>
 
+@using (Html.BeginForm("Search", "Films", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <div class="input-group">
+            @Html.TextBoxFor(s => s.Search, new { @class = "form-control", @placeholder = "Search"})
+            <div class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </div>
+        </div>
+    </div>
+}
+
 <table class="table">
 
     <tr>
         <th>
-           Title
+            Title
         </th>
         <th>
             Genre
@@ -42,7 +54,7 @@
 
     </tr>
 
-    @foreach (var film in Model)
+    @foreach (var film in Model.ListOfFilms)
     {
         <tr>
             <td>
@@ -92,21 +104,21 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
-            $(".js-film-delete").click(function(e) {
+        $(document).ready(function () {
+            $(".js-film-delete").click(function (e) {
                 var link = $(e.target);
 
                 if (confirm("Are you sure? Delete action is permanent.")) {
                     $.ajax({
-                            url: "/api/films/"+ link.attr("data-film-id"),
-                            method: "DELETE"
-                        })
-                        .done(function() {
-                            link.parents("tr").fadeOut(function() {
+                        url: "/api/films/" + link.attr("data-film-id"),
+                        method: "DELETE"
+                    })
+                        .done(function () {
+                            link.parents("tr").fadeOut(function () {
                                 $(this).remove();
                             });
                         })
-                        .fail(function() {
+                        .fail(function () {
                             alert("Something went wrong!")
                         });
                 }

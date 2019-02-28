@@ -1,10 +1,10 @@
-﻿using FilmWebProject.Core.Models;
-using FilmWebProject.Persistence;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using FilmWebProject.Core.Models;
+using FilmWebProject.Core.Repositories;
 
-namespace FilmWebProject.Core.Repositories
+namespace FilmWebProject.Persistence.Repositories
 {
     public class FilmRepository : IFilmRepository
     {
