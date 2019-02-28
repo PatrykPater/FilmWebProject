@@ -58,9 +58,11 @@ namespace FilmWebProject.Controllers
 
             if (!string.IsNullOrWhiteSpace(query))
             {
+                var lower = query.ToLower();
+
                 films = films
                     .Where(g =>
-                        g.Title.Contains(query)).ToList();
+                        g.Title.ToLower().Contains(lower)).ToList();
             }
 
             var filmViewModel = new FilmListViewModel { ListOfFilms = films };
