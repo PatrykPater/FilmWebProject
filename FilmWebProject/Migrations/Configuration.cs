@@ -548,7 +548,6 @@ namespace FilmWebProject.Migrations
                     Production = "USA",
                     Release = DateTime.Parse("1999-03-24"),
                     Budget = 60000000,
-                    Score = 8.6,
                     Studio = "Castle Rock Entertainment ",
                     BoxOffice = 286801374,
                     Genres = new List<Genre>
@@ -569,7 +568,6 @@ namespace FilmWebProject.Migrations
                     Production = "USA",
                     Release = DateTime.Parse("1995-09-10"),
                     Budget = 25000000,
-                    Score = 8.8,
                     Studio = "Castle Rock Entertainment",
                     BoxOffice = 59841469,
                     Genres = new List<Genre>
@@ -590,7 +588,6 @@ namespace FilmWebProject.Migrations
                     Production = "USA",
                     Release = DateTime.Parse("1994-06-23"),
                     Budget = 55000000,
-                    Score = 8.5,
                     Studio = "Paramount Pictures",
                     BoxOffice = 677387716,
                     Genres = new List<Genre>
@@ -610,7 +607,6 @@ namespace FilmWebProject.Migrations
                     Production = "USA",
                     Release = DateTime.Parse("2001-03-01"),
                     Budget = 4500000,
-                    Score = 7.8,
                     Studio = "",
                     BoxOffice = 7390108,
                     Genres = new List<Genre>
@@ -631,7 +627,6 @@ namespace FilmWebProject.Migrations
                     Production = "France",
                     Release = DateTime.Parse("1994-09-14"),
                     Budget = 0,
-                    Score = 8.1,
                     Studio = "Gaumont",
                     BoxOffice = 19501238,
                     Genres = new List<Genre>
@@ -652,7 +647,6 @@ namespace FilmWebProject.Migrations
                     Production = "Australia, USA",
                     Release = DateTime.Parse("1999-03-24"),
                     Budget = 63000000,
-                    Score = 7.5,
                     Studio = "Warner Bros.",
                     BoxOffice = 463517383,
                     Genres = new List<Genre>
@@ -673,7 +667,6 @@ namespace FilmWebProject.Migrations
                     Production = "USA",
                     Release = DateTime.Parse("1991-01-30"),
                     Budget = 19000000,
-                    Score = 8.2,
                     Studio = "Orion Pictures Corporation",
                     BoxOffice = 272742922,
                     Genres = new List<Genre>
@@ -694,7 +687,6 @@ namespace FilmWebProject.Migrations
                     Production = "The United Kingdom, USA",
                     Release = DateTime.Parse("2009-12-10"),
                     Budget = 237000000,
-                    Score = 7.4,
                     Studio = "Dune Entertainment",
                     BoxOffice = 2782275172,
                     Genres = new List<Genre>
@@ -713,7 +705,6 @@ namespace FilmWebProject.Migrations
                     Production = "USA",
                     Release = DateTime.Parse("1997-11-01"),
                     Budget = 200000000,
-                    Score = 7.3,
                     Studio = "Paramount Pictures",
                     BoxOffice = 2187463944,
                     Genres = new List<Genre>
@@ -733,7 +724,6 @@ namespace FilmWebProject.Migrations
                     Production = "The United Kingdom, USA",
                     Release = DateTime.Parse("2000-03-01"),
                     Budget = 103000000,
-                    Score = 8.1,
                     Studio = "DreamWorks SKG",
                     BoxOffice = 457640427,
                     Genres = new List<Genre>

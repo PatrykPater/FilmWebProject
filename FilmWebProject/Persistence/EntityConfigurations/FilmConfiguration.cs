@@ -17,6 +17,10 @@ namespace FilmWebProject.Persistence.EntityConfigurations
                 });
 
 
+            HasOptional(f => f.Score)
+                .WithRequired(s => s.Film);
+
+
             Property(f => f.Title)
                 .IsRequired()
                 .HasMaxLength(50);

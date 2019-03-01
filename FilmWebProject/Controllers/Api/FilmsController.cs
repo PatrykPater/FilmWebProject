@@ -1,5 +1,8 @@
 ﻿using FilmWebProject.Core.Dtos;
+using FilmWebProject.Core.Models;
 using FilmWebProject.Persistence;
+using Microsoft.AspNet.Identity;
+using System.Linq;
 using System.Web.Http;
 
 namespace FilmWebProject.Controllers.Api
@@ -36,11 +39,36 @@ namespace FilmWebProject.Controllers.Api
         }
 
         [HttpPost]
-        public IHttpActionResult Rate(RatingDto rate)
+        public IHttpActionResult Rate(RatingDto ratingDto)
         {
-            var film = _unitOfWork.Films.GetOneFilm(rate.Id);
+            var film = _unitOfWork.Films.GetOneFilm(ratingDto.Id);
 
-            film.Score = (film.Score + rate.Rating) / 2;
+            //film has no score, create one
+            if (film.Score == null)
+            {
+
+            }
+
+            var score = _context.Scores.Single(s => s.Id == film.Score.Id);
+            var userId = User.Identity.GetUserId();
+
+            var existingRating = score.Ratings.First(r => r.UserId == userId && r.ScoreId == score.Id);
+
+            //score.Rate();
+
+            // create new ratingDto
+            if (existingRating == null)
+            {
+
+
+                var newRating = new Rating { ScoreId = score.Id, UserId = userId, Value = ratingDto.Value };
+                score.Ratings.Add(newRating);
+                score.Value = score.Ratings.Average(r => r.Value);
+            }
+
+            // or user is updating his ratingDto
+
+
 
             return Ok();
         }

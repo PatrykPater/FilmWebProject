@@ -3,6 +3,6 @@
     public class RatingDto
     {
         public int Id { get; set; }
-        public int Rating { get; set; }
+        public int Value { get; set; }
     }
 }

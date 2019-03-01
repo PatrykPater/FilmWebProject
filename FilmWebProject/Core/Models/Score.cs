@@ -6,9 +6,8 @@ namespace FilmWebProject.Core.Models
     {
         public int Id { get; set; }
         public double Value { get; set; }
-        public List<int> Ratings { get; set; }
 
         public Film Film { get; set; }
-        public ICollection<ApplicationUser> Users { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
     }
 }

@@ -278,8 +278,15 @@
     <Compile Include="Core\Dtos\RatingDto.cs" />
     <Compile Include="Core\Models\Nomination.cs" />
     <Compile Include="Core\Models\Job.cs" />
+    <Compile Include="Core\Models\Rating.cs" />
     <Compile Include="Core\Models\Score.cs" />
     <Compile Include="Core\ViewModels\FilmListViewModel.cs" />
+    <Compile Include="Migrations\201903011507574_db1.cs" />
+    <Compile Include="Migrations\201903011507574_db1.Designer.cs">
+      <DependentUpon>201903011507574_db1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\EntityConfigurations\ApplicationUserConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\RatingConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\ScoreConfiguration.cs" />
     <Compile Include="Persistence\Repositories\FilmRepository.cs" />
     <Compile Include="Persistence\Repositories\GenreRepository.cs" />
@@ -289,18 +296,6 @@
     <Compile Include="Core\ViewModels\GenreViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902190950346_PropertiesConfigurations.cs" />
-    <Compile Include="Migrations\201902190950346_PropertiesConfigurations.Designer.cs">
-      <DependentUpon>201902190950346_PropertiesConfigurations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs" />
-    <Compile Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.Designer.cs">
-      <DependentUpon>201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902251641211_DateOfPublicationForReviewNullable.cs" />
-    <Compile Include="Migrations\201902251641211_DateOfPublicationForReviewNullable.Designer.cs">
-      <DependentUpon>201902251641211_DateOfPublicationForReviewNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -409,14 +404,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902190950346_PropertiesConfigurations.resx">
-      <DependentUpon>201902190950346_PropertiesConfigurations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.resx">
-      <DependentUpon>201902191620006_ChangePropertyTypeForBidgetAndBoxOffice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902251641211_DateOfPublicationForReviewNullable.resx">
-      <DependentUpon>201902251641211_DateOfPublicationForReviewNullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903011507574_db1.resx">
+      <DependentUpon>201903011507574_db1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

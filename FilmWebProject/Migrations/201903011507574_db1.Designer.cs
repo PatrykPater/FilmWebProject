@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DateOfPublicationForReviewNullable : IMigrationMetadata
+    public sealed partial class db1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DateOfPublicationForReviewNullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(db1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902251641211_DateOfPublicationForReviewNullable"; }
+            get { return "201903011507574_db1"; }
         }
         
         string IMigrationMetadata.Source

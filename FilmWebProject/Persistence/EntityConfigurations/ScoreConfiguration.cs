@@ -7,17 +7,8 @@ namespace FilmWebProject.Persistence.EntityConfigurations
     {
         public ScoreConfiguration()
         {
-            HasMany(s => s.Users)
-                .WithMany(u => u.Ratings)
-                .Map(su =>
-                {
-                    su.MapLeftKey("ScoreRefId");
-                    su.MapRightKey("UserRefId");
-                    su.ToTable("ScoreUser");
-                });
-
-            HasRequired(s => s.Film)
-                .WithRequiredPrincipal(f => f.Score);
+            HasMany(s => s.Ratings)
+                .WithRequired(r => r.Score);
         }
     }
 }

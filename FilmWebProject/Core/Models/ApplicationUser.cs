@@ -10,7 +10,7 @@ namespace FilmWebProject.Core.Models
     public class ApplicationUser : IdentityUser
     {
         public ICollection<Review> Reviews { get; set; }
-        public ICollection<Score> Ratings { get; set; }
+        public Rating Rating { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
