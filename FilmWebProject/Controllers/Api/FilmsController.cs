@@ -43,32 +43,34 @@ namespace FilmWebProject.Controllers.Api
         {
             var film = _unitOfWork.Films.GetOneFilm(ratingDto.Id);
 
+            var userId = User.Identity.GetUserId();
+
             //film has no score, create one
             if (film.Score == null)
             {
+                var newScore = new Score();
+                film.Score = newScore;
 
+                var newRating = new Rating { Value = ratingDto.Value, ScoreId = newScore.Id, UserId = userId };
+
+                newScore.Ratings.Add(newRating);
             }
 
-            var score = _context.Scores.Single(s => s.Id == film.Score.Id);
-            var userId = User.Identity.GetUserId();
-
-            var existingRating = score.Ratings.First(r => r.UserId == userId && r.ScoreId == score.Id);
-
-            //score.Rate();
+            var existingRating = film.Score.Ratings.First(r => r.UserId == userId && r.ScoreId == film.Score.Id);
 
             // create new ratingDto
             if (existingRating == null)
             {
-
-
-                var newRating = new Rating { ScoreId = score.Id, UserId = userId, Value = ratingDto.Value };
-                score.Ratings.Add(newRating);
-                score.Value = score.Ratings.Average(r => r.Value);
+                var newRating = new Rating { ScoreId = film.Score.Id, UserId = userId, Value = ratingDto.Value };
+                film.Score.Ratings.Add(newRating);
+            }
+            else
+            {
+                // or user is updating his ratingDto
+                existingRating.Value = ratingDto.Value;
             }
 
-            // or user is updating his ratingDto
-
-
+            _unitOfWork.Complete();
 
             return Ok();
         }

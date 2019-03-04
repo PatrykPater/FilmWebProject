@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using FilmWebProject.Core.Models;
+using FilmWebProject.Core.Repositories;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using FilmWebProject.Core.Models;
-using FilmWebProject.Core.Repositories;
 
 namespace FilmWebProject.Persistence.Repositories
 {
@@ -26,6 +26,7 @@ namespace FilmWebProject.Persistence.Repositories
         {
             return _context.Films
                 .Include(f => f.Genres)
+                .Include(f => f.Score)
                 .Single(f => f.Id == id);
         }
 
