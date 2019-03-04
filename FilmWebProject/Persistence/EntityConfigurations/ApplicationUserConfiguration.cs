@@ -9,7 +9,7 @@ namespace FilmWebProject.Persistence.EntityConfigurations
         {
             //fix duplicate column User_Id
 
-            HasOptional(u => u.Rating)
+            HasMany(u => u.Rating)
             .WithRequired(r => r.User);
         }
     }

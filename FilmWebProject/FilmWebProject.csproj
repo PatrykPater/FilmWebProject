@@ -281,9 +281,9 @@
     <Compile Include="Core\Models\Rating.cs" />
     <Compile Include="Core\Models\Score.cs" />
     <Compile Include="Core\ViewModels\FilmListViewModel.cs" />
-    <Compile Include="Migrations\201903011507574_db1.cs" />
-    <Compile Include="Migrations\201903011507574_db1.Designer.cs">
-      <DependentUpon>201903011507574_db1.cs</DependentUpon>
+    <Compile Include="Migrations\201903041743197_FixDuplicateUserIdColumn.cs" />
+    <Compile Include="Migrations\201903041743197_FixDuplicateUserIdColumn.Designer.cs">
+      <DependentUpon>201903041743197_FixDuplicateUserIdColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\EntityConfigurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\RatingConfiguration.cs" />
@@ -404,8 +404,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903011507574_db1.resx">
-      <DependentUpon>201903011507574_db1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903041743197_FixDuplicateUserIdColumn.resx">
+      <DependentUpon>201903041743197_FixDuplicateUserIdColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -3,7 +3,7 @@ namespace FilmWebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class db1 : DbMigration
+    public partial class FixDuplicateUserIdColumn : DbMigration
     {
         public override void Up()
         {
@@ -113,13 +113,12 @@ namespace FilmWebProject.Migrations
                         ScoreId = c.Int(nullable: false),
                         UserId = c.String(nullable: false, maxLength: 128),
                         Value = c.Int(nullable: false),
-                        User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.ScoreId, t.UserId })
                 .ForeignKey("dbo.Scores", t => t.ScoreId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.ScoreId)
-                .Index(t => t.User_Id);
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.Scores",
@@ -246,7 +245,7 @@ namespace FilmWebProject.Migrations
             DropForeignKey("dbo.Reviews", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.Reviews", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Ratings", "User_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Ratings", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Ratings", "ScoreId", "dbo.Scores");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -263,7 +262,7 @@ namespace FilmWebProject.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.Scores", new[] { "Id" });
-            DropIndex("dbo.Ratings", new[] { "User_Id" });
+            DropIndex("dbo.Ratings", new[] { "UserId" });
             DropIndex("dbo.Ratings", new[] { "ScoreId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
