@@ -41,22 +41,26 @@ namespace FilmWebProject.Controllers.Api
         [HttpPost]
         public IHttpActionResult Rate(RatingDto ratingDto)
         {
-            var film = _unitOfWork.Films.GetOneFilm(ratingDto.Id);
-
+            var film = _unitOfWork.Films.GetOneFilm(ratingDto.FilmId);
             var userId = User.Identity.GetUserId();
+            var userFromDb = _context.Users.First(u => u.Id == userId);
 
             //film has no score, create one
             if (film.Score == null)
             {
-                var newScore = new Score();
+                // create and save score to get an id for it
+                var newScore = new Score { Value = ratingDto.Value };
                 film.Score = newScore;
+                _unitOfWork.Complete();
 
-                var newRating = new Rating { Value = ratingDto.Value, ScoreId = newScore.Id, UserId = userId };
-
-                newScore.Ratings.Add(newRating);
+                // create and save new rating to get an id for it
+                var scoreForNewRating = film.Score;
+                var newRating = new Rating { Value = ratingDto.Value, ScoreId = scoreForNewRating.Id, UserId = userId, Score = scoreForNewRating, User = userFromDb };
+                _context.Ratings.Add(newRating);
+                _unitOfWork.Complete();
             }
 
-            var existingRating = film.Score.Ratings.First(r => r.UserId == userId && r.ScoreId == film.Score.Id);
+            var existingRating = film.Score.Ratings.Single(r => r.UserId == userId && r.ScoreId == film.Score.Id);
 
             // create new ratingDto
             if (existingRating == null)
@@ -66,7 +70,7 @@ namespace FilmWebProject.Controllers.Api
             }
             else
             {
-                // or user is updating his ratingDto
+                // or user is updating his rating
                 existingRating.Value = ratingDto.Value;
             }
 

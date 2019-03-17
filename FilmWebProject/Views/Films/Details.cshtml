@@ -96,9 +96,11 @@
         $(document).ready(function() {
             $(".js-film-rate").click(function(e) {
                 var element = $(e.target);
+                var ratingDto = { FilmId: @Model.Id, Value: element.attr("rating-value") };
                 $.ajax({
                         url: "/api/films/" + element.attr("rating-value"),
-                        method: "POST"
+                        method: "POST",
+                        data: ratingDto
                     })
                     .done(function() {
                         element.parents("li").style.background("green");

@@ -86,8 +86,6 @@ namespace FilmWebProject.Migrations
                     users.ForEach(u => userManager.Create(u));
             }
 
-
-
             var genres = new List<Genre>
             {
                 new Genre

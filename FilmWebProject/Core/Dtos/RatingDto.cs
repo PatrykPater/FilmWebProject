@@ -2,7 +2,7 @@
 {
     public class RatingDto
     {
-        public int Id { get; set; }
+        public int FilmId { get; set; }
         public int Value { get; set; }
     }
 }
