@@ -9,6 +9,8 @@ using System.Web.Mvc;
 
 namespace FilmWebProject.Controllers
 {
+    // Need of services
+
     public class FilmsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

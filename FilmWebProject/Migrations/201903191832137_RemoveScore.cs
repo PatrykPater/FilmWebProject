@@ -3,7 +3,7 @@ namespace FilmWebProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FixDuplicateUserIdColumn : DbMigration
+    public partial class RemoveScore : DbMigration
     {
         public override void Up()
         {
@@ -45,21 +45,19 @@ namespace FilmWebProject.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Reviews",
+                "dbo.Ratings",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(nullable: false, maxLength: 75),
-                        DateOfPublication = c.DateTime(),
-                        Content = c.String(),
-                        Author_Id = c.String(nullable: false, maxLength: 128),
+                        Value = c.Int(nullable: false),
                         Film_Id = c.Int(nullable: false),
+                        User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Author_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Films", t => t.Film_Id, cascadeDelete: true)
-                .Index(t => t.Author_Id)
-                .Index(t => t.Film_Id);
+                .ForeignKey("dbo.AspNetUsers", t => t.User_Id, cascadeDelete: true)
+                .Index(t => t.Film_Id)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -107,29 +105,21 @@ namespace FilmWebProject.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.Ratings",
+                "dbo.Reviews",
                 c => new
                     {
-                        ScoreId = c.Int(nullable: false),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        Value = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.ScoreId, t.UserId })
-                .ForeignKey("dbo.Scores", t => t.ScoreId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.ScoreId)
-                .Index(t => t.UserId);
-            
-            CreateTable(
-                "dbo.Scores",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Value = c.Double(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(nullable: false, maxLength: 75),
+                        DateOfPublication = c.DateTime(),
+                        Content = c.String(),
+                        Author_Id = c.String(nullable: false, maxLength: 128),
+                        Film_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Films", t => t.Id)
-                .Index(t => t.Id);
+                .ForeignKey("dbo.AspNetUsers", t => t.Author_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Films", t => t.Film_Id, cascadeDelete: true)
+                .Index(t => t.Author_Id)
+                .Index(t => t.Film_Id);
             
             CreateTable(
                 "dbo.AspNetUserRoles",
@@ -241,14 +231,13 @@ namespace FilmWebProject.Migrations
             DropForeignKey("dbo.PersonJob", "JobRefId", "dbo.Jobs");
             DropForeignKey("dbo.PersonJob", "PersonRefId", "dbo.People");
             DropForeignKey("dbo.Trailers", "Film_Id", "dbo.Films");
-            DropForeignKey("dbo.Scores", "Id", "dbo.Films");
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Reviews", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.Reviews", "Author_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Ratings", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Ratings", "ScoreId", "dbo.Scores");
+            DropForeignKey("dbo.Ratings", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Ratings", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.FilmGenre", "GenreRefId", "dbo.Genres");
             DropForeignKey("dbo.FilmGenre", "FilmRefId", "dbo.Films");
             DropIndex("dbo.PersonJob", new[] { "JobRefId" });
@@ -261,14 +250,13 @@ namespace FilmWebProject.Migrations
             DropIndex("dbo.Trailers", new[] { "Film_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.Scores", new[] { "Id" });
-            DropIndex("dbo.Ratings", new[] { "UserId" });
-            DropIndex("dbo.Ratings", new[] { "ScoreId" });
+            DropIndex("dbo.Reviews", new[] { "Film_Id" });
+            DropIndex("dbo.Reviews", new[] { "Author_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Reviews", new[] { "Film_Id" });
-            DropIndex("dbo.Reviews", new[] { "Author_Id" });
+            DropIndex("dbo.Ratings", new[] { "User_Id" });
+            DropIndex("dbo.Ratings", new[] { "Film_Id" });
             DropTable("dbo.PersonJob");
             DropTable("dbo.FilmGenre");
             DropTable("dbo.AspNetRoles");
@@ -277,12 +265,11 @@ namespace FilmWebProject.Migrations
             DropTable("dbo.Jobs");
             DropTable("dbo.Trailers");
             DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.Scores");
-            DropTable("dbo.Ratings");
+            DropTable("dbo.Reviews");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Reviews");
+            DropTable("dbo.Ratings");
             DropTable("dbo.Genres");
             DropTable("dbo.Films");
             DropTable("dbo.Awards");

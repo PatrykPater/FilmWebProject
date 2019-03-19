@@ -19,7 +19,7 @@ namespace FilmWebProject.Persistence.Repositories
         {
             return _context.Films
                 .Include(f => f.Genres)
-                .Include(f => f.Score)
+                .Include(f => f.Ratings)
                 .ToList();
         }
 
@@ -27,8 +27,7 @@ namespace FilmWebProject.Persistence.Repositories
         {
             return _context.Films
                 .Include(f => f.Genres)
-                .Include(f => f.Score)
-                .Include(f => f.Score.Ratings)
+                .Include(f => f.Ratings)
                 .Single(f => f.Id == id);
         }
 

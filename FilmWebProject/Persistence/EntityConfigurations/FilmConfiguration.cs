@@ -16,11 +16,6 @@ namespace FilmWebProject.Persistence.EntityConfigurations
                     fg.ToTable("FilmGenre");
                 });
 
-
-            HasOptional(f => f.Score)
-                .WithRequired(s => s.Film);
-
-
             Property(f => f.Title)
                 .IsRequired()
                 .HasMaxLength(50);

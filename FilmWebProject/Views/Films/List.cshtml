@@ -75,7 +75,7 @@
                 @film.Release
             </td>
             <td>
-                @if (film.Score == null)
+                @if (film.Score <= 0)
                 {
                     <span>
                         ---
@@ -83,7 +83,7 @@
                 }
                 else
                 {
-                    @film.Score.Value
+                    @film.Score
                 }
 
             </td>

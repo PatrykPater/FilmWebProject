@@ -15,7 +15,6 @@ namespace FilmWebProject.Persistence
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Nomination> Nominations { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
-        public DbSet<Score> Scores { get; set; }
         public DbSet<Rating> Ratings { get; set; }
 
         public ApplicationDbContext()
@@ -38,7 +37,6 @@ namespace FilmWebProject.Persistence
             modelBuilder.Configurations.Add(new NominationConfiguration());
             modelBuilder.Configurations.Add(new TrailerConfiguration());
             modelBuilder.Configurations.Add(new AwardConfiguration());
-            modelBuilder.Configurations.Add(new ScoreConfiguration());
             modelBuilder.Configurations.Add(new RatingConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
 

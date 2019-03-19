@@ -7,7 +7,8 @@ namespace FilmWebProject.Persistence.EntityConfigurations
     {
         public RatingConfiguration()
         {
-            HasKey(r => new { r.ScoreId, r.UserId });
+            HasRequired(f => f.Film)
+                .WithMany(r => r.Ratings);
         }
     }
 }

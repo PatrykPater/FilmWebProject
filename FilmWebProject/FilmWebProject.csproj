@@ -279,15 +279,13 @@
     <Compile Include="Core\Models\Nomination.cs" />
     <Compile Include="Core\Models\Job.cs" />
     <Compile Include="Core\Models\Rating.cs" />
-    <Compile Include="Core\Models\Score.cs" />
     <Compile Include="Core\ViewModels\FilmListViewModel.cs" />
-    <Compile Include="Migrations\201903041743197_FixDuplicateUserIdColumn.cs" />
-    <Compile Include="Migrations\201903041743197_FixDuplicateUserIdColumn.Designer.cs">
-      <DependentUpon>201903041743197_FixDuplicateUserIdColumn.cs</DependentUpon>
+    <Compile Include="Migrations\201903191832137_RemoveScore.cs" />
+    <Compile Include="Migrations\201903191832137_RemoveScore.Designer.cs">
+      <DependentUpon>201903191832137_RemoveScore.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\EntityConfigurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\RatingConfiguration.cs" />
-    <Compile Include="Persistence\EntityConfigurations\ScoreConfiguration.cs" />
     <Compile Include="Persistence\Repositories\FilmRepository.cs" />
     <Compile Include="Persistence\Repositories\GenreRepository.cs" />
     <Compile Include="Core\Repositories\IFilmRepository.cs" />
@@ -404,8 +402,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903041743197_FixDuplicateUserIdColumn.resx">
-      <DependentUpon>201903041743197_FixDuplicateUserIdColumn.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903191832137_RemoveScore.resx">
+      <DependentUpon>201903191832137_RemoveScore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

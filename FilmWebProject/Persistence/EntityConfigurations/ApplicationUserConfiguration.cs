@@ -7,8 +7,6 @@ namespace FilmWebProject.Persistence.EntityConfigurations
     {
         public ApplicationUserConfiguration()
         {
-            //fix duplicate column User_Id
-
             HasMany(u => u.Rating)
             .WithRequired(r => r.User);
         }

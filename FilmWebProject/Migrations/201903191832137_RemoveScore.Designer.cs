@@ -7,13 +7,13 @@ namespace FilmWebProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class FixDuplicateUserIdColumn : IMigrationMetadata
+    public sealed partial class RemoveScore : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixDuplicateUserIdColumn));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveScore));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903041743197_FixDuplicateUserIdColumn"; }
+            get { return "201903191832137_RemoveScore"; }
         }
         
         string IMigrationMetadata.Source
