@@ -27,6 +27,11 @@ namespace Data
             return new ApplicationDbContext();
         }
 
+        public virtual void Commit()
+        {
+            base.SaveChanges();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new FilmConfiguration());
