@@ -7,6 +7,12 @@ namespace FilmWebProject.Core.Models
 {
     public class Film
     {
+
+        public Film()
+        {
+            Ratings = new List<Rating>();
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }
@@ -29,7 +35,6 @@ namespace FilmWebProject.Core.Models
 
         public void Update(List<Genre> genres, FilmFormViewModel viewModel)
         {
-
             BoxOffice = viewModel.BoxOffice;
             Budget = viewModel.Budget;
             Duration = viewModel.Duration;
@@ -38,11 +43,6 @@ namespace FilmWebProject.Core.Models
             Release = Convert.ToDateTime(viewModel.Release);
             Studio = viewModel.Studio;
             Title = viewModel.Title;
-        }
-
-        public Film()
-        {
-            Ratings = new List<Rating>();
         }
     }
 }
