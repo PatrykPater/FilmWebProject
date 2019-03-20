@@ -1,0 +1,138 @@
+﻿@model FilmWebProject.Core.ViewModels.FilmListViewModel
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>List of films</h3>
+
+@using (Html.BeginForm("Search", "Films", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <div class="input-group">
+            @Html.TextBoxFor(s => s.Search, new { @class = "form-control", @placeholder = "Search"})
+            <div class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table">
+
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Release
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            Studio
+        </th>
+        <th>
+            Budget
+        </th>
+        <th>
+            Production
+        </th>
+        <th>
+            BoxOffice
+        </th>
+        <th>
+            Short Description
+        </th>
+
+    </tr>
+
+    @foreach (var film in Model.ListOfFilms)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("Details", "Films", new { id = film.Id})">@film.Title</a>
+            </td>
+            <td>
+                @foreach (var genre in film.Genres)
+                {
+                    <div>
+                        @genre.Name
+                    </div>
+                }
+            </td>
+            <td>
+                @film.Duration
+            </td>
+            <td>
+                @film.Release
+            </td>
+            <td>
+                @if (film.Score <= 0)
+                {
+                    <span>
+                        ---
+                    </span>
+                }
+                else
+                {
+                    @film.Score
+                }
+
+            </td>
+            <td>
+                @film.Studio
+            </td>
+            <td>
+                @film.Budget
+            </td>
+            <td>
+                @film.Production
+            </td>
+            <td>
+                @film.BoxOffice
+            </td>
+            <td>
+                @film.ShortDescription
+            </td>
+            <td>
+                <a href="#" class="js-film-delete" data-film-id="@film.Id">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-film-delete").click(function (e) {
+                var link = $(e.target);
+
+                if (confirm("Are you sure? Delete action is permanent.")) {
+                    $.ajax({
+                        url: "/api/films/" + link.attr("data-film-id"),
+                        method: "DELETE"
+                    })
+                        .done(function () {
+                            link.parents("tr").fadeOut(function () {
+                                $(this).remove();
+                            });
+                        })
+                        .fail(function () {
+                            alert("Something went wrong!");
+                        });
+                }
+            });
+        })
+    </script>
+}

@@ -1,0 +1,114 @@
+﻿@model Model.Models.Film
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<div>
+    <div>
+        <a href="@Url.Action("Edit", "Films", new {id = @Model.Id})">Edit movie</a>
+    </div>
+    <div>
+        (@Model.Release.ToString("yyyy"))
+    </div>
+    <div>
+        @Model.Duration
+    </div>
+    <p>
+        @Model.ShortDescription
+    </p>
+    <div>
+        Placeholder for "Watch Trailer"
+    </div>
+</div>
+<div>
+    <div>
+        <div class="row">
+            <div class="col-md-2">Director:</div>
+            <div class="col-md-2">Placeholder director</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Director of photography:</div>
+            <div class="col-md-2">Placeholder director of photography</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Genres:</div>
+            <div class="col-md-2">
+                @foreach (var genre in Model.Genres)
+                {
+                    <div>
+                        @genre.Name
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Production:</div>
+            <div class="col-md-2">@Model.Production</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Release Date:</div>
+            <div class="col-md-2">@Model.Release</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Box-office:</div>
+            <div class="col-md-2">@Model.BoxOffice</div>
+        </div>
+    </div>
+    <div>
+        <div>
+            Score: 
+            @if (Model.Score == null)
+            {
+                <span>---</span>
+            }
+            else
+            {
+                @Model.Score
+                ;
+            }
+        </div>
+        <div>
+            <p>
+                Rate this Film:
+            </p>
+            <ul>
+                <li>
+                    @for (var i = 1; i <= 10; i++)
+                    {
+                        <a href="#" class="js-film-rate" rating-value ="@i">
+                            @i
+                        </a>
+                    }
+
+                </li>
+
+            </ul>
+        </div>
+        
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-film-rate").click(function(e) {
+                var element = $(e.target);
+                var ratingDto = { FilmId: @Model.Id, Value: element.attr("rating-value") };
+                $.ajax({
+                        url: "/api/films/" + element.attr("rating-value"),
+                        method: "POST",
+                        data: ratingDto
+                    })
+                    .done(function() {
+                        element.parents("li").style.background("green");
+                    })
+                    .fail(function() {
+                        alert("Something went wrong!");
+                    });
+            });
+        })
+    </script>
+}

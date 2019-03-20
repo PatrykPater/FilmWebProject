@@ -1,0 +1,68 @@
+﻿@model FilmWebProject.Core.ViewModels.FilmFormViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Film Form - Placeholder</h2>
+
+@using (Html.BeginForm(@Model.Action, "Films"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(f => f.Id)
+    <div class="form-group">
+        @Html.LabelFor(f => f.Title)
+        @Html.TextBoxFor(f => f.Title, new { @class = "form-control", @placeholder = "Enter the title" })
+        @Html.ValidationMessageFor(f => f.Title)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Duration)
+        @Html.TextBoxFor(f => f.Duration, new { @class = "form-control", @placeholder = "e.g. 02:30:00" })
+        @Html.ValidationMessageFor(f => f.Duration)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Production)
+        @Html.TextBoxFor(f => f.Production, new { @class = "form-control", @placeholder = "Enter place of production" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Release)
+        @Html.TextBoxFor(f => f.Release, new { @class = "form-control", @placeholder = "e.g. 06 May 2001" })
+        @Html.ValidationMessageFor(f => f.Release)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Budget)
+        @Html.TextBoxFor(f => f.Budget, new { @class = "form-control", @placeholder = "Enter films budget" })
+        @Html.ValidationMessageFor(f => f.Budget)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Studio)
+        @Html.TextBoxFor(f => f.Studio, new { @class = "form-control", @placeholder = "Enter studio name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.BoxOffice)
+        @Html.TextBoxFor(f => f.BoxOffice, new { @class = "form-control", placeholder = "Enter films box-office" })
+        @Html.ValidationMessageFor(f => f.BoxOffice)
+    </div>
+
+    for (var i = 0; i < Model.Genres.Count(); i++)
+    {
+        <span>
+            @Html.CheckBoxFor(x => x.Genres[i].IsChecked)
+            @Model.Genres[i].Name
+            @Html.HiddenFor(x => x.Genres[i].Name)
+            @Html.HiddenFor(x => x.Genres[i].Id)
+        </span>      
+    }
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
