@@ -27,6 +27,10 @@ namespace Model.Models
 
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<Genre> Genres { get; set; }
+        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Trailer> Trailers { get; set; }
+
+        //MAPPING
 
         //public void Update(List<Genre> genres, FilmFormViewModel viewModel)
         //{

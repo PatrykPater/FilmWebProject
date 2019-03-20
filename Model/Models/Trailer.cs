@@ -1,11 +1,9 @@
 ﻿namespace Model.Models
 {
-    public class Rating
+    public class Trailer
     {
         public int Id { get; set; }
-        public int Value { get; set; }
-
-        public ApplicationUser User { get; set; }
+        public string TrailerLink { get; set; }
         public Film Film { get; set; }
     }
 }

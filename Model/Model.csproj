@@ -55,9 +55,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Award.cs" />
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Nomination.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Trailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

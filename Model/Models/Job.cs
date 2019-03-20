@@ -2,10 +2,10 @@
 
 namespace Model.Models
 {
-    public class Genre
+    public class Job
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Film> Films { get; set; }
+        public ICollection<Person> Persons { get; set; }
     }
 }
