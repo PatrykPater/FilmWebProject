@@ -11,7 +11,6 @@ namespace Web.Controllers.Api
     [Authorize]
     public class FilmsController : ApiController
     {
-        //Need of services
         //Implementing IUnit of Work and dependency injection breaks the api, find out why and fix it.
 
         private readonly ApplicationDbContext _context;

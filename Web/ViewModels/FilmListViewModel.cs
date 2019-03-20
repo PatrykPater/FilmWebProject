@@ -1,7 +1,7 @@
-﻿using FilmWebProject.Core.Models;
+﻿using Model.Models;
 using System.Collections.Generic;
 
-namespace FilmWebProject.Core.ViewModels
+namespace Web.ViewModels
 {
     public class FilmListViewModel
     {

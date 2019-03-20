@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace FilmWebProject.Core.ViewModels
+namespace Web.ViewModels
 {
     public class PersonFormViewModel
     {

@@ -1,16 +1,14 @@
 ﻿using AutoMapper;
 using Data.Infrastructure;
-using FilmWebProject.Core.ViewModels;
 using Model.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
-    // Need of services
-
     public class FilmsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

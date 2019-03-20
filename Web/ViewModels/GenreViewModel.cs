@@ -1,4 +1,4 @@
-﻿namespace FilmWebProject.Core.ViewModels
+﻿namespace Web.ViewModels
 {
     public class GenreViewModel
     {
