@@ -1,16 +1,16 @@
 ﻿using Autofac;
-using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using Data;
 using Data.Infrastructure;
 using Data.Repositories;
 using Service;
 using System.Reflection;
-using System.Web.Mvc;
+using System.Web.Http;
 using Web.Helpers;
 
 namespace Web
 {
-    public static class Bootstrapper
+    public class BootstrapperApi
     {
         public static void Run()
         {
@@ -21,7 +21,12 @@ namespace Web
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            // Register your Web API controllers.
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+            var config = GlobalConfiguration.Configuration;
+            builder.RegisterWebApiFilterProvider(config);
+            builder.RegisterWebApiModelBinderProvider();
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<GenreRepository>().As<IGenreRepository>().InstancePerRequest();
@@ -37,7 +42,7 @@ namespace Web
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
 }

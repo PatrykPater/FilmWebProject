@@ -17,6 +17,7 @@ namespace Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Bootstrapper.Run();
+            BootstrapperApi.Run();
         }
     }
 }
