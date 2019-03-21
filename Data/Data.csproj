@@ -67,6 +67,10 @@
     <Compile Include="EntityConfigurations\TrailerConfiguration.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201903211118582_TestingAfterRestructingTheApp.cs" />
+    <Compile Include="Migrations\201903211118582_TestingAfterRestructingTheApp.Designer.cs">
+      <DependentUpon>201903211118582_TestingAfterRestructingTheApp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FilmRepository.cs" />
@@ -83,6 +87,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903211118582_TestingAfterRestructingTheApp.resx">
+      <DependentUpon>201903211118582_TestingAfterRestructingTheApp.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

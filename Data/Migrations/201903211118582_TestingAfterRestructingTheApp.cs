@@ -1,9 +1,9 @@
-namespace FilmWebProject.Migrations
+namespace Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class RemoveScore : DbMigration
+    public partial class TestingAfterRestructingTheApp : DbMigration
     {
         public override void Up()
         {

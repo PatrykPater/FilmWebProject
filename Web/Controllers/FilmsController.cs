@@ -15,10 +15,10 @@ namespace Web.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly GenreHelper _genreHelper;
 
-        public FilmsController(IUnitOfWork unitOfWork, GenreHelper genreHelper)
+        public FilmsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _genreHelper = genreHelper;
+            _genreHelper = new GenreHelper(unitOfWork);
         }
 
         [Authorize]
