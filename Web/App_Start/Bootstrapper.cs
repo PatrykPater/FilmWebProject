@@ -3,8 +3,10 @@ using Autofac.Integration.Mvc;
 using Data;
 using Data.Infrastructure;
 using Data.Repositories;
+using Service;
 using System.Reflection;
 using System.Web.Mvc;
+using Web.Helpers;
 
 namespace Web
 {
@@ -22,6 +24,8 @@ namespace Web
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<GenreRepository>().As<IGenreRepository>().InstancePerRequest();
             builder.RegisterType<FilmRepository>().As<IFilmRepository>().InstancePerRequest();
+            builder.RegisterType<FilmService>().As<IFilmService>().InstancePerRequest();
+            builder.RegisterType<GenreHelper>().As<IGenreHelper>().InstancePerRequest();
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof(GenreRepository).Assembly)
@@ -30,6 +34,11 @@ namespace Web
                 .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(FilmRepository).Assembly)
+                .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces()
+                .InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(typeof(GenreHelper).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
