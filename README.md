@@ -12,14 +12,15 @@ The technologies used to write the app so far:
 
 Current working features:
 
+- Working relational Database
 - Creating a film
 - Updating film's details
-- Deleting a film
+- Deleting a film (done with API)
 - Displaying list of films and some of their details in a table
 - Looking up all of film's details at separate page.
 - Searching for a specific film in databse through searchbox and displaying it without reloading the page.
 - Ability to save the search for later use (the result of the search url consits of attached query string)
-- Rating a Film and displaying its overall Score.
+- Rating a Film and displaying its overall Score. (done with API)
 
 On todo list so far:
 
