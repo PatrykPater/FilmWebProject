@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Model.Models;
+﻿using Model.Models;
+using System.Collections.Generic;
 
 namespace Data.Repositories
 {
     public interface IGenreRepository
     {
         List<Genre> GetAllGenres();
-        List<Genre> GetSelectedGenres(FilmFormViewModel viewModel);
+        Genre GetGenreById(int id);
     }
 }

@@ -18,15 +18,9 @@ namespace Data.Repositories
             return _context.Genres.ToList();
         }
 
-        public List<Genre> GetSelectedGenres(FilmFormViewModel viewModel)
+        public Genre GetGenreById(int id)
         {
-            var listOfSelectedGenres = new List<Genre>();
-
-            foreach (var genreViewModel in viewModel.Genres)
-                if (genreViewModel.IsChecked)
-                    listOfSelectedGenres.Add(_context.Genres.Single(g => g.Id == genreViewModel.Id));
-
-            return listOfSelectedGenres;
+            return _context.Genres.Single(g => g.Id == id);
         }
     }
 }

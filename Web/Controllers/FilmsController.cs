@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Web.Helpers;
 using Web.ViewModels;
 
 namespace Web.Controllers
@@ -12,10 +13,12 @@ namespace Web.Controllers
     public class FilmsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly GenreHelper _genreHelper;
 
-        public FilmsController(IUnitOfWork unitOfWork)
+        public FilmsController(IUnitOfWork unitOfWork, GenreHelper genreHelper)
         {
             _unitOfWork = unitOfWork;
+            _genreHelper = genreHelper;
         }
 
         [Authorize]
@@ -44,7 +47,10 @@ namespace Web.Controllers
             }
 
             var newFilm = Mapper.Map<Film>(viewModel);
-            newFilm.Genres = _unitOfWork.Genres.GetSelectedGenres(viewModel);
+
+            var listOfSelectedGenres = _genreHelper.GetSelectedGenres(viewModel);
+
+            newFilm.Genres = listOfSelectedGenres;
 
             _unitOfWork.Films.Add(newFilm);
             _unitOfWork.Complete();
@@ -133,7 +139,7 @@ namespace Web.Controllers
 
             filmFromDb.Genres.Clear();
 
-            var genres = _unitOfWork.Genres.GetSelectedGenres(viewModel);
+            var genres = _genreHelper.GetSelectedGenres(viewModel);
 
             filmFromDb.Update(genres, viewModel);
             _unitOfWork.Complete();
