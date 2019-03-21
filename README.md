@@ -9,7 +9,7 @@ The technologies used to write the app:
 - Entity Framework
 - Bootstrap
 - Automapper
-- Ninject
+- Autofac
 - JavaScript/jQuery
 - Html/CSS
 - LINQ
