@@ -24,7 +24,7 @@ Current working features:
 
 On todo list so far:
 
-- An ability for a user to add another user as a friend
+- Ability for a user to add another user as a friend
 - Notification if your friend has rated a film
 - Abilit to comment on the notification
 - Ability to write a review about a movie.
