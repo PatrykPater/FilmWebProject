@@ -132,19 +132,22 @@ namespace Web.Controllers
                 return View("FilmForm", viewModel);
             }
 
-            var filmFromDb = _unitOfWork.Films.GetOneFilm(viewModel.Id);
+            var filmDb = _unitOfWork.Films.GetOneFilm(viewModel.Id);
 
-            if (filmFromDb == null)
+            if (filmDb == null)
                 return HttpNotFound();
 
-            filmFromDb.Genres.Clear();
+            filmDb.Genres.Clear();
 
             var genres = _genreHelper.GetSelectedGenres(viewModel);
 
-            filmFromDb.Update(genres, viewModel);
+            var filmUpdate = Mapper.Map<Film>(viewModel);
+            filmUpdate.Genres = genres;
+
+            filmDb = filmUpdate;
             _unitOfWork.Complete();
 
-            return RedirectToAction("Details", new { id = filmFromDb.Id });
+            return RedirectToAction("Details", new { id = filmDb.Id });
         }
 
         [HttpPost]

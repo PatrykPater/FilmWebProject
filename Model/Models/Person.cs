@@ -5,6 +5,10 @@ namespace Model.Models
 {
     public class Person
     {
+        public Person()
+        {
+            Jobs = new List<Job>();
+        }
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -10,6 +10,9 @@ namespace Model.Models
         public Film()
         {
             Ratings = new List<Rating>();
+            Genres = new List<Genre>();
+            Reviews = new List<Review>();
+            Trailers = new List<Trailer>();
         }
 
         public int Id { get; set; }
@@ -29,19 +32,5 @@ namespace Model.Models
         public ICollection<Genre> Genres { get; set; }
         public ICollection<Review> Reviews { get; set; }
         public ICollection<Trailer> Trailers { get; set; }
-
-        //MAPPING
-
-        //public void Update(List<Genre> genres, FilmFormViewModel viewModel)
-        //{
-        //    BoxOffice = viewModel.BoxOffice;
-        //    Budget = viewModel.Budget;
-        //    Duration = viewModel.Duration;
-        //    Genres = genres;
-        //    Production = viewModel.Production;
-        //    Release = Convert.ToDateTime(viewModel.Release);
-        //    Studio = viewModel.Studio;
-        //    Title = viewModel.Title;
-        //}
     }
 }
