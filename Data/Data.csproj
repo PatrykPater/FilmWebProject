@@ -77,6 +77,8 @@
     <Compile Include="Repositories\GenreRepository.cs" />
     <Compile Include="Repositories\IFilmRepository.cs" />
     <Compile Include="Repositories\IGenreRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

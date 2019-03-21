@@ -49,5 +49,21 @@ namespace Service
         {
             return _unitOfWork.Films.GetOneFilm(id);
         }
+
+        public void RemoveFilm(Film film)
+        {
+            _unitOfWork.Films.Remove(film);
+        }
+
+        public ApplicationUser GetUserById(string id)
+        {
+            return _unitOfWork.Users.GetUserById(id);
+        }
+
+        public void AddNewRating(Film film, ApplicationUser user, int value)
+        {
+            var newRating = new Rating { Film = film, User = user, Value = value };
+            film.Ratings.Add(newRating);
+        }
     }
 }

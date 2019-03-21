@@ -1,7 +1,5 @@
-﻿using Data;
-using Data.Infrastructure;
-using Microsoft.AspNet.Identity;
-using Model.Models;
+﻿using Microsoft.AspNet.Identity;
+using Service;
 using System.Linq;
 using System.Web.Http;
 using Web.Dtos;
@@ -11,15 +9,11 @@ namespace Web.Controllers.Api
     [Authorize]
     public class FilmsController : ApiController
     {
-        //Implementing IUnit of Work and dependency injection breaks the api, find out why and fix it.
+        private readonly IFilmService _filmService;
 
-        private readonly ApplicationDbContext _context;
-        private readonly UnitOfWork _unitOfWork;
-
-        public FilmsController()
+        public FilmsController(IFilmService filmService)
         {
-            _context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(_context);
+            _filmService = filmService;
         }
 
         [HttpDelete]
@@ -28,13 +22,13 @@ namespace Web.Controllers.Api
             if (id <= 0)
                 return BadRequest("Film id is invalid");
 
-            var film = _unitOfWork.Films.GetOneFilm(id);
+            var film = _filmService.GetFilmById(id);
 
             if (film == null)
                 return NotFound();
 
-            _unitOfWork.Films.Remove(film);
-            _unitOfWork.Complete();
+            _filmService.RemoveFilm(film);
+            _filmService.Complete();
 
             return Ok(); // Return 204 NoContent in the future
         }
@@ -42,25 +36,17 @@ namespace Web.Controllers.Api
         [HttpPost]
         public IHttpActionResult Rate(RatingDto ratingDto)
         {
-            var film = _unitOfWork.Films.GetOneFilm(ratingDto.FilmId);
+            var film = _filmService.GetFilmById(ratingDto.FilmId);
             var userId = User.Identity.GetUserId();
-
-            var user = _context.Users.Single(u => u.Id == userId);
-
+            var user = _filmService.GetUserById(userId);
             var rating = film.Ratings.SingleOrDefault(r => r.Film.Id == ratingDto.FilmId && r.User.Id == userId);
 
             if (rating == null)
-            {
-                var newRating = new Rating { Film = film, User = user, Value = ratingDto.Value };
-                film.Ratings.Add(newRating);
+                _filmService.AddNewRating(film, user, ratingDto.Value);
+            else
+                rating.Value = ratingDto.Value;
 
-                _unitOfWork.Complete();
-                return Ok();
-            }
-
-            rating.Value = ratingDto.Value;
-
-            _unitOfWork.Complete();
+            _filmService.Complete();
             return Ok();
         }
     }
