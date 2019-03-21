@@ -3,7 +3,7 @@ The project's features are based on popular polish website Filmweb. The goal is 
 
 The app is made in .NET Framework. The current architecture is based on the concept of layering. There are Data, Model, Repository, Service and Presentation layers, decoupled from each other thanks to Unit Of Work design pattern and Dependency Injection performed with Ninject. It also has a small API, though its not done according to REST guidelines yet. I'm also trying to follow the guidelines of SOLID, the concept is relatively difficult ot implement properly for someone new like myself, it's a work in progress and something i'm trying to improve on.
 
-The technologies used to write the app so far:
+The technologies used to write the app:
 
 - Asp.Net MVC 5 & Asp.Net Web API
 - Entity Framework
@@ -26,7 +26,7 @@ Current working features:
 - Ability to save the search for later use (the result of the search url consits of attached query string)
 - Rating a Film and displaying its overall Score. (done with API)
 
-On todo list so far:
+On todo list:
 
 - Ability for a user to add another user as a friend
 - Notification if your friend has rated a film
