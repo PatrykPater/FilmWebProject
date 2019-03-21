@@ -89,8 +89,9 @@ namespace Web.Controllers
             if (film == null)
                 return HttpNotFound();
 
-            var currentFilmGenres = _filmService.GetAllGenres();
-            var genresViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(currentFilmGenres);
+            var currentFilmGenres = film.Genres;
+            var allGenresFromDb = _filmService.GetAllGenres();
+            var genresViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(allGenresFromDb);
 
             var filmFormViewModel = Mapper.Map<FilmFormViewModel>(film);
             filmFormViewModel.Genres = _genreHelper.GetAllAndSelectedGenres(genresViewModel, currentFilmGenres);
