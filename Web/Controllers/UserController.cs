@@ -16,13 +16,23 @@ namespace Web.Controllers
         public ActionResult List(string query = null)
         {
             var users = _userService.GetAllUsers();
+            var viewModel = new UserListViewModel();
 
             if (!string.IsNullOrWhiteSpace(query))
+            {
                 users = _userService.GetUsersByQuery(users, query);
+                viewModel.IsSearched = true;
+            }
 
-            var viewModel = new UserListViewModel { Users = users };
+            viewModel.Users = users;
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Search(UserListViewModel viewModel)
+        {
+            return RedirectToAction("List", "User", new { query = viewModel.Query });
         }
     }
 }

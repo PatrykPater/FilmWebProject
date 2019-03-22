@@ -28,7 +28,7 @@ namespace Data.Migrations
 
             if (user == null)
             {
-                user = new ApplicationUser { UserName = name, Email = "admin@filmweb.com" };
+                user = new ApplicationUser { UserName = name, Email = "admin@filmweb.com", FirstName = "John", LastName = "Wick" };
                 userManager.Create(user, password);
             }
 

@@ -6,7 +6,7 @@
 
 <h2>Search for a friend</h2>
 
-@using (Html.BeginForm("List", "User", FormMethod.Post, new { @class = "form-inline" }))
+@using (Html.BeginForm("Search", "User", FormMethod.Post, new { @class = "form-inline" }))
 {
     <div class="form-group">
         <div class="input-group">
@@ -17,6 +17,8 @@
         </div>
     </div>
 }
+@if (@Model.IsSearched)
+{
     <table class="table">
 
         <tr>
@@ -35,3 +37,4 @@
             </tr>
         }
     </table>
+}
