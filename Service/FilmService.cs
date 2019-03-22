@@ -63,7 +63,12 @@ namespace Service
         public void AddNewRating(Film film, ApplicationUser user, int value)
         {
             var newRating = new Rating { Film = film, User = user, Value = value };
-            film.Ratings.Add(newRating);
+            _unitOfWork.Ratings.AddNewRating(newRating);
+        }
+
+        public Rating GetUserRating(int filmId, string userId)
+        {
+            return _unitOfWork.Ratings.GetUserRating(filmId, userId);
         }
     }
 }

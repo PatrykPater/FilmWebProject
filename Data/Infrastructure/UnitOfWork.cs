@@ -6,9 +6,10 @@ namespace Data.Infrastructure
     {
         private readonly ApplicationDbContext _context;
 
-        public IFilmRepository Films { get; private set; }
-        public IGenreRepository Genres { get; private set; }
-        public IUserRepository Users { get; set; }
+        public IFilmRepository Films { get; }
+        public IGenreRepository Genres { get; }
+        public IUserRepository Users { get; }
+        public IRatingRepository Ratings { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -16,6 +17,7 @@ namespace Data.Infrastructure
             Films = new FilmRepository(_context);
             Genres = new GenreRepository(_context);
             Users = new UserRepository(_context);
+            Ratings = new RatingRepository(_context);
         }
 
         public void Complete()

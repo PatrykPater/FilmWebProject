@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Model.Models;
+﻿using Model.Models;
+using System.Collections.Generic;
 
 namespace Data.Repositories
 {

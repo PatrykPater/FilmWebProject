@@ -14,5 +14,6 @@ namespace Service
         void RemoveFilm(Film film);
         ApplicationUser GetUserById(string id);
         void AddNewRating(Film film, ApplicationUser user, int value);
+        Rating GetUserRating(int filmId, string userId);
     }
 }

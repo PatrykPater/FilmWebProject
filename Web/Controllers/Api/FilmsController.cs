@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
 using Service;
-using System.Linq;
 using System.Web.Http;
 using Web.Dtos;
 
@@ -39,14 +38,15 @@ namespace Web.Controllers.Api
             var film = _filmService.GetFilmById(ratingDto.FilmId);
             var userId = User.Identity.GetUserId();
             var user = _filmService.GetUserById(userId);
-            var rating = film.Ratings.SingleOrDefault(r => r.Film.Id == ratingDto.FilmId && r.User.Id == userId);
+
+            var rating = _filmService.GetUserRating(film.Id, userId);
 
             if (rating == null)
                 _filmService.AddNewRating(film, user, ratingDto.Value);
-            else
-                rating.Value = ratingDto.Value;
+            else rating.Value = ratingDto.Value;
 
             _filmService.Complete();
+
             return Ok();
         }
     }

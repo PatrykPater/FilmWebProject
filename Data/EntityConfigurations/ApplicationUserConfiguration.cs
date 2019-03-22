@@ -7,7 +7,7 @@ namespace Data.EntityConfigurations
     {
         public ApplicationUserConfiguration()
         {
-            HasMany(u => u.Rating)
+            HasMany(u => u.Ratings)
             .WithRequired(r => r.User);
         }
     }

@@ -9,8 +9,9 @@ namespace Model.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
-        public ICollection<Rating> Rating { get; set; } = new List<Rating>();
+        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
+        public ICollection<ApplicationUser> Friends { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

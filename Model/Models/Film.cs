@@ -6,15 +6,6 @@ namespace Model.Models
 {
     public class Film
     {
-
-        public Film()
-        {
-            Ratings = new List<Rating>();
-            Genres = new List<Genre>();
-            Reviews = new List<Review>();
-            Trailers = new List<Trailer>();
-        }
-
         public int Id { get; set; }
         public string Title { get; set; }
         public TimeSpan Duration { get; set; }

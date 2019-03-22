@@ -7,6 +7,7 @@ namespace Data.Infrastructure
         IFilmRepository Films { get; }
         IGenreRepository Genres { get; }
         IUserRepository Users { get; }
+        IRatingRepository Ratings { get; set; }
 
         void Complete();
     }
