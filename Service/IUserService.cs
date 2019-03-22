@@ -7,5 +7,7 @@ namespace Service
     {
         List<ApplicationUser> GetAllUsers();
         List<ApplicationUser> GetUsersByQuery(List<ApplicationUser> allUsers, string query);
+        ApplicationUser GetUserById(string id);
+        void Complete();
     }
 }

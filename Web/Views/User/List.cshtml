@@ -6,18 +6,18 @@
 
 <h2>Search for a friend</h2>
 
-@using (Html.BeginForm("Search", "User", FormMethod.Post, new { @class = "form-inline" }))
+@using (Html.BeginForm("Search", "Users", FormMethod.Post, new {@class = "form-inline"}))
 {
     <div class="form-group">
         <div class="input-group">
-            @Html.TextBoxFor(s => s.Query, new { @class = "form-control", @placeholder = "Search" })
+            @Html.TextBoxFor(s => s.Query, new {@class = "form-control", placeholder = "Search"})
             <div class="input-group-addon">
                 <i class="glyphicon glyphicon-search"></i>
             </div>
         </div>
     </div>
 }
-@if (@Model.IsSearched)
+@if (Model.IsSearched)
 {
     <table class="table">
 
@@ -25,16 +25,48 @@
             <th>
                 Name
             </th>
+            <th>
+                
+            </th>
         </tr>
+
         @foreach (var user in Model.Users)
         {
             <tr>
                 <td>
-                    <a href="@Url.Action("Details","User", new { id = user.Id})">
+                    <a href="@Url.Action("Details", "Users", new {id = user.Id})">
                         @user.FirstName @user.LastName
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="js-user-send-friend-request" data-user-id="@user.Id">
+                        Send friend request
                     </a>
                 </td>
             </tr>
         }
     </table>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-user-send-friend-request").click(function(e) {
+                var button = $(e.target);
+                if (confirm("Are you sure? Delete action is permanent.")) {
+                    $.ajax({
+                            url: "/api/user/" + button.attr("data-user-id"),
+                            method: "POST"
+                        })
+                        .done(function() {
+                            alert("Your request has been sent!");
+                        })
+                        .fail(function() {
+                            alert("Something went wrong!");
+                        });
+                }
+            });
+        })
+    </script>
 }

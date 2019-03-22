@@ -24,5 +24,15 @@ namespace Service
             var lowerCaseQuery = query.ToLower();
             return allUsers.Where(u => u.FirstName.ToLower().Contains(lowerCaseQuery) || u.LastName.ToLower().Contains(lowerCaseQuery)).ToList();
         }
+
+        public ApplicationUser GetUserById(string id)
+        {
+            return _unitOfWork.Users.GetUserById(id);
+        }
+
+        public void Complete()
+        {
+            _unitOfWork.Complete();
+        }
     }
 }

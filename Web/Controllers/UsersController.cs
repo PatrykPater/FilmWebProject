@@ -4,11 +4,11 @@ using Web.ViewModels;
 
 namespace Web.Controllers
 {
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }
@@ -32,7 +32,7 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Search(UserListViewModel viewModel)
         {
-            return RedirectToAction("List", "User", new { query = viewModel.Query });
+            return RedirectToAction("List", "Users", new { query = viewModel.Query });
         }
     }
 }
