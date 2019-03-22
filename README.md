@@ -22,13 +22,14 @@ Currently working features:
 - Deleting a film (done in API)
 - Displaying list of films and some of their details in a table
 - Looking up all of film's details at a separate page.
-- Searching for a specific film in databse through searchbox and displaying it without reloading the page.
+- Searching by title for a specific film in databse through searchbox and displaying it without reloading the page.
 - Ability to save the search for later use (the result of the search url consits of attached query string)
 - Rating a Film and displaying its overall Score (done in API)
+- Searching for other users/friends by last and first name.
 
 On todo list:
 
-- Ability for user to add another user as a friend.
+- Ability for a user to add another user as a friend.
 - Notification if your friend has rated a film.
 - Abilit to comment on the notification.
 - Ability to write a review about a movie.
