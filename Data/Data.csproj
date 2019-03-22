@@ -82,6 +82,7 @@
     <Compile Include="EntityConfigurations\GenreConfiguration.cs" />
     <Compile Include="EntityConfigurations\JobConfiguration.cs" />
     <Compile Include="EntityConfigurations\NominationConfiguration.cs" />
+    <Compile Include="EntityConfigurations\NotificationConfiguration.cs" />
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="EntityConfigurations\RatingConfiguration.cs" />
     <Compile Include="EntityConfigurations\ReviewConfiguration.cs" />
@@ -91,6 +92,10 @@
     <Compile Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.cs" />
     <Compile Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.Designer.cs">
       <DependentUpon>201903221225530_SeedFirstNamesAndLastNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903221756216_AddNotificationTable.cs" />
+    <Compile Include="Migrations\201903221756216_AddNotificationTable.Designer.cs">
+      <DependentUpon>201903221756216_AddNotificationTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +121,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.resx">
       <DependentUpon>201903221225530_SeedFirstNamesAndLastNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903221756216_AddNotificationTable.resx">
+      <DependentUpon>201903221756216_AddNotificationTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

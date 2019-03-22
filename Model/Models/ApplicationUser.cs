@@ -14,6 +14,7 @@ namespace Model.Models
             Reviews = new List<Review>();
             Ratings = new List<Rating>();
             Friends = new List<ApplicationUser>();
+            Notifications = new List<Notification>();
         }
 
         public string FirstName { get; set; }
@@ -22,6 +23,7 @@ namespace Model.Models
         public ICollection<Review> Reviews { get; set; }
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<ApplicationUser> Friends { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

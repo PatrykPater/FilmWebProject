@@ -16,6 +16,7 @@ namespace Data
         public DbSet<Nomination> Nominations { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", false)
@@ -44,6 +45,7 @@ namespace Data
             modelBuilder.Configurations.Add(new AwardConfiguration());
             modelBuilder.Configurations.Add(new RatingConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
+            modelBuilder.Configurations.Add(new NotificationConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

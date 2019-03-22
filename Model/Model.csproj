@@ -60,6 +60,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Nomination.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Review.cs" />
