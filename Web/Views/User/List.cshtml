@@ -56,7 +56,7 @@
                 var button = $(e.target);
                 if (confirm("Are you sure? Delete action is permanent.")) {
                     $.ajax({
-                            url: "/api/user/" + button.attr("data-user-id"),
+                            url: "/api/users/" + button.attr("data-user-id"),
                             method: "POST"
                         })
                         .done(function() {

@@ -8,6 +8,7 @@ namespace Data.Infrastructure
         IGenreRepository Genres { get; }
         IUserRepository Users { get; }
         IRatingRepository Ratings { get; set; }
+        INotificationRepository Notifications { get; }
 
         void Complete();
     }

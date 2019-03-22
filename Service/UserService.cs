@@ -34,5 +34,12 @@ namespace Service
         {
             _unitOfWork.Complete();
         }
+
+        public void SendFriendRequest(ApplicationUser recipient, ApplicationUser sender)
+        {
+            var newNotification = new Notification() { Recipient = recipient, Sender = sender };
+
+            _unitOfWork.Notifications.AddNewNotification(newNotification);
+        }
     }
 }

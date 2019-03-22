@@ -10,6 +10,7 @@ namespace Data.Infrastructure
         public IGenreRepository Genres { get; }
         public IUserRepository Users { get; }
         public IRatingRepository Ratings { get; set; }
+        public INotificationRepository Notifications { get; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -18,6 +19,7 @@ namespace Data.Infrastructure
             Genres = new GenreRepository(_context);
             Users = new UserRepository(_context);
             Ratings = new RatingRepository(_context);
+            Notifications = new NotificationRepository(_context);
         }
 
         public void Complete()

@@ -15,15 +15,14 @@ namespace Web.Controllers.Api
 
         [HttpPost]
         [Authorize]
-        public IHttpActionResult Add(string id)
+        public IHttpActionResult SendFriendRequest(string id)
         {
-            var userId = User.Identity.GetUserId();
+            var senderId = User.Identity.GetUserId();
 
-            var user = _userService.GetUserById(userId);
-            var friend = _userService.GetUserById(id);
+            var sender = _userService.GetUserById(senderId);
+            var recipient = _userService.GetUserById(id);
 
-            user.Friends.Add(friend);
-            friend.Friends.Add(user);
+            _userService.SendFriendRequest(recipient, sender);
 
             _userService.Complete();
 
