@@ -88,13 +88,9 @@
     <Compile Include="EntityConfigurations\TrailerConfiguration.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201903211118582_TestingAfterRestructingTheApp.cs" />
-    <Compile Include="Migrations\201903211118582_TestingAfterRestructingTheApp.Designer.cs">
-      <DependentUpon>201903211118582_TestingAfterRestructingTheApp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903221104272_AddFriendsListFieldToUserClass.cs" />
-    <Compile Include="Migrations\201903221104272_AddFriendsListFieldToUserClass.Designer.cs">
-      <DependentUpon>201903221104272_AddFriendsListFieldToUserClass.cs</DependentUpon>
+    <Compile Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.cs" />
+    <Compile Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.Designer.cs">
+      <DependentUpon>201903221225530_SeedFirstNamesAndLastNames.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,11 +114,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903211118582_TestingAfterRestructingTheApp.resx">
-      <DependentUpon>201903211118582_TestingAfterRestructingTheApp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903221104272_AddFriendsListFieldToUserClass.resx">
-      <DependentUpon>201903221104272_AddFriendsListFieldToUserClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.resx">
+      <DependentUpon>201903221225530_SeedFirstNamesAndLastNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

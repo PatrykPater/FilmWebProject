@@ -51,31 +51,41 @@ namespace Data.Migrations
                 {
                     Id = "1",
                     UserName = "user1",
-                    Email = "user1@gmail.com"
+                    Email = "user1@gmail.com",
+                    FirstName = "Jack",
+                    LastName = "Brown"
                 },
                 new ApplicationUser
                 {
                     Id = "2",
                     UserName = "user2",
-                    Email = "user2@gmail.com"
+                    Email = "user2@gmail.com",
+                    FirstName = "Steven",
+                    LastName = "Black"
                 },
                 new ApplicationUser
                 {
                     Id = "3",
                     UserName = "user3",
-                    Email = "user3@gmail.com"
+                    Email = "user3@gmail.com",
+                    FirstName = "Beth",
+                    LastName = "Yellow"
                 },
                 new ApplicationUser
                 {
                     Id = "4",
                     UserName = "user4",
-                    Email = "user4@gmail.com"
+                    Email = "user4@gmail.com",
+                    FirstName = "Bob",
+                    LastName = "Orange"
                 },
                 new ApplicationUser
                 {
                     Id = "5",
                     UserName = "user5",
-                    Email = "user5@gmail.com"
+                    Email = "user5@gmail.com",
+                    FirstName = "Tom",
+                    LastName = "Grey"
                 },
             };
 

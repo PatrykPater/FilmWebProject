@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Web.ViewModels
 {
-    public class SearchUserViewModel
+    public class UserListViewModel
     {
-        public SearchUserViewModel()
+        public UserListViewModel()
         {
             Users = new List<ApplicationUser>();
         }

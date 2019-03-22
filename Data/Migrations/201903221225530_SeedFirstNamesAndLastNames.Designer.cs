@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddFriendsListFieldToUserClass : IMigrationMetadata
+    public sealed partial class SeedFirstNamesAndLastNames : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddFriendsListFieldToUserClass));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedFirstNamesAndLastNames));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903221104272_AddFriendsListFieldToUserClass"; }
+            get { return "201903221225530_SeedFirstNamesAndLastNames"; }
         }
         
         string IMigrationMetadata.Source

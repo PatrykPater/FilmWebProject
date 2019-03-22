@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TestingAfterRestructingTheApp : DbMigration
+    public partial class SeedFirstNamesAndLastNames : DbMigration
     {
         public override void Up()
         {
@@ -64,6 +64,8 @@ namespace Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -75,9 +77,12 @@ namespace Data.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
+                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex")
+                .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -236,6 +241,7 @@ namespace Data.Migrations
             DropForeignKey("dbo.Reviews", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Ratings", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUsers", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Ratings", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.FilmGenre", "GenreRefId", "dbo.Genres");
@@ -254,6 +260,7 @@ namespace Data.Migrations
             DropIndex("dbo.Reviews", new[] { "Author_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Ratings", new[] { "User_Id" });
             DropIndex("dbo.Ratings", new[] { "Film_Id" });

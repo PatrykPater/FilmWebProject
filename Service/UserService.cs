@@ -1,0 +1,28 @@
+﻿using Data.Infrastructure;
+using Model.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Service
+{
+    public class UserService : IUserService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public UserService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public List<ApplicationUser> GetAllUsers()
+        {
+            return _unitOfWork.Users.GetAllUsers();
+        }
+
+        public List<ApplicationUser> GetUsersByQuery(List<ApplicationUser> allUsers, string query)
+        {
+            var lowerCaseQuery = query.ToLower();
+            return allUsers.Where(u => u.FirstName.Contains(lowerCaseQuery) || u.LastName.Contains(lowerCaseQuery)).ToList();
+        }
+    }
+}

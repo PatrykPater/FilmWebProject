@@ -28,6 +28,8 @@ namespace Web
             builder.RegisterType<FilmRepository>().As<IFilmRepository>().InstancePerRequest();
             builder.RegisterType<FilmService>().As<IFilmService>().InstancePerRequest();
             builder.RegisterType<GenreHelper>().As<IGenreHelper>().InstancePerRequest();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))
