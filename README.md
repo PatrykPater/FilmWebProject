@@ -25,6 +25,7 @@ Currently working features:
 - Searching for a specific film in databse through searchbox and displaying it without reloading the page.
 - Ability to save the search for later use (the result of the search url consits of attached query string)
 - Rating a Film and displaying its overall Score (done in API)
+- Searching for other users/friends by last and first name.
 
 On todo list:
 
