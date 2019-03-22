@@ -1,0 +1,37 @@
+﻿@model Web.ViewModels.SearchUserViewModel
+@{
+    ViewBag.Title = "SearchUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search for a friend</h2>
+
+@using (Html.BeginForm("SearchUser", "User", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <div class="input-group">
+            @Html.TextBoxFor(s => s.Query, new { @class = "form-control", @placeholder = "Search" })
+            <div class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </div>
+        </div>
+    </div>
+}
+    <table class="table">
+
+        <tr>
+            <th>
+                Name
+            </th>
+        </tr>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details","User", new { id = user.Id})">
+                        @user.UserName
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
