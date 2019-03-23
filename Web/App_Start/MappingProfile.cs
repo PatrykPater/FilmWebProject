@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Model.Models;
+using Web.Dtos;
 using Web.ViewModels;
 
 namespace Web
@@ -14,6 +15,8 @@ namespace Web
             CreateMap<Film, FilmFormViewModel>();
             CreateMap<Film, FilmListViewModel>();
             CreateMap<FilmFormViewModel, Film>();
+            CreateMap<Notification, NotificationDto>();
+            CreateMap<NotificationDto, Notification>();
         }
     }
 }

@@ -9,7 +9,5 @@ namespace Model.Models
 
         public ApplicationUser Recipient { get; set; }
         public ApplicationUser Sender { get; set; }
-
-
     }
 }

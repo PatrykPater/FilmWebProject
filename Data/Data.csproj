@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201903221756216_AddNotificationTable.Designer.cs">
       <DependentUpon>201903221756216_AddNotificationTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903231224295_NotificationModelChange.cs" />
+    <Compile Include="Migrations\201903231224295_NotificationModelChange.Designer.cs">
+      <DependentUpon>201903231224295_NotificationModelChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FilmRepository.cs" />
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903221756216_AddNotificationTable.resx">
       <DependentUpon>201903221756216_AddNotificationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903231224295_NotificationModelChange.resx">
+      <DependentUpon>201903231224295_NotificationModelChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

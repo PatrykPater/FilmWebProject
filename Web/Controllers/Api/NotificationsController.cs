@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Model.Models;
 using Service;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using Web.Dtos;
 
 namespace Web.Controllers.Api
 {
@@ -15,10 +18,11 @@ namespace Web.Controllers.Api
             _notificationService = notificationService;
         }
 
-        public IEnumerable<Notification> List()
+        public IEnumerable<NotificationDto> GetNewNotifications()
         {
             var userId = User.Identity.GetUserId();
-            return _notificationService.GetAllUserNotifications(userId);
+            var notifications = _notificationService.GetAllUserNotifications(userId);
+            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
     }
 }

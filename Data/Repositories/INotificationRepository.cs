@@ -6,6 +6,6 @@ namespace Data.Repositories
     public interface INotificationRepository
     {
         void AddNewNotification(Notification notification);
-        List<Notification> GetAllUserNotifications(string userId)
+        List<Notification> GetAllUserNotifications(string userId);
     }
 }
