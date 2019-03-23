@@ -1,4 +1,6 @@
 ﻿using Model.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Data.Repositories
 {
@@ -14,6 +16,11 @@ namespace Data.Repositories
         public void AddNewNotification(Notification notification)
         {
             _context.Notifications.Add(notification);
+        }
+
+        public List<Notification> GetAllUserNotifications(string userId)
+        {
+            return _context.Notifications.Where(n => n.Recipient.Id == userId).ToList();
         }
     }
 }
