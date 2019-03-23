@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddNotificationTable : IMigrationMetadata
+    public sealed partial class NotificationIdTypeChange : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNotificationTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NotificationIdTypeChange));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903221756216_AddNotificationTable"; }
+            get { return "201903231240099_NotificationIdTypeChange"; }
         }
         
         string IMigrationMetadata.Source

@@ -89,17 +89,9 @@
     <Compile Include="EntityConfigurations\TrailerConfiguration.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.cs" />
-    <Compile Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.Designer.cs">
-      <DependentUpon>201903221225530_SeedFirstNamesAndLastNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903221756216_AddNotificationTable.cs" />
-    <Compile Include="Migrations\201903221756216_AddNotificationTable.Designer.cs">
-      <DependentUpon>201903221756216_AddNotificationTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903231224295_NotificationModelChange.cs" />
-    <Compile Include="Migrations\201903231224295_NotificationModelChange.Designer.cs">
-      <DependentUpon>201903231224295_NotificationModelChange.cs</DependentUpon>
+    <Compile Include="Migrations\201903231240099_NotificationIdTypeChange.cs" />
+    <Compile Include="Migrations\201903231240099_NotificationIdTypeChange.Designer.cs">
+      <DependentUpon>201903231240099_NotificationIdTypeChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,14 +117,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903221225530_SeedFirstNamesAndLastNames.resx">
-      <DependentUpon>201903221225530_SeedFirstNamesAndLastNames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903221756216_AddNotificationTable.resx">
-      <DependentUpon>201903221756216_AddNotificationTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903231224295_NotificationModelChange.resx">
-      <DependentUpon>201903231224295_NotificationModelChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903231240099_NotificationIdTypeChange.resx">
+      <DependentUpon>201903231240099_NotificationIdTypeChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

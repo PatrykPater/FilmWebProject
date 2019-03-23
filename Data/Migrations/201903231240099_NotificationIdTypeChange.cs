@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class SeedFirstNamesAndLastNames : DbMigration
+    public partial class NotificationIdTypeChange : DbMigration
     {
         public override void Up()
         {
@@ -108,6 +108,21 @@ namespace Data.Migrations
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.Notifications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        IsRead = c.Boolean(nullable: false),
+                        Recipient_Id = c.String(nullable: false, maxLength: 128),
+                        Sender_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.Recipient_Id, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.Sender_Id)
+                .Index(t => t.Recipient_Id)
+                .Index(t => t.Sender_Id);
             
             CreateTable(
                 "dbo.Reviews",
@@ -240,6 +255,8 @@ namespace Data.Migrations
             DropForeignKey("dbo.Reviews", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.Reviews", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Ratings", "User_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Notifications", "Sender_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Notifications", "Recipient_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUsers", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -258,6 +275,8 @@ namespace Data.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.Reviews", new[] { "Film_Id" });
             DropIndex("dbo.Reviews", new[] { "Author_Id" });
+            DropIndex("dbo.Notifications", new[] { "Sender_Id" });
+            DropIndex("dbo.Notifications", new[] { "Recipient_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", new[] { "ApplicationUser_Id" });
@@ -273,6 +292,7 @@ namespace Data.Migrations
             DropTable("dbo.Trailers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.Reviews");
+            DropTable("dbo.Notifications");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
