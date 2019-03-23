@@ -5,25 +5,24 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello @User.Identity.GetUserName() !<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                @*<li>@Html.ActionLink("Create Person", "Create", "Persons")</li>
-                  <li>@Html.ActionLink("List of people", "PeopleList", "Persons")</li>*@
-                <li>
-                    @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                    @Html.ActionLink("Find your friends on filmweb", "List", "User")
-                </li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Placeholder</a></li>
-            </ul>
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    @Html.Partial("_NotificationPartial")
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello @User.Identity.GetUserName() !<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>
+                @Html.ActionLink("Profile Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                @Html.ActionLink("Find your friends on filmweb", "List", "Users")
+            </li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Placeholder</a></li>
+        </ul>
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+</ul>
     }
 }
 else
@@ -33,3 +32,4 @@ else
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+    <i class="glyphicon glyphicon-list"></i>

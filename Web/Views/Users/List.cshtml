@@ -54,7 +54,7 @@
         $(document).ready(function() {
             $(".js-user-send-friend-request").click(function(e) {
                 var button = $(e.target);
-                if (confirm("Are you sure? Delete action is permanent.")) {
+                if (confirm("Do you want to send this friend request?")) {
                     $.ajax({
                             url: "/api/users/" + button.attr("data-user-id"),
                             method: "POST"
