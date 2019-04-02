@@ -1,0 +1,89 @@
+﻿@using Model.Models
+@model List<Model.Models.Notification>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+
+    <tr>
+        <th>
+            Your notifications
+        </th>
+        <th>
+            
+        </th>
+    </tr>
+    @foreach (var notification in Model)
+    {
+        if (notification.NotificationType == NotificationType.FriendRequest)
+        {
+            <tr>
+                <td>
+                    @notification.Sender.FirstName @notification.Sender.LastName has sent you a friend request!
+                </td>
+
+                <td>
+                    <a href="#" class="js-notification-accept" data-notification-id="@notification.Id">
+                        Accept
+                    </a>
+                    or
+                    <a href="#" class="js-notification-decline" data-notification-id="@notification.Id">
+                        Decline
+                    </a>
+                </td>
+            </tr>
+        }
+        
+    }
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-notification-accept").click(function(e) {
+                var link = $(e.target);
+
+                if (confirm("Are you sure you want to accept the friend request?")) {
+                    $.ajax({
+                            url: "/api/notifications/" + link.attr("data-notification-id"),
+                            method: "POST"
+                        })
+                        .done(function() {
+                            link.parents("tr").fadeOut(function() {
+                                $(this).remove();
+                            });
+                        })
+                        .fail(function() {
+                            alert("Something went wrong!");
+                        });
+                }
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".js-notification-decline").click(function(e) {
+                var link = $(e.target);
+
+                if (confirm("Are you sure you want decline the friend request?")) {
+                    $.ajax({
+                            url: "/api/notifications/" + link.attr("data-notification-id"),
+                            method: "POST"
+                        })
+                        .done(function() {
+                            link.parents("tr").fadeOut(function() {
+                                $(this).remove();
+                            });
+                        })
+                        .fail(function() {
+                            alert("Something went wrong!");
+                        });
+                }
+            });
+        })
+    </script>
+}

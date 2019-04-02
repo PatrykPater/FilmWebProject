@@ -1,5 +1,6 @@
 ﻿using Model.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Data.Repositories
@@ -20,7 +21,11 @@ namespace Data.Repositories
 
         public List<Notification> GetAllUserNotifications(string userId)
         {
-            return _context.Notifications.Where(n => n.Recipient.Id == userId).ToList();
+            return _context.Notifications
+                .Where(n => n.Recipient.Id == userId && n.IsRead == false)
+                .Include(n => n.Recipient)
+                .Include(n => n.Sender)
+                .ToList();
         }
     }
 }

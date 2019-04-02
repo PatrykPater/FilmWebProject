@@ -29,7 +29,7 @@ namespace Web.Controllers.Api
             _filmService.RemoveFilm(film);
             _filmService.Complete();
 
-            return Ok(); // Return 204 NoContent in the future
+            return Ok();
         }
 
         [HttpPost]

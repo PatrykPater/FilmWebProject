@@ -37,7 +37,7 @@ namespace Service
 
         public void SendFriendRequest(ApplicationUser recipient, ApplicationUser sender)
         {
-            var newNotification = new Notification() { Recipient = recipient, Sender = sender };
+            var newNotification = new Notification() { Recipient = recipient, Sender = sender, NotificationType = NotificationType.FriendRequest };
 
             _unitOfWork.Notifications.AddNewNotification(newNotification);
         }

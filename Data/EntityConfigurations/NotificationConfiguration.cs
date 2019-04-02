@@ -10,6 +10,8 @@ namespace Data.EntityConfigurations
             HasKey(n => n.Id);
 
             HasRequired(n => n.Recipient).WithMany(u => u.Notifications);
+
+            Property(n => n.NotificationType).IsRequired();
         }
     }
 }

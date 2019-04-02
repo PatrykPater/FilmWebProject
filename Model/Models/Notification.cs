@@ -7,5 +7,12 @@
 
         public ApplicationUser Recipient { get; set; }
         public ApplicationUser Sender { get; set; }
+        public NotificationType NotificationType { get; set; }
+    }
+
+    public enum NotificationType
+    {
+        FriendRequest,
+        NewFriendRating
     }
 }

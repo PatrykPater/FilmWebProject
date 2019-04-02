@@ -223,6 +223,7 @@
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dtos\NotificationDto.cs" />
     <Compile Include="Dtos\RatingDto.cs" />
@@ -318,9 +319,11 @@
     <Content Include="Views\Persons\Create.cshtml" />
     <Content Include="Views\Persons\PeopleList.cshtml" />
     <Content Include="Views\Users\List.cshtml" />
+    <Content Include="Views\Notifications\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
