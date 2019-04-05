@@ -25,11 +25,11 @@
                 </td>
 
                 <td>
-                    <a href="#" class="js-notification-accept" data-notification-id="@notification.Id">
+                    <a href="#" class="js-notification-friend-request" data-notification-id="@notification.Id" data-notification-friend-request-action = "Accept">
                         Accept
                     </a>
                     or
-                    <a href="#" class="js-notification-decline" data-notification-id="@notification.Id">
+                    <a href="#" class="js-notification-friend-request" data-notification-id="@notification.Id" data-notification-friend-request-action = "Decline">
                         Decline
                     </a>
                 </td>
@@ -43,36 +43,20 @@
 {
     <script>
         $(document).ready(function() {
-            $(".js-notification-accept").click(function(e) {
+            $(".js-notification-friend-request").click(function(e) {
                 var link = $(e.target);
 
-                if (confirm("Are you sure you want to accept the friend request?")) {
-                    $.ajax({
-                            url: "/api/notifications/" + link.attr("data-notification-id"),
-                            method: "POST"
-                        })
-                        .done(function() {
-                            link.parents("tr").fadeOut(function() {
-                                $(this).remove();
-                            });
-                        })
-                        .fail(function() {
-                            alert("Something went wrong!");
-                        });
-                }
-            });
-        })
-    </script>
+                var notificationDto = {
+                    id: link.attr("data-notification-id"),
+                    Action: link.attr("data-notification-friend-request-action")
+                };
 
-    <script>
-        $(document).ready(function() {
-            $(".js-notification-decline").click(function(e) {
-                var link = $(e.target);
-
-                if (confirm("Are you sure you want decline the friend request?")) {
+                if (confirm("Are you sure you want to perform ths action?")) {
                     $.ajax({
-                            url: "/api/notifications/" + link.attr("data-notification-id"),
-                            method: "POST"
+                            url: "/api/notifications/FriendRequestResponse",
+                            method: "POST",
+                            contentType: 'application/json',
+                            data: JSON.stringify(notificationDto)
                         })
                         .done(function() {
                             link.parents("tr").fadeOut(function() {

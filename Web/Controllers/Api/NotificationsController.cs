@@ -24,5 +24,12 @@ namespace Web.Controllers.Api
             var notifications = _notificationService.GetAllUserNotifications(userId);
             return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
+
+        [HttpPost]
+        public IHttpActionResult FriendRequestResponse([FromBody]NotificationDto notificationDto)
+        {
+
+            return Ok();
+        }
     }
 }
