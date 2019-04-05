@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NotificationIdTypeChange : DbMigration
+    public partial class test : DbMigration
     {
         public override void Up()
         {
@@ -115,6 +115,7 @@ namespace Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         IsRead = c.Boolean(nullable: false),
+                        NotificationType = c.Int(nullable: false),
                         Recipient_Id = c.String(nullable: false, maxLength: 128),
                         Sender_Id = c.String(maxLength: 128),
                     })

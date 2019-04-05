@@ -89,13 +89,9 @@
     <Compile Include="EntityConfigurations\TrailerConfiguration.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201903231240099_NotificationIdTypeChange.cs" />
-    <Compile Include="Migrations\201903231240099_NotificationIdTypeChange.Designer.cs">
-      <DependentUpon>201903231240099_NotificationIdTypeChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903231316090_NotificationType.cs" />
-    <Compile Include="Migrations\201903231316090_NotificationType.Designer.cs">
-      <DependentUpon>201903231316090_NotificationType.cs</DependentUpon>
+    <Compile Include="Migrations\201904041835341_test.cs" />
+    <Compile Include="Migrations\201904041835341_test.Designer.cs">
+      <DependentUpon>201904041835341_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,15 +113,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903231240099_NotificationIdTypeChange.resx">
-      <DependentUpon>201903231240099_NotificationIdTypeChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903231316090_NotificationType.resx">
-      <DependentUpon>201903231316090_NotificationType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904041835341_test.resx">
+      <DependentUpon>201904041835341_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
