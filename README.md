@@ -21,15 +21,16 @@ Currently working features:
 - Updating film's details
 - Deleting a film (done in API)
 - Displaying list of films and some of their details in a table
-- Looking up all of film's details at a separate page.
-- Searching by title for a specific film in databse through searchbox and displaying it without reloading the page.
+- Looking up all of film's details at it's own page.
+- Searching by title for a specific film in databse through searchbox.
 - Option to bookmark the search
 - Rating a Film and displaying its overall Score (done in API)
 - Searching for other users/friends by last and first name, an option to bookmark the search.
+- Working notification system, should be easy to expand, at the moment it supports friend requests only, you get the number of new notifications upon login into your account. You can check those notifications at separate page where they are displayed in a table with appriopriate actions available to them (like accepting/declinging a friend request). (done mainly in API)
+- You can add another user as a friend if they accept your friend request. (done in API)
 
 On todo list:
 
-- Ability for a user to add another user as a friend.
 - Notification if your friend has rated a film.
 - Abilit to comment on the notification.
 - Ability to write a review about a movie.
