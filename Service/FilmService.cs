@@ -16,7 +16,7 @@ namespace Service
 
         public List<Genre> GetAllGenres()
         {
-            return _unitOfWork.Genres.GetAllGenres();
+            return _unitOfWork.Genres.GetAll();
         }
 
         public void AddNewFilm(Film film)
@@ -31,7 +31,7 @@ namespace Service
 
         public List<Film> GetAllFilms()
         {
-            return _unitOfWork.Films.GetAllFilms();
+            return _unitOfWork.Films.GetAll();
         }
 
         public List<Film> GetFilmsByQuery(List<Film> films, string query)
@@ -47,12 +47,12 @@ namespace Service
 
         public Film GetFilmById(int id)
         {
-            return _unitOfWork.Films.GetOneFilm(id);
+            return _unitOfWork.Films.GetById(id);
         }
 
         public void RemoveFilm(Film film)
         {
-            _unitOfWork.Films.Remove(film);
+            _unitOfWork.Films.Delete(film);
         }
 
         public ApplicationUser GetUserById(string id)
@@ -63,7 +63,7 @@ namespace Service
         public void AddNewRating(Film film, ApplicationUser user, int value)
         {
             var newRating = new Rating { Film = film, User = user, Value = value };
-            _unitOfWork.Ratings.AddNewRating(newRating);
+            _unitOfWork.Ratings.Add(newRating);
         }
 
         public Rating GetUserRating(int filmId, string userId)

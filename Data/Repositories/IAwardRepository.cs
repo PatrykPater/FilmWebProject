@@ -3,7 +3,7 @@ using Model.Models;
 
 namespace Data.Repositories
 {
-    public interface IGenreRepository : IRepository<Genre>
+    public interface IAwardRepository : IRepository<Award>
     {
     }
 }

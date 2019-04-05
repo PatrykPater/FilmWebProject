@@ -20,7 +20,7 @@ namespace Web.Helpers
 
             foreach (var genreViewModel in viewModel.Genres)
                 if (genreViewModel.IsChecked)
-                    listOfSelectedGenres.Add(_unitOfWork.Genres.GetGenreById(genreViewModel.Id));
+                    listOfSelectedGenres.Add(_unitOfWork.Genres.GetById(genreViewModel.Id));
 
             return listOfSelectedGenres;
         }

@@ -1,15 +1,16 @@
-﻿using Model.Models;
+﻿using Data.Infrastructure;
+using Model.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace Data.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : RepositoryBase<ApplicationUser>, IUserRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public UserRepository(ApplicationDbContext context)
+        public UserRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }

@@ -1,13 +1,12 @@
-﻿using Model.Models;
+﻿using Data.Infrastructure;
+using Model.Models;
 using System.Collections.Generic;
 
 namespace Data.Repositories
 {
-    public interface IFilmRepository
+    public interface IFilmRepository : IRepository<Film>
     {
-        void Add(Film newFilm);
-        List<Film> GetAllFilms();
-        Film GetOneFilm(int id);
-        void Remove(Film film);
+        new List<Film> GetAll();
+        new Film GetById(int id);
     }
 }

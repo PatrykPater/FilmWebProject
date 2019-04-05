@@ -20,7 +20,7 @@ namespace Service
 
         public Notification GetNotificationById(int id)
         {
-            return _unitOfWork.Notifications.GetNotificationById(id);
+            return _unitOfWork.Notifications.GetById(id);
         }
 
         public void AcceptFriendRequest(Notification notification)
@@ -34,7 +34,7 @@ namespace Service
 
         public void Complete()
         {
-            _unitOfWork.Notifications.Complete();
+            _unitOfWork.Complete();
         }
     }
 }

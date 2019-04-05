@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AwardService.cs" />
     <Compile Include="FilmService.cs" />
+    <Compile Include="IAwardService.cs" />
     <Compile Include="IFilmService.cs" />
     <Compile Include="INotificationService.cs" />
     <Compile Include="IUserService.cs" />

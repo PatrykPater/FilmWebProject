@@ -25,6 +25,8 @@ namespace Web.Controllers.Api
             return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
 
+        //User can accept the same friend request multiple times, as well as send one to the same user. Fix in the nearby future
+
         [HttpPost]
         public IHttpActionResult FriendRequestResponse([FromBody]NotificationDto notificationDto)
         {

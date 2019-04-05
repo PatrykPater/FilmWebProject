@@ -1,26 +1,12 @@
-﻿using Model.Models;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Data.Infrastructure;
+using Model.Models;
 
 namespace Data.Repositories
 {
-    public class GenreRepository : IGenreRepository
+    public class GenreRepository : RepositoryBase<Genre>, IGenreRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public GenreRepository(ApplicationDbContext context)
+        public GenreRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public List<Genre> GetAllGenres()
-        {
-            return _context.Genres.ToList();
-        }
-
-        public Genre GetGenreById(int id)
-        {
-            return _context.Genres.Single(g => g.Id == id);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Data.Infrastructure
         IUserRepository Users { get; }
         IRatingRepository Ratings { get; set; }
         INotificationRepository Notifications { get; }
+        IAwardRepository Awards { get; }
 
         void Complete();
     }

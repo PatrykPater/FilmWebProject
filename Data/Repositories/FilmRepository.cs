@@ -1,43 +1,34 @@
-﻿using Model.Models;
+﻿using Data.Infrastructure;
+using Model.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace Data.Repositories
 {
-    public class FilmRepository : IFilmRepository
+    public class FilmRepository : RepositoryBase<Film>, IFilmRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public FilmRepository(ApplicationDbContext context)
+        public FilmRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
 
-        public List<Film> GetAllFilms()
+        public override List<Film> GetAll()
         {
             return _context.Films
-                .Include(f => f.Genres)
-                .Include(f => f.Ratings)
-                .ToList();
+                    .Include(f => f.Genres)
+                    .Include(f => f.Ratings)
+                    .ToList();
         }
 
-        public Film GetOneFilm(int id)
+        public override Film GetById(int id)
         {
             return _context.Films
-                .Include(f => f.Genres)
-                .Include(f => f.Ratings)
-                .Single(f => f.Id == id);
-        }
-
-        public void Add(Film newFilm)
-        {
-            _context.Films.Add(newFilm);
-        }
-
-        public void Remove(Film film)
-        {
-            _context.Films.Remove(film);
+                    .Include(f => f.Genres)
+                    .Include(f => f.Ratings)
+                    .Single(f => f.Id == id);
         }
     }
 }

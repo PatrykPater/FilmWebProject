@@ -1,22 +1,18 @@
-﻿using Model.Models;
+﻿using Data.Infrastructure;
+using Model.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace Data.Repositories
 {
-    public class NotificationRepository : INotificationRepository
+    public class NotificationRepository : RepositoryBase<Notification>, INotificationRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public NotificationRepository(ApplicationDbContext context)
+        public NotificationRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
-        }
-
-        public void AddNewNotification(Notification notification)
-        {
-            _context.Notifications.Add(notification);
         }
 
         public List<Notification> GetAllUserNotifications(string userId)
@@ -28,17 +24,12 @@ namespace Data.Repositories
                 .ToList();
         }
 
-        public Notification GetNotificationById(int id)
+        public override Notification GetById(int id)
         {
             return _context.Notifications
-                .Include(n => n.Recipient)
-                .Include(n => n.Sender)
-                .Single(n => n.IsRead == false && n.Id == id);
-        }
-
-        public void Complete()
-        {
-            _context.SaveChanges();
+                    .Include(n => n.Recipient)
+                    .Include(n => n.Sender)
+                    .Single(n => n.IsRead == false && n.Id == id);
         }
     }
 }

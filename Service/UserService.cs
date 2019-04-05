@@ -39,7 +39,7 @@ namespace Service
         {
             var newNotification = new Notification() { Recipient = recipient, Sender = sender, NotificationType = NotificationType.FriendRequest };
 
-            _unitOfWork.Notifications.AddNewNotification(newNotification);
+            _unitOfWork.Notifications.Add(newNotification);
         }
     }
 }
