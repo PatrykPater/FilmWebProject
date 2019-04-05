@@ -28,6 +28,14 @@ namespace Web.Controllers.Api
         [HttpPost]
         public IHttpActionResult FriendRequestResponse([FromBody]NotificationDto notificationDto)
         {
+            var notification = _notificationService.GetNotificationById(notificationDto.Id);
+
+            if (notificationDto.IsAccepted)
+                _notificationService.AcceptFriendRequest(notification);
+
+            notification.IsRead = true;
+
+            _notificationService.Complete();
 
             return Ok();
         }

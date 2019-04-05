@@ -7,5 +7,7 @@ namespace Data.Repositories
     {
         void AddNewNotification(Notification notification);
         List<Notification> GetAllUserNotifications(string userId);
+        Notification GetNotificationById(int id);
+        void Complete();
     }
 }

@@ -17,5 +17,24 @@ namespace Service
         {
             return _unitOfWork.Notifications.GetAllUserNotifications(userId);
         }
+
+        public Notification GetNotificationById(int id)
+        {
+            return _unitOfWork.Notifications.GetNotificationById(id);
+        }
+
+        public void AcceptFriendRequest(Notification notification)
+        {
+            var recipient = notification.Recipient;
+            var sender = notification.Sender;
+
+            notification.Recipient.Friends.Add(sender);
+            notification.Sender.Friends.Add(recipient);
+        }
+
+        public void Complete()
+        {
+            _unitOfWork.Notifications.Complete();
+        }
     }
 }

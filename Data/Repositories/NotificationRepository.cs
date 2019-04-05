@@ -27,5 +27,18 @@ namespace Data.Repositories
                 .Include(n => n.Sender)
                 .ToList();
         }
+
+        public Notification GetNotificationById(int id)
+        {
+            return _context.Notifications
+                .Include(n => n.Recipient)
+                .Include(n => n.Sender)
+                .Single(n => n.IsRead == false && n.Id == id);
+        }
+
+        public void Complete()
+        {
+            _context.SaveChanges();
+        }
     }
 }
