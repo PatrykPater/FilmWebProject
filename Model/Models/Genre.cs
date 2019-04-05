@@ -8,6 +8,7 @@ namespace Model.Models
         {
             Films = new List<Film>();
         }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Film> Films { get; set; }

@@ -12,6 +12,7 @@ namespace Data.Repositories
         {
             _context = context;
         }
+
         public Rating GetUserRating(int filmId, string userId)
         {
             return _context.Ratings

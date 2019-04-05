@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Data.Infrastructure
 {
@@ -29,9 +31,27 @@ namespace Data.Infrastructure
         {
             return _dbSet.ToList();
         }
+
         public virtual void Delete(T entity)
         {
             _dbSet.Remove(entity);
+        }
+
+        public virtual void Delete(Expression<Func<T, bool>> where)
+        {
+            var objects = _dbSet.Where<T>(where).AsEnumerable();
+            foreach (var obj in objects)
+                _dbSet.Remove(obj);
+        }
+
+        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
+        {
+            return _dbSet.Where(where).ToList();
+        }
+
+        public T Get(Expression<Func<T, bool>> where)
+        {
+            return _dbSet.Where(where).FirstOrDefault<T>();
         }
     }
 }
