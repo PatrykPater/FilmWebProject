@@ -12,6 +12,7 @@ namespace Data.Infrastructure
         public IRatingRepository Ratings { get; set; }
         public INotificationRepository Notifications { get; }
         public IAwardRepository Awards { get; }
+        public IPersonRepository Persons { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -22,6 +23,7 @@ namespace Data.Infrastructure
             Ratings = new RatingRepository(_context);
             Notifications = new NotificationRepository(_context);
             Awards = new AwardRepository(_context);
+            Persons = new PersonRepository(_context);
         }
 
         public void Complete()

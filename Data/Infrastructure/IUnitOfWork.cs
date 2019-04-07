@@ -10,6 +10,7 @@ namespace Data.Infrastructure
         IRatingRepository Ratings { get; set; }
         INotificationRepository Notifications { get; }
         IAwardRepository Awards { get; }
+        IPersonRepository Persons { get; set; }
 
         void Complete();
     }

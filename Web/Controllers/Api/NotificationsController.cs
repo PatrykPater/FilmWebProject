@@ -18,6 +18,7 @@ namespace Web.Controllers.Api
             _notificationService = notificationService;
         }
 
+        [HttpGet]
         public IEnumerable<NotificationDto> GetNewNotifications()
         {
             var userId = User.Identity.GetUserId();
