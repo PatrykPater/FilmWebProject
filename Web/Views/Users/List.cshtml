@@ -1,4 +1,5 @@
-﻿@model Web.ViewModels.UserListViewModel
+﻿@using WebGrease.Css.Extensions
+@model Web.ViewModels.UserListViewModel
 @{
     ViewBag.Title = "SearchUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -26,7 +27,7 @@
                 Name
             </th>
             <th>
-                
+
             </th>
         </tr>
 
@@ -39,9 +40,26 @@
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="js-user-send-friend-request" data-user-id="@user.Id">
-                        Send friend request
-                    </a>
+                    @if (user.Id != Model.User.Id)
+                    {
+                        foreach (var friend in Model.User.Friends)
+                        {
+                            if (friend.Id == user.Id)
+                            {
+                                <span>@user.FirstName @user.LastName is already your friend!</span>
+                            }
+                            else
+                            {
+                                <a href="#" class="js-user-send-friend-request" data-user-id="@user.Id">
+                                    Send friend request
+                                </a>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <span>---</span>
+                    }
                 </td>
             </tr>
         }

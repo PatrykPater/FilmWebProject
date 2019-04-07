@@ -22,6 +22,12 @@ namespace Web.Controllers.Api
             var sender = _userService.GetUserById(senderId);
             var recipient = _userService.GetUserById(id);
 
+            if (sender.Friends.Contains(recipient))
+                return BadRequest();
+
+            if (sender.Id == id)
+                return BadRequest();
+
             _userService.SendFriendRequest(recipient, sender);
 
             _userService.Complete();

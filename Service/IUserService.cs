@@ -6,7 +6,7 @@ namespace Service
     public interface IUserService
     {
         List<ApplicationUser> GetAllUsers();
-        List<ApplicationUser> GetUsersByQuery(List<ApplicationUser> allUsers, string query);
+        List<ApplicationUser> GetUsersByQuery(string query);
         ApplicationUser GetUserById(string id);
         void SendFriendRequest(ApplicationUser recipient, ApplicationUser sender);
         void Complete();

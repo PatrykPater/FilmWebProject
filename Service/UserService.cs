@@ -19,8 +19,9 @@ namespace Service
             return _unitOfWork.Users.GetAllUsers();
         }
 
-        public List<ApplicationUser> GetUsersByQuery(List<ApplicationUser> allUsers, string query)
+        public List<ApplicationUser> GetUsersByQuery(string query)
         {
+            var allUsers = _unitOfWork.Users.GetAllUsers();
             var lowerCaseQuery = query.ToLower();
             return allUsers.Where(u => u.FirstName.ToLower().Contains(lowerCaseQuery) || u.LastName.ToLower().Contains(lowerCaseQuery)).ToList();
         }

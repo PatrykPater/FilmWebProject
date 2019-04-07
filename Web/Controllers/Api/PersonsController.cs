@@ -22,7 +22,6 @@ namespace Web.Controllers.Api
         {
             var persons = _personService.GetAllPersons()
                 .OrderBy(p => p.LastName)
-                .ToList()
                 .Select(p => _dtoFactory.Create(p));
 
             return persons;

@@ -12,5 +12,6 @@ namespace Web.ViewModels
         public string Query { get; set; }
         public ICollection<ApplicationUser> Users { get; set; }
         public bool IsSearched { get; set; } = false;
+        public ApplicationUser User { get; set; }
     }
 }
