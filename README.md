@@ -30,8 +30,6 @@ Currently working features:
 - You can add another user as a friend if they accept your friend request. (done in API)
 
 On todo list:
-
-- Refactor Data layer to get rid of duplicate and redundant code
 - Implement API controllers according to REST guidelines.
 - Notification if your friend has rated a film.
 - Abilit to comment on the notification.
