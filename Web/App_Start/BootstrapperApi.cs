@@ -6,6 +6,7 @@ using Data.Repositories;
 using Service;
 using System.Reflection;
 using System.Web.Http;
+using Web.Dtos;
 using Web.Helpers;
 
 namespace Web
@@ -37,6 +38,7 @@ namespace Web
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<PersonRepository>().As<IPersonRepository>().InstancePerRequest();
             builder.RegisterType<PersonService>().As<IPersonService>().InstancePerRequest();
+            builder.RegisterType<DtoFactory>().As<IDtoFactory>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))

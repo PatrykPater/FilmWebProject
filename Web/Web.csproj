@@ -226,7 +226,11 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Dtos\DtoFactory.cs" />
+    <Compile Include="Dtos\IDtoFactory.cs" />
+    <Compile Include="Dtos\JobDto.cs" />
     <Compile Include="Dtos\NotificationDto.cs" />
+    <Compile Include="Dtos\PersonDto.cs" />
     <Compile Include="Dtos\RatingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
