@@ -1,7 +1,7 @@
 # FilmWebProject
-The project's features are based on popular polish website Filmweb. The goal is to practise the use of technologies i already know, as well as learning and implementing new ones. The focus of the project is backend code as im trying to be primarily a backend developer, though if i have the time, i will try and learn more about frontend technologies and improve this aspect of the app in the future. As it is right now, it consists mainly of copy & paste bootstrap templates just to give me some tangible interface i can work with.
+The project's features are based on popular polish website Filmweb. The goal is to practise the use of technologies i already know, as well as learning and implementing new ones. The focus of the project is back-end code as im trying to be primarily a back-end developer, though if i have the time, i will try and learn more about frontend technologies and improve this aspect of the app in the future.
 
-The app is made in .NET Framework. I'm currently learning about clean architecture and slowly trying to improve the app according its concepts. The current architecture is based on the concept of layering. There are Data, Model, Repository, Service and Presentation layers, decoupled from each other thanks to Unit Of Work design pattern and Dependency Injection performed with Autofac. Soem of the features are also done in API, though they are not done according to REST guidelines yet. I'm also trying to follow the guidelines of SOLID, the concept is relatively difficult to implement properly for someone new like myself, it's a work in progress and something i'm trying to improve on.
+The app is made in .NET Framework. The current architecture is based on the concept of layering. There are Data, Model, Repository, Service and Presentation layers, decoupled from each other thanks to Unit Of Work design pattern and Dependency Injection performed with Autofac. Some of the features are done in API, though they are not fully following REST guidelines yet. I'm also trying to follow the guidelines of SOLID, it's work in progress and something i intend to improve on over time.
 
 The technologies used to write the app:
 
@@ -30,8 +30,8 @@ Currently working features:
 - You can add another user as a friend if they accept your friend request. (done in API)
 
 On todo list:
-- Implement API controllers according to REST guidelines.
-- Notification if your friend has rated a film.
+- Rework API controllers so that they follow REST guidelines better.
+- Add notification if your friend has rated a film.
 - Abilit to comment on the notification.
 - Ability to write a review about a movie.
 - Ability to lookup film's reviews and comment on them.
