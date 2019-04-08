@@ -70,6 +70,9 @@ namespace Web.Controllers
 
         public ActionResult Details(int id)
         {
+            if (id <= 0)
+                return HttpNotFound();
+
             var film = _filmService.GetFilmById(id);
 
             if (film == null)

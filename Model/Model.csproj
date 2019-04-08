@@ -59,6 +59,8 @@
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\NewsTags.cs" />
     <Compile Include="Models\Nomination.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Person.cs" />
