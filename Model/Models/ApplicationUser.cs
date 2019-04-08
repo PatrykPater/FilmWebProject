@@ -24,6 +24,7 @@ namespace Model.Models
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<ApplicationUser> Friends { get; set; }
         public ICollection<Notification> Notifications { get; set; }
+        public ICollection<News> News { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

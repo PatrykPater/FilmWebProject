@@ -41,6 +41,8 @@ namespace Data
             modelBuilder.Configurations.Add(new RatingConfiguration());
             modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new NotificationConfiguration());
+            modelBuilder.Configurations.Add(new NewsConfiguration());
+            modelBuilder.Configurations.Add(new NewsTagsConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
