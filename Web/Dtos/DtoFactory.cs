@@ -1,5 +1,4 @@
 ﻿using Model.Models;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Web.Dtos
@@ -30,9 +29,24 @@ namespace Web.Dtos
             };
         }
 
-        public List<NewsDto> CreateNewsDto(IEnumerable<News> news)
+        public NewsDto CreateNewsDto(News news)
         {
-            return new List<NewsDto>();
+            return new NewsDto()
+            {
+                Author = news.Author,
+                Content = news.Content,
+                DateOfPublication = news.DateOfPublication,
+                Tags = news.Tags.Select(t => CreateNewsTagDto(t)),
+                Title = news.Title
+            };
+        }
+
+        public NewsTagsDto CreateNewsTagDto(NewsTags newsTags)
+        {
+            return new NewsTagsDto()
+            {
+                Name = newsTags.Name
+            };
         }
     }
 }

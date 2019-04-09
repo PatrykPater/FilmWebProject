@@ -1,5 +1,6 @@
 ﻿using Service;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using Web.Dtos;
 
@@ -17,11 +18,12 @@ namespace Web.Controllers.Api
         }
 
         [HttpGet]
-        public ICollection<NewsDto> Get()
+        public IEnumerable<NewsDto> Get()
         {
-            var news = _newsService.GetAllNews();
+            var news = _newsService.GetAllNews()
+                .Select(n => _dtoFactory.CreateNewsDto(n));
 
-            return _dtoFactory.CreateNewsDto(news);
+            return news;
         }
     }
 }

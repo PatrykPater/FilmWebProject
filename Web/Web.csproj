@@ -231,6 +231,7 @@
     <Compile Include="Dtos\IDtoFactory.cs" />
     <Compile Include="Dtos\JobDto.cs" />
     <Compile Include="Dtos\NewsDto.cs" />
+    <Compile Include="Dtos\NewsTagsDto.cs" />
     <Compile Include="Dtos\NotificationDto.cs" />
     <Compile Include="Dtos\PersonDto.cs" />
     <Compile Include="Dtos\RatingDto.cs" />

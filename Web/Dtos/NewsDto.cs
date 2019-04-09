@@ -10,7 +10,7 @@ namespace Web.Dtos
         public string Content { get; set; }
         public DateTime DateOfPublication { get; set; }
 
-        public ICollection<NewsTags> Tags { get; set; }
+        public IEnumerable<NewsTagsDto> Tags { get; set; }
         public ApplicationUser Author { get; set; }
     }
 }
