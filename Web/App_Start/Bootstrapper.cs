@@ -31,6 +31,8 @@ namespace Web
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<NotificationService>().As<INotificationService>().InstancePerRequest();
+            builder.RegisterType<NewsRepository>().As<INewsRepository>().InstancePerRequest();
+            builder.RegisterType<NewsService>().As<INewsService>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))

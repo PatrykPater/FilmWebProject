@@ -11,6 +11,7 @@ namespace Data.Infrastructure
         INotificationRepository Notifications { get; }
         IAwardRepository Awards { get; }
         IPersonRepository Persons { get; set; }
+        INewsRepository News { get; set; }
 
         void Complete();
     }

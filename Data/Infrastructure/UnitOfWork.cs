@@ -13,6 +13,7 @@ namespace Data.Infrastructure
         public INotificationRepository Notifications { get; }
         public IAwardRepository Awards { get; }
         public IPersonRepository Persons { get; set; }
+        public INewsRepository News { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {

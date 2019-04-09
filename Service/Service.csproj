@@ -45,9 +45,11 @@
     <Compile Include="FilmService.cs" />
     <Compile Include="IAwardService.cs" />
     <Compile Include="IFilmService.cs" />
+    <Compile Include="INewsService.cs" />
     <Compile Include="INotificationService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="NewsService.cs" />
     <Compile Include="NotificationService.cs" />
     <Compile Include="PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
