@@ -17,6 +17,8 @@ namespace Data
         public DbSet<Trailer> Trailers { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<NewsTags> NewsTags { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", false)

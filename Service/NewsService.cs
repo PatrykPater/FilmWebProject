@@ -1,14 +1,22 @@
-﻿using Data.Repositories;
+﻿using Data.Infrastructure;
+using Model.Models;
+using System.Collections.Generic;
 
 namespace Service
 {
     public class NewsService : INewsService
     {
-        private readonly INewsRepository _newsRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public NewsService(INewsRepository newsRepository)
+        public NewsService(IUnitOfWork unitOfWork)
         {
-            _newsRepository = newsRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+
+        public IEnumerable<News> GetAllNews()
+        {
+            return _unitOfWork.News.GetAll();
         }
     }
 }

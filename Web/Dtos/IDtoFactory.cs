@@ -7,6 +7,6 @@ namespace Web.Dtos
     {
         JobDto CreateJobDto(Job job);
         PersonDto CreatePersonDto(Person person);
-        List<NewsDto> CreateNewsDto();
+        List<NewsDto> CreateNewsDto(IEnumerable<News> news);
     }
 }

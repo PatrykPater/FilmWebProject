@@ -30,7 +30,7 @@ namespace Web.Dtos
             };
         }
 
-        public List<NewsDto> CreateNewsDto()
+        public List<NewsDto> CreateNewsDto(IEnumerable<News> news)
         {
             return new List<NewsDto>();
         }

@@ -19,7 +19,9 @@ namespace Web.Controllers.Api
         [HttpGet]
         public ICollection<NewsDto> Get()
         {
-            return _dtoFactory.CreateNewsDto();
+            var news = _newsService.GetAllNews();
+
+            return _dtoFactory.CreateNewsDto(news);
         }
     }
 }

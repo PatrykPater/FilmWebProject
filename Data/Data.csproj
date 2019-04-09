@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201904081831325_AddNewsAndNewsTagsTables.Designer.cs">
       <DependentUpon>201904081831325_AddNewsAndNewsTagsTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904091050363_ChangeReferenceFieldNameAtNewsModel.cs" />
+    <Compile Include="Migrations\201904091050363_ChangeReferenceFieldNameAtNewsModel.Designer.cs">
+      <DependentUpon>201904091050363_ChangeReferenceFieldNameAtNewsModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AwardRepository.cs" />
@@ -145,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904081831325_AddNewsAndNewsTagsTables.resx">
       <DependentUpon>201904081831325_AddNewsAndNewsTagsTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904091050363_ChangeReferenceFieldNameAtNewsModel.resx">
+      <DependentUpon>201904091050363_ChangeReferenceFieldNameAtNewsModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

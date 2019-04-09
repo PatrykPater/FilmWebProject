@@ -9,7 +9,7 @@ namespace Data.EntityConfigurations
         {
             HasKey(n => n.Id);
 
-            HasMany(n => n.Type)
+            HasMany(n => n.Tags)
                 .WithMany(t => t.News)
                 .Map(nt =>
                 {
