@@ -1,10 +1,12 @@
 ﻿using Model.Models;
+using System.Collections.Generic;
 
 namespace Web.Dtos
 {
     public interface IDtoFactory
     {
-        JobDto Create(Job job);
-        PersonDto Create(Person person);
+        JobDto CreateJobDto(Job job);
+        PersonDto CreatePersonDto(Person person);
+        List<NewsDto> CreateNewsDto();
     }
 }

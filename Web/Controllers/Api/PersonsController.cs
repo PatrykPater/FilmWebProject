@@ -22,7 +22,7 @@ namespace Web.Controllers.Api
         {
             var persons = _personService.GetAllPersons()
                 .OrderBy(p => p.LastName)
-                .Select(p => _dtoFactory.Create(p));
+                .Select(p => _dtoFactory.CreatePersonDto(p));
 
             return persons;
 
