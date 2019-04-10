@@ -4,6 +4,7 @@ using System.Web.Http;
 
 namespace Web.Controllers.Api
 {
+    [Authorize]
     public class UsersController : ApiController
     {
         private readonly IUserService _userService;
@@ -14,7 +15,6 @@ namespace Web.Controllers.Api
         }
 
         [HttpPost]
-        [Authorize]
         public IHttpActionResult SendFriendRequest(string id)
         {
             var senderId = User.Identity.GetUserId();

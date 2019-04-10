@@ -1,5 +1,4 @@
 ﻿using Service;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Web.Dtos;
@@ -18,13 +17,13 @@ namespace Web.Controllers.Api
         }
 
         [HttpGet]
-        public IEnumerable<PersonDto> Get()
+        public IHttpActionResult Get()
         {
             var persons = _personService.GetAllPersons()
                 .OrderBy(p => p.LastName)
                 .Select(p => _dtoFactory.CreatePersonDto(p));
 
-            return persons;
+            return Ok(persons);
 
         }
     }

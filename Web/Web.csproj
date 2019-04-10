@@ -219,6 +219,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\FilmsController.cs" />
     <Compile Include="Controllers\Api\HomeController.cs" />
+    <Compile Include="Controllers\Api\NewsController.cs" />
     <Compile Include="Controllers\Api\NotificationsController.cs" />
     <Compile Include="Controllers\Api\PersonsController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />

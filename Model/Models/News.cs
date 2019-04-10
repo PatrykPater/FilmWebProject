@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 {
@@ -11,8 +10,7 @@ namespace Model.Models
             Tags = new List<NewsTags>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime DateOfPublication { get; set; }

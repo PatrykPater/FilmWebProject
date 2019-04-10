@@ -899,6 +899,112 @@ namespace Data.Migrations
 
             trailers.ForEach(t => context.Trailers.AddOrUpdate(t));
             context.SaveChanges();
+
+            var newsTags = new List<NewsTags>()
+            {
+                new NewsTags()
+                {
+                    Id = 1,
+                    Name = "Movies"
+                },
+                new NewsTags()
+                {
+                    Id = 2,
+                    Name = "Celebrities"
+                },
+                new NewsTags()
+                {
+                    Id = 3,
+                    Name = "TV shows"
+                }
+            };
+
+            newsTags.ForEach(nt => context.NewsTags.AddOrUpdate(nt));
+            context.SaveChanges();
+
+            var news = new List<News>()
+            {
+                new News()
+                {
+                    Author = users.ElementAt(0),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    Id = 1,
+                    Title = "Title 1",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(0)
+                    }
+                },
+                new News()
+                {
+                    Author = users.ElementAt(1),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    Id = 2,
+                    Title = "Title 2",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(0),
+                        newsTags.ElementAt(1)
+                    }
+                },
+                new News()
+                {
+                    Author = users.ElementAt(2),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    Id = 3,
+                    Title = "Title 3",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(0),
+                        newsTags.ElementAt(2)
+                    }
+                },
+                new News()
+                {
+                    Author = users.ElementAt(3),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    Id = 4,
+                    Title = "Title 4",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(1),
+                        newsTags.ElementAt(2)
+                    }
+                },
+                new News()
+                {
+                    Author = users.ElementAt(4),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    Id = 5,
+                    Title = "Title 5",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(0),
+                        newsTags.ElementAt(1)
+                    }
+                },
+                new News()
+                {
+                    Author = users.ElementAt(2),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    Id = 6,
+                    Title = "Title 6",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(0),
+                        newsTags.ElementAt(2)
+                    }
+                }
+            };
+
+            news.ForEach(n => context.News.AddOrUpdate(n));
+            context.SaveChanges();
         }
     }
 }

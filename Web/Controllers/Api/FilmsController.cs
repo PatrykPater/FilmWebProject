@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Service;
+using System.Net;
 using System.Web.Http;
 using Web.Dtos;
 
@@ -19,17 +20,17 @@ namespace Web.Controllers.Api
         public IHttpActionResult Delete(int id)
         {
             if (id <= 0)
-                return BadRequest("Film id is invalid");
+                return StatusCode(HttpStatusCode.BadRequest);
 
             var film = _filmService.GetFilmById(id);
 
             if (film == null)
-                return NotFound();
+                return StatusCode(HttpStatusCode.NotFound);
 
             _filmService.RemoveFilm(film);
             _filmService.Complete();
 
-            return Ok();
+            return Ok(); //204 in the future
         }
 
         [HttpPost]

@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class test : DbMigration
+    public partial class ReSettingUpDB : DbMigration
     {
         public override void Up()
         {
@@ -110,6 +110,29 @@ namespace Data.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
+                "dbo.News",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(nullable: false),
+                        Content = c.String(),
+                        DateOfPublication = c.DateTime(nullable: false),
+                        Author_Id = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.Author_Id, cascadeDelete: true)
+                .Index(t => t.Author_Id);
+            
+            CreateTable(
+                "dbo.NewsTags",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Notifications",
                 c => new
                     {
@@ -131,7 +154,7 @@ namespace Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 75),
-                        DateOfPublication = c.DateTime(),
+                        DateOfPublication = c.DateTime(nullable: false),
                         Content = c.String(),
                         Author_Id = c.String(nullable: false, maxLength: 128),
                         Film_Id = c.Int(nullable: false),
@@ -230,6 +253,19 @@ namespace Data.Migrations
                 .Index(t => t.GenreRefId);
             
             CreateTable(
+                "dbo.NewsAndNewsTags",
+                c => new
+                    {
+                        NewsRefId = c.Int(nullable: false),
+                        TypeRefId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.NewsRefId, t.TypeRefId })
+                .ForeignKey("dbo.News", t => t.NewsRefId, cascadeDelete: true)
+                .ForeignKey("dbo.NewsTags", t => t.TypeRefId, cascadeDelete: true)
+                .Index(t => t.NewsRefId)
+                .Index(t => t.TypeRefId);
+            
+            CreateTable(
                 "dbo.PersonJob",
                 c => new
                     {
@@ -258,6 +294,9 @@ namespace Data.Migrations
             DropForeignKey("dbo.Ratings", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Notifications", "Sender_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Notifications", "Recipient_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.NewsAndNewsTags", "TypeRefId", "dbo.NewsTags");
+            DropForeignKey("dbo.NewsAndNewsTags", "NewsRefId", "dbo.News");
+            DropForeignKey("dbo.News", "Author_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUsers", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -266,6 +305,8 @@ namespace Data.Migrations
             DropForeignKey("dbo.FilmGenre", "FilmRefId", "dbo.Films");
             DropIndex("dbo.PersonJob", new[] { "JobRefId" });
             DropIndex("dbo.PersonJob", new[] { "PersonRefId" });
+            DropIndex("dbo.NewsAndNewsTags", new[] { "TypeRefId" });
+            DropIndex("dbo.NewsAndNewsTags", new[] { "NewsRefId" });
             DropIndex("dbo.FilmGenre", new[] { "GenreRefId" });
             DropIndex("dbo.FilmGenre", new[] { "FilmRefId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -278,6 +319,7 @@ namespace Data.Migrations
             DropIndex("dbo.Reviews", new[] { "Author_Id" });
             DropIndex("dbo.Notifications", new[] { "Sender_Id" });
             DropIndex("dbo.Notifications", new[] { "Recipient_Id" });
+            DropIndex("dbo.News", new[] { "Author_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", new[] { "ApplicationUser_Id" });
@@ -285,6 +327,7 @@ namespace Data.Migrations
             DropIndex("dbo.Ratings", new[] { "User_Id" });
             DropIndex("dbo.Ratings", new[] { "Film_Id" });
             DropTable("dbo.PersonJob");
+            DropTable("dbo.NewsAndNewsTags");
             DropTable("dbo.FilmGenre");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Nominations");
@@ -294,6 +337,8 @@ namespace Data.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.Reviews");
             DropTable("dbo.Notifications");
+            DropTable("dbo.NewsTags");
+            DropTable("dbo.News");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");

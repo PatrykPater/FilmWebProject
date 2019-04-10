@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangeReferenceFieldNameAtNewsModel : IMigrationMetadata
+    public sealed partial class ReSettingUpDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeReferenceFieldNameAtNewsModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ReSettingUpDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904091050363_ChangeReferenceFieldNameAtNewsModel"; }
+            get { return "201904100913071_ReSettingUpDB"; }
         }
         
         string IMigrationMetadata.Source

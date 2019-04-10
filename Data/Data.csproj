@@ -93,21 +93,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201904041835341_test.cs" />
-    <Compile Include="Migrations\201904041835341_test.Designer.cs">
-      <DependentUpon>201904041835341_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904051244200_removeNullableDateTimeTypeReview.cs" />
-    <Compile Include="Migrations\201904051244200_removeNullableDateTimeTypeReview.Designer.cs">
-      <DependentUpon>201904051244200_removeNullableDateTimeTypeReview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904081831325_AddNewsAndNewsTagsTables.cs" />
-    <Compile Include="Migrations\201904081831325_AddNewsAndNewsTagsTables.Designer.cs">
-      <DependentUpon>201904081831325_AddNewsAndNewsTagsTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904091050363_ChangeReferenceFieldNameAtNewsModel.cs" />
-    <Compile Include="Migrations\201904091050363_ChangeReferenceFieldNameAtNewsModel.Designer.cs">
-      <DependentUpon>201904091050363_ChangeReferenceFieldNameAtNewsModel.cs</DependentUpon>
+    <Compile Include="Migrations\201904100913071_ReSettingUpDB.cs" />
+    <Compile Include="Migrations\201904100913071_ReSettingUpDB.Designer.cs">
+      <DependentUpon>201904100913071_ReSettingUpDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,17 +129,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904041835341_test.resx">
-      <DependentUpon>201904041835341_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904051244200_removeNullableDateTimeTypeReview.resx">
-      <DependentUpon>201904051244200_removeNullableDateTimeTypeReview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904081831325_AddNewsAndNewsTagsTables.resx">
-      <DependentUpon>201904081831325_AddNewsAndNewsTagsTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904091050363_ChangeReferenceFieldNameAtNewsModel.resx">
-      <DependentUpon>201904091050363_ChangeReferenceFieldNameAtNewsModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904100913071_ReSettingUpDB.resx">
+      <DependentUpon>201904100913071_ReSettingUpDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

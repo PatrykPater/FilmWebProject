@@ -2,13 +2,13 @@
 using Microsoft.AspNet.Identity;
 using Model.Models;
 using Service;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Web.Dtos;
 
 namespace Web.Controllers.Api
 {
+    [Authorize]
     public class NotificationsController : ApiController
     {
         private readonly INotificationService _notificationService;
@@ -19,15 +19,15 @@ namespace Web.Controllers.Api
         }
 
         [HttpGet]
-        public IEnumerable<NotificationDto> GetNewNotifications()
+        public IHttpActionResult GetNewNotifications()
         {
             var userId = User.Identity.GetUserId();
             var notifications = _notificationService.GetAllUserNotifications(userId);
-            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
+            return Ok(notifications.Select(Mapper.Map<Notification, NotificationDto>));
         }
 
         [HttpPost]
-        public IHttpActionResult FriendRequestResponse([FromBody]NotificationDto notificationDto)
+        public IHttpActionResult FriendRequestResponse(NotificationDto notificationDto)
         {
             var notification = _notificationService.GetNotificationById(notificationDto.Id);
 
@@ -35,7 +35,6 @@ namespace Web.Controllers.Api
                 _notificationService.AcceptFriendRequest(notification);
 
             notification.IsRead = true;
-
             _notificationService.Complete();
 
             return Ok();
