@@ -16,7 +16,9 @@ namespace Data.Repositories
 
         public override List<News> GetAll()
         {
-            return _context.News.Include(n => n.Tags).ToList();
+            return _context.News
+                .Include(n => n.Author)
+                .Include(n => n.Tags).ToList();
         }
     }
 }

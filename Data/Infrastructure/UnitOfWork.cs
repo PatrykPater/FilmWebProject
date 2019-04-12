@@ -25,6 +25,7 @@ namespace Data.Infrastructure
             Notifications = new NotificationRepository(_context);
             Awards = new AwardRepository(_context);
             Persons = new PersonRepository(_context);
+            News = new NewsRepository(_context);
         }
 
         public void Complete()

@@ -39,6 +39,8 @@ namespace Web
             builder.RegisterType<PersonRepository>().As<IPersonRepository>().InstancePerRequest();
             builder.RegisterType<PersonService>().As<IPersonService>().InstancePerRequest();
             builder.RegisterType<DtoFactory>().As<IDtoFactory>().InstancePerRequest();
+            builder.RegisterType<NewsService>().As<INewsService>().InstancePerRequest();
+            builder.RegisterType<NotificationService>().As<INotificationService>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))

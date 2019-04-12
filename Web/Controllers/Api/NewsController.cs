@@ -20,7 +20,8 @@ namespace Web.Controllers.Api
         public IHttpActionResult Get()
         {
             var news = _newsService.GetAllNews()
-                .Select(n => _dtoFactory.CreateNewsDto(n));
+                .Select(n => _dtoFactory.CreateNewsDto(n))
+                .ToList();
 
             return Ok(news);
         }

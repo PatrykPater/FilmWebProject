@@ -1,5 +1,4 @@
-﻿using Model.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Web.Dtos
@@ -11,6 +10,6 @@ namespace Web.Dtos
         public DateTime DateOfPublication { get; set; }
 
         public IEnumerable<NewsTagsDto> Tags { get; set; }
-        public ApplicationUser Author { get; set; }
+        public UserDto Author { get; set; }
     }
 }

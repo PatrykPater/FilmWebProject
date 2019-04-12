@@ -1,5 +1,6 @@
 ﻿using Model.Models;
 using System.Linq;
+using Web.Helpers;
 
 namespace Web.Dtos
 {
@@ -17,13 +18,13 @@ namespace Web.Dtos
                 PlaceOfBirth = person.PlaceOfBirth,
                 ProfilePhoto = person.ProfilePhoto,
                 Score = person.Score,
-                Jobs = person.Jobs.Select(j => CreateJobDto(j))
+                Jobs = person.Jobs.Select(CreateJobDto)
             };
         }
 
         public JobDto CreateJobDto(Job job)
         {
-            return new JobDto()
+            return new JobDto
             {
                 Name = job.Name
             };
@@ -31,21 +32,29 @@ namespace Web.Dtos
 
         public NewsDto CreateNewsDto(News news)
         {
-            return new NewsDto()
+            return new NewsDto
             {
-                Author = news.Author,
+                Author = CreateUserDto(news.Author),
                 Content = news.Content,
                 DateOfPublication = news.DateOfPublication,
-                Tags = news.Tags.Select(t => CreateNewsTagDto(t)),
+                Tags = news.Tags.Select(CreateNewsTagDto),
                 Title = news.Title
             };
         }
 
         public NewsTagsDto CreateNewsTagDto(NewsTags newsTags)
         {
-            return new NewsTagsDto()
+            return new NewsTagsDto
             {
                 Name = newsTags.Name
+            };
+        }
+
+        public UserDto CreateUserDto(ApplicationUser user)
+        {
+            return new UserDto
+            {
+                UserName = DtoFactoryHelper.GetFullUserName(user.FirstName, user.LastName)
             };
         }
     }

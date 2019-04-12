@@ -236,9 +236,11 @@
     <Compile Include="Dtos\NotificationDto.cs" />
     <Compile Include="Dtos\PersonDto.cs" />
     <Compile Include="Dtos\RatingDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DtoFactoryHelper.cs" />
     <Compile Include="Helpers\GenreHelper.cs" />
     <Compile Include="Helpers\IGenreHelper.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
