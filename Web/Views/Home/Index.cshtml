@@ -9,31 +9,23 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>News title</h2>
-        <p>
-            ---
-        </p>
-        <p><a class="btn btn-default" href="#">Placeholder &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>News title</h2>
-        <p>---</p>
-        <p><a class="btn btn-default" href="#">Placeholder &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>News title</h2>
-        <p>---</p>
-        <p><a class="btn btn-default" href="#">Placeholder &raquo;</a></p>
-    </div>
-
 </div>
 
 @section scripts
 {
     <script>
         $(document).ready(function() {
-            $.getJSON("/api/news");
+            $.getJSON("/api/news")
+                .done(function (news) {
+
+                    for (var i = 0; i < news.length; i++) {
+                        $('.row').append('<div class="col-md-4" id = news-container-'+ i +'></ div>');
+                        $('#news-container-' + i).append('<h2 id = news-title-' + i + ' >' + news[i].title + '</h2>');
+                        $('#news-title-' + i).after('<a href= "#" id = s-description-' + i + ' >' + news[i].shortDescription + ' </a>');
+                        $('#s-description-' + i).after('<p><a class="btn btn-default" href="#">Read More</a></p>');
+                    }   
+                });
+
         })
     </script>
 }

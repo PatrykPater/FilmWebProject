@@ -7,6 +7,7 @@ using Service;
 using System.Reflection;
 using System.Web.Mvc;
 using Web.Helpers;
+using Web.ViewModels;
 
 namespace Web
 {
@@ -33,6 +34,7 @@ namespace Web
             builder.RegisterType<NotificationService>().As<INotificationService>().InstancePerRequest();
             builder.RegisterType<NewsRepository>().As<INewsRepository>().InstancePerRequest();
             builder.RegisterType<NewsService>().As<INewsService>().InstancePerRequest();
+            builder.RegisterType<ModelFactory>().As<IModelFactory>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))

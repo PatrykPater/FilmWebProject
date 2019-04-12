@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201904100913071_ReSettingUpDB.Designer.cs">
       <DependentUpon>201904100913071_ReSettingUpDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904121049426_AddShortDescriptionstoNews.cs" />
+    <Compile Include="Migrations\201904121049426_AddShortDescriptionstoNews.Designer.cs">
+      <DependentUpon>201904121049426_AddShortDescriptionstoNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AwardRepository.cs" />
@@ -131,6 +135,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904100913071_ReSettingUpDB.resx">
       <DependentUpon>201904100913071_ReSettingUpDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121049426_AddShortDescriptionstoNews.resx">
+      <DependentUpon>201904121049426_AddShortDescriptionstoNews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,6 +13,7 @@ namespace Model.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public string ShortDescription { get; set; }
         public DateTime DateOfPublication { get; set; }
 
         public ICollection<NewsTags> Tags { get; set; }

@@ -931,6 +931,7 @@ namespace Data.Migrations
                     DateOfPublication = DateTime.Parse("2005-05-05"),
                     Id = 1,
                     Title = "Title 1",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0)
@@ -943,6 +944,7 @@ namespace Data.Migrations
                     DateOfPublication = DateTime.Parse("2005-05-05"),
                     Id = 2,
                     Title = "Title 2",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -956,6 +958,7 @@ namespace Data.Migrations
                     DateOfPublication = DateTime.Parse("2005-05-05"),
                     Id = 3,
                     Title = "Title 3",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -969,6 +972,7 @@ namespace Data.Migrations
                     DateOfPublication = DateTime.Parse("2005-05-05"),
                     Id = 4,
                     Title = "Title 4",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(1),
@@ -982,6 +986,7 @@ namespace Data.Migrations
                     DateOfPublication = DateTime.Parse("2005-05-05"),
                     Id = 5,
                     Title = "Title 5",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -995,6 +1000,7 @@ namespace Data.Migrations
                     DateOfPublication = DateTime.Parse("2005-05-05"),
                     Id = 6,
                     Title = "Title 6",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
