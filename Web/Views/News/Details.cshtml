@@ -1,0 +1,11 @@
+﻿@model Web.ViewModels.NewsDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<div>@Model.Author</div>
+<div>@Model.DateOfPublication</div>
+<div>@Model.Content</div>

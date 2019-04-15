@@ -18,5 +18,10 @@ namespace Service
         {
             return _unitOfWork.News.GetAll();
         }
+
+        public News GetNewsById(int id)
+        {
+            return _unitOfWork.News.GetById(id);
+        }
     }
 }

@@ -36,7 +36,6 @@ namespace Web.Dtos
             {
                 Id = news.Id,
                 Author = CreateUserDto(news.Author),
-                Content = news.Content,
                 DateOfPublication = news.DateOfPublication,
                 Tags = news.Tags.Select(CreateNewsTagDto),
                 Title = news.Title,

@@ -17,6 +17,7 @@ namespace Web
             CreateMap<FilmFormViewModel, Film>();
             CreateMap<Notification, NotificationDto>();
             CreateMap<NotificationDto, Notification>();
+            CreateMap<News, NewsDetailsViewModel>();
         }
     }
 }

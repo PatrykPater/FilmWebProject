@@ -262,6 +262,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ModelFactory.cs" />
+    <Compile Include="ViewModels\NewsDetailsViewModel.cs" />
     <Compile Include="ViewModels\PersonFormViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
@@ -332,10 +333,10 @@
     <Content Include="Views\Persons\PeopleList.cshtml" />
     <Content Include="Views\Users\List.cshtml" />
     <Content Include="Views\Notifications\List.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\News\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <ItemGroup>

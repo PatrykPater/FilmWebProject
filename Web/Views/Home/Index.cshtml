@@ -21,8 +21,8 @@
                     for (var i = 0; i < news.length; i++) {
                         $('.row').append('<div class="col-md-4" id = news-container-'+ i +'></ div>');
                         $('#news-container-' + i).append('<h2 id = news-title-' + i + ' >' + news[i].title + '</h2>');
-                        $('#news-title-' + i).after('<a href= "#" id = s-description-' + i + ' >' + news[i].shortDescription + ' </a>');
-                        $('#s-description-' + i).after('<p><a class="btn btn-default" href="#">Read More</a></p>');
+                        $('#news-title-' + i).after('<a href=http://localhost:55205/news/details/' + news[i].id +' id = s-description-' + i + ' >' + news[i].shortDescription + ' </a>');
+                        $('#s-description-' + i).after('<p><a class="btn btn-default" href=http://localhost:55205/news/details/'+ news[i].id +' >Read More</a></p>');
                     }   
                 });
 

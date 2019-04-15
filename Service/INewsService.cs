@@ -6,5 +6,6 @@ namespace Service
     public interface INewsService
     {
         IEnumerable<News> GetAllNews();
+        News GetNewsById(int id);
     }
 }
