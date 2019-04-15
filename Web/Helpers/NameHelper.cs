@@ -1,6 +1,6 @@
 ﻿namespace Web.Helpers
 {
-    public static class DtoFactoryHelper
+    public static class NameHelper
     {
         public static string GetFullUserName(string firstName, string lastName)
         {

@@ -55,7 +55,7 @@ namespace Web.Dtos
         {
             return new UserDto
             {
-                UserName = DtoFactoryHelper.GetFullUserName(user.FirstName, user.LastName)
+                UserName = NameHelper.GetFullUserName(user.FirstName, user.LastName)
             };
         }
     }

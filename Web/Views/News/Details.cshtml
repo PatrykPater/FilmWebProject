@@ -6,6 +6,14 @@
 }
 
 <h2>@Model.Title</h2>
-<div>@Model.Author</div>
+<div>
+    <div>@Model.Author</div>
+    <div>
+        @foreach (var tag in Model.Tags)
+        {
+        <span>@tag</span>
+        }
+    </div>   
+</div>
 <div>@Model.DateOfPublication</div>
 <div>@Model.Content</div>

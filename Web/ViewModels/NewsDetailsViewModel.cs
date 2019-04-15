@@ -1,6 +1,4 @@
-﻿using Model.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Web.ViewModels
 {
@@ -8,9 +6,9 @@ namespace Web.ViewModels
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime DateOfPublication { get; set; }
+        public string DateOfPublication { get; set; }
 
-        public ICollection<NewsTags> Tags { get; set; }
-        public ApplicationUser Author { get; set; }
+        public IEnumerable<string> Tags { get; set; }
+        public string Author { get; set; }
     }
 }
