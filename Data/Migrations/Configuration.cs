@@ -20,30 +20,58 @@ namespace Data.Migrations
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            const string name = "admin@filmweb.com";
-            const string password = "Admin123_4";
-            const string roleName = "Admin";
+            const string adminName = "admin@filmweb.com";
+            const string adminPw = "Admin123_4";
+            const string adminRoleName = "Admin";
 
-            var user = userManager.FindByName(name);
+            var userAdmin = userManager.FindByName(adminName);
 
-            if (user == null)
+            if (userAdmin == null)
             {
-                user = new ApplicationUser { UserName = name, Email = "admin@filmweb.com", FirstName = "John", LastName = "Wick" };
-                userManager.Create(user, password);
+                userAdmin = new ApplicationUser { UserName = adminName, Email = "admin@filmweb.com", FirstName = "John", LastName = "Wick" };
+                userManager.Create(userAdmin, adminPw);
             }
 
-            var role = roleManager.FindByName(roleName);
+            var adminRole = roleManager.FindByName(adminRoleName);
 
-            if (role == null)
+            if (adminRole == null)
             {
-                role = new IdentityRole(roleName);
-                roleManager.Create(role);
+                adminRole = new IdentityRole(adminRoleName);
+                roleManager.Create(adminRole);
             }
 
-            var rolesForUser = userManager.GetRoles(user.Id);
+            var rolesForAdmin = userManager.GetRoles(userAdmin.Id);
 
-            if (!rolesForUser.Contains(role.Name))
-                userManager.AddToRole(user.Id, role.Name);
+            if (!rolesForAdmin.Contains(adminRole.Name))
+                userManager.AddToRole(userAdmin.Id, adminRole.Name);
+
+            const string moderatorName = "mod@filmweb.com";
+            const string moderatorPw = "Mod1234_5";
+            const string moderatorRoleName = "Moderator";
+
+            var userMod = userManager.FindByName(moderatorName);
+
+            if (userMod == null)
+            {
+                userMod = new ApplicationUser { UserName = moderatorName, Email = "mod@filmweb.com", FirstName = "Dale", LastName = "Barbara" };
+                userManager.Create(userMod, moderatorPw);
+            }
+
+            var moderatorRole = roleManager.FindByName(moderatorRoleName);
+
+            if (moderatorRole == null)
+            {
+                moderatorRole = new IdentityRole(moderatorRoleName);
+                roleManager.Create(moderatorRole);
+            }
+
+            var rolesForModerator = userManager.GetRoles(userMod.Id);
+
+            if (!rolesForModerator.Contains(moderatorRole.Name))
+                userManager.AddToRole(userMod.Id, moderatorRole.Name);
+
+            if (!rolesForAdmin.Contains(moderatorRole.Name))
+                userManager.AddToRole(userAdmin.Id, moderatorRole.Name);
 
             var users = new List<ApplicationUser>
             {
