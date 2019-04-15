@@ -928,7 +928,7 @@ namespace Data.Migrations
                 {
                     Author = users.ElementAt(0),
                     Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
-                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    DateOfPublication = DateTime.Now.AddHours(-2),
                     Id = 1,
                     Title = "Title 1",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -941,7 +941,7 @@ namespace Data.Migrations
                 {
                     Author = users.ElementAt(1),
                     Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
-                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    DateOfPublication = DateTime.Now.AddHours(-3),
                     Id = 2,
                     Title = "Title 2",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -955,7 +955,7 @@ namespace Data.Migrations
                 {
                     Author = users.ElementAt(2),
                     Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
-                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    DateOfPublication = DateTime.Now.AddHours(-5),
                     Id = 3,
                     Title = "Title 3",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -969,7 +969,7 @@ namespace Data.Migrations
                 {
                     Author = users.ElementAt(3),
                     Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
-                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    DateOfPublication = DateTime.Now.AddHours(-6),
                     Id = 4,
                     Title = "Title 4",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -983,7 +983,7 @@ namespace Data.Migrations
                 {
                     Author = users.ElementAt(4),
                     Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
-                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    DateOfPublication = DateTime.Now.AddHours(-8),
                     Id = 5,
                     Title = "Title 5",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -997,13 +997,41 @@ namespace Data.Migrations
                 {
                     Author = users.ElementAt(2),
                     Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
-                    DateOfPublication = DateTime.Parse("2005-05-05"),
+                    DateOfPublication = DateTime.Now.AddHours(-10),
                     Id = 6,
                     Title = "Title 6",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
+                        newsTags.ElementAt(2)
+                    }
+                },
+                new News()
+                {
+                    Author = users.ElementAt(2),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Now.AddHours(-11),
+                    Id = 7,
+                    Title = "Title 7",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(0),
+                        newsTags.ElementAt(2)
+                    }
+                },
+                new News()
+                {
+                    Author = users.ElementAt(3),
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sapien ut velit posuere, a viverra erat condimentum. Etiam maximus accumsan erat, nec fringilla augue iaculis ut. Praesent vulputate libero mauris, eu ullamcorper tellus lobortis ornare. Praesent porttitor porttitor arcu ac convallis. Sed vitae turpis blandit, mattis enim vel, feugiat tellus. Nullam vestibulum nisi arcu, eget euismod augue tincidunt sed.",
+                    DateOfPublication = DateTime.Now.AddHours(-12),
+                    Id = 8,
+                    Title = "Title 8",
+                    ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    Tags = new List<NewsTags>()
+                    {
+                        newsTags.ElementAt(1),
                         newsTags.ElementAt(2)
                     }
                 }

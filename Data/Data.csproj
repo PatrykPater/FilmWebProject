@@ -93,13 +93,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201904100913071_ReSettingUpDB.cs" />
-    <Compile Include="Migrations\201904100913071_ReSettingUpDB.Designer.cs">
-      <DependentUpon>201904100913071_ReSettingUpDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904121049426_AddShortDescriptionstoNews.cs" />
-    <Compile Include="Migrations\201904121049426_AddShortDescriptionstoNews.Designer.cs">
-      <DependentUpon>201904121049426_AddShortDescriptionstoNews.cs</DependentUpon>
+    <Compile Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs" />
+    <Compile Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.Designer.cs">
+      <DependentUpon>201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,11 +129,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904100913071_ReSettingUpDB.resx">
-      <DependentUpon>201904100913071_ReSettingUpDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904121049426_AddShortDescriptionstoNews.resx">
-      <DependentUpon>201904121049426_AddShortDescriptionstoNews.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.resx">
+      <DependentUpon>201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

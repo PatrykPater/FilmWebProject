@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ReSettingUpDB : DbMigration
+    public partial class AddCoupleNewsAndChangeDateTimePublication : DbMigration
     {
         public override void Up()
         {
@@ -116,6 +116,7 @@ namespace Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false),
                         Content = c.String(),
+                        ShortDescription = c.String(),
                         DateOfPublication = c.DateTime(nullable: false),
                         Author_Id = c.String(nullable: false, maxLength: 128),
                     })
