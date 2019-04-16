@@ -217,6 +217,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\FilmsController.cs" />
     <Compile Include="Controllers\Api\HomeController.cs" />
     <Compile Include="Controllers\Api\NewsController.cs" />
@@ -330,11 +331,11 @@
     <Content Include="Views\Films\Details.cshtml" />
     <Content Include="Views\Films\FilmForm.cshtml" />
     <Content Include="Views\Films\List.cshtml" />
-    <Content Include="Views\Persons\Create.cshtml" />
-    <Content Include="Views\Persons\PeopleList.cshtml" />
     <Content Include="Views\Users\List.cshtml" />
     <Content Include="Views\Notifications\List.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\Admin\Panel.cshtml" />
+    <Content Include="Views\Admin\AddModerator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

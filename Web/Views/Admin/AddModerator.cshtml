@@ -1,0 +1,22 @@
+﻿@model Model.Models.ApplicationUser
+@{
+    ViewBag.Title = "AddModerator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add new moderator</h2>
+<p>
+    Enter user's address e-mail to give it moderator's rights.
+</p>
+
+@using (Html.BeginForm("Search", "Admin", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <div class="input-group">
+            @Html.TextBoxFor(s => s.Email, new { @class = "form-control", placeholder = "Search" })
+            <div class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </div>
+        </div>
+    </div>
+}
