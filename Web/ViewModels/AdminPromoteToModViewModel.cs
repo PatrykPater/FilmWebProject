@@ -5,6 +5,8 @@
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public bool IsPromoted { get; set; } = false;
+        public bool IsPromoted { get; set; }
+        public bool IsSearched { get; set; }
+
     }
 }

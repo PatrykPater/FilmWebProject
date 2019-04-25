@@ -29,6 +29,10 @@ namespace Web.Controllers
             {
                 var userToMod = _userService.GetUserByEmail(email);
                 var userToModViewModel = Mapper.Map<AdminPromoteToModViewModel>(userToMod);
+                userToModViewModel.IsSearched = true;
+
+                if (_managerService.IsModded(userToMod.Id))
+                    userToModViewModel.IsPromoted = true;
 
                 return View(userToModViewModel);
             }
@@ -44,7 +48,6 @@ namespace Web.Controllers
             return RedirectToAction("AddModerator", "Admin", new { email });
         }
 
-        //Set the flag for IsPromoted
         public ActionResult Promote(string userId)
         {
             var result = _managerService.PromoteToMod(userId);

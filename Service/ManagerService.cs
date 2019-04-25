@@ -13,9 +13,12 @@ namespace Service
 
         public bool PromoteToMod(string userId)
         {
-            var result = _unitOfWork.ManagerHelper.PromoteToMod(userId);
+            return _unitOfWork.ManagerHelper.PromoteToMod(userId);
+        }
 
-            return result;
+        public bool IsModded(string userId)
+        {
+            return _unitOfWork.ManagerHelper.IsModded(userId);
         }
     }
 }

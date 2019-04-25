@@ -29,7 +29,7 @@ namespace Web
 
             CreateMap<ApplicationUser, AdminPromoteToModViewModel>()
                 .ForMember(dest => dest.Name,
-                    opt => opt.MapFrom(source => NameHelper.GetFullUserName(source.FirstName, source.FirstName)))
+                    opt => opt.MapFrom(source => NameHelper.GetFullUserName(source.FirstName, source.LastName)))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(source => source.Email))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(source => source.Id));
         }
