@@ -8,5 +8,6 @@ namespace Data.Repositories
     {
         ApplicationUser GetUserById(string id);
         List<ApplicationUser> GetAllUsers();
+        ApplicationUser GetUserByEmail(string email);
     }
 }

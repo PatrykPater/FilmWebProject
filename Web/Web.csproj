@@ -247,6 +247,7 @@
     <Compile Include="Helpers\GenreHelper.cs" />
     <Compile Include="Helpers\IGenreHelper.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\AdminPromoteToModViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\FactorViewModel.cs" />
     <Compile Include="ViewModels\FilmFormViewModel.cs" />

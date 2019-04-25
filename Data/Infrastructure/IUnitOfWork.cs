@@ -1,4 +1,5 @@
-﻿using Data.Repositories;
+﻿using Data.Helpers;
+using Data.Repositories;
 
 namespace Data.Infrastructure
 {
@@ -12,6 +13,7 @@ namespace Data.Infrastructure
         IAwardRepository Awards { get; }
         IPersonRepository Persons { get; set; }
         INewsRepository News { get; set; }
+        IUserManagerHelper ManagerHelper { get; set; }
 
         void Complete();
     }

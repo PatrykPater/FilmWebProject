@@ -26,6 +26,12 @@ namespace Web
                 .ForMember(dest => dest.DateOfPublication,
                     opt => opt.MapFrom(source => DateTimeHelper.GetDate(source.DateOfPublication)))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(source => source.Tags.Select(t => t.Name)));
+
+            CreateMap<ApplicationUser, AdminPromoteToModViewModel>()
+                .ForMember(dest => dest.Name,
+                    opt => opt.MapFrom(source => NameHelper.GetFullUserName(source.FirstName, source.FirstName)))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(source => source.Email))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(source => source.Id));
         }
     }
 }

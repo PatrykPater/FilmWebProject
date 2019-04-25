@@ -67,6 +67,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,10 +90,12 @@
     <Compile Include="EntityConfigurations\RatingConfiguration.cs" />
     <Compile Include="EntityConfigurations\ReviewConfiguration.cs" />
     <Compile Include="EntityConfigurations\TrailerConfiguration.cs" />
+    <Compile Include="Helpers\IUserManagerHelper.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Helpers\UserManagerHelper.cs" />
     <Compile Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs" />
     <Compile Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.Designer.cs">
       <DependentUpon>201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs</DependentUpon>

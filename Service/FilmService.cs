@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Service
 {
-    public class FilmService : IFilmService
+    public class FilmService : ServiceBase, IFilmService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public FilmService(IUnitOfWork unitOfWork)
+        public FilmService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -22,11 +22,6 @@ namespace Service
         public void AddNewFilm(Film film)
         {
             _unitOfWork.Films.Add(film);
-        }
-
-        public void Complete()
-        {
-            _unitOfWork.Complete();
         }
 
         public List<Film> GetAllFilms()

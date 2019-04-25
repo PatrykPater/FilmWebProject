@@ -9,6 +9,7 @@ namespace Service
         List<ApplicationUser> GetUsersByQuery(string query);
         ApplicationUser GetUserById(string id);
         void SendFriendRequest(ApplicationUser recipient, ApplicationUser sender);
+        ApplicationUser GetUserByEmail(string email);
         void Complete();
     }
 }

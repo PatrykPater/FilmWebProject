@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Service
 {
-    public class NewsService : INewsService
+    public class NewsService : ServiceBase, INewsService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public NewsService(IUnitOfWork unitOfWork)
+        public NewsService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

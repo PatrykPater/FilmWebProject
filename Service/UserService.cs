@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Service
 {
-    public class UserService : IUserService
+    public class UserService : ServiceBase, IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public UserService(IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -31,16 +31,16 @@ namespace Service
             return _unitOfWork.Users.GetUserById(id);
         }
 
-        public void Complete()
-        {
-            _unitOfWork.Complete();
-        }
-
         public void SendFriendRequest(ApplicationUser recipient, ApplicationUser sender)
         {
             var newNotification = new Notification() { Recipient = recipient, Sender = sender, NotificationType = NotificationType.FriendRequest };
 
             _unitOfWork.Notifications.Add(newNotification);
+        }
+
+        public ApplicationUser GetUserByEmail(string email)
+        {
+            return _unitOfWork.Users.GetUserByEmail(email);
         }
     }
 }

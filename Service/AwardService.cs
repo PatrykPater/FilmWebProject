@@ -3,11 +3,11 @@ using Model.Models;
 
 namespace Service
 {
-    public class AwardService : IAwardService
+    public class AwardService : ServiceBase, IAwardService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public AwardService(IUnitOfWork unitOfWork)
+        public AwardService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

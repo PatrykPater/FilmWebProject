@@ -27,5 +27,10 @@ namespace Data.Repositories
                 .Include(u => u.Ratings)
                 .ToList();
         }
+
+        public ApplicationUser GetUserByEmail(string email)
+        {
+            return _context.Users.Single(u => u.Email == email);
+        }
     }
 }

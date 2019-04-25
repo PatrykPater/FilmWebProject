@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace Service
 {
-    public class NotificationService : INotificationService
+    public class NotificationService : ServiceBase, INotificationService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public NotificationService(IUnitOfWork unitOfWork)
+        public NotificationService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -30,11 +30,6 @@ namespace Service
 
             notification.Recipient.Friends.Add(sender);
             notification.Sender.Friends.Add(recipient);
-        }
-
-        public void Complete()
-        {
-            _unitOfWork.Complete();
         }
     }
 }

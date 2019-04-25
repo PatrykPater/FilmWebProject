@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using Model.Models;
+﻿using Model.Models;
+using System.Collections.Generic;
 
 namespace Service
 {
     public interface IPersonService
     {
         List<Person> GetAllPersons();
+        void Complete();
     }
 }

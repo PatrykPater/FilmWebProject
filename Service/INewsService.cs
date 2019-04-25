@@ -7,5 +7,6 @@ namespace Service
     {
         IEnumerable<News> GetAllNews();
         News GetNewsById(int id);
+        void Complete();
     }
 }

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace Service
 {
-    public class PersonService : IPersonService
+    public class PersonService : ServiceBase, IPersonService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public PersonService(IUnitOfWork unitOfWork)
+        public PersonService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

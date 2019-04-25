@@ -1,36 +1,61 @@
-﻿using System.Net;
+﻿using AutoMapper;
+using Service;
+using System.Net;
 using System.Web.Mvc;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        private readonly IUserService _userService;
+        private readonly IManagerService _managerService;
+
+        public AdminController(IUserService userService, IManagerService managerService)
+        {
+            _userService = userService;
+            _managerService = managerService;
+        }
+
         public ActionResult Panel()
         {
-            var user = User.IsInRole("Admin");
-
-            if (!user)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "You are not authorized to access this page");
-
             return View();
         }
 
         public ActionResult AddModerator(string email = null)
         {
-            var user = User.IsInRole("Admin");
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                var userToMod = _userService.GetUserByEmail(email);
+                var userToModViewModel = Mapper.Map<AdminPromoteToModViewModel>(userToMod);
 
-            if (!user)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "You are not authorized to access this page");
+                return View(userToModViewModel);
+            }
 
-            return View();
+            var viewModel = new AdminPromoteToModViewModel();
+
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult Search(string email)
         {
-
             return RedirectToAction("AddModerator", "Admin", new { email });
+        }
+
+        //Set the flag for IsPromoted
+        public ActionResult Promote(string userId)
+        {
+            var result = _managerService.PromoteToMod(userId);
+
+            if (!result)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var user = _userService.GetUserById(userId);
+            var userViewModel = Mapper.Map<AdminPromoteToModViewModel>(user);
+
+            return RedirectToAction("AddModerator", "Admin", userViewModel);
         }
     }
 }

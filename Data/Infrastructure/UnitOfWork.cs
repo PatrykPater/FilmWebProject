@@ -1,4 +1,5 @@
-﻿using Data.Repositories;
+﻿using Data.Helpers;
+using Data.Repositories;
 
 namespace Data.Infrastructure
 {
@@ -14,6 +15,7 @@ namespace Data.Infrastructure
         public IAwardRepository Awards { get; }
         public IPersonRepository Persons { get; set; }
         public INewsRepository News { get; set; }
+        public IUserManagerHelper ManagerHelper { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -26,6 +28,7 @@ namespace Data.Infrastructure
             Awards = new AwardRepository(_context);
             Persons = new PersonRepository(_context);
             News = new NewsRepository(_context);
+            ManagerHelper = new UserManagerHelper(_context);
         }
 
         public void Complete()
