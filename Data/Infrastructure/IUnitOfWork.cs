@@ -14,6 +14,7 @@ namespace Data.Infrastructure
         IPersonRepository Persons { get; set; }
         INewsRepository News { get; set; }
         IUserManagerHelper ManagerHelper { get; set; }
+        IReviewRepository Reviews { get; set; }
 
         void Complete();
     }

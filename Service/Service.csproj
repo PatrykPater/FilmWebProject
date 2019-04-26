@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="AwardService.cs" />
     <Compile Include="IManagerService.cs" />
+    <Compile Include="IReviewService.cs" />
     <Compile Include="ManagerService.cs" />
+    <Compile Include="ReviewService.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="FilmService.cs" />
     <Compile Include="IAwardService.cs" />
