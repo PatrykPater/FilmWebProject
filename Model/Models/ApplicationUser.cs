@@ -21,11 +21,11 @@ namespace Model.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public ICollection<Review> Reviews { get; private set; }
-        public ICollection<Rating> Ratings { get; private set; }
-        public ICollection<ApplicationUser> Friends { get; private set; }
-        public ICollection<Notification> Notifications { get; private set; }
-        public ICollection<News> News { get; private set; }
+        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
+        public ICollection<ApplicationUser> Friends { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
+        public ICollection<News> News { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

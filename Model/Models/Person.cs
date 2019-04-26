@@ -19,6 +19,6 @@ namespace Model.Models
         public string Biography { get; set; }
         public double Score { get; set; }
 
-        public ICollection<Job> Jobs { get; private set; }
+        public ICollection<Job> Jobs { get; set; }
     }
 }
