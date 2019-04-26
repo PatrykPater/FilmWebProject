@@ -20,7 +20,7 @@ namespace Web.Controllers
             _genreHelper = genreHelper;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             var genresFromDb = _filmService.GetAllGenres();
@@ -31,7 +31,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(FilmFormViewModel viewModel)
         {
@@ -71,7 +71,7 @@ namespace Web.Controllers
         public ActionResult Details(int id)
         {
             if (id <= 0)
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var film = _filmService.GetFilmById(id);
 
@@ -81,7 +81,7 @@ namespace Web.Controllers
             return View(film);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             if (id <= 0)
@@ -103,7 +103,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Update(FilmFormViewModel viewModel)
         {

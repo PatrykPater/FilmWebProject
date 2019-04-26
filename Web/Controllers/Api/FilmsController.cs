@@ -36,6 +36,9 @@ namespace Web.Controllers.Api
         [HttpPost]
         public IHttpActionResult Rate(RatingDto ratingDto)
         {
+            if (!ModelState.IsValid)
+                return StatusCode(HttpStatusCode.BadRequest);
+
             var film = _filmService.GetFilmById(ratingDto.FilmId);
             var userId = User.Identity.GetUserId();
             var user = _filmService.GetUserById(userId);

@@ -18,6 +18,7 @@ namespace Model.Models
         public byte[] ProfilePhoto { get; set; }
         public string Biography { get; set; }
         public double Score { get; set; }
-        public ICollection<Job> Jobs { get; set; }
+
+        public ICollection<Job> Jobs { get; private set; }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Model.Models;
 using Service;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 using Web.Dtos;
 
@@ -29,6 +30,8 @@ namespace Web.Controllers.Api
         [HttpPost]
         public IHttpActionResult FriendRequestResponse(NotificationDto notificationDto)
         {
+            if (!ModelState.IsValid)
+                return StatusCode(HttpStatusCode.BadRequest);
             var notification = _notificationService.GetNotificationById(notificationDto.Id);
 
             if (notificationDto.IsAccepted)

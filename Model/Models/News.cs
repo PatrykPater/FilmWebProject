@@ -18,7 +18,7 @@ namespace Model.Models
 
         public bool IsNew => DateTime.Now - DateOfPublication <= new TimeSpan(0, 23, 59, 59);
 
-        public ICollection<NewsTags> Tags { get; set; }
+        public ICollection<NewsTags> Tags { get; private set; }
         public ApplicationUser Author { get; set; }
     }
 }

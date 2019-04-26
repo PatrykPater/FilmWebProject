@@ -52,13 +52,11 @@ namespace Web.Controllers
         {
             var result = _managerService.PromoteToMod(userId);
 
+            //add information that users is a mod already instead of throwing BadRequest
             if (!result)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var user = _userService.GetUserById(userId);
-            var userViewModel = Mapper.Map<AdminPromoteToModViewModel>(user);
-
-            return RedirectToAction("AddModerator", "Admin", userViewModel);
+            return RedirectToAction("AddModerator", "Admin");
         }
     }
 }

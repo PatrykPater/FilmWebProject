@@ -27,9 +27,9 @@ namespace Model.Models
 
         public double Score => Ratings.Any() ? Ratings.Average(r => r.Value) : 0;
 
-        public ICollection<Rating> Ratings { get; set; }
-        public ICollection<Genre> Genres { get; set; }
-        public ICollection<Review> Reviews { get; set; }
-        public ICollection<Trailer> Trailers { get; set; }
+        public ICollection<Rating> Ratings { get; private set; }
+        public ICollection<Genre> Genres { get; private set; }
+        public ICollection<Review> Reviews { get; private set; }
+        public ICollection<Trailer> Trailers { get; private set; }
     }
 }

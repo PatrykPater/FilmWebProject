@@ -19,6 +19,9 @@ namespace Web.Controllers.Api
         {
             var senderId = User.Identity.GetUserId();
 
+            if (string.IsNullOrWhiteSpace(id))
+                return BadRequest();
+
             var sender = _userService.GetUserById(senderId);
             var recipient = _userService.GetUserById(id);
 
