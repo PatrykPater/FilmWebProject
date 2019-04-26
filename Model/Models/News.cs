@@ -14,7 +14,7 @@ namespace Model.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public string ShortDescription { get; set; }
-        public DateTime DateOfPublication { get; set; }
+        public DateTime DateOfPublication => DateTime.Now;
 
         public bool IsNew => DateTime.Now - DateOfPublication <= new TimeSpan(0, 23, 59, 59);
 

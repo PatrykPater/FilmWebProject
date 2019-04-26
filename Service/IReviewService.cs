@@ -5,5 +5,6 @@ namespace Service
     public interface IReviewService
     {
         void AddReview(Review review);
+        void Complete();
     }
 }

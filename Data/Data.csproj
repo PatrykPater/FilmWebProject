@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201904151231253_AdminIsAlsoMod.Designer.cs">
       <DependentUpon>201904151231253_AdminIsAlsoMod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904261516204_ChangeDateOfPublicationForReview.cs" />
+    <Compile Include="Migrations\201904261516204_ChangeDateOfPublicationForReview.Designer.cs">
+      <DependentUpon>201904261516204_ChangeDateOfPublicationForReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AwardRepository.cs" />
@@ -150,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904151231253_AdminIsAlsoMod.resx">
       <DependentUpon>201904151231253_AdminIsAlsoMod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904261516204_ChangeDateOfPublicationForReview.resx">
+      <DependentUpon>201904261516204_ChangeDateOfPublicationForReview.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
