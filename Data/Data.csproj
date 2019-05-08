@@ -96,21 +96,9 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Helpers\UserManagerHelper.cs" />
-    <Compile Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs" />
-    <Compile Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.Designer.cs">
-      <DependentUpon>201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904151226539_AddModaratorRole.cs" />
-    <Compile Include="Migrations\201904151226539_AddModaratorRole.Designer.cs">
-      <DependentUpon>201904151226539_AddModaratorRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904151231253_AdminIsAlsoMod.cs" />
-    <Compile Include="Migrations\201904151231253_AdminIsAlsoMod.Designer.cs">
-      <DependentUpon>201904151231253_AdminIsAlsoMod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261516204_ChangeDateOfPublicationForReview.cs" />
-    <Compile Include="Migrations\201904261516204_ChangeDateOfPublicationForReview.Designer.cs">
-      <DependentUpon>201904261516204_ChangeDateOfPublicationForReview.cs</DependentUpon>
+    <Compile Include="Migrations\201905080812340_FixedIssueWithDateTimeTypes.cs" />
+    <Compile Include="Migrations\201905080812340_FixedIssueWithDateTimeTypes.Designer.cs">
+      <DependentUpon>201905080812340_FixedIssueWithDateTimeTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,17 +134,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904151041282_AddCoupleNewsAndChangeDateTimePublication.resx">
-      <DependentUpon>201904151041282_AddCoupleNewsAndChangeDateTimePublication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904151226539_AddModaratorRole.resx">
-      <DependentUpon>201904151226539_AddModaratorRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904151231253_AdminIsAlsoMod.resx">
-      <DependentUpon>201904151231253_AdminIsAlsoMod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261516204_ChangeDateOfPublicationForReview.resx">
-      <DependentUpon>201904261516204_ChangeDateOfPublicationForReview.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905080812340_FixedIssueWithDateTimeTypes.resx">
+      <DependentUpon>201905080812340_FixedIssueWithDateTimeTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

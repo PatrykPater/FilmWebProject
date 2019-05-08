@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddCoupleNewsAndChangeDateTimePublication : DbMigration
+    public partial class FixedIssueWithDateTimeTypes : DbMigration
     {
         public override void Up()
         {

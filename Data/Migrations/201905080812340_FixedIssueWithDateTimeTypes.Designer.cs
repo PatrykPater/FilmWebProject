@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddCoupleNewsAndChangeDateTimePublication : IMigrationMetadata
+    public sealed partial class FixedIssueWithDateTimeTypes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCoupleNewsAndChangeDateTimePublication));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixedIssueWithDateTimeTypes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904151041282_AddCoupleNewsAndChangeDateTimePublication"; }
+            get { return "201905080812340_FixedIssueWithDateTimeTypes"; }
         }
         
         string IMigrationMetadata.Source

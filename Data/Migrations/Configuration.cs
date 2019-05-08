@@ -781,7 +781,8 @@ namespace Data.Migrations
                     Title = "Title of review 1",
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
                     Film = films.ElementAt(0),
-                    Author = users.ElementAt(0)
+                    Author = users.ElementAt(0),
+                    DateOfPublication = DateTime.Parse("2019-03-01"),
                 },
                 new Review
                 {
@@ -789,7 +790,8 @@ namespace Data.Migrations
                     Title = "Title of review 2",
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
                     Film = films.ElementAt(1),
-                    Author = users.ElementAt(1)
+                    Author = users.ElementAt(1),
+                    DateOfPublication = DateTime.Parse("2019-01-01"),
                 },
                 new Review
                 {
@@ -797,7 +799,8 @@ namespace Data.Migrations
                     Title = "Title of review 3",
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
                     Film = films.ElementAt(2),
-                    Author = users.ElementAt(2)
+                    Author = users.ElementAt(2),
+                    DateOfPublication = DateTime.Parse("2019-02-01"),
                 },
                 new Review
                 {
@@ -805,7 +808,8 @@ namespace Data.Migrations
                     Title = "Title of review 4",
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
                     Film = films.ElementAt(3),
-                    Author = users.ElementAt(3)
+                    Author = users.ElementAt(3),
+                    DateOfPublication = DateTime.Parse("2019-04-01"),
                 },
                 new Review
                 {
@@ -813,7 +817,8 @@ namespace Data.Migrations
                     Title = "Title of review 5",
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
                     Film = films.ElementAt(4),
-                    Author = users.ElementAt(4)
+                    Author = users.ElementAt(4),
+                    DateOfPublication = DateTime.Parse("2019-05-01"),
                 },
                 new Review
                 {
@@ -821,7 +826,8 @@ namespace Data.Migrations
                     Title = "Title of review 5",
                     Content = "Ut lobortis libero ac sem luctus, vitae venenatis arcu varius. Fusce augue nulla, luctus ut convallis vitae, consequat et est. In id gravida massa, nec sodales justo. Aenean sagittis sodales massa, a consectetur ex pulvinar sit amet. Aenean bibendum quam a ligula congue, ut sollicitudin orci commodo. Maecenas nec dolor malesuada velit tincidunt venenatis ac in magna. Donec maximus turpis at sapien malesuada, sed molestie mi pulvinar. Nullam nec eros elit. Aliquam ac odio eu ipsum volutpat gravida nec et mi. Aliquam rhoncus vehicula efficitur. Ut id commodo sem, nec molestie magna. Phasellus sit amet dui lobortis, consectetur velit ut, porttitor sem.",
                     Film = films.ElementAt(9),
-                    Author = users.ElementAt(0)
+                    Author = users.ElementAt(0),
+                    DateOfPublication = DateTime.Parse("2019-05-02"),
                 }
             };
 
@@ -953,6 +959,7 @@ namespace Data.Migrations
                     Id = 1,
                     Title = "Title 1",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-1),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0)
@@ -965,6 +972,7 @@ namespace Data.Migrations
                     Id = 2,
                     Title = "Title 2",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-2),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -978,6 +986,7 @@ namespace Data.Migrations
                     Id = 3,
                     Title = "Title 3",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-2),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -991,6 +1000,7 @@ namespace Data.Migrations
                     Id = 4,
                     Title = "Title 4",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-1),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(1),
@@ -1004,6 +1014,7 @@ namespace Data.Migrations
                     Id = 5,
                     Title = "Title 5",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-3),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -1017,6 +1028,7 @@ namespace Data.Migrations
                     Id = 6,
                     Title = "Title 6",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-1),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -1030,6 +1042,7 @@ namespace Data.Migrations
                     Id = 7,
                     Title = "Title 7",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-1),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(0),
@@ -1043,6 +1056,7 @@ namespace Data.Migrations
                     Id = 8,
                     Title = "Title 8",
                     ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    DateOfPublication = DateTime.Now.AddHours(-1),
                     Tags = new List<NewsTags>()
                     {
                         newsTags.ElementAt(1),
