@@ -33,7 +33,8 @@ Currently working features:
 - Admins Panel with an option to promote chosen users to Moderators. Moderators will have exclusive rights to write articles/new and add new movies/tv shows/celebrities to the database (in the future).
 
 On todo list:
-- Rework API controllers so that they follow REST guidelines better.
+- Paging, sorting, filtering, HATEOAS
+- Reviews
 - Add notification if your friend has rated a film.
 - Abilit to comment on the notification.
 - Ability to write a review about a movie.
