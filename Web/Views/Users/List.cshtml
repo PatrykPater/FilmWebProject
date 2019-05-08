@@ -40,25 +40,29 @@
                     </a>
                 </td>
                 <td>
-                    @if (user.Id != Model.User.Id)
+
+                    @if (user.Id == Model.User.Id)
                     {
-                        foreach (var friend in Model.User.Friends)
-                        {
-                            if (friend.Id == user.Id)
-                            {
-                                <span>@user.FirstName @user.LastName is already your friend!</span>
-                            }
-                            else
-                            {
-                                <a href="#" class="js-user-send-friend-request" data-user-id="@user.Id">
-                                    Send friend request
-                                </a>
-                            }
-                        }
+                        <span>You can't sand friend request to yourself!</span>
                     }
                     else
                     {
-                        <span>---</span>
+                        if (Model.User.Friends.Any())
+                        {
+                            foreach (var friend in Model.User.Friends)
+                            {
+                                if (friend.Id == user.Id)
+                                {
+                                    <span>@user.FirstName @user.LastName is already your friend!</span>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <a href="#" class="js-user-send-friend-request" data-user-id="@user.Id">
+                                Send friend request
+                            </a>
+                        }
                     }
                 </td>
             </tr>

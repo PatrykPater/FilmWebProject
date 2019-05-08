@@ -21,10 +21,10 @@ namespace Web.Controllers
             if (!string.IsNullOrWhiteSpace(query))
             {
                 var userid = User.Identity.GetUserId();
-                var user = _userService.GetUserById(userid);
+                var currentUser = _userService.GetUserById(userid);
                 var users = _userService.GetUsersByQuery(query);
 
-                return View(_modelFactory.Create(user, users));
+                return View(_modelFactory.Create(currentUser, users));
             }
 
             return View(_modelFactory.Create());
