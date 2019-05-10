@@ -18,7 +18,7 @@ namespace Service
         public IEnumerable<News> GetAllNews()
         {
             return _unitOfWork.News.GetAll()
-                .Where(n => n.IsNew)
+                .Where(n => n.IsNew || n.IsNew == false) // Change this to true only in the future. For now in order to have some news displayed on the main page this will always take old news as well.
                 .OrderByDescending(n => n.DateOfPublication)
                 .Take(6);
         }
