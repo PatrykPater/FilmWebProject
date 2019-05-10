@@ -6,14 +6,16 @@
 
 <h2>@Model.Title</h2>
 <div>
-    <div>
-        <a href="@Url.Action("Edit", "Films", new {id = @Model.Id})">Edit movie</a>
-    </div>
-    
-    <a href="#" class="js-film-delete" data-film-id="@Model.Id">
-        Delete
-    </a>
+    @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+    {
+        <div>
+            <a href="@Url.Action("Edit", "Films", new {id = Model.Id})">Edit movie</a>
+        </div>
 
+        <a href="#" class="js-film-delete" data-film-id="@Model.Id">
+            Delete
+        </a>
+    }
     <div>
         (@Model.Release.ToString("yyyy"))
     </div>
