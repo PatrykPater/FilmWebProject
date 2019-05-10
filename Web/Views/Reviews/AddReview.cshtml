@@ -1,0 +1,35 @@
+﻿@model Web.ViewModels.ReviewForFormViewModel
+@{
+    ViewBag.Title = "AddReview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Review</h2>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm("AddReview", "Reviews"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(r => r.Title)
+            @Html.TextBoxFor(r => r.Title, new { @class = "form-control", @placeholder = "Enter the title" })
+            @Html.ValidationMessageFor(r => r.Title)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(r => r.Content)
+            @Html.TextAreaFor(r => r.Content, new { @class = "form-control", rows = "10", @placeholder = "Write your review here ..." })
+            @Html.ValidationMessageFor(r => r.Content)
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -36,6 +36,7 @@ namespace Web
             builder.RegisterType<NewsService>().As<INewsService>().InstancePerRequest();
             builder.RegisterType<ModelFactory>().As<IModelFactory>().InstancePerRequest();
             builder.RegisterType<ManagerService>().As<IManagerService>().InstancePerRequest();
+            builder.RegisterType<ReviewService>().As<IReviewService>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))

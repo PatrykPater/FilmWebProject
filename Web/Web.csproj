@@ -230,6 +230,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dtos\DtoFactory.cs" />
     <Compile Include="Dtos\FilmDto.cs" />
@@ -272,6 +273,7 @@
     <Compile Include="ViewModels\PersonFormViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\ReviewForFormViewModel.cs" />
     <Compile Include="ViewModels\UserListViewModel.cs" />
     <Compile Include="ViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\SetPasswordViewModel.cs" />
@@ -340,10 +342,10 @@
     <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Admin\AddModerator.cshtml" />
+    <Content Include="Views\Reviews\AddReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

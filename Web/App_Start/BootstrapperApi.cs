@@ -41,6 +41,7 @@ namespace Web
             builder.RegisterType<DtoFactory>().As<IDtoFactory>().InstancePerRequest();
             builder.RegisterType<NewsService>().As<INewsService>().InstancePerRequest();
             builder.RegisterType<NotificationService>().As<INotificationService>().InstancePerRequest();
+            builder.RegisterType<ReviewService>().As<IReviewService>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))
