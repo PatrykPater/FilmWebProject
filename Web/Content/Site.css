@@ -21,3 +21,26 @@ input,
 select {
     max-width: 280px;
 }
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 50%;
+    margin: auto;
+}
+
+.form-inline {
+    padding-bottom: 25px;
+}
+
+ .film-posters {
+    margin-bottom: 25px;
+}
+
+.col-md-4 {
+    padding: 0;
+}
+
+.col-md-4, film-posters {
+    min-width: 225px;
+}

@@ -1,14 +1,14 @@
 ﻿@model Web.ViewModels.ReviewForFormViewModel
 @{
-    ViewBag.Title = "AddReview";
+    ViewBag.Title = "ReviewForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container">
-    <h2>Review</h2>
-</div>
 
-<div class="container">
-    @using (Html.BeginForm("AddReview", "Reviews"))
+<div class="container-fluid">
+    
+    <h2>Review</h2>
+
+    @using (Html.BeginForm("ReviewForm", "Reviews"))
     {
         @Html.AntiForgeryToken()
 

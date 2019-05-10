@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <table class="table">
 
     <tr>
@@ -12,7 +13,7 @@
             Your notifications
         </th>
         <th>
-            
+
         </th>
     </tr>
     @foreach (var notification in Model)
@@ -25,19 +26,20 @@
                 </td>
 
                 <td>
-                    <a href="#" class="js-notification-friend-request" data-notification-id="@notification.Id" data-notification-friend-request-action = true>
+                    <a href="#" class="js-notification-friend-request" data-notification-id="@notification.Id" data-notification-friend-request-action=true>
                         Accept
                     </a>
                     or
-                    <a href="#" class="js-notification-friend-request" data-notification-id="@notification.Id" data-notification-friend-request-action = false>
+                    <a href="#" class="js-notification-friend-request" data-notification-id="@notification.Id" data-notification-friend-request-action=false>
                         Decline
                     </a>
                 </td>
             </tr>
         }
-        
     }
 </table>
+
+
 
 @section scripts
 {

@@ -14,7 +14,7 @@ namespace Web.Controllers
             _reviewService = reviewService;
         }
 
-        public ActionResult AddReview()
+        public ActionResult ReviewForm()
         {
             var viewModel = new ReviewForFormViewModel();
             return View(viewModel);

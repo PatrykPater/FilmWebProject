@@ -4,52 +4,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add new moderator</h2>
-<p>
-    Enter user's address e-mail to give the account moderator's rights.
-</p>
+<div class="container-fluid">
+    <h2>Add new moderator</h2>
+    <p>
+        Enter user's address e-mail to give the account moderator's rights.
+    </p>
 
-@using (Html.BeginForm("Search", "Admin", FormMethod.Post, new { @class = "form-inline" }))
-{
-    <div class="form-group">
-        <div class="input-group">
-            @Html.TextBoxFor(s => s.Email, new { @class = "form-control", placeholder = "Search" })
-            <div class="input-group-addon">
-                <i class="glyphicon glyphicon-search"></i>
+    @using (Html.BeginForm("Search", "Admin", FormMethod.Post, new {@class = "form-inline"}))
+    {
+        <div class="form-group">
+            <div class="input-group">
+                @Html.TextBoxFor(s => s.Email, new {@class = "form-control", placeholder = "Search"})
+                <div class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
 
-@if (Model.IsSearched)
-{
-    <table class="table">
-        <tr>
-            <td>
-                User Name
-            </td>
-            <td>
-                User E-mail
-            </td>
-            <td>
-                Actions
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Model.Name
-            </td>
-            <td>
-                @Model.Email
-            </td>
-            <td>
-                <a href="@Url.Action("Promote", "Admin", new {userId = @Model.UserId})">Promote to a moderator</a>
-            </td>
-        </tr>
-    </table>
-}
+    @if (Model.IsSearched)
+    {
+        <table class="table">
+            <tr>
+                <td>
+                    User Name
+                </td>
+                <td>
+                    User E-mail
+                </td>
+                <td>
+                    Actions
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Model.Name
+                </td>
+                <td>
+                    @Model.Email
+                </td>
+                <td>
+                    <a href="@Url.Action("Promote", "Admin", new {userId = Model.UserId})">Promote to a moderator</a>
+                </td>
+            </tr>
+        </table>
+    }
 
-@if (@Model.IsPromoted)
-{
-    <div class="alert alert-success" role="alert">@Model.Name has been successfully promoted to a moderator!</div>
-}
+    @if (Model.IsPromoted)
+    {
+        <div class="alert alert-success" role="alert">@Model.Name has been successfully promoted to a moderator!</div>
+    }
+</div>

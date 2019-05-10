@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h2>Search for a friend</h2>
 
 @using (Html.BeginForm("Search", "Users", FormMethod.Post, new {@class = "form-inline"}))
@@ -69,6 +70,7 @@
         }
     </table>
 }
+
 
 @section scripts
 {
