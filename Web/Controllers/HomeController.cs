@@ -1,5 +1,9 @@
-﻿using Service;
+﻿using AutoMapper;
+using Model.Models;
+using Service;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
@@ -14,7 +18,10 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var newsFromRepo = _newsService.GetAllNews();
+            var viewModel = Mapper.Map<IEnumerable<News>, IEnumerable<NewsForMainPageViewModel>>(newsFromRepo);
+
+            return View(viewModel);
         }
     }
 }

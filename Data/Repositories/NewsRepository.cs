@@ -18,7 +18,8 @@ namespace Data.Repositories
         {
             return _context.News
                 .Include(n => n.Author)
-                .Include(n => n.Tags).ToList();
+                .Include(n => n.Tags)
+                .ToList();
         }
 
         public override News GetById(int id)

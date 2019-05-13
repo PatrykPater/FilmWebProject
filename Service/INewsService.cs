@@ -5,7 +5,7 @@ namespace Service
 {
     public interface INewsService
     {
-        IEnumerable<News> GetAllNews();
+        List<News> GetAllNews();
         News GetNewsById(int id);
         void Complete();
     }

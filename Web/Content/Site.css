@@ -37,36 +37,14 @@ select {
     margin-bottom: 25px;
 }
 
-.col-md-4 {
-    padding: 0;
-}
-
 .col-md-4, film-posters {
     min-width: 225px;
 }
 
-.carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    max-width: 600px;
-}
-
 .myCarousel {
-    max-width: 600px;
-    margin: auto;
     margin-bottom: 25px;
 }
 
-#news-column {
-    margin: auto;
-}
-
-.news-right-side-container {
-    float: left;
-}
-
-.news-left-side-picture-container {
-    max-width: 240px;
-    margin-right: 10px;
+.news-posters {
+    margin-bottom: 25px;
 }

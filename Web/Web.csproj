@@ -219,8 +219,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\FilmsController.cs" />
-    <Compile Include="Controllers\Api\HomeController.cs" />
-    <Compile Include="Controllers\Api\NewsController.cs" />
     <Compile Include="Controllers\Api\NotificationsController.cs" />
     <Compile Include="Controllers\Api\PersonsController.cs" />
     <Compile Include="Controllers\Api\ReviewsController.cs" />
@@ -270,6 +268,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ModelFactory.cs" />
     <Compile Include="ViewModels\NewsDetailsViewModel.cs" />
+    <Compile Include="ViewModels\NewsForMainPageViewModel.cs" />
     <Compile Include="ViewModels\PersonFormViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />

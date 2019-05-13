@@ -39,6 +39,8 @@ namespace Web
                 .ForMember(dest => dest.Content, opt => opt.MapFrom(source => source.Content))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(source => source.Title));
 
+            CreateMap<News, NewsForMainPageViewModel>();
+
         }
     }
 }
