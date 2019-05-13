@@ -28,13 +28,14 @@ Currently working features:
 - Searching for other users/friends by last and first name, an option to bookmark the search.
 - Working notification system, should be easy to extend, at the moment it supports friend requests only, you get the number of new notifications upon login into your account. You can check those notifications at separate page where they are displayed in a table with appriopriate actions available to them (like accepting/declining a friend request). (done in API/MVC)
 - You can add another user as a friend if they accept your friend request. (done in API)
-- Working news system (done in API/MVC) - the main page gets the current news from api (the ones no older than 24 hours) and displays them creating the DOM dynamically. Currently, it displays the 6 newest news. In the future it will display the top 3 newest ones on the top of the page. The rest of the news will be displayed below the top ones, this is where i want to implement paging.
+- Working news system - The top 4 (newest) news are displayed in carousel, the rest is displayed below in a column (picture+title+short description). Only news no older than 24 hours are displayed on the main page.
 - You can click on the Read More buton or the short descritpion to see the full article.
 - Admins Panel with an option to promote chosen users to Moderators. Moderators will have exclusive rights to write articles/new and add new movies/tv shows/celebrities to the database (in the future).
 
 On todo list:
-- Paging, sorting, filtering, HATEOAS
-- Reviews
+- Paging, sorting, filtering for films, news etc.
+- HATEOAS
+- Reviews system
 - Add notification if your friend has rated a film.
 - Abilit to comment on the notification.
 - Ability to write a review about a movie.
