@@ -28,12 +28,12 @@
                 <div class="col-md-8">
                     <div class="col-md-4 film-posters">
                         <a href="@Url.Action("Details", "Films", new {id = film.Id})">
-                            <img src="../Content/img/NotFound.png"/>
+                            <img class="img-responsive" src="../Content/img/FILM_POSTER_1.jpg"/>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="@Url.Action("Details", "Films", new {id = film.Id})">@film.Title</a>
-                        <span>(@film.Release)</span>
+                        <span>(@film.Release.Year)</span>
 
                         @if (film.Score <= 0)
                         {
@@ -41,7 +41,7 @@
                                 <div>
                                     Score : ---
                                 </div>                                
-                                <div> Ratings: Not implemented</div>
+                                <div> Ratings: @film.RatingsNumber</div>
                             </div>
                         }
                         else
@@ -50,7 +50,7 @@
                                 <div>
                                     Score: @film.Score
                                 </div>
-                                <div> Ratings: Not implemented</div>
+                                <div> Ratings: @film.RatingsNumber</div>
                             </div> 
                         }
                         
@@ -82,7 +82,24 @@
             </div>
         </div>
     }
-
+    
+    <nav aria-label="Page navigation" class="text-center">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
-
-

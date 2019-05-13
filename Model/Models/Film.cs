@@ -25,6 +25,7 @@ namespace Model.Models
         public string Studio { get; set; }
         public decimal BoxOffice { get; set; }
 
+        public int RatingsNumber => Ratings.Count();
         public double Score => Ratings.Any() ? Ratings.Average(r => r.Value) : 0;
 
         public ICollection<Rating> Ratings { get; set; }
