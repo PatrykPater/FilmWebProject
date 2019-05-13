@@ -1,4 +1,5 @@
-﻿using Model.Models;
+﻿using Data.Helpers;
+using Model.Models;
 using System.Collections.Generic;
 
 namespace Service
@@ -7,6 +8,7 @@ namespace Service
     {
         List<News> GetAllNews();
         News GetNewsById(int id);
+        List<News> GetFilmsWithPagination(FilmListParameters filmListParameters);
         void Complete();
     }
 }

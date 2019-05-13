@@ -1,4 +1,5 @@
-﻿using Data.Infrastructure;
+﻿using Data.Helpers;
+using Data.Infrastructure;
 using Model.Models;
 using System.Collections.Generic;
 
@@ -7,5 +8,6 @@ namespace Data.Repositories
     public interface INewsRepository : IRepository<News>
     {
         new List<News> GetAll();
+        List<News> GetFilmsWithPagination(FilmListParameters filmListParameters);
     }
 }

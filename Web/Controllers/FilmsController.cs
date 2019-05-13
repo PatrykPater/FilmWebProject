@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Helpers;
 using Model.Models;
 using Service;
 using System.Collections.Generic;
@@ -55,19 +56,20 @@ namespace Web.Controllers
             return RedirectToAction("Details", "Films", new { id = newFilm.Id });
         }
 
-        public ActionResult List(string query = null)
+        [HttpGet]
+        public ActionResult List(FilmListParameters filmListParameters)
         {
             var films = _filmService.GetAllFilms();
 
-            if (!string.IsNullOrWhiteSpace(query))
-                films = _filmService.GetFilmsByQuery(films, query);
+            if (!string.IsNullOrWhiteSpace(filmListParameters.QuerySearch))
+                films = _filmService.GetFilmsByQuery(films, filmListParameters.QuerySearch);
 
             var filmViewModel = new FilmListViewModel { ListOfFilms = films };
 
             return View(filmViewModel);
         }
 
-
+        [HttpGet]
         public ActionResult Details(int id)
         {
             if (id <= 0)
@@ -81,6 +83,7 @@ namespace Web.Controllers
             return View(film);
         }
 
+        [HttpPost]
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
