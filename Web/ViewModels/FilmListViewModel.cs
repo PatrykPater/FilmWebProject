@@ -13,7 +13,6 @@ namespace Web.ViewModels
         }
 
         public IEnumerable<Film> ListOfFilms { get; set; }
-        //public string Search { get; set; }
         public FilmListParameters FilmListParameters { get; set; }
     }
 }

@@ -2,7 +2,6 @@
 using Data.Infrastructure;
 using Model.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Service
 {
@@ -30,15 +29,9 @@ namespace Service
             return _unitOfWork.Films.GetAll();
         }
 
-        public List<Film> GetFilmsByQuery(List<Film> films, string query)
+        public List<Film> GetFilmsBySearchQuery(FilmListParameters filmListParameters)
         {
-            var lower = query.ToLower();
-
-            films = films
-               .Where(g =>
-                   g.Title.ToLower().Contains(lower)).ToList();
-
-            return films;
+            return _unitOfWork.Films.GetFilmsBySearchQuery(filmListParameters);
         }
 
         public Film GetFilmById(int id)

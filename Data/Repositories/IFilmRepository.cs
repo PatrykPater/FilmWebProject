@@ -10,6 +10,7 @@ namespace Data.Repositories
         new List<Film> GetAll();
         new Film GetById(int id);
         List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters);
+        List<Film> GetFilmsBySearchQuery(FilmListParameters filmListParameters);
         int GetAllFilmCount();
     }
 }

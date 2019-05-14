@@ -10,7 +10,7 @@ namespace Service
         void Complete();
         void AddNewFilm(Film film);
         List<Film> GetAllFilms();
-        List<Film> GetFilmsByQuery(List<Film> films, string query);
+        List<Film> GetFilmsBySearchQuery(FilmListParameters filmListParameters);
         Film GetFilmById(int id);
         void RemoveFilm(Film film);
         ApplicationUser GetUserById(string id);

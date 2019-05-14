@@ -59,10 +59,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult List(FilmListParameters filmListParameters)
         {
-            var films = _filmService.GetFilmsWithPagination(filmListParameters);
-
-            if (!string.IsNullOrWhiteSpace(filmListParameters.QuerySearch))
-                films = _filmService.GetFilmsByQuery(films, filmListParameters.QuerySearch);
+            var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch) ? _filmService.GetFilmsBySearchQuery(filmListParameters) : _filmService.GetFilmsWithPagination(filmListParameters);
 
             //Think of better way to do this
             var filmViewModel = new FilmListViewModel
@@ -148,9 +145,9 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search(FilmListViewModel viewModel)
+        public ActionResult Search(FilmListParameters filmListParameters)
         {
-            return RedirectToAction("List", "Films", new { query = viewModel.FilmListParameters.QuerySearch });
+            return RedirectToAction("List", "Films", filmListParameters);
         }
     }
 }
