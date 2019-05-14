@@ -7,14 +7,7 @@
         public int PageSize { get; set; } = 5;
         public int MaxPageNumber { get; set; }
         public int CurrentPage { get; set; } = 1;
-
-
-        //public OrderByEnum OrderBy { get; set; } = OrderByEnum.Title;
+        public string Genre { get; set; }
 
     }
-
-    //public enum OrderByEnum
-    //{
-    //    Title
-    //}
 }

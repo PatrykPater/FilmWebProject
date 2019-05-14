@@ -3,6 +3,7 @@ using Data.Helpers;
 using Model.Models;
 using Service;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Web.Helpers;
@@ -59,9 +60,15 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult List(FilmListParameters filmListParameters)
         {
-            var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch) ? _filmService.GetFilmsBySearchQuery(filmListParameters) : _filmService.GetFilmsWithPagination(filmListParameters);
+            var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch) ?
+                _filmService.GetFilmsBySearchQuery(filmListParameters) : _filmService.GetFilmsWithPagination(filmListParameters);
 
-            //Think of better way to do this
+            //Sorting and filtering require much more work
+            if (!string.IsNullOrWhiteSpace(filmListParameters.Genre))
+            {
+                films = films.Where(f => f.Genres.Any(g => g.Name == filmListParameters.Genre)).ToList();
+            }
+
             var filmViewModel = new FilmListViewModel
             {
                 ListOfFilms = films,
