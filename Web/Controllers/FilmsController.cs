@@ -64,10 +64,15 @@ namespace Web.Controllers
             if (!string.IsNullOrWhiteSpace(filmListParameters.QuerySearch))
                 films = _filmService.GetFilmsByQuery(films, filmListParameters.QuerySearch);
 
+            //Think of better way to do this
             var filmViewModel = new FilmListViewModel
             {
                 ListOfFilms = films,
-                FilmListParameters = { MaxPageNumber = _filmService.GetAllFilmCount() / filmListParameters.PageSize }
+                FilmListParameters =
+                {
+                    MaxPageNumber = _filmService.GetAllFilmCount() / filmListParameters.PageSize,
+                    CurrentPage = filmListParameters.CurrentPage
+                }
             };
 
             return View(filmViewModel);
