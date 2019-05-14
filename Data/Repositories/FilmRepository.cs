@@ -1,4 +1,5 @@
-﻿using Data.Infrastructure;
+﻿using Data.Helpers;
+using Data.Infrastructure;
 using Model.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -29,6 +30,22 @@ namespace Data.Repositories
                     .Include(f => f.Genres)
                     .Include(f => f.Ratings)
                     .Single(f => f.Id == id);
+        }
+
+        public List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters)
+        {
+            return _context.Films
+                .Include(f => f.Genres)
+                .Include(f => f.Ratings)
+                .OrderBy(f => f.Title)
+                .Skip(filmListParameters.PageSize * (filmListParameters.PageNumber - 1))
+                .Take(filmListParameters.PageSize)
+                .ToList();
+        }
+
+        public int GetAllFilmCount()
+        {
+            return _context.Films.Count();
         }
     }
 }

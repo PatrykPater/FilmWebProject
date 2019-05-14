@@ -13,7 +13,7 @@
         {
             <div class="form-group">
                 <div class="input-group">
-                    @Html.TextBoxFor(s => s.Search, new { @class = "form-control", placeholder = "Search" })
+                    @Html.TextBoxFor(s => s.FilmListParameters.QuerySearch, new { @class = "form-control", placeholder = "Search" })
                     <div class="input-group-addon">
                         <i class="glyphicon glyphicon-search"></i>
                     </div>
@@ -90,11 +90,10 @@
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            @for (var i = 1; i <= Model.FilmListParameters.MaxPageNumber; i++)
+            {
+                <li><a href="@Url.Action("List", "Films", new {PageNumber = i})">@i</a></li>
+            }
             <li>
                 <a href="#" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>

@@ -1,4 +1,5 @@
-﻿using Data.Infrastructure;
+﻿using Data.Helpers;
+using Data.Infrastructure;
 using Model.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,16 @@ namespace Service
         public Rating GetUserRating(int filmId, string userId)
         {
             return _unitOfWork.Ratings.GetUserRating(filmId, userId);
+        }
+
+        public List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters)
+        {
+            return _unitOfWork.Films.GetFilmsWithPagination(filmListParameters);
+        }
+
+        public int GetAllFilmCount()
+        {
+            return _unitOfWork.Films.GetAllFilmCount();
         }
     }
 }

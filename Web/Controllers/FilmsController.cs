@@ -59,12 +59,16 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult List(FilmListParameters filmListParameters)
         {
-            var films = _filmService.GetAllFilms();
+            var films = _filmService.GetFilmsWithPagination(filmListParameters);
 
             if (!string.IsNullOrWhiteSpace(filmListParameters.QuerySearch))
                 films = _filmService.GetFilmsByQuery(films, filmListParameters.QuerySearch);
 
-            var filmViewModel = new FilmListViewModel { ListOfFilms = films };
+            var filmViewModel = new FilmListViewModel
+            {
+                ListOfFilms = films,
+                FilmListParameters = { MaxPageNumber = _filmService.GetAllFilmCount() / filmListParameters.PageSize }
+            };
 
             return View(filmViewModel);
         }
@@ -141,7 +145,7 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult Search(FilmListViewModel viewModel)
         {
-            return RedirectToAction("List", "Films", new { query = viewModel.Search });
+            return RedirectToAction("List", "Films", new { query = viewModel.FilmListParameters.QuerySearch });
         }
     }
 }

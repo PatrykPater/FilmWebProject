@@ -1,5 +1,4 @@
-﻿using Data.Helpers;
-using Data.Infrastructure;
+﻿using Data.Infrastructure;
 using Model.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +27,6 @@ namespace Service
         public News GetNewsById(int id)
         {
             return _unitOfWork.News.GetById(id);
-        }
-
-        public List<News> GetFilmsWithPagination(FilmListParameters filmListParameters)
-        {
-            return _unitOfWork.News.GetFilmsWithPagination(filmListParameters);
         }
     }
 }

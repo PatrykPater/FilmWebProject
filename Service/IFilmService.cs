@@ -1,4 +1,5 @@
-﻿using Model.Models;
+﻿using Data.Helpers;
+using Model.Models;
 using System.Collections.Generic;
 
 namespace Service
@@ -15,5 +16,7 @@ namespace Service
         ApplicationUser GetUserById(string id);
         void AddNewRating(Film film, ApplicationUser user, int value);
         Rating GetUserRating(int filmId, string userId);
+        List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters);
+        int GetAllFilmCount();
     }
 }
