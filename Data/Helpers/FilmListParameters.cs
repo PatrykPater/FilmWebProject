@@ -9,7 +9,7 @@ namespace Data.Helpers
         public int PageSize { get; set; } = 5;
         public int MaxPageNumber { get; set; }
         public int CurrentPage { get; set; } = 1;
-        public List<string> Genre { get; set; }
+        public List<string> Genres { get; set; }
         public List<string> Countries { get; set; }
 
     }

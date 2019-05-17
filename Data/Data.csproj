@@ -98,9 +98,9 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Helpers\UserManagerHelper.cs" />
-    <Compile Include="Migrations\201905080812340_FixedIssueWithDateTimeTypes.cs" />
-    <Compile Include="Migrations\201905080812340_FixedIssueWithDateTimeTypes.Designer.cs">
-      <DependentUpon>201905080812340_FixedIssueWithDateTimeTypes.cs</DependentUpon>
+    <Compile Include="Migrations\201905171640486_ReSeedingDB.cs" />
+    <Compile Include="Migrations\201905171640486_ReSeedingDB.Designer.cs">
+      <DependentUpon>201905171640486_ReSeedingDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,8 +138,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905080812340_FixedIssueWithDateTimeTypes.resx">
-      <DependentUpon>201905080812340_FixedIssueWithDateTimeTypes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905171640486_ReSeedingDB.resx">
+      <DependentUpon>201905171640486_ReSeedingDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

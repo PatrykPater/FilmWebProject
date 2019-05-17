@@ -24,11 +24,6 @@ namespace Service
             _unitOfWork.Films.Add(film);
         }
 
-        public List<Film> GetAllFilms()
-        {
-            return _unitOfWork.Films.GetAll();
-        }
-
         public List<Film> GetFilmsBySearchQuery(FilmListParameters filmListParameters)
         {
             return _unitOfWork.Films.GetFilmsBySearchQuery(filmListParameters);

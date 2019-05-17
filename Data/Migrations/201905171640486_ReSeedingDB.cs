@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FixedIssueWithDateTimeTypes : DbMigration
+    public partial class ReSeedingDB : DbMigration
     {
         public override void Up()
         {
@@ -19,6 +19,15 @@ namespace Data.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Countries",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Films",
                 c => new
                     {
@@ -27,7 +36,6 @@ namespace Data.Migrations
                         Duration = c.Time(nullable: false, precision: 7),
                         ShortDescription = c.String(),
                         LongDescription = c.String(),
-                        Production = c.String(),
                         Release = c.DateTime(nullable: false),
                         Budget = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Studio = c.String(),
@@ -267,6 +275,19 @@ namespace Data.Migrations
                 .Index(t => t.TypeRefId);
             
             CreateTable(
+                "dbo.FilmCountry",
+                c => new
+                    {
+                        FilmRefId = c.Int(nullable: false),
+                        CountryRefId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.FilmRefId, t.CountryRefId })
+                .ForeignKey("dbo.Countries", t => t.FilmRefId, cascadeDelete: true)
+                .ForeignKey("dbo.Films", t => t.CountryRefId, cascadeDelete: true)
+                .Index(t => t.FilmRefId)
+                .Index(t => t.CountryRefId);
+            
+            CreateTable(
                 "dbo.PersonJob",
                 c => new
                     {
@@ -288,6 +309,8 @@ namespace Data.Migrations
             DropForeignKey("dbo.Nominations", "AwardId", "dbo.Awards");
             DropForeignKey("dbo.PersonJob", "JobRefId", "dbo.Jobs");
             DropForeignKey("dbo.PersonJob", "PersonRefId", "dbo.People");
+            DropForeignKey("dbo.FilmCountry", "CountryRefId", "dbo.Films");
+            DropForeignKey("dbo.FilmCountry", "FilmRefId", "dbo.Countries");
             DropForeignKey("dbo.Trailers", "Film_Id", "dbo.Films");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Reviews", "Film_Id", "dbo.Films");
@@ -306,6 +329,8 @@ namespace Data.Migrations
             DropForeignKey("dbo.FilmGenre", "FilmRefId", "dbo.Films");
             DropIndex("dbo.PersonJob", new[] { "JobRefId" });
             DropIndex("dbo.PersonJob", new[] { "PersonRefId" });
+            DropIndex("dbo.FilmCountry", new[] { "CountryRefId" });
+            DropIndex("dbo.FilmCountry", new[] { "FilmRefId" });
             DropIndex("dbo.NewsAndNewsTags", new[] { "TypeRefId" });
             DropIndex("dbo.NewsAndNewsTags", new[] { "NewsRefId" });
             DropIndex("dbo.FilmGenre", new[] { "GenreRefId" });
@@ -328,6 +353,7 @@ namespace Data.Migrations
             DropIndex("dbo.Ratings", new[] { "User_Id" });
             DropIndex("dbo.Ratings", new[] { "Film_Id" });
             DropTable("dbo.PersonJob");
+            DropTable("dbo.FilmCountry");
             DropTable("dbo.NewsAndNewsTags");
             DropTable("dbo.FilmGenre");
             DropTable("dbo.AspNetRoles");
@@ -346,6 +372,7 @@ namespace Data.Migrations
             DropTable("dbo.Ratings");
             DropTable("dbo.Genres");
             DropTable("dbo.Films");
+            DropTable("dbo.Countries");
             DropTable("dbo.Awards");
         }
     }

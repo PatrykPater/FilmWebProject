@@ -19,7 +19,6 @@ namespace Model.Models
         public TimeSpan Duration { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
-        public string Production { get; set; }
         public DateTime Release { get; set; }
         public decimal Budget { get; set; }
         public string Studio { get; set; }
@@ -28,6 +27,7 @@ namespace Model.Models
         public int RatingsNumber => Ratings.Count();
         public double Score => Ratings.Any() ? Ratings.Average(r => r.Value) : 0;
 
+        public ICollection<Country> Country { get; set; }
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<Genre> Genres { get; set; }
         public ICollection<Review> Reviews { get; set; }

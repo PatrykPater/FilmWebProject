@@ -63,10 +63,10 @@ namespace Web.Controllers
             var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch) ?
                 _filmService.GetFilmsBySearchQuery(filmListParameters) : _filmService.GetFilmsWithPagination(filmListParameters);
 
-            if (filmListParameters.Genre.Any() || filmListParameters.Countries.Any())
+            if (filmListParameters.Genres.Any() || filmListParameters.Countries.Any())
             {
-                //films = films.Where(f => f.Genres.Any(g => g.Name == filmListParameters.Genre)).ToList();
-                films = _filmService.FilterFilms(filmListParameters.Genre, filmListParameters.Countries, films);
+                //films = films.Where(f => f.Genres.Any(g => g.Name == filmListParameters.Genres)).ToList();
+                films = _filmService.FilterFilms(filmListParameters.Genres, filmListParameters.Countries, films);
             }
 
             var filmViewModel = new FilmListViewModel

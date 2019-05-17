@@ -57,7 +57,7 @@
                     @for (var i = 0; i < Model.CountryList.Count(); i++)
                     {
                         <label class="checkbox-inline">
-                            @*@Html.CheckBoxFor(x => x.CountryList[i].IsChecked)*@
+                            @Html.CheckBoxFor(x => x.CountryList[i].IsChecked)
                             @Model.CountryList[i].Name
                             @Html.HiddenFor(x => x.CountryList[i].Name)
                             @*@Html.HiddenFor(x => x.CountryList[i].Id)*@

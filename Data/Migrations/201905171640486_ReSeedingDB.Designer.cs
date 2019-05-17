@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class FixedIssueWithDateTimeTypes : IMigrationMetadata
+    public sealed partial class ReSeedingDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixedIssueWithDateTimeTypes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ReSeedingDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905080812340_FixedIssueWithDateTimeTypes"; }
+            get { return "201905171640486_ReSeedingDB"; }
         }
         
         string IMigrationMetadata.Source

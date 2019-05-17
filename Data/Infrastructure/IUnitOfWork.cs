@@ -15,6 +15,7 @@ namespace Data.Infrastructure
         INewsRepository News { get; set; }
         IUserManagerHelper ManagerHelper { get; set; }
         IReviewRepository Reviews { get; set; }
+        ICountryRepository Countries { get; set; }
 
         void Complete();
     }
