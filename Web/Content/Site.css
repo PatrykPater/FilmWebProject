@@ -54,6 +54,7 @@ select {
 .toggle-filter-films {
     display: none;
     background: aliceblue;
+    padding: 10px;
 }
 
 .btn-filters {

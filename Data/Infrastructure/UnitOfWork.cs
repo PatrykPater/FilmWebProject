@@ -17,6 +17,7 @@ namespace Data.Infrastructure
         public INewsRepository News { get; set; }
         public IUserManagerHelper ManagerHelper { get; set; }
         public IReviewRepository Reviews { get; set; }
+        public ICountryRepository Countries { get; set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -31,6 +32,7 @@ namespace Data.Infrastructure
             News = new NewsRepository(_context);
             ManagerHelper = new UserManagerHelper(_context);
             Reviews = new ReviewRepository(_context);
+            Countries = new CountryRepository(_context);
         }
 
         public void Complete()

@@ -10,9 +10,13 @@ namespace Web.ViewModels
         {
             ListOfFilms = new List<Film>();
             FilmListParameters = new FilmListParameters();
+            Genres = new List<GenreViewModel>();
+            CountryList = new List<Country>();
         }
 
         public IEnumerable<Film> ListOfFilms { get; set; }
         public FilmListParameters FilmListParameters { get; set; }
+        public List<GenreViewModel> Genres { get; set; }
+        public List<Country> CountryList { get; set; }
     }
 }

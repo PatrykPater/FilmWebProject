@@ -69,5 +69,10 @@ namespace Service
         {
             return _unitOfWork.Films.GetAllFilmCount();
         }
+
+        public List<Film> FilterFilms(List<string> genre, List<string> countries, List<Film> films)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

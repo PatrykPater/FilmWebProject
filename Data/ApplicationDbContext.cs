@@ -19,6 +19,7 @@ namespace Data
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<NewsTags> NewsTags { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", false)
@@ -45,6 +46,7 @@ namespace Data
             modelBuilder.Configurations.Add(new NotificationConfiguration());
             modelBuilder.Configurations.Add(new NewsConfiguration());
             modelBuilder.Configurations.Add(new NewsTagsConfiguration());
+            modelBuilder.Configurations.Add(new CountryConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

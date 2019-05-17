@@ -63,10 +63,10 @@ namespace Web.Controllers
             var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch) ?
                 _filmService.GetFilmsBySearchQuery(filmListParameters) : _filmService.GetFilmsWithPagination(filmListParameters);
 
-            //Sorting and filtering require much more work
-            if (!string.IsNullOrWhiteSpace(filmListParameters.Genre))
+            if (filmListParameters.Genre.Any() || filmListParameters.Countries.Any())
             {
-                films = films.Where(f => f.Genres.Any(g => g.Name == filmListParameters.Genre)).ToList();
+                //films = films.Where(f => f.Genres.Any(g => g.Name == filmListParameters.Genre)).ToList();
+                films = _filmService.FilterFilms(filmListParameters.Genre, filmListParameters.Countries, films);
             }
 
             var filmViewModel = new FilmListViewModel
@@ -76,7 +76,9 @@ namespace Web.Controllers
                 {
                     MaxPageNumber = _filmService.GetAllFilmCount() / filmListParameters.PageSize,
                     CurrentPage = filmListParameters.CurrentPage
-                }
+                },
+                //Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()),
+                //CountryList = new List<CountryFilterViewModel>()
             };
 
             return View(filmViewModel);

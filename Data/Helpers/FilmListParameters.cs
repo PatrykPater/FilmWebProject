@@ -1,4 +1,6 @@
-﻿namespace Data.Helpers
+﻿using System.Collections.Generic;
+
+namespace Data.Helpers
 {
     public class FilmListParameters
     {
@@ -7,7 +9,8 @@
         public int PageSize { get; set; } = 5;
         public int MaxPageNumber { get; set; }
         public int CurrentPage { get; set; } = 1;
-        public string Genre { get; set; }
+        public List<string> Genre { get; set; }
+        public List<string> Countries { get; set; }
 
     }
 }

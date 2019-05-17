@@ -18,5 +18,6 @@ namespace Service
         Rating GetUserRating(int filmId, string userId);
         List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters);
         int GetAllFilmCount();
+        List<Film> FilterFilms(List<string> genre, List<string> countries, List<Film> films);
     }
 }

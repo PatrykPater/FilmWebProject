@@ -26,60 +26,51 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="btn-filters">
                     <li>
-                        <div class="btn navbar-btn" id="toggle-genre-filter">Genres</div>
+                        <button class="btn btn-group" id="toggle-genre-filter">Genres</button>
                     </li>
                     <li>
-                        <div class="btn navbar-btn" id="toggle-country-filter">Country</div>
+                        <button class="btn btn-group" id="toggle-country-filter">Country</button>
                     </li>
                     <li>
-                        <div class="btn navbar-btn" id="toggle-release-date-filter">Release Date</div>
+                        <button class="btn btn-group" id="toggle-release-date-filter">Release Date</button>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="filter-list-wrapper">
-            <div class="genre-filter toggle-filter-films">
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Action
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Horror
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Fantasy
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Thriller
-                </label>
-            </div>
-            <div class="country-filter toggle-filter-films">
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> USA
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> England
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Germany
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> France
-                </label>
-            </div>
-            <div class="release-date-filter toggle-filter-films">
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2019
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2018
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2017
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2016
-                </label>
-            </div>
+            @using (Html.BeginForm("", "", FormMethod.Post))
+            {
+                <div class="genre-filter toggle-filter-films">
+
+                    @for (var i = 0; i < Model.Genres.Count(); i++)
+                    {
+                        <label class="checkbox-inline">
+                            @Html.CheckBoxFor(x => x.Genres[i].IsChecked)
+                            @Model.Genres[i].Name
+                            @Html.HiddenFor(x => x.Genres[i].Name)
+                            @Html.HiddenFor(x => x.Genres[i].Id)
+                        </label>
+                    }
+                </div>
+                <div class="country-filter toggle-filter-films">
+
+                    @for (var i = 0; i < Model.CountryList.Count(); i++)
+                    {
+                        <label class="checkbox-inline">
+                            @*@Html.CheckBoxFor(x => x.CountryList[i].IsChecked)*@
+                            @Model.CountryList[i].Name
+                            @Html.HiddenFor(x => x.CountryList[i].Name)
+                            @*@Html.HiddenFor(x => x.CountryList[i].Id)*@
+                        </label>
+                    }
+                </div>
+                <div class="release-date-filter toggle-filter-films">
+                    NOT IMPLEMENTED
+                </div>
+                <span class="">
+                    <button type="submit" class="btn">Search</button>
+                </span>
+            }
         </div>      
     </nav>
 

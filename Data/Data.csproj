@@ -79,6 +79,7 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="EntityConfigurations\ApplicationUserConfiguration.cs" />
     <Compile Include="EntityConfigurations\AwardConfiguration.cs" />
+    <Compile Include="EntityConfigurations\CountryConfiguration.cs" />
     <Compile Include="EntityConfigurations\FilmConfiguration.cs" />
     <Compile Include="EntityConfigurations\GenreConfiguration.cs" />
     <Compile Include="EntityConfigurations\JobConfiguration.cs" />
@@ -104,9 +105,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AwardRepository.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\FilmRepository.cs" />
     <Compile Include="Repositories\GenreRepository.cs" />
     <Compile Include="Repositories\IAwardRepository.cs" />
+    <Compile Include="Repositories\ICountryRepository.cs" />
     <Compile Include="Repositories\IFilmRepository.cs" />
     <Compile Include="Repositories\IGenreRepository.cs" />
     <Compile Include="Repositories\INewsRepository.cs" />
