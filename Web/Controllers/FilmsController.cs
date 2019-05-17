@@ -96,7 +96,7 @@ namespace Web.Controllers
             return View(film);
         }
 
-        [HttpPost]
+
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {

@@ -20,7 +20,69 @@
                 </div>
             </div>
         }
-    </div>
+    </div>    
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" id="btn-filters">
+                    <li>
+                        <div class="btn navbar-btn" id="toggle-genre-filter">Genres</div>
+                    </li>
+                    <li>
+                        <div class="btn navbar-btn" id="toggle-country-filter">Country</div>
+                    </li>
+                    <li>
+                        <div class="btn navbar-btn" id="toggle-release-date-filter">Release Date</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="filter-list-wrapper">
+            <div class="genre-filter toggle-filter-films">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Action
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Horror
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Fantasy
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Thriller
+                </label>
+            </div>
+            <div class="country-filter toggle-filter-films">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> USA
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> England
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> Germany
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> France
+                </label>
+            </div>
+            <div class="release-date-filter toggle-filter-films">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2019
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2018
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2017
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 2016
+                </label>
+            </div>
+        </div>      
+    </nav>
+
     @foreach (var film in Model.ListOfFilms)
     {
         <div class="row">
@@ -102,3 +164,55 @@
         </ul>
     </nav>
 </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $('#toggle-genre-filter').click(function() {
+                var allItems = $(".filter-list-wrapper").find('div');
+
+                $.each(allItems, function( i, item ) {
+
+                    if ($(item).hasClass('genre-filter')) {
+                        $(item).show(250);
+                    }
+                    else {
+                        $(item).hide(250);
+                    }
+                });
+
+            });
+
+            $('#toggle-country-filter').click(function () {
+                var allItems = $(".filter-list-wrapper").find('div');
+
+                $.each(allItems, function (i, item) {
+
+                    if ($(item).hasClass('country-filter')) {
+                        $(item).show(250);                    
+                    } else {
+                        $(item).hide(250);
+                    }
+                });
+
+            });
+
+            $('#toggle-release-date-filter').click(function () {
+                var allItems = $(".filter-list-wrapper").find('div');
+
+                $.each(allItems, function (i, item) {
+
+                    if ($(item).hasClass('release-date-filter')) {
+                        $(item).show(250);
+                    } else {
+                        $(item).hide(250);
+                    }
+                });
+
+            });
+
+        });
+    </script>
+}

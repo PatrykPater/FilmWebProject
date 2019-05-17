@@ -50,3 +50,12 @@ select {
 .news-posters {
     margin-bottom: 25px;
 }
+
+.toggle-filter-films {
+    display: none;
+    background: aliceblue;
+}
+
+.btn-filters {
+    color: azure;
+}
