@@ -12,6 +12,7 @@ namespace Model.Models
             Genres = new List<Genre>();
             Reviews = new List<Review>();
             Trailers = new List<Trailer>();
+            Country = new List<Country>();
         }
 
         public int Id { get; set; }

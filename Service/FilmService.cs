@@ -65,9 +65,41 @@ namespace Service
             return _unitOfWork.Films.GetAllFilmCount();
         }
 
-        public List<Film> FilterFilms(List<string> genre, List<string> countries, List<Film> films)
+        public List<Film> FilterFilms(List<string> genres, List<string> countries, List<Film> films)
         {
-            throw new System.NotImplementedException();
+            var filteredListOfFilms = new List<Film>();
+            var genresFromDb = new List<Genre>();
+            var countriesFromDb = new List<Country>();
+
+            foreach (var genre in genres)
+            {
+                genresFromDb.Add(_unitOfWork.Genres.Get(g => g.Name == genre));
+            }
+
+            foreach (var country in countries)
+            {
+                countriesFromDb.Add(_unitOfWork.Countries.Get(g => g.Name == country));
+            }
+
+            foreach (var film in films)
+            {
+                foreach (var genre in genresFromDb)
+                {
+                    if (film.Genres.Contains(genre))
+                    {
+                        filteredListOfFilms.Add(film);
+                    }
+                }
+
+                foreach (var country in countriesFromDb)
+                {
+                    if (film.Country.Contains(country))
+                    {
+                        filteredListOfFilms.Add(film);
+                    }
+                }
+            }
+            return filteredListOfFilms;
         }
     }
 }

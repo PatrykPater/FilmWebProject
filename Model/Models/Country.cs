@@ -4,6 +4,11 @@ namespace Model.Models
 {
     public class Country
     {
+        public Country()
+        {
+            Films = new List<Film>();
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
 

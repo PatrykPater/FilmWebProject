@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="filter-list-wrapper">
-            @using (Html.BeginForm("", "", FormMethod.Post))
+            @using (Html.BeginForm("Search", "Films", FormMethod.Post))
             {
                 <div class="genre-filter toggle-filter-films">
 
@@ -125,7 +125,13 @@
                             Wants to watch: Not implemented
                         </div>
                         <div>
-                            Production: @film.Production
+                            Production:
+                            @foreach (var country in film.Country)
+                            {
+                                <span>
+                                    @country.Name,
+                                </span>
+                            }
                         </div>
                         <div>
                             Cast: Not implemented

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
+using Castle.Core.Internal;
 using Data.Helpers;
 using Model.Models;
 using Service;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Web.Helpers;
@@ -60,25 +60,23 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult List(FilmListParameters filmListParameters)
         {
-            var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch) ?
-                _filmService.GetFilmsBySearchQuery(filmListParameters) : _filmService.GetFilmsWithPagination(filmListParameters);
+            var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch)
+                ? _filmService.GetFilmsBySearchQuery(filmListParameters)
+                : _filmService.GetFilmsWithPagination(filmListParameters);
 
-            if (filmListParameters.Genres.Any() || filmListParameters.Countries.Any())
-            {
-                //films = films.Where(f => f.Genres.Any(g => g.Name == filmListParameters.Genres)).ToList();
+            if (!filmListParameters.Genres.IsNullOrEmpty() || !filmListParameters.Countries.IsNullOrEmpty())
                 films = _filmService.FilterFilms(filmListParameters.Genres, filmListParameters.Countries, films);
-            }
 
             var filmViewModel = new FilmListViewModel
             {
                 ListOfFilms = films,
+                Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()),
                 FilmListParameters =
                 {
                     MaxPageNumber = _filmService.GetAllFilmCount() / filmListParameters.PageSize,
-                    CurrentPage = filmListParameters.CurrentPage
-                },
-                //Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()),
-                //CountryList = new List<CountryFilterViewModel>()
+                    CurrentPage = filmListParameters.CurrentPage,
+                    //Genres = _filmService.GetGenresNamesForFiltering()
+                }
             };
 
             return View(filmViewModel);
