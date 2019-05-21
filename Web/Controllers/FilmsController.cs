@@ -60,14 +60,14 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult List(FilmListParametersViewModel filmListParametersViewModel)
         {
-            var filmListParametersDto = Mapper.Map<FilmListParameters>(filmListParametersViewModel);
+            var filmListParametersDto = Mapper.Map<FilmListParametersDto>(filmListParametersViewModel);
 
             var films = !string.IsNullOrWhiteSpace(filmListParametersViewModel.QuerySearch)
                 ? _filmService.GetFilmsBySearchQuery(filmListParametersDto)
                 : _filmService.GetFilmsWithPagination(filmListParametersDto);
 
             if (!filmListParametersViewModel.Genres.IsNullOrEmpty() || !filmListParametersViewModel.Countries.IsNullOrEmpty())
-                films = _filmService.FilterFilms(filmListParametersViewModel.Genres, filmListParametersViewModel.Countries, films);
+                films = _filmService.FilterFilms(filmListParametersDto.Genres, filmListParametersDto.Countries, films);
 
             var filmViewModel = new FilmListViewModel
             {
@@ -76,8 +76,7 @@ namespace Web.Controllers
                 FilmListParameters =
                 {
                     MaxPageNumber = _filmService.GetAllFilmCount() / filmListParametersViewModel.PageSize,
-                    CurrentPage = filmListParametersViewModel.CurrentPage,
-                    //Genres = _filmService.GetGenresNamesForFiltering()
+                    CurrentPage = filmListParametersViewModel.CurrentPage
                 }
             };
 

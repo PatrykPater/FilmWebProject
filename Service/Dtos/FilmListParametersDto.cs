@@ -2,9 +2,9 @@
 
 namespace Service.Dtos
 {
-    public class FilmListParameters
+    public class FilmListParametersDto
     {
-        public FilmListParameters()
+        public FilmListParametersDto()
         {
             Genres = new List<string>();
             Countries = new List<string>();

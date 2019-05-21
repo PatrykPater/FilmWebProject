@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Model.Models;
+using Service.Dtos;
 using System.Linq;
 using Web.Dtos;
 using Web.Helpers;
@@ -40,6 +41,16 @@ namespace Web
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(source => source.Title));
 
             CreateMap<News, NewsForMainPageViewModel>();
+
+            CreateMap<FilmListParametersViewModel, FilmListParametersDto>()
+                .ForMember(dest => dest.QuerySearch, opt => opt.MapFrom(source => source.QuerySearch))
+                .ForMember(dest => dest.PageSize, opt => opt.MapFrom(source => source.PageSize))
+                .ForMember(dest => dest.PageNumber, opt => opt.MapFrom(source => source.PageNumber))
+                .ForMember(dest => dest.MaxPageNumber, opt => opt.MapFrom(source => source.MaxPageNumber))
+                .ForMember(dest => dest.CurrentPage, opt => opt.MapFrom(source => source.CurrentPage))
+                .ForMember(dest => dest.Genres, opt => opt.MapFrom(source => source.Genres.Select(t => t.Name)))
+                .ForMember(dest => dest.Countries, opt => opt.MapFrom(source => source.Countries.Select(t => t.Name)));
+
 
         }
     }

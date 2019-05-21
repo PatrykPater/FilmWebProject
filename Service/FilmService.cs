@@ -24,7 +24,7 @@ namespace Service
             _unitOfWork.Films.Add(film);
         }
 
-        public List<Film> GetFilmsBySearchQuery(FilmListParameters filmListParameters)
+        public List<Film> GetFilmsBySearchQuery(FilmListParametersDto filmListParameters)
         {
             var pageSize = filmListParameters.PageSize;
             var pageNumber = filmListParameters.PageNumber - 1;
@@ -59,7 +59,7 @@ namespace Service
             return _unitOfWork.Ratings.GetUserRating(filmId, userId);
         }
 
-        public List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters)
+        public List<Film> GetFilmsWithPagination(FilmListParametersDto filmListParameters)
         {
             var pageSize = filmListParameters.PageSize;
             var pageNumber = filmListParameters.PageNumber - 1;
