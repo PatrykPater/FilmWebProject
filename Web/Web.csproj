@@ -254,6 +254,7 @@
     <Compile Include="ViewModels\CountryFilterViewModel.cs" />
     <Compile Include="ViewModels\FactorViewModel.cs" />
     <Compile Include="ViewModels\FilmFormViewModel.cs" />
+    <Compile Include="ViewModels\FilmListParametersPostedViewModel.cs" />
     <Compile Include="ViewModels\FilmListParametersViewModel.cs" />
     <Compile Include="ViewModels\FilmListViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />

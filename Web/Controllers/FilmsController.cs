@@ -4,8 +4,10 @@ using Model.Models;
 using Service;
 using Service.Dtos;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using Web.Helpers;
 using Web.ViewModels;
 
@@ -153,8 +155,13 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search(FilmListParametersViewModel filmListParameters)
+        public ActionResult Search(FilmListParametersPostedViewModel filmListParametersPosted)
         {
+            filmListParametersPosted.Genres = filmListParametersPosted.Genres.Where(g => g.IsChecked).ToList();
+            var filmListParameters = Mapper.Map<FilmListParametersViewModel>(filmListParametersPosted);
+
+            //var filmListParameters2 = JsonConvert.SerializeObject(filmListParameters);
+
             return RedirectToAction("List", "Films", filmListParameters);
         }
     }

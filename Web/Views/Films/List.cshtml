@@ -71,8 +71,8 @@
                             <label class="checkbox-inline">
                                 @Html.CheckBoxFor(x => x.Genres[i].IsChecked)
                                 @Model.Genres[i].Name
-                                @*@Html.HiddenFor(x => x.Genres[i].Name)*@
-                                @*@Html.HiddenFor(x => x.Genres[i].Id)*@
+                                @Html.HiddenFor(x => x.Genres[i].Name)*
+                                @Html.HiddenFor(x => x.Genres[i].Id)
                             </label>
                         }
                     </div>
