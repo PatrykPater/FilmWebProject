@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Castle.Core.Internal;
-using Data.Helpers;
 using Model.Models;
 using Service;
+using Service.Dtos;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
@@ -58,14 +58,16 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult List(FilmListParameters filmListParameters)
+        public ActionResult List(FilmListParametersViewModel filmListParametersViewModel)
         {
-            var films = !string.IsNullOrWhiteSpace(filmListParameters.QuerySearch)
-                ? _filmService.GetFilmsBySearchQuery(filmListParameters)
-                : _filmService.GetFilmsWithPagination(filmListParameters);
+            var filmListParametersDto = Mapper.Map<FilmListParameters>(filmListParametersViewModel);
 
-            if (!filmListParameters.Genres.IsNullOrEmpty() || !filmListParameters.Countries.IsNullOrEmpty())
-                films = _filmService.FilterFilms(filmListParameters.Genres, filmListParameters.Countries, films);
+            var films = !string.IsNullOrWhiteSpace(filmListParametersViewModel.QuerySearch)
+                ? _filmService.GetFilmsBySearchQuery(filmListParametersDto)
+                : _filmService.GetFilmsWithPagination(filmListParametersDto);
+
+            if (!filmListParametersViewModel.Genres.IsNullOrEmpty() || !filmListParametersViewModel.Countries.IsNullOrEmpty())
+                films = _filmService.FilterFilms(filmListParametersViewModel.Genres, filmListParametersViewModel.Countries, films);
 
             var filmViewModel = new FilmListViewModel
             {
@@ -73,8 +75,8 @@ namespace Web.Controllers
                 Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()),
                 FilmListParameters =
                 {
-                    MaxPageNumber = _filmService.GetAllFilmCount() / filmListParameters.PageSize,
-                    CurrentPage = filmListParameters.CurrentPage,
+                    MaxPageNumber = _filmService.GetAllFilmCount() / filmListParametersViewModel.PageSize,
+                    CurrentPage = filmListParametersViewModel.CurrentPage,
                     //Genres = _filmService.GetGenresNamesForFiltering()
                 }
             };
@@ -152,7 +154,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search(FilmListParameters filmListParameters)
+        public ActionResult Search(FilmListParametersViewModel filmListParameters)
         {
             return RedirectToAction("List", "Films", filmListParameters);
         }

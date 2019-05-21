@@ -1,6 +1,6 @@
-﻿using Data.Helpers;
-using Data.Infrastructure;
+﻿using Data.Infrastructure;
 using Model.Models;
+using Service.Dtos;
 using System.Collections.Generic;
 
 namespace Service
@@ -26,7 +26,11 @@ namespace Service
 
         public List<Film> GetFilmsBySearchQuery(FilmListParameters filmListParameters)
         {
-            return _unitOfWork.Films.GetFilmsBySearchQuery(filmListParameters);
+            var pageSize = filmListParameters.PageSize;
+            var pageNumber = filmListParameters.PageNumber - 1;
+            var querySearch = filmListParameters.QuerySearch;
+
+            return _unitOfWork.Films.GetFilmsBySearchQuery(pageSize, pageNumber, querySearch);
         }
 
         public Film GetFilmById(int id)
@@ -57,7 +61,10 @@ namespace Service
 
         public List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters)
         {
-            return _unitOfWork.Films.GetFilmsWithPagination(filmListParameters);
+            var pageSize = filmListParameters.PageSize;
+            var pageNumber = filmListParameters.PageNumber - 1;
+
+            return _unitOfWork.Films.GetFilmsWithPagination(pageSize, pageNumber);
         }
 
         public int GetAllFilmCount()
@@ -93,7 +100,7 @@ namespace Service
 
                 foreach (var country in countriesFromDb)
                 {
-                    if (film.Country.Contains(country))
+                    if (film.Countries.Contains(country))
                     {
                         filteredListOfFilms.Add(film);
                     }

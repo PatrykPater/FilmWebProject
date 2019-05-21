@@ -20,59 +20,83 @@
                 </div>
             </div>
         }
-    </div>    
+    </div>
+
+    @*<form>
+        <input type="checkbox" name="language1" value="java">Java
+        <br>
+        <input type="checkbox" name="language2" value="php">PHP
+        <br>
+        <input type="checkbox" name="language3" value="cpp">C++
+        <br>
+    </form>*@
+
+    @*@using (Html.BeginForm("Search", "Films", FormMethod.Post, new {@class = "form-inline"}))
+    {
+        foreach (var genre in Model.Genres)
+         {
+             <div class="checkbox">
+                 <label class="checkbox-inline">
+                     <input type="checkbox" name="@genre.Name" id="@genre.Name" value="@genre.IsChecked"> @genre.Name
+                 </label>
+             </div>
+         }
+        
+        <button type="submit" class="btn btn-default">Submit</button>
+    }*@
+
     <nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" id="btn-filters">
-                    <li>
-                        <button class="btn btn-group" id="toggle-genre-filter">Genres</button>
-                    </li>
-                    <li>
-                        <button class="btn btn-group" id="toggle-country-filter">Country</button>
-                    </li>
-                    <li>
-                        <button class="btn btn-group" id="toggle-release-date-filter">Release Date</button>
-                    </li>
-                </ul>
+            <div class="container">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="btn-filters">
+                        <li>
+                            <button class="btn btn-group" id="toggle-genre-filter">Genres</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-group" id="toggle-country-filter">Country</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-group" id="toggle-release-date-filter">Release Date</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="filter-list-wrapper">
-            @using (Html.BeginForm("Search", "Films", FormMethod.Post))
-            {
-                <div class="genre-filter toggle-filter-films">
+            <div class="filter-list-wrapper">
+                @using (Html.BeginForm("Search", "Films", FormMethod.Post))
+                {
+                    <div class="genre-filter toggle-filter-films">
 
-                    @for (var i = 0; i < Model.Genres.Count(); i++)
-                    {
-                        <label class="checkbox-inline">
-                            @Html.CheckBoxFor(x => x.Genres[i].IsChecked)
-                            @Model.Genres[i].Name
-                            @Html.HiddenFor(x => x.Genres[i].Name)
-                            @Html.HiddenFor(x => x.Genres[i].Id)
-                        </label>
-                    }
-                </div>
-                <div class="country-filter toggle-filter-films">
+                        @for (var i = 0; i < Model.Genres.Count(); i++)
+                        {
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(x => x.Genres[i].IsChecked)
+                                @Model.Genres[i].Name
+                                @*@Html.HiddenFor(x => x.Genres[i].Name)*@
+                                @*@Html.HiddenFor(x => x.Genres[i].Id)*@
+                            </label>
+                        }
+                    </div>
+                    <div class="country-filter toggle-filter-films">
 
-                    @for (var i = 0; i < Model.CountryList.Count(); i++)
-                    {
-                        <label class="checkbox-inline">
-                            @Html.CheckBoxFor(x => x.CountryList[i].IsChecked)
-                            @Model.CountryList[i].Name
-                            @Html.HiddenFor(x => x.CountryList[i].Name)
-                            @*@Html.HiddenFor(x => x.CountryList[i].Id)*@
-                        </label>
-                    }
-                </div>
-                <div class="release-date-filter toggle-filter-films">
-                    NOT IMPLEMENTED
-                </div>
-                <span class="">
-                    <button type="submit" class="btn">Search</button>
-                </span>
-            }
-        </div>      
-    </nav>
+                        @for (var i = 0; i < Model.CountryList.Count(); i++)
+                        {
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(x => x.CountryList[i].IsChecked)
+                                @Model.CountryList[i].Name
+                                @Html.HiddenFor(x => x.CountryList[i].Name)
+                                @Html.HiddenFor(x => x.CountryList[i].Id)
+                            </label>
+                        }
+                    </div>
+                    <div class="release-date-filter toggle-filter-films">
+                        NOT IMPLEMENTED
+                    </div>
+                    <span class="">
+                        <button type="submit" class="btn">Search</button>
+                    </span>
+                }
+            </div>
+        </nav>
 
     @foreach (var film in Model.ListOfFilms)
     {
@@ -81,7 +105,7 @@
                 <div class="col-md-8">
                     <div class="col-md-4 film-posters">
                         <a href="@Url.Action("Details", "Films", new {id = film.Id})">
-                            <img class="img-responsive" src="../Content/img/FILM_POSTER_1.jpg"/>
+                            <img class="img-responsive" src="../Content/img/FILM_POSTER_1.jpg" />
                         </a>
                     </div>
                     <div class="col-md-4">
@@ -93,7 +117,7 @@
                             <div>
                                 <div>
                                     Score : ---
-                                </div>                                
+                                </div>
                                 <div> Ratings: @film.RatingsNumber</div>
                             </div>
                         }
@@ -104,9 +128,9 @@
                                     Score: @film.Score
                                 </div>
                                 <div> Ratings: @film.RatingsNumber</div>
-                            </div> 
+                            </div>
                         }
-                        
+
                         <div>
                             <span>
                                 Genre:
@@ -126,7 +150,7 @@
                         </div>
                         <div>
                             Production:
-                            @foreach (var country in film.Country)
+                            @foreach (var country in film.Countries)
                             {
                                 <span>
                                     @country.Name,

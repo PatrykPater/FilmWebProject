@@ -643,7 +643,7 @@ namespace Data.Migrations
                         genres.ElementAtOrDefault(6),
                         genres.ElementAtOrDefault(8)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(1)
                     }
@@ -666,7 +666,7 @@ namespace Data.Migrations
                         genres.ElementAt(5),
                         genres.ElementAt(9)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(1)
                     }
@@ -688,7 +688,7 @@ namespace Data.Migrations
                         genres.ElementAt(5),
                         genres.ElementAt(7)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(4)
                     }
@@ -711,7 +711,7 @@ namespace Data.Migrations
                         genres.ElementAt(5)
 
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(8)
                     }
@@ -734,7 +734,7 @@ namespace Data.Migrations
                         genres.ElementAt(5),
                         genres.ElementAt(7)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(7)
                     }
@@ -757,7 +757,7 @@ namespace Data.Migrations
                         genres.ElementAt(5),
                         genres.ElementAt(7)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(6)
                     }
@@ -780,7 +780,7 @@ namespace Data.Migrations
                         genres.ElementAt(12),
                         genres.ElementAt(7)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(5)
                     }
@@ -801,7 +801,7 @@ namespace Data.Migrations
                         genres.ElementAt(2),
                         genres.ElementAt(10)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(4)
                     }
@@ -823,7 +823,7 @@ namespace Data.Migrations
                         genres.ElementAt(2),
                         genres.ElementAt(7)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(3)
                     }
@@ -845,7 +845,7 @@ namespace Data.Migrations
                         genres.ElementAt(5),
                         genres.ElementAt(3)
                     },
-                    Country = new List<Country>
+                    Countries = new List<Country>
                     {
                         countries.ElementAtOrDefault(2)
                     }

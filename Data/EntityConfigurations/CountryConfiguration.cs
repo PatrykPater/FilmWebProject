@@ -10,7 +10,7 @@ namespace Data.EntityConfigurations
             HasKey(c => c.Id);
 
             HasMany(f => f.Films)
-                .WithMany(g => g.Country)
+                .WithMany(g => g.Countries)
                 .Map(fg =>
                 {
                     fg.MapLeftKey("FilmRefId");

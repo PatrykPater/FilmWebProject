@@ -52,7 +52,11 @@
         </div>
         <div class="row">
             <div class="col-md-2">Production:</div>
-            <div class="col-md-2">@Model.Production</div>
+            @foreach (var country in Model.Countries)
+            {
+                <div class="col-md-2">@country.Name</div>
+            }
+            
         </div>
         <div class="row">
             <div class="col-md-2">Release Date:</div>

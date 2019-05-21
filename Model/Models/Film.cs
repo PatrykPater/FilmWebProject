@@ -12,7 +12,7 @@ namespace Model.Models
             Genres = new List<Genre>();
             Reviews = new List<Review>();
             Trailers = new List<Trailer>();
-            Country = new List<Country>();
+            Countries = new List<Country>();
         }
 
         public int Id { get; set; }
@@ -28,7 +28,7 @@ namespace Model.Models
         public int RatingsNumber => Ratings.Count();
         public double Score => Ratings.Any() ? Ratings.Average(r => r.Value) : 0;
 
-        public ICollection<Country> Country { get; set; }
+        public ICollection<Country> Countries { get; set; }
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<Genre> Genres { get; set; }
         public ICollection<Review> Reviews { get; set; }

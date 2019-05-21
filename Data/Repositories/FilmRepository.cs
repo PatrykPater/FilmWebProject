@@ -1,5 +1,4 @@
-﻿using Data.Helpers;
-using Data.Infrastructure;
+﻿using Data.Infrastructure;
 using Model.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -32,26 +31,26 @@ namespace Data.Repositories
                     .Single(f => f.Id == id);
         }
 
-        public List<Film> GetFilmsWithPagination(FilmListParameters filmListParameters)
+        public List<Film> GetFilmsWithPagination(int pageSize, int pageNumber)
         {
             return _context.Films
                 .Include(f => f.Genres)
                 .Include(f => f.Ratings)
                 .OrderBy(f => f.Title)
-                .Skip(filmListParameters.PageSize * (filmListParameters.PageNumber - 1))
-                .Take(filmListParameters.PageSize)
+                .Skip(pageSize * pageNumber)
+                .Take(pageSize)
                 .ToList();
         }
 
-        public List<Film> GetFilmsBySearchQuery(FilmListParameters filmListParameters)
+        public List<Film> GetFilmsBySearchQuery(int pageSize, int pageNumber, string querySearch)
         {
             return _context.Films
                 .Include(f => f.Genres)
                 .Include(f => f.Ratings)
                 .OrderBy(f => f.Title)
-                .Where(f => f.Title.ToLower().Contains(filmListParameters.QuerySearch.ToLower()))
-                .Skip(filmListParameters.PageSize * (filmListParameters.PageNumber - 1))
-                .Take(filmListParameters.PageSize)
+                .Where(f => f.Title.ToLower().Contains(querySearch))
+                .Skip(pageSize * pageNumber)
+                .Take(pageSize)
                 .ToList();
         }
 
