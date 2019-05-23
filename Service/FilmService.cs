@@ -1,6 +1,7 @@
 ﻿using Data.Infrastructure;
 using Model.Models;
 using Service.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,15 +24,6 @@ namespace Service
         public void AddNewFilm(Film film)
         {
             _unitOfWork.Films.Add(film);
-        }
-
-        public List<Film> GetFilmsBySearchQuery(FilmListParametersDto filmListParameters)
-        {
-            var pageSize = filmListParameters.PageSize;
-            var pageNumber = filmListParameters.PageNumber - 1;
-            var querySearch = filmListParameters.QuerySearch;
-
-            return _unitOfWork.Films.GetFilmsBySearchQuery(pageSize, pageNumber, querySearch);
         }
 
         public Film GetFilmById(int id)
@@ -60,21 +52,13 @@ namespace Service
             return _unitOfWork.Ratings.GetUserRating(filmId, userId);
         }
 
-        public List<Film> GetFilmsWithPagination(FilmListParametersDto filmListParameters)
-        {
-            var pageSize = filmListParameters.PageSize;
-            var pageNumber = filmListParameters.PageNumber - 1;
-
-            return _unitOfWork.Films.GetFilmsWithPagination(pageSize, pageNumber);
-        }
-
         public int GetAllFilmCount()
         {
             return _unitOfWork.Films.GetAllFilmCount();
         }
 
         public List<Film> Filter(FilmListParametersDto filmListParametersDto)
-        {         
+        {
             var result = new List<Film>();
             var genresFromDb = new List<Genre>();
             var countriesFromDb = new List<Country>();
@@ -101,7 +85,7 @@ namespace Service
             {
                 if (!string.IsNullOrWhiteSpace(filmListParametersDto.QuerySearch))
                 {
-                    if (film.Title.ToLower() == filmListParametersDto.QuerySearch.ToLower())
+                    if (string.Equals(film.Title, filmListParametersDto.QuerySearch, StringComparison.CurrentCultureIgnoreCase))
                     {
                         result.Add(film);
                     }
@@ -124,7 +108,7 @@ namespace Service
                 }
             }
 
-            return result;
+            return result.Skip(filmListParametersDto.PageSize * filmListParametersDto.PageNumber - 1).Take(filmListParametersDto.PageSize).ToList();
         }
     }
 }

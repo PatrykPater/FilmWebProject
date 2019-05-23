@@ -8,7 +8,6 @@ namespace Data.Repositories
     {
         new Film GetById(int id);
         List<Film> GetFilmsWithPagination(int pageSize, int pageNumber);
-        List<Film> GetFilmsBySearchQuery(int pageSize, int pageNumber, string querySearch);
         int GetAllFilmCount();
     }
 }

@@ -42,18 +42,6 @@ namespace Data.Repositories
                 .ToList();
         }
 
-        public List<Film> GetFilmsBySearchQuery(int pageSize, int pageNumber, string querySearch)
-        {
-            return _context.Films
-                .Include(f => f.Genres)
-                .Include(f => f.Ratings)
-                .OrderBy(f => f.Title)
-                .Where(f => f.Title.ToLower().Contains(querySearch))
-                .Skip(pageSize * pageNumber)
-                .Take(pageSize)
-                .ToList();
-        }
-
         public int GetAllFilmCount()
         {
             return _context.Films.Count();
