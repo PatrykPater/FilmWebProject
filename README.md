@@ -31,14 +31,11 @@ Currently working features:
 - Working news system - The top 4 (newest) news are displayed in carousel, the rest is displayed below in a column (picture+title+short description). Only news no older than 24 hours are displayed on the main page.
 - You can click on the Read More buton or the short descritpion to see the full article.
 - Admins Panel with an option to promote chosen users to Moderators. Moderators will have exclusive rights to write articles/new and add new movies/tv shows/celebrities to the database (in the future).
-- Pagination - currently works on List of Films page only. 
+- Pagination - currently works on List of Films page only.
+- Filetring the list of movies by multiple paramters - for now works with genres and queries
 
 On todo list:
 - Paging, sorting, filtering for films, news etc.
-- HATEOAS
 - Reviews system
 - Add notification if your friend has rated a film.
-- Abilit to comment on the notification.
-- Ability to write a review about a movie.
-- Ability to lookup film's reviews and comment on them.
 - Polish/Improve existing features
