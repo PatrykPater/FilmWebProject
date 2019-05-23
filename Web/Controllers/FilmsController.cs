@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Castle.Core.Internal;
 using Model.Models;
 using Service;
 using Service.Dtos;
@@ -7,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Newtonsoft.Json;
 using Web.Helpers;
 using Web.ViewModels;
 
@@ -62,14 +60,10 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult List(FilmListParametersViewModel filmListParametersViewModel)
         {
-            var filmListParametersDto = Mapper.Map<FilmListParametersDto>(filmListParametersViewModel);
+            var storedFilmSearchResults = TempData["FilmSearchResults"] as FilmListParametersViewModel;
 
-            var films = !string.IsNullOrWhiteSpace(filmListParametersViewModel.QuerySearch)
-                ? _filmService.GetFilmsBySearchQuery(filmListParametersDto)
-                : _filmService.GetFilmsWithPagination(filmListParametersDto);
-
-            if (!filmListParametersViewModel.Genres.IsNullOrEmpty() || !filmListParametersViewModel.Countries.IsNullOrEmpty())
-                films = _filmService.FilterFilms(filmListParametersDto.Genres, filmListParametersDto.Countries, films);
+            var filmListParametersDto = Mapper.Map<FilmListParametersDto>(storedFilmSearchResults ?? filmListParametersViewModel);
+            var films = _filmService.Filter(filmListParametersDto);
 
             var filmViewModel = new FilmListViewModel
             {
@@ -155,14 +149,13 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Search(FilmListParametersPostedViewModel filmListParametersPosted)
+        public ActionResult Search(FilmListParametersViewModel filmListParameters)
         {
-            filmListParametersPosted.Genres = filmListParametersPosted.Genres.Where(g => g.IsChecked).ToList();
-            var filmListParameters = Mapper.Map<FilmListParametersViewModel>(filmListParametersPosted);
+            filmListParameters.Genres = filmListParameters.Genres.Where(g => g.IsChecked).ToList();
 
-            //var filmListParameters2 = JsonConvert.SerializeObject(filmListParameters);
+            TempData["FilmSearchResults"] = filmListParameters;
 
-            return RedirectToAction("List", "Films", filmListParameters);
+            return RedirectToAction("List", "Films");
         }
     }
 }

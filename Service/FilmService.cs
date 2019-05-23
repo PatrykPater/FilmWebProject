@@ -2,6 +2,7 @@
 using Model.Models;
 using Service.Dtos;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Service
 {
@@ -72,29 +73,45 @@ namespace Service
             return _unitOfWork.Films.GetAllFilmCount();
         }
 
-        public List<Film> FilterFilms(List<string> genres, List<string> countries, List<Film> films)
-        {
-            var filteredListOfFilms = new List<Film>();
+        public List<Film> Filter(FilmListParametersDto filmListParametersDto)
+        {         
+            var result = new List<Film>();
             var genresFromDb = new List<Genre>();
             var countriesFromDb = new List<Country>();
 
-            foreach (var genre in genres)
+            if (!filmListParametersDto.Genres.Any() && !filmListParametersDto.Countries.Any() && string.IsNullOrWhiteSpace(filmListParametersDto.QuerySearch))
+            {
+                return _unitOfWork.Films.GetFilmsWithPagination(filmListParametersDto.PageSize,
+                    filmListParametersDto.PageNumber);
+            }
+
+            var filmsFromDb = _unitOfWork.Films.GetAll();
+
+            foreach (var genre in filmListParametersDto.Genres)
             {
                 genresFromDb.Add(_unitOfWork.Genres.Get(g => g.Name == genre));
             }
 
-            foreach (var country in countries)
+            foreach (var country in filmListParametersDto.Countries)
             {
                 countriesFromDb.Add(_unitOfWork.Countries.Get(g => g.Name == country));
             }
 
-            foreach (var film in films)
+            foreach (var film in filmsFromDb)
             {
+                if (!string.IsNullOrWhiteSpace(filmListParametersDto.QuerySearch))
+                {
+                    if (film.Title.ToLower() == filmListParametersDto.QuerySearch.ToLower())
+                    {
+                        result.Add(film);
+                    }
+                }
+
                 foreach (var genre in genresFromDb)
                 {
                     if (film.Genres.Contains(genre))
                     {
-                        filteredListOfFilms.Add(film);
+                        result.Add(film);
                     }
                 }
 
@@ -102,11 +119,12 @@ namespace Service
                 {
                     if (film.Countries.Contains(country))
                     {
-                        filteredListOfFilms.Add(film);
+                        result.Add(film);
                     }
                 }
             }
-            return filteredListOfFilms;
+
+            return result;
         }
     }
 }

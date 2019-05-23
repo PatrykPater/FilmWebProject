@@ -6,8 +6,8 @@ namespace Web.ViewModels
     {
         public FilmListParametersViewModel()
         {
-            Genres = new List<string>();
-            Countries = new List<string>();
+            Genres = new List<GenreViewModel>();
+            Countries = new List<CountryFilterViewModel>();
         }
 
         public string QuerySearch { get; set; } = null;
@@ -15,7 +15,7 @@ namespace Web.ViewModels
         public int PageSize { get; set; } = 5;
         public int MaxPageNumber { get; set; }
         public int CurrentPage { get; set; } = 1;
-        public List<string> Genres { get; set; }
-        public List<string> Countries { get; set; }
+        public List<GenreViewModel> Genres { get; set; }
+        public List<CountryFilterViewModel> Countries { get; set; }
     }
 }
