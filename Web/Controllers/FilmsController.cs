@@ -63,7 +63,7 @@ namespace Web.Controllers
             var storedFilmSearchResults = TempData["FilmSearchResults"] as FilmListParametersViewModel;
 
             var filmListParametersDto = Mapper.Map<FilmListParametersDto>(storedFilmSearchResults ?? filmListParametersViewModel);
-            var films = _filmService.Filter(filmListParametersDto);
+            var films = _filmService.GetFilms(filmListParametersDto);
 
             var filmViewModel = new FilmListViewModel
             {

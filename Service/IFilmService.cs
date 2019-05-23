@@ -15,6 +15,6 @@ namespace Service
         void AddNewRating(Film film, ApplicationUser user, int value);
         Rating GetUserRating(int filmId, string userId);
         int GetAllFilmCount();
-        List<Film> Filter(FilmListParametersDto filmListParametersDto);
+        List<Film> GetFilms(FilmListParametersDto filmListParametersDto);
     }
 }

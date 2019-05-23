@@ -1,7 +1,7 @@
 ﻿using Data.Infrastructure;
 using Model.Models;
 using Service.Dtos;
-using System;
+using Service.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,10 +10,14 @@ namespace Service
     public class FilmService : ServiceBase, IFilmService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly FilmServiceHelper _filmServiceHelper; // Injection
+        private readonly FilmFilter _filmFiler; // Injection
 
-        public FilmService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public FilmService(IUnitOfWork unitOfWork, FilmServiceHelper filmServiceHelper, FilmFilter filmFiler) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _filmServiceHelper = filmServiceHelper;
+            _filmFiler = filmFiler;
         }
 
         public List<Genre> GetAllGenres()
@@ -57,56 +61,14 @@ namespace Service
             return _unitOfWork.Films.GetAllFilmCount();
         }
 
-        public List<Film> Filter(FilmListParametersDto filmListParametersDto)
+        public List<Film> GetFilms(FilmListParametersDto filmListParametersDto)
         {
-            var result = new List<Film>();
-            var genresFromDb = new List<Genre>();
-            var countriesFromDb = new List<Country>();
-
-            if (!filmListParametersDto.Genres.Any() && !filmListParametersDto.Countries.Any() && string.IsNullOrWhiteSpace(filmListParametersDto.QuerySearch))
-            {
+            if (!_filmServiceHelper.IsSearched(filmListParametersDto))
                 return _unitOfWork.Films.GetFilmsWithPagination(filmListParametersDto.PageSize,
-                    filmListParametersDto.PageNumber);
-            }
+                    filmListParametersDto.PageNumber); // temp solution
 
             var filmsFromDb = _unitOfWork.Films.GetAll();
-
-            foreach (var genre in filmListParametersDto.Genres)
-            {
-                genresFromDb.Add(_unitOfWork.Genres.Get(g => g.Name == genre));
-            }
-
-            foreach (var country in filmListParametersDto.Countries)
-            {
-                countriesFromDb.Add(_unitOfWork.Countries.Get(g => g.Name == country));
-            }
-
-            foreach (var film in filmsFromDb)
-            {
-                if (!string.IsNullOrWhiteSpace(filmListParametersDto.QuerySearch))
-                {
-                    if (string.Equals(film.Title, filmListParametersDto.QuerySearch, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        result.Add(film);
-                    }
-                }
-
-                foreach (var genre in genresFromDb)
-                {
-                    if (film.Genres.Contains(genre))
-                    {
-                        result.Add(film);
-                    }
-                }
-
-                foreach (var country in countriesFromDb)
-                {
-                    if (film.Countries.Contains(country))
-                    {
-                        result.Add(film);
-                    }
-                }
-            }
+            var result = _filmFiler.Filter(filmsFromDb, filmListParametersDto);
 
             return result.Skip(filmListParametersDto.PageSize * filmListParametersDto.PageNumber - 1).Take(filmListParametersDto.PageSize).ToList();
         }

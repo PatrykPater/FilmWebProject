@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="AwardService.cs" />
     <Compile Include="Dtos\FilmListParametersDto.cs" />
+    <Compile Include="Helpers\FilmFilter.cs" />
+    <Compile Include="Helpers\FilmServiceHelper.cs" />
     <Compile Include="IManagerService.cs" />
     <Compile Include="IReviewService.cs" />
     <Compile Include="ManagerService.cs" />
