@@ -15,11 +15,11 @@ namespace Service.Helpers
             var countries = parameters.Countries;
             var query = parameters.QuerySearch;
 
+            if (!string.IsNullOrWhiteSpace(query))
+                films = FilterByQuery(query, films);
+
             foreach (var film in films)
             {
-                if (!string.IsNullOrWhiteSpace(query))
-                    FilterByQuery(query, film, result);
-
                 FilterByGenre(genres, film, result);
                 FilterByCountry(countries, film, result);
             }
@@ -27,10 +27,9 @@ namespace Service.Helpers
             return result;
         }
 
-        public void FilterByQuery(string query, Film film, List<Film> result)
+        public List<Film> FilterByQuery(string query, List<Film> films)
         {
-            if (string.Equals(film.Title, query, StringComparison.CurrentCultureIgnoreCase))
-                result.Add(film);
+            return films.Where(f => string.Equals(f.Title, query, StringComparison.CurrentCultureIgnoreCase)).ToList();
         }
 
         public void FilterByGenre(List<Genre> genres, Film film, List<Film> result)
