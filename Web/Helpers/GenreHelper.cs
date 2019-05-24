@@ -5,7 +5,7 @@ using Web.ViewModels;
 
 namespace Web.Helpers
 {
-    public class GenreHelper : IGenreHelper
+    public class GenreHelper
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -23,16 +23,6 @@ namespace Web.Helpers
                     listOfSelectedGenres.Add(_unitOfWork.Genres.GetById(genreViewModel.Id));
 
             return listOfSelectedGenres;
-        }
-
-        public List<GenreViewModel> GetAllAndSelectedGenres(List<GenreViewModel> genresViewModel, ICollection<Genre> currentFilmGenres)
-        {
-            foreach (var genreViewModel in genresViewModel)
-                foreach (var currentFilmGenre in currentFilmGenres)
-                    if (currentFilmGenre.Id == genreViewModel.Id)
-                        genreViewModel.IsChecked = true;
-
-            return genresViewModel;
         }
     }
 }

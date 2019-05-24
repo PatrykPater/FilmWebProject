@@ -6,20 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Web.Helpers;
 using Web.ViewModels;
 
 namespace Web.Controllers
 {
     public class FilmsController : Controller
     {
-        private readonly IGenreHelper _genreHelper;
         private readonly IFilmService _filmService;
 
-        public FilmsController(IFilmService filmService, IGenreHelper genreHelper)
+        public FilmsController(IFilmService filmService)
         {
             _filmService = filmService;
-            _genreHelper = genreHelper;
         }
 
         [Authorize(Roles = "Admin")]
@@ -32,6 +29,7 @@ namespace Web.Controllers
             return View("FilmForm", viewmodel);
         }
 
+        //TEST !!!
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
@@ -57,6 +55,7 @@ namespace Web.Controllers
             return RedirectToAction("Details", "Films", new { id = newFilm.Id });
         }
 
+        //TEST !!!
         [HttpGet]
         public ActionResult List(FilmListParametersViewModel filmListParametersViewModel)
         {
@@ -65,13 +64,16 @@ namespace Web.Controllers
             var filmListParametersDto = Mapper.Map<FilmListParametersDto>(storedFilmSearchResults ?? filmListParametersViewModel);
             var films = _filmService.GetFilms(filmListParametersDto);
 
+            //var test = _genreHelper.GetAllGenresAndSelectedForFiltering(filmListParametersDto.Genres);
+
             var filmViewModel = new FilmListViewModel
             {
                 ListOfFilms = films,
-                Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()),
+                //Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()),
+                Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()), // Make it so that the app remembers the checked parameters 
                 FilmListParameters =
                 {
-                    MaxPageNumber = _filmService.GetAllFilmCount() / filmListParametersViewModel.PageSize,
+                    MaxPageNumber = _filmService.GetMaxPageNumber(filmListParametersViewModel.PageSize),
                     CurrentPage = filmListParametersViewModel.CurrentPage
                 }
             };
@@ -93,7 +95,7 @@ namespace Web.Controllers
             return View(film);
         }
 
-
+        //TEST !!!
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
@@ -105,16 +107,16 @@ namespace Web.Controllers
             if (film == null)
                 return HttpNotFound();
 
-            var currentFilmGenres = film.Genres;
-            var allGenresFromDb = _filmService.GetAllGenres();
-            var genresViewModel = Mapper.Map<List<Genre>, List<GenreViewModel>>(allGenresFromDb);
+            var genresDto = Mapper.Map<List<Genre>, List<GenreDto>>(_filmService.GetAllGenres());
+            var genresDtoWithSelected = _filmService.GetAllAndSelectedGenres(film.Genres, genresDto);
 
             var filmFormViewModel = Mapper.Map<FilmFormViewModel>(film);
-            filmFormViewModel.Genres = _genreHelper.GetAllAndSelectedGenres(genresViewModel, currentFilmGenres);
+            filmFormViewModel.Genres = Mapper.Map<List<GenreDto>, List<GenreViewModel>>(genresDtoWithSelected);
 
             return View("FilmForm", filmFormViewModel);
         }
 
+        //TEST !!!
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]

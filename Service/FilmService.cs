@@ -56,11 +56,6 @@ namespace Service
             return _unitOfWork.Ratings.GetUserRating(filmId, userId);
         }
 
-        public int GetAllFilmCount()
-        {
-            return _unitOfWork.Films.GetAllFilmCount();
-        }
-
         public List<Film> GetFilms(FilmListParametersDto filmListParametersDto)
         {
             var pageSize = filmListParametersDto.PageSize;
@@ -74,6 +69,21 @@ namespace Service
             var result = _filmFiler.Filter(filmsFromDb, filmListParametersDto);
 
             return result.Skip(pageSize * pageNumber).Take(pageSize).ToList();
+        }
+
+        public int GetMaxPageNumber(int pageSize)
+        {
+            return _unitOfWork.Films.GetAllFilmCount() / pageSize;
+        }
+
+        public List<GenreDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres, List<GenreDto> genresDto)
+        {
+            foreach (var genreDto in genresDto)
+                foreach (var currentFilmGenre in currentFilmGenres)
+                    if (currentFilmGenre.Id == genreDto.Id)
+                        genreDto.IsChecked = true;
+
+            return genresDto;
         }
     }
 }

@@ -14,7 +14,8 @@ namespace Service
         ApplicationUser GetUserById(string id);
         void AddNewRating(Film film, ApplicationUser user, int value);
         Rating GetUserRating(int filmId, string userId);
-        int GetAllFilmCount();
         List<Film> GetFilms(FilmListParametersDto filmListParametersDto);
+        int GetMaxPageNumber(int pageSize);
+        List<GenreDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres, List<GenreDto> genresDto);
     }
 }

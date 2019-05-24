@@ -51,6 +51,9 @@ namespace Web
                 .ForMember(dest => dest.Genres, opt => opt.MapFrom(source => source.Genres))
                 .ForMember(dest => dest.Countries, opt => opt.MapFrom(source => source.Countries));
 
+            CreateMap<Genre, GenreDto>();
+            CreateMap<GenreDto, GenreViewModel>();
+
         }
     }
 }
