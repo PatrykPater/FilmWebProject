@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AwardService.cs" />
+    <Compile Include="Dtos\FilmFormDto.cs" />
     <Compile Include="Dtos\FilmListParametersDto.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Helpers\FilmFilter.cs" />

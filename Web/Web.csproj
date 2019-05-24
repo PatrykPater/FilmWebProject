@@ -246,7 +246,6 @@
     </Compile>
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\NameHelper.cs" />
-    <Compile Include="Helpers\GenreHelper.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\AdminPromoteToModViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />

@@ -17,5 +17,6 @@ namespace Service
         List<Film> GetFilms(FilmListParametersDto filmListParametersDto);
         int GetMaxPageNumber(int pageSize);
         List<GenreDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres, List<GenreDto> genresDto);
+        List<Genre> GetSelectedGenres(IEnumerable<GenreDto> filmDtoGenres);
     }
 }

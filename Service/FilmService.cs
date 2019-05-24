@@ -76,6 +76,8 @@ namespace Service
             return _unitOfWork.Films.GetAllFilmCount() / pageSize;
         }
 
+
+        //Try refactoring
         public List<GenreDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres, List<GenreDto> genresDto)
         {
             foreach (var genreDto in genresDto)
@@ -84,6 +86,11 @@ namespace Service
                         genreDto.IsChecked = true;
 
             return genresDto;
+        }
+
+        public List<Genre> GetSelectedGenres(IEnumerable<GenreDto> filmDtoGenres)
+        {
+            return (from genreDto in filmDtoGenres where genreDto.IsChecked select _unitOfWork.Genres.GetById(genreDto.Id)).ToList();
         }
     }
 }

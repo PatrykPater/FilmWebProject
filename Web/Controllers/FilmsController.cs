@@ -46,7 +46,8 @@ namespace Web.Controllers
             }
 
             var newFilm = Mapper.Map<Film>(viewModel);
-            var listOfSelectedGenres = _genreHelper.GetSelectedGenres(viewModel);
+            var genreDto = Mapper.Map<List<GenreViewModel>, List<GenreDto>>(viewModel.Genres);
+            var listOfSelectedGenres = _filmService.GetSelectedGenres(genreDto);
             newFilm.Genres = listOfSelectedGenres;
 
             _filmService.AddNewFilm(newFilm);
@@ -64,7 +65,7 @@ namespace Web.Controllers
             var filmListParametersDto = Mapper.Map<FilmListParametersDto>(storedFilmSearchResults ?? filmListParametersViewModel);
             var films = _filmService.GetFilms(filmListParametersDto);
 
-            //var test = _genreHelper.GetAllGenresAndSelectedForFiltering(filmListParametersDto.Genres);
+            var genresDto = Mapper.Map<List<Genre>, List<GenreDto>>(_filmService.GetAllGenres());
 
             var filmViewModel = new FilmListViewModel
             {
@@ -133,13 +134,13 @@ namespace Web.Controllers
             }
 
             var filmDb = _filmService.GetFilmById(viewModel.Id);
-
             if (filmDb == null)
                 return HttpNotFound();
 
             filmDb.Genres.Clear();
 
-            var genres = _genreHelper.GetSelectedGenres(viewModel);
+            var genreDto = Mapper.Map<List<GenreViewModel>, List<GenreDto>>(viewModel.Genres);
+            var genres = _filmService.GetSelectedGenres(genreDto);
 
             var filmUpdate = Mapper.Map<Film>(viewModel);
             filmUpdate.Genres = genres;
