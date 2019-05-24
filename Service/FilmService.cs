@@ -10,8 +10,8 @@ namespace Service
     public class FilmService : ServiceBase, IFilmService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly FilmServiceHelper _filmServiceHelper; // Injection
-        private readonly FilmFilter _filmFiler; // Injection
+        private readonly FilmServiceHelper _filmServiceHelper;
+        private readonly FilmFilter _filmFiler;
 
         public FilmService(IUnitOfWork unitOfWork, FilmServiceHelper filmServiceHelper, FilmFilter filmFiler) : base(unitOfWork)
         {
@@ -63,14 +63,17 @@ namespace Service
 
         public List<Film> GetFilms(FilmListParametersDto filmListParametersDto)
         {
-            if (!_filmServiceHelper.IsSearched(filmListParametersDto))
-                return _unitOfWork.Films.GetFilmsWithPagination(filmListParametersDto.PageSize,
-                    filmListParametersDto.PageNumber); // temp solution
+            var pageSize = filmListParametersDto.PageSize;
+            var pageNumber = filmListParametersDto.PageNumber - 1;
+
+            if (_filmServiceHelper.IsSearched(filmListParametersDto))
+                return _unitOfWork.Films.GetFilmsWithPagination(pageSize, pageNumber);
 
             var filmsFromDb = _unitOfWork.Films.GetAll();
+
             var result = _filmFiler.Filter(filmsFromDb, filmListParametersDto);
 
-            return result.Skip(filmListParametersDto.PageSize * filmListParametersDto.PageNumber - 1).Take(filmListParametersDto.PageSize).ToList();
+            return result.Skip(pageSize * pageNumber).Take(pageSize).ToList();
         }
     }
 }

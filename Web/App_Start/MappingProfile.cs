@@ -48,8 +48,8 @@ namespace Web
                 .ForMember(dest => dest.PageNumber, opt => opt.MapFrom(source => source.PageNumber))
                 .ForMember(dest => dest.MaxPageNumber, opt => opt.MapFrom(source => source.MaxPageNumber))
                 .ForMember(dest => dest.CurrentPage, opt => opt.MapFrom(source => source.CurrentPage))
-                .ForMember(dest => dest.Genres, opt => opt.MapFrom(source => source.Genres.Select(t => t.Name)))
-                .ForMember(dest => dest.Countries, opt => opt.MapFrom(source => source.Countries.Select(t => t.Name)));
+                .ForMember(dest => dest.Genres, opt => opt.MapFrom(source => source.Genres))
+                .ForMember(dest => dest.Countries, opt => opt.MapFrom(source => source.Countries));
 
         }
     }

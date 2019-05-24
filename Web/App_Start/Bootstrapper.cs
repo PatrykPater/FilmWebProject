@@ -4,6 +4,7 @@ using Data;
 using Data.Infrastructure;
 using Data.Repositories;
 using Service;
+using Service.Helpers;
 using System.Reflection;
 using System.Web.Mvc;
 using Web.Helpers;
@@ -40,6 +41,16 @@ namespace Web
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))
+                .AsImplementedInterfaces()
+                .AsSelf()
+                .InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(typeof(FilmFilter).Assembly)
+                .AsImplementedInterfaces()
+                .AsSelf()
+                .InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(typeof(FilmServiceHelper).Assembly)
                 .AsImplementedInterfaces()
                 .AsSelf()
                 .InstancePerRequest();
