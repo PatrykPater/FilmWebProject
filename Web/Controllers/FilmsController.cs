@@ -29,7 +29,6 @@ namespace Web.Controllers
             return View("FilmForm", viewmodel);
         }
 
-        //TEST !!!
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
@@ -46,7 +45,7 @@ namespace Web.Controllers
             }
 
             var newFilm = Mapper.Map<Film>(viewModel);
-            var genreDto = Mapper.Map<List<GenreViewModel>, List<GenreDto>>(viewModel.Genres);
+            var genreDto = Mapper.Map<List<GenreViewModel>, List<GenreServiceDto>>(viewModel.Genres);
             var listOfSelectedGenres = _filmService.GetSelectedGenres(genreDto);
             newFilm.Genres = listOfSelectedGenres;
 
@@ -56,26 +55,28 @@ namespace Web.Controllers
             return RedirectToAction("Details", "Films", new { id = newFilm.Id });
         }
 
-        //TEST !!!
+        //search action seems to be bugged at the moment
         [HttpGet]
         public ActionResult List(FilmListParametersViewModel filmListParametersViewModel)
         {
             var storedFilmSearchResults = TempData["FilmSearchResults"] as FilmListParametersViewModel;
 
-            var filmListParametersDto = Mapper.Map<FilmListParametersDto>(storedFilmSearchResults ?? filmListParametersViewModel);
+            var filmListParametersDto = Mapper.Map<FilmListParametersServiceDto>(storedFilmSearchResults ?? filmListParametersViewModel);
             var films = _filmService.GetFilms(filmListParametersDto);
 
-            var genresDto = Mapper.Map<List<Genre>, List<GenreDto>>(_filmService.GetAllGenres());
+
+            var genresSelectedFromViewModel = Mapper.Map<List<GenreViewModel>, List<Genre>>(filmListParametersViewModel.Genres);
+            var genresDtoWithSelected = _filmService.GetAllAndSelectedGenres(genresSelectedFromViewModel);
 
             var filmViewModel = new FilmListViewModel
             {
                 ListOfFilms = films,
-                //Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()),
-                Genres = Mapper.Map<List<Genre>, List<GenreViewModel>>(_filmService.GetAllGenres()), // Make it so that the app remembers the checked parameters 
+                Genres = Mapper.Map<List<GenreServiceDto>, List<GenreViewModel>>(genresDtoWithSelected),
                 FilmListParameters =
                 {
                     MaxPageNumber = _filmService.GetMaxPageNumber(filmListParametersViewModel.PageSize),
-                    CurrentPage = filmListParametersViewModel.CurrentPage
+                    CurrentPage = filmListParametersViewModel.CurrentPage,
+                    PageNumber = filmListParametersViewModel.PageNumber
                 }
             };
 
@@ -96,7 +97,6 @@ namespace Web.Controllers
             return View(film);
         }
 
-        //TEST !!!
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
@@ -108,16 +108,15 @@ namespace Web.Controllers
             if (film == null)
                 return HttpNotFound();
 
-            var genresDto = Mapper.Map<List<Genre>, List<GenreDto>>(_filmService.GetAllGenres());
-            var genresDtoWithSelected = _filmService.GetAllAndSelectedGenres(film.Genres, genresDto);
+            var genresDtoWithSelected = _filmService.GetAllAndSelectedGenres(film.Genres);
 
             var filmFormViewModel = Mapper.Map<FilmFormViewModel>(film);
-            filmFormViewModel.Genres = Mapper.Map<List<GenreDto>, List<GenreViewModel>>(genresDtoWithSelected);
+            filmFormViewModel.Genres = Mapper.Map<List<GenreServiceDto>, List<GenreViewModel>>(genresDtoWithSelected);
 
             return View("FilmForm", filmFormViewModel);
         }
 
-        //TEST !!!
+        //CHANGES DON'T GET SAVED ATM
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
@@ -139,7 +138,7 @@ namespace Web.Controllers
 
             filmDb.Genres.Clear();
 
-            var genreDto = Mapper.Map<List<GenreViewModel>, List<GenreDto>>(viewModel.Genres);
+            var genreDto = Mapper.Map<List<GenreViewModel>, List<GenreServiceDto>>(viewModel.Genres);
             var genres = _filmService.GetSelectedGenres(genreDto);
 
             var filmUpdate = Mapper.Map<Film>(viewModel);

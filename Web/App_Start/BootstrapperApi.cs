@@ -7,7 +7,6 @@ using Service;
 using System.Reflection;
 using System.Web.Http;
 using Web.Dtos;
-using Web.Helpers;
 
 namespace Web
 {
@@ -33,7 +32,6 @@ namespace Web
             builder.RegisterType<GenreRepository>().As<IGenreRepository>().InstancePerRequest();
             builder.RegisterType<FilmRepository>().As<IFilmRepository>().InstancePerRequest();
             builder.RegisterType<FilmService>().As<IFilmService>().InstancePerRequest();
-            builder.RegisterType<GenreHelper>().As<IGenreHelper>().InstancePerRequest();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<PersonRepository>().As<IPersonRepository>().InstancePerRequest();

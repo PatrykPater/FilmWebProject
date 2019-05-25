@@ -56,7 +56,7 @@ namespace Service
             return _unitOfWork.Ratings.GetUserRating(filmId, userId);
         }
 
-        public List<Film> GetFilms(FilmListParametersDto filmListParametersDto)
+        public List<Film> GetFilms(FilmListParametersServiceDto filmListParametersDto)
         {
             var pageSize = filmListParametersDto.PageSize;
             var pageNumber = filmListParametersDto.PageNumber - 1;
@@ -78,8 +78,12 @@ namespace Service
 
 
         //Try refactoring
-        public List<GenreDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres, List<GenreDto> genresDto)
+        public List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres)
         {
+            var genresDto = _unitOfWork.Genres.GetAll()
+                .Select(CreteGenreServiceDto)
+                .ToList();
+
             foreach (var genreDto in genresDto)
                 foreach (var currentFilmGenre in currentFilmGenres)
                     if (currentFilmGenre.Id == genreDto.Id)
@@ -88,9 +92,18 @@ namespace Service
             return genresDto;
         }
 
-        public List<Genre> GetSelectedGenres(IEnumerable<GenreDto> filmDtoGenres)
+        public List<Genre> GetSelectedGenres(IEnumerable<GenreServiceDto> filmDtoGenres)
         {
             return (from genreDto in filmDtoGenres where genreDto.IsChecked select _unitOfWork.Genres.GetById(genreDto.Id)).ToList();
+        }
+
+        public GenreServiceDto CreteGenreServiceDto(Genre genre)
+        {
+            return new GenreServiceDto()
+            {
+                Name = genre.Name,
+                Id = genre.Id
+            };
         }
     }
 }

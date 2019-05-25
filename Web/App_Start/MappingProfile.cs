@@ -42,7 +42,7 @@ namespace Web
 
             CreateMap<News, NewsForMainPageViewModel>();
 
-            CreateMap<FilmListParametersViewModel, FilmListParametersDto>();
+            CreateMap<FilmListParametersViewModel, FilmListParametersServiceDto>();
             //.ForMember(dest => dest.QuerySearch, opt => opt.MapFrom(source => source.QuerySearch))
             //.ForMember(dest => dest.PageSize, opt => opt.MapFrom(source => source.PageSize))
             //.ForMember(dest => dest.PageNumber, opt => opt.MapFrom(source => source.PageNumber))
@@ -51,8 +51,8 @@ namespace Web
             //.ForMember(dest => dest.Genres, opt => opt.MapFrom(source => source.Genres))
             //.ForMember(dest => dest.Countries, opt => opt.MapFrom(source => source.Countries));
 
-            CreateMap<Genre, GenreDto>();
-            CreateMap<GenreDto, GenreViewModel>();
+            CreateMap<Genre, GenreServiceDto>();
+            CreateMap<GenreServiceDto, GenreViewModel>();
 
         }
     }

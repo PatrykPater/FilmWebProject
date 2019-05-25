@@ -43,9 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AwardService.cs" />
-    <Compile Include="Dtos\FilmFormDto.cs" />
-    <Compile Include="Dtos\FilmListParametersDto.cs" />
-    <Compile Include="Dtos\GenreDto.cs" />
+    <Compile Include="Dtos\FilmFormServiceDto.cs" />
+    <Compile Include="Dtos\FilmListParametersServiceDto.cs" />
+    <Compile Include="Dtos\GenreServiceDto.cs" />
     <Compile Include="Helpers\FilmFilter.cs" />
     <Compile Include="Helpers\FilmServiceHelper.cs" />
     <Compile Include="IManagerService.cs" />

@@ -8,7 +8,7 @@ namespace Service.Helpers
 {
     public class FilmFilter
     {
-        public List<Film> Filter(List<Film> films, FilmListParametersDto parameters)
+        public List<Film> Filter(List<Film> films, FilmListParametersServiceDto parameters)
         {
             var result = new List<Film>();
             var genres = parameters.Genres;

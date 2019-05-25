@@ -2,10 +2,10 @@
 
 namespace Service.Dtos
 {
-    public class FilmFormDto
+    public class FilmFormServiceDto
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public List<GenreDto> Genres { get; set; }
+        public List<GenreServiceDto> Genres { get; set; }
     }
 }

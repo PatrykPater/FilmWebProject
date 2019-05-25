@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Service.Dtos
 {
-    public class FilmListParametersDto
+    public class FilmListParametersServiceDto
     {
-        public FilmListParametersDto()
+        public FilmListParametersServiceDto()
         {
             Genres = new List<Genre>();
             Countries = new List<Country>();
