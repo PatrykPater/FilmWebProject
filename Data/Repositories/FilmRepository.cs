@@ -46,5 +46,11 @@ namespace Data.Repositories
         {
             return _context.Films.Count();
         }
+
+        public void Update(Film filmUpdate)
+        {
+            _context.Entry(filmUpdate).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
     }
 }

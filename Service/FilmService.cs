@@ -76,8 +76,6 @@ namespace Service
             return _unitOfWork.Films.GetAllFilmCount() / pageSize;
         }
 
-
-        //Try refactoring
         public List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres)
         {
             var genresDto = _unitOfWork.Genres.GetAll()
@@ -95,6 +93,11 @@ namespace Service
         public List<Genre> GetSelectedGenres(IEnumerable<GenreServiceDto> filmDtoGenres)
         {
             return (from genreDto in filmDtoGenres where genreDto.IsChecked select _unitOfWork.Genres.GetById(genreDto.Id)).ToList();
+        }
+
+        public void UpdateFilm(Film filmUpdate)
+        {
+            _unitOfWork.Films.Update(filmUpdate);
         }
 
         public GenreServiceDto CreteGenreServiceDto(Genre genre)

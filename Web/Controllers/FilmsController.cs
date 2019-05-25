@@ -64,7 +64,6 @@ namespace Web.Controllers
             var filmListParametersDto = Mapper.Map<FilmListParametersServiceDto>(storedFilmSearchResults ?? filmListParametersViewModel);
             var films = _filmService.GetFilms(filmListParametersDto);
 
-
             var genresSelectedFromViewModel = Mapper.Map<List<GenreViewModel>, List<Genre>>(filmListParametersViewModel.Genres);
             var genresDtoWithSelected = _filmService.GetAllAndSelectedGenres(genresSelectedFromViewModel);
 
@@ -116,7 +115,6 @@ namespace Web.Controllers
             return View("FilmForm", filmFormViewModel);
         }
 
-        //CHANGES DON'T GET SAVED ATM
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
@@ -132,11 +130,9 @@ namespace Web.Controllers
                 return View("FilmForm", viewModel);
             }
 
-            var filmDb = _filmService.GetFilmById(viewModel.Id);
-            if (filmDb == null)
-                return HttpNotFound();
-
-            filmDb.Genres.Clear();
+            //var filmDb = _filmService.GetFilmById(viewModel.Id);  This null check causes EF to throw an exception upon updating an entity, looking for workaround.
+            //if (filmDb == null)
+            //    return HttpNotFound();
 
             var genreDto = Mapper.Map<List<GenreViewModel>, List<GenreServiceDto>>(viewModel.Genres);
             var genres = _filmService.GetSelectedGenres(genreDto);
@@ -144,19 +140,16 @@ namespace Web.Controllers
             var filmUpdate = Mapper.Map<Film>(viewModel);
             filmUpdate.Genres = genres;
 
-            filmDb = filmUpdate;
-            _filmService.Complete();
+            _filmService.UpdateFilm(filmUpdate);
 
-            return RedirectToAction("Details", new { id = filmDb.Id });
+            return RedirectToAction("Details", new { id = filmUpdate.Id });
         }
 
         [HttpPost]
         public ActionResult Search(FilmListParametersViewModel filmListParameters)
         {
             filmListParameters.Genres = filmListParameters.Genres.Where(g => g.IsChecked).ToList();
-
             TempData["FilmSearchResults"] = filmListParameters;
-
             return RedirectToAction("List", "Films");
         }
     }

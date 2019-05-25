@@ -9,5 +9,6 @@ namespace Data.Repositories
         new Film GetById(int id);
         List<Film> GetFilmsWithPagination(int pageSize, int pageNumber);
         int GetAllFilmCount();
+        void Update(Film filmUpdate);
     }
 }
