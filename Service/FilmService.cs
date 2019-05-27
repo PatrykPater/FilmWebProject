@@ -10,13 +10,11 @@ namespace Service
     public class FilmService : ServiceBase, IFilmService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly FilmServiceHelper _filmServiceHelper;
-        private readonly FilmFilter _filmFiler;
+        private readonly IFilmFilter _filmFiler;
 
-        public FilmService(IUnitOfWork unitOfWork, FilmServiceHelper filmServiceHelper, FilmFilter filmFiler) : base(unitOfWork)
+        public FilmService(IUnitOfWork unitOfWork, IFilmFilter filmFiler) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _filmServiceHelper = filmServiceHelper;
             _filmFiler = filmFiler;
         }
 
@@ -61,10 +59,10 @@ namespace Service
             var pageSize = filmListParametersDto.PageSize;
             var pageNumber = filmListParametersDto.PageNumber - 1;
 
-            if (_filmServiceHelper.IsSearched(filmListParametersDto))
-                return _unitOfWork.Films.GetFilmsWithPagination(pageSize, pageNumber);
-
             var filmsFromDb = _unitOfWork.Films.GetAll();
+
+            if (!ListOfFilterParameters.CheckParameters(filmListParametersDto))
+                return _unitOfWork.Films.GetFilmsWithPagination(pageSize, pageNumber);
 
             var result = _filmFiler.Filter(filmsFromDb, filmListParametersDto);
 

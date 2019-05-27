@@ -55,7 +55,6 @@ namespace Web.Controllers
             return RedirectToAction("Details", "Films", new { id = newFilm.Id });
         }
 
-        //search action seems to be bugged at the moment
         [HttpGet]
         public ActionResult List(FilmListParametersViewModel filmListParametersViewModel)
         {

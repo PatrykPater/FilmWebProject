@@ -36,6 +36,7 @@ namespace Web
             builder.RegisterType<ModelFactory>().As<IModelFactory>().InstancePerRequest();
             builder.RegisterType<ManagerService>().As<IManagerService>().InstancePerRequest();
             builder.RegisterType<ReviewService>().As<IReviewService>().InstancePerRequest();
+            builder.RegisterType<FilmFilter>().As<IFilmFilter>().InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(ApplicationDbContext).Assembly)
                 .Where(t => t.Name.EndsWith("Context"))
@@ -44,11 +45,6 @@ namespace Web
                 .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(typeof(FilmFilter).Assembly)
-                .AsImplementedInterfaces()
-                .AsSelf()
-                .InstancePerRequest();
-
-            builder.RegisterAssemblyTypes(typeof(FilmServiceHelper).Assembly)
                 .AsImplementedInterfaces()
                 .AsSelf()
                 .InstancePerRequest();

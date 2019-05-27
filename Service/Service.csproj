@@ -47,7 +47,9 @@
     <Compile Include="Dtos\FilmListParametersServiceDto.cs" />
     <Compile Include="Dtos\GenreServiceDto.cs" />
     <Compile Include="Helpers\FilmFilter.cs" />
-    <Compile Include="Helpers\FilmServiceHelper.cs" />
+    <Compile Include="Helpers\FiltersTypes.cs" />
+    <Compile Include="Helpers\IFilmFilter.cs" />
+    <Compile Include="Helpers\ListOfFilterParameters.cs" />
     <Compile Include="IManagerService.cs" />
     <Compile Include="IReviewService.cs" />
     <Compile Include="ManagerService.cs" />
