@@ -34,6 +34,8 @@ Currently working features:
 
 On todo list:
 - Paging, sorting, filtering for films, news etc.
+- Client side validation with Fluent Validation
+- Strongly typed helpers with T4MVC
 - Reviews system
 - Add notification if your friend has rated a film.
 - Polish/Improve existing features
