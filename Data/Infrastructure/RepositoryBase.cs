@@ -39,7 +39,7 @@ namespace Data.Infrastructure
 
         public virtual void Delete(Expression<Func<T, bool>> where)
         {
-            var objects = _dbSet.Where<T>(where).AsEnumerable();
+            var objects = _dbSet.Where(where).AsEnumerable();
             foreach (var obj in objects)
                 _dbSet.Remove(obj);
         }
@@ -51,7 +51,7 @@ namespace Data.Infrastructure
 
         public T Get(Expression<Func<T, bool>> where)
         {
-            return _dbSet.Where(where).FirstOrDefault<T>();
+            return _dbSet.Where(where).FirstOrDefault();
         }
     }
 }

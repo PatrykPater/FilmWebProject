@@ -5,6 +5,7 @@ namespace Service.Helpers
 {
     public class ListOfFilterParameters
     {
+        //Add additional methods to check the if statement here
         public static bool CheckParameters(FilmListParametersServiceDto parameters)
         {
             return (CheckGenres(parameters) || CheckCountries(parameters) || CheckSearch(parameters));

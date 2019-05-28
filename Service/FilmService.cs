@@ -54,6 +54,11 @@ namespace Service
             return _unitOfWork.Ratings.GetUserRating(filmId, userId);
         }
 
+        /// <summary>
+        /// returns list of films based on provided parameters
+        /// </summary>
+        /// <param name="filmListParametersDto">contains parameters required to filter/sort list of films</param>
+        /// <returns></returns>
         public List<Film> GetFilms(FilmListParametersServiceDto filmListParametersDto)
         {
             var pageSize = filmListParametersDto.PageSize;
@@ -74,6 +79,11 @@ namespace Service
             return _unitOfWork.Films.GetAllFilmCount() / pageSize;
         }
 
+        /// <summary>
+        /// returns the list of all selected genres (with saved isChecked property)
+        /// </summary>
+        /// <param name="currentFilmGenres">selected genres</param>
+        /// <returns></returns>
         public List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres)
         {
             var genresDto = _unitOfWork.Genres.GetAll()
@@ -88,6 +98,11 @@ namespace Service
             return genresDto;
         }
 
+        /// <summary>
+        /// returns the list of selected genres
+        /// </summary>
+        /// <param name="filmDtoGenres">list of genres both selected and not</param>
+        /// <returns></returns>
         public List<Genre> GetSelectedGenres(IEnumerable<GenreServiceDto> filmDtoGenres)
         {
             return (from genreDto in filmDtoGenres where genreDto.IsChecked select _unitOfWork.Genres.GetById(genreDto.Id)).ToList();
@@ -98,6 +113,11 @@ namespace Service
             _unitOfWork.Films.Update(filmUpdate);
         }
 
+        /// <summary>
+        /// maps Genre object into GenreServiceDto
+        /// </summary>
+        /// <param name="genre"></param>
+        /// <returns></returns>
         public GenreServiceDto CreteGenreServiceDto(Genre genre)
         {
             return new GenreServiceDto()

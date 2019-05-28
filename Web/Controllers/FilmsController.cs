@@ -63,7 +63,8 @@ namespace Web.Controllers
             var filmListParametersDto = Mapper.Map<FilmListParametersServiceDto>(storedFilmSearchResults ?? filmListParametersViewModel);
             var films = _filmService.GetFilms(filmListParametersDto);
 
-            var genresSelectedFromViewModel = Mapper.Map<List<GenreViewModel>, List<Genre>>(filmListParametersViewModel.Genres);
+            //work on genres saving after changing the page and pagination
+            var genresSelectedFromViewModel = Mapper.Map<List<GenreViewModel>, List<Genre>>(storedFilmSearchResults.Genres ?? filmListParametersViewModel.Genres);
             var genresDtoWithSelected = _filmService.GetAllAndSelectedGenres(genresSelectedFromViewModel);
 
             var filmViewModel = new FilmListViewModel
