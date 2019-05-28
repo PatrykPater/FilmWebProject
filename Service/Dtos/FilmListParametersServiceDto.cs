@@ -1,5 +1,4 @@
-﻿using Model.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Service.Dtos
 {
@@ -7,8 +6,8 @@ namespace Service.Dtos
     {
         public FilmListParametersServiceDto()
         {
-            Genres = new List<Genre>();
-            Countries = new List<Country>();
+            Genres = new List<GenreServiceDto>();
+            Countries = new List<CountryServiceDto>();
         }
 
         public string QuerySearch { get; set; } = null;
@@ -16,8 +15,8 @@ namespace Service.Dtos
         public int PageSize { get; set; } = 5;
         public int MaxPageNumber { get; set; }
         public int CurrentPage { get; set; } = 1;
-        public List<Genre> Genres { get; set; }
-        public List<Country> Countries { get; set; }
+        public List<GenreServiceDto> Genres { get; set; }
+        public List<CountryServiceDto> Countries { get; set; }
 
     }
 }

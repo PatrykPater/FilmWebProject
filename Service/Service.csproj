@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AwardService.cs" />
+    <Compile Include="Dtos\CountryServiceDto.cs" />
     <Compile Include="Dtos\FilmFormServiceDto.cs" />
     <Compile Include="Dtos\FilmListParametersServiceDto.cs" />
     <Compile Include="Dtos\GenreServiceDto.cs" />

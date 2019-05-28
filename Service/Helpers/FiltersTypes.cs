@@ -1,4 +1,5 @@
 ﻿using Model.Models;
+using Service.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Service.Helpers
             return result;
         }
 
-        public List<Film> FilterByGenre(List<Genre> genres, List<Film> films, List<Film> result)
+        public List<Film> FilterByGenre(List<GenreServiceDto> genres, List<Film> films, List<Film> result)
         {
             foreach (var film in films)
                 foreach (var genre in genres)
@@ -25,7 +26,7 @@ namespace Service.Helpers
             return result;
         }
 
-        public List<Film> FilterByCountry(List<Country> countries, List<Film> films, List<Film> result)
+        public List<Film> FilterByCountry(List<CountryServiceDto> countries, List<Film> films, List<Film> result)
         {
             foreach (var film in films)
                 foreach (var country in countries)

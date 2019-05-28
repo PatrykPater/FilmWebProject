@@ -20,6 +20,7 @@ namespace Data.Repositories
             return _context.Films
                     .Include(f => f.Genres)
                     .Include(f => f.Ratings)
+                    .Include(f => f.Countries)
                     .ToList();
         }
 
@@ -28,6 +29,7 @@ namespace Data.Repositories
             return _context.Films
                     .Include(f => f.Genres)
                     .Include(f => f.Ratings)
+                    .Include(f => f.Countries)
                     .Single(f => f.Id == id);
         }
 
@@ -36,6 +38,7 @@ namespace Data.Repositories
             return _context.Films
                 .Include(f => f.Genres)
                 .Include(f => f.Ratings)
+                .Include(f => f.Countries)
                 .OrderBy(f => f.Title)
                 .Skip(pageSize * pageNumber)
                 .Take(pageSize)

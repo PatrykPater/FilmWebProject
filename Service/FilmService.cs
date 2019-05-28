@@ -84,7 +84,7 @@ namespace Service
         /// </summary>
         /// <param name="currentFilmGenres">selected genres</param>
         /// <returns></returns>
-        public List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres)
+        public List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<GenreServiceDto> currentFilmGenres)
         {
             var genresDto = _unitOfWork.Genres.GetAll()
                 .Select(CreteGenreServiceDto)

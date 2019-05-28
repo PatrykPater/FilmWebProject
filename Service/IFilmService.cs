@@ -16,7 +16,7 @@ namespace Service
         Rating GetUserRating(int filmId, string userId);
         List<Film> GetFilms(FilmListParametersServiceDto filmListParametersDto);
         int GetMaxPageNumber(int pageSize);
-        List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<Genre> currentFilmGenres);
+        List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<GenreServiceDto> currentFilmGenres);
         List<Genre> GetSelectedGenres(IEnumerable<GenreServiceDto> filmDtoGenres);
         void UpdateFilm(Film filmUpdate);
     }
