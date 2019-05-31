@@ -1,6 +1,7 @@
 ﻿using Model.Models;
 using Service.Dtos;
 using System.Collections.Generic;
+using Service.Helpers;
 
 namespace Service
 {
@@ -14,8 +15,7 @@ namespace Service
         ApplicationUser GetUserById(string id);
         void AddNewRating(Film film, ApplicationUser user, int value);
         Rating GetUserRating(int filmId, string userId);
-        List<Film> GetFilms(FilmListParametersServiceDto filmListParametersDto);
-        int GetMaxPageNumber(int pageSize);
+        FilmListServiceDto GetFilms(FilmListServiceDto filmListParametersDto);
         List<GenreServiceDto> GetAllAndSelectedGenres(ICollection<GenreServiceDto> currentFilmGenres);
         List<Genre> GetSelectedGenres(IEnumerable<GenreServiceDto> filmDtoGenres);
         void UpdateFilm(Film filmUpdate);

@@ -41,8 +41,8 @@ namespace Web
             CreateMap<ReviewToAddDto, Review>();
             CreateMap<News, NewsForMainPageViewModel>();
 
-            CreateMap<FilmListParametersViewModel, FilmListParametersServiceDto>();
-            CreateMap<FilmListParametersServiceDto, FilmListParametersViewModel>();
+            CreateMap<FilmListParametersViewModel, FilmListServiceDto>();
+            CreateMap<FilmListServiceDto, FilmListParametersViewModel>();
 
 
         }

@@ -6,6 +6,6 @@ namespace Service.Helpers
 {
     public interface IFilmFilter
     {
-        List<Film> Filter(List<Film> films, FilmListParametersServiceDto parameters);
+        FilmListServiceDto Filter(List<Film> films, FilmListServiceDto parameters);
     }
 }

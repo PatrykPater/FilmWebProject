@@ -6,14 +6,12 @@ namespace Service.Helpers
 {
     public class FilmFilter : IFilmFilter
     {
-        private readonly FiltersTypes _filtersTypes;
+        private readonly IFiltersTypes _filtersTypes;
 
-        public FilmFilter(FiltersTypes filtersTypes)
+        public FilmFilter(IFiltersTypes filtersTypes, IPagination pagination)
         {
             _filtersTypes = filtersTypes;
         }
-
-        //We can easily add more filters in the future
 
         /// <summary>
         /// filters the list of films based on the provided parameters using custom filters
@@ -21,7 +19,7 @@ namespace Service.Helpers
         /// <param name="films"></param>
         /// <param name="parameters">contains parameters required for filtering</param>
         /// <returns></returns>
-        public List<Film> Filter(List<Film> films, FilmListParametersServiceDto parameters)
+        public FilmListServiceDto Filter(List<Film> films, FilmListServiceDto parameters)
         {
             var result = new List<Film>();
 
@@ -29,7 +27,9 @@ namespace Service.Helpers
             _filtersTypes.FilterByGenre(parameters.Genres, films, result);
             _filtersTypes.FilterByCountry(parameters.Countries, films, result);
 
-            return result;
+            parameters.Films = result;
+
+            return parameters;
         }
     }
 }

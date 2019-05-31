@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Service.Helpers
 {
-    public class FiltersTypes
+    public class FiltersTypes : IFiltersTypes
     {
         public List<Film> FilterByQuery(string query, List<Film> films, List<Film> result)
         {

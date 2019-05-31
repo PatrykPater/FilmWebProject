@@ -45,12 +45,15 @@
     <Compile Include="AwardService.cs" />
     <Compile Include="Dtos\CountryServiceDto.cs" />
     <Compile Include="Dtos\FilmFormServiceDto.cs" />
-    <Compile Include="Dtos\FilmListParametersServiceDto.cs" />
+    <Compile Include="Dtos\FilmListServiceDto.cs" />
     <Compile Include="Dtos\GenreServiceDto.cs" />
     <Compile Include="Helpers\FilmFilter.cs" />
     <Compile Include="Helpers\FiltersTypes.cs" />
     <Compile Include="Helpers\IFilmFilter.cs" />
+    <Compile Include="Helpers\IFiltersTypes.cs" />
+    <Compile Include="Helpers\IPagination.cs" />
     <Compile Include="Helpers\ListOfFilterParameters.cs" />
+    <Compile Include="Helpers\Pagination.cs" />
     <Compile Include="IManagerService.cs" />
     <Compile Include="IReviewService.cs" />
     <Compile Include="ManagerService.cs" />

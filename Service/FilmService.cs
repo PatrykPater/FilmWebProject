@@ -1,4 +1,5 @@
-﻿using Data.Infrastructure;
+﻿using System;
+using Data.Infrastructure;
 using Model.Models;
 using Service.Dtos;
 using Service.Helpers;
@@ -11,11 +12,13 @@ namespace Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IFilmFilter _filmFiler;
+        private readonly IPagination _pagination;
 
-        public FilmService(IUnitOfWork unitOfWork, IFilmFilter filmFiler) : base(unitOfWork)
+        public FilmService(IUnitOfWork unitOfWork, IFilmFilter filmFiler, IPagination pagination) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _filmFiler = filmFiler;
+            _pagination = pagination;
         }
 
         public List<Genre> GetAllGenres()
@@ -59,24 +62,36 @@ namespace Service
         /// </summary>
         /// <param name="filmListParametersDto">contains parameters required to filter/sort list of films</param>
         /// <returns></returns>
-        public List<Film> GetFilms(FilmListParametersServiceDto filmListParametersDto)
+        public FilmListServiceDto GetFilms(FilmListServiceDto filmListParametersDto)
         {
-            var pageSize = filmListParametersDto.PageSize;
-            var pageNumber = filmListParametersDto.PageNumber - 1;
-
             var filmsFromDb = _unitOfWork.Films.GetAll();
 
             if (!ListOfFilterParameters.CheckParameters(filmListParametersDto))
-                return _unitOfWork.Films.GetFilmsWithPagination(pageSize, pageNumber);
+            {
+                filmListParametersDto.MaxPageNumber = GetMaxPageNumber(filmsFromDb.Count, filmListParametersDto.PageSize);
+                filmListParametersDto.Films = _pagination.PerformPagination(filmsFromDb, filmListParametersDto);
+
+                return filmListParametersDto;
+            }
 
             var result = _filmFiler.Filter(filmsFromDb, filmListParametersDto);
+            result.MaxPageNumber = GetMaxPageNumber(result.Films.Count, filmListParametersDto.PageSize);
+            result.Films = _pagination.PerformPagination(result.Films, filmListParametersDto);
 
-            return result.Skip(pageSize * pageNumber).Take(pageSize).ToList();
+            return result;
         }
 
-        public int GetMaxPageNumber(int pageSize)
+        public int GetMaxPageNumber(int filmCount, int pageSize)
         {
-            return _unitOfWork.Films.GetAllFilmCount() / pageSize;
+            var var1 = Convert.ToDouble(filmCount);
+            var var2 = Convert.ToDouble(pageSize);
+
+            var division = var1 / var2;
+
+            var roundUp = Math.Ceiling(division);
+            var result = Convert.ToInt32(roundUp);
+
+            return result;
         }
 
         /// <summary>

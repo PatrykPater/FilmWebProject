@@ -59,16 +59,16 @@ namespace Web.Controllers
         public ActionResult List(FilmListParametersViewModel filmListParametersViewModel)
         {
             var storedFilmSearchResults = TempData["FilmSearchResults"] as FilmListParametersViewModel;
-            var filmListParametersDto = Mapper.Map<FilmListParametersServiceDto>(storedFilmSearchResults ?? filmListParametersViewModel);
+            var filmListParametersDto = Mapper.Map<FilmListServiceDto>(storedFilmSearchResults ?? filmListParametersViewModel);
 
-            var films = _filmService.GetFilms(filmListParametersDto);
+            var filmListServiceDto = _filmService.GetFilms(filmListParametersDto);
             var genresDtoWithSelected = _filmService.GetAllAndSelectedGenres(filmListParametersDto.Genres);
 
             var filmViewModel = new FilmListViewModel
             {
-                ListOfFilms = films,
+                ListOfFilms = filmListServiceDto.Films,
                 Genres = Mapper.Map<List<GenreServiceDto>, List<GenreViewModel>>(genresDtoWithSelected),
-                FilmListParameters = Mapper.Map<FilmListParametersViewModel>(filmListParametersDto)
+                FilmListParameters = Mapper.Map<FilmListParametersViewModel>(filmListServiceDto)
             };
 
             return View(filmViewModel);
